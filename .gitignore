@@ -13,6 +13,7 @@
 # Always-ignore directories
 doc/
 backups/
+demo/
 
 # OS or Editor folders
 .DS_Store
