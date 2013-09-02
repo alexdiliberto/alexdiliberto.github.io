@@ -168,10 +168,6 @@ body {
     font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Tahoma, sans-serif;
 }
 
-.lt-ie7 body {
-    background-color: #52c5ff;
-}
-
 .wrapper {
     text-align: center;
 }
