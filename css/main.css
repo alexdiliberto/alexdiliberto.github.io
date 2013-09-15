@@ -99,9 +99,22 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-/* 1. Large desktop */
-/* 2. Portrait tablet to landscape and desktop */
+@media (min-width: 1100px) {
+    .fontface [data-icon]:before {
+        font-size: 12em !important;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1199px) {
+    .fontface [data-icon]:before {
+        font-size: 10em !important;
+    }
+}
+
 @media (min-width: 768px) {
+    .fontface [data-icon]:before {
+        font-size: 7em;
+    }
     .social a {
         display: inline-block;
         margin: 1em;
@@ -111,9 +124,33 @@ textarea {
     }
 }
 
-/* 1. Landscape phone to portrait tablet */
-/* 2. Landscape phones and down */
 @media (max-width: 767px) {
+    main {
+        margin: 3em 0 !important;
+    }
+    .fontface [data-icon]:before {
+        font-size: 5em;
+    }
+    .social a {
+        display: inline-block;
+        margin: .5em;
+    }
+    .social-icon-wrap {
+        display: inline-block;
+    }
+
+}
+
+@media (max-width: 520px) {
+    main {
+        margin: 2em 0 !important;
+    }
+    .fontface [data-icon]:before {
+        font-size: 3em !important;
+    }
+}
+
+@media (max-width: 400px) {
     .social a {
         margin-bottom: 1em;
         float: left;
@@ -132,12 +169,12 @@ textarea {
 }
 
 @font-face {
-    font-family: 'IcoMoonSocial';
-    src:url('../fonts/IcoMoonSocial.eot');
-    src:url('../fonts/IcoMoonSocial.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/IcoMoonSocial.woff') format('woff'),
-        url('../fonts/IcoMoonSocial.ttf') format('truetype'),
-        url('../fonts/IcoMoonSocial.svg#IcoMoonSocial') format('svg');
+    font-family: 'AlexDiLibertoSocial';
+    src:url('../fonts/AlexDiLibertoSocial.eot');
+    src:url('../fonts/AlexDiLibertoSocial.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/AlexDiLibertoSocial.woff') format('woff'),
+        url('../fonts/AlexDiLibertoSocial.ttf') format('truetype'),
+        url('../fonts/AlexDiLibertoSocial.svg#AlexDiLibertoSocial') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -210,15 +247,15 @@ main {
 }
 
 .fontface [data-icon]:before {
-    font-family: 'IcoMoonSocial';
+    font-family: 'AlexDiLibertoSocial';
     content: attr(data-icon);
     speak: none;
     font-weight: normal;
     font-variant: normal;
-    font-size: 8em;
     text-transform: none;
     line-height: 1;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .fontface [data-icon] {
