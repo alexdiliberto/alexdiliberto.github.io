@@ -10,15 +10,8 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
-html,
-button,
-input,
-select,
-textarea {
-    color: #222;
-}
-
 html {
+    color: #222;
     font-size: 1em;
     line-height: 1.4;
 }
@@ -60,6 +53,7 @@ hr {
 audio,
 canvas,
 img,
+svg,
 video {
     vertical-align: middle;
 }
@@ -88,6 +82,7 @@ textarea {
    ========================================================================== */
 
 .browsehappy {
+    font-family: sans-serif;
     margin: 0;
     background: #ccc;
     color: #000;
@@ -269,7 +264,8 @@ main {
     position: relative;
 }
 
-.no-touch.fontface [data-icon]:hover {
+.no-touch.fontface [data-icon]:hover,
+.no-touch.fontface [data-icon]:focus {
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -o-transition: all .3s ease;
@@ -305,92 +301,64 @@ main {
     color: #007bb6;
 }
 
+.animated {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 .bounceIn {
-    -webkit-animation-fill-mode: both;
-    -moz-animation-fill-mode: both;
-    -ms-animation-fill-mode: both;
-    -o-animation-fill-mode: both;
-    animation-fill-mode: both;
-
-    -webkit-animation-duration: 1.5s;
-    -moz-animation-duration: 1.5s;
-    -ms-animation-duration: 1.5s;
-    -o-animation-duration: 1.5s;
-    animation-duration: 1.5s;
-
-    -webkit-animation-name: bounceIn;
-    -moz-animation-name: bounceIn;
-    -o-animation-name: bounceIn;
-    animation-name: bounceIn;
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
 }
 
 @-webkit-keyframes bounceIn {
     0% {
         opacity: 0;
         -webkit-transform: scale(.3);
+        transform: scale(.3);
     }
     50% {
         opacity: 1;
         -webkit-transform: scale(1.05);
+        transform: scale(1.05);
     }
     70% {
         -webkit-transform: scale(.9);
+        transform: scale(.9);
     }
     100% {
         -webkit-transform: scale(1);
-    }
-}
-
-@-moz-keyframes bounceIn {
-    0% {
-        opacity: 0;
-        -moz-transform: scale(.3);
-    }
-    50% {
-        opacity: 1;
-        -moz-transform: scale(1.05);
-    }
-    70% {
-        -moz-transform: scale(.9);
-    }
-    100% {
-        -moz-transform: scale(1);
-    }
-}
-
-@-o-keyframes bounceIn {
-    0% {
-        opacity: 0;
-        -o-transform: scale(.3);
-    }
-    50% {
-        opacity: 1;
-        -o-transform: scale(1.05);
-    }
-    70% {
-        -o-transform: scale(.9);
-    }
-    100% {
-        -o-transform: scale(1);
+        transform: scale(1);
     }
 }
 
 @keyframes bounceIn {
     0% {
         opacity: 0;
+        -webkit-transform: scale(.3);
+        -ms-transform: scale(.3);
         transform: scale(.3);
     }
     50% {
         opacity: 1;
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
         transform: scale(1.05);
     }
     70% {
+        -webkit-transform: scale(.9);
+        -ms-transform: scale(.9);
         transform: scale(.9);
     }
     100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
         transform: scale(1);
     }
 }
+
 
 /* ==========================================================================
    Helper classes
@@ -488,7 +456,7 @@ main {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) { /* 560px */
+@media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
 }
 
@@ -552,10 +520,6 @@ main {
 
     img {
         max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
     }
 
     p,
