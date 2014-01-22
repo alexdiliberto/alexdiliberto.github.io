@@ -195,7 +195,6 @@ main {
     font-family: 'AlexDiLibertoSocial';
     content: attr(data-icon);
     speak: none;
-    font-size: 3em;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
@@ -205,6 +204,7 @@ main {
 }
 
 .fontface [data-icon] {
+    font-size: 3em;
     position: relative;
 }
 
@@ -416,7 +416,7 @@ main {
     main {
         margin: 3em 0;
     }
-    .fontface [data-icon]:before {
+    .fontface [data-icon] {
         font-size: 5em;
     }
 }
@@ -425,7 +425,7 @@ main {
     main {
         margin: 5em 0;
     }
-    .fontface [data-icon]:before {
+    .fontface [data-icon] {
         font-size: 7em;
     }
     .social a {
@@ -438,13 +438,13 @@ main {
 }
 
 @media only screen and (min-width: 62.5em) { /* 1000px */
-    .fontface [data-icon]:before {
+    .fontface [data-icon] {
         font-size: 10em;
     }
 }
 
 @media only screen and (min-width: 75em) { /* 1200px */
-    .fontface [data-icon]:before {
+    .fontface [data-icon] {
         font-size: 12em;
     }
 }
