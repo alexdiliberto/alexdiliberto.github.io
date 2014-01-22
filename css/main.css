@@ -94,75 +94,6 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-@media (min-width: 1100px) {
-    .fontface [data-icon]:before {
-        font-size: 12em !important;
-    }
-}
-
-@media (min-width: 1000px) and (max-width: 1199px) {
-    .fontface [data-icon]:before {
-        font-size: 10em !important;
-    }
-}
-
-@media (min-width: 768px) {
-    .fontface [data-icon]:before {
-        font-size: 7em;
-    }
-    .social a {
-        display: inline-block;
-        margin: 1em;
-    }
-    .social-icon-wrap {
-        display: inline-block;
-    }
-}
-
-@media (max-width: 767px) {
-    main {
-        margin: 3em 0 !important;
-    }
-    .fontface [data-icon]:before {
-        font-size: 5em;
-    }
-    .social a {
-        display: inline-block;
-        margin: .5em;
-    }
-    .social-icon-wrap {
-        display: inline-block;
-    }
-
-}
-
-@media (max-width: 520px) {
-    main {
-        margin: 2em 0 !important;
-    }
-    .fontface [data-icon]:before {
-        font-size: 3em !important;
-    }
-}
-
-@media (max-width: 400px) {
-    .social a {
-        margin-bottom: 1em;
-        float: left;
-        position: relative;
-        left: -50%;
-    }
-    .social div:last-child a {
-        margin-bottom: 0;
-    }
-    .social-icon-wrap {
-        float: left;
-        clear: both;
-        position: relative;
-        left: 50%;
-    }
-}
-
 @font-face {
     font-family: 'AlexDiLibertoSocial';
     src:url('../fonts/AlexDiLibertoSocial.eot');
@@ -240,18 +171,31 @@ footer {
 }
 
 main {
-    margin: 5em 0;
+    margin: 2em 0;
+}
+
+.social-icon-wrap {
+    float: left;
+    clear: both;
+    position: relative;
+    left: 50%;
 }
 
 .social a {
     color: inherit;
     text-decoration: none;
+    margin: .5em;
+    margin-bottom: 1em;
+    float: left;
+    position: relative;
+    left: -50%;
 }
 
 .fontface [data-icon]:before {
     font-family: 'AlexDiLibertoSocial';
     content: attr(data-icon);
     speak: none;
+    font-size: 3em;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
@@ -451,13 +395,58 @@ main {
 }
 
 /* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
+   Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+@media only screen and (min-width: 25em) { /* 400px */
+    .social-icon-wrap {
+        display: inline-block;
+        float: none;
+        clear: none;
+        left: 0%;
+    }
+    .social a {
+        left: 0%;
+    }
+}
+
+@media only screen and (min-width: 32.5em) { /* 520px */
+    main {
+        margin: 3em 0;
+    }
+    .fontface [data-icon]:before {
+        font-size: 5em;
+    }
+}
+
+@media only screen and (min-width: 48em) { /* 768px */
+    main {
+        margin: 5em 0;
+    }
+    .fontface [data-icon]:before {
+        font-size: 7em;
+    }
+    .social a {
+        display: inline-block;
+        margin: 1em;
+    }
+    .social-icon-wrap {
+        display: inline-block;
+    }
+}
+
+@media only screen and (min-width: 62.5em) { /* 1000px */
+    .fontface [data-icon]:before {
+        font-size: 10em;
+    }
+}
+
+@media only screen and (min-width: 75em) { /* 1200px */
+    .fontface [data-icon]:before {
+        font-size: 12em;
+    }
 }
 
 @media print,
