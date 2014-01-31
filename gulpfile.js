@@ -10,6 +10,13 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   notify = require('gulp-notify');
 
+// Copy files
+gulp.task('copy', function() {
+  return gulp.src('src/js/vendor/**/*.js')
+    .pipe(gulp.dest('dist/js/vendor'))
+    .pipe(notify({ message: 'Copy task complete' }));
+});
+
 // Styles
 gulp.task('styles', function() {
   return gulp.src('src/scss/**/*.scss')
@@ -26,7 +33,7 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-  gulp.src(['src/js/*.js','!src/js/vendor/**/*.js'])
+  return gulp.src(['src/js/*.js','!src/js/vendor/**/*.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
@@ -35,11 +42,7 @@ gulp.task('scripts', function() {
       return base + ".min" + ext;
     }))
     .pipe(uglify())
-    .pipe(gulp.dest('dist/js'));
-
-  // Copy vendor files
-  return gulp.src('src/js/vendor/**/*.js')
-    .pipe(gulp.dest('dist/js/vendor'))
+    .pipe(gulp.dest('dist/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
 });
 
@@ -51,7 +54,7 @@ gulp.task('clean', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-  gulp.start('styles', 'scripts');
+  gulp.start('copy', 'styles', 'scripts');
 });
 
 // Watch
