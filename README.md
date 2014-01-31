@@ -1,8 +1,12 @@
-![alexdiliberto.com favicon](http://alexdiliberto.com/favicon.ico) alexdiliberto.com
+![alexdiliberto.com favicon](http://alexdiliberto.com/favicon.ico) alexdiliberto.com [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/alexdiliberto/alexdiliberto.com/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 =================
 
 **web developer . geek**
 
-[http://alexdiliberto.com](http://alexdiliberto.com)
+Instructions to begin local development:
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/alexdiliberto/alexdiliberto.com/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+```js
+npm install
+gulp
+gulp watch
+```
