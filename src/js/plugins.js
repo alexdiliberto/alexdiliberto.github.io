@@ -1,3 +1,6 @@
+/* jshint ignore:start */
+// Code here will be linted with ignored by JSHint.
+
 // Avoid `console` errors in browsers that lack a console.
 (function() {
     var method;
@@ -22,7 +25,6 @@
 }());
 
 // Place any jQuery/helper plugins in here.
-
 /*global jQuery */
 /*!
 * FitText.js 1.1
@@ -66,3 +68,5 @@
   };
 
 })( jQuery );
+
+/* jshint ignore:end */

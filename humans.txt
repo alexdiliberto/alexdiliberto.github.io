@@ -11,5 +11,5 @@
 
 # TECHNOLOGY COLOPHON
     HTML5, CSS3
-    jQuery, Modernizr, Normalize.css, HTML5 Boilerplate, Git
+    jQuery, Modernizr, Normalize.css, HTML5 Boilerplate, Git, Gulp
     Sublime Text 2
