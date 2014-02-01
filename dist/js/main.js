@@ -1,7 +1,3 @@
-(function( $ ) {
-  $(".name").fitText(1.0, { minFontSize: '50px', maxFontSize: '140px' });
-})( jQuery );
-
 /* jshint ignore:start */
 // Code here will be linted with ignored by JSHint.
 
@@ -74,3 +70,7 @@
 })( jQuery );
 
 /* jshint ignore:end */
+
+(function( $ ) {
+  $(".name").fitText(1.0, { minFontSize: '50px', maxFontSize: '140px' });
+})( jQuery );

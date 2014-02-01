@@ -33,7 +33,7 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src(['src/js/*.js','!src/js/vendor/**/*.js'])
+  return gulp.src(['src/js/plugins.js','src/js/*.js','!src/js/vendor/**/*.js']) //Order is important for the script concatenation
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
