@@ -1,4 +1,6 @@
-![alexdiliberto.com favicon](http://alexdiliberto.com/favicon.ico) alexdiliberto.com [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/alexdiliberto/alexdiliberto.com/trend.png)](https://bitdeli.com/free "Bitdeli Badge") [![Travis CI](http://img.shields.io/travis-ci/alexdiliberto/alexdiliberto.github.io.png?branch=master)](https://travis-ci.org/alexdiliberto/alexdiliberto.github.io)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/alexdiliberto/alexdiliberto.com/trend.png)](https://bitdeli.com/free "Bitdeli Badge") [![Travis CI](http://img.shields.io/travis-ci/alexdiliberto/alexdiliberto.github.io.png?branch=master)](https://travis-ci.org/alexdiliberto/alexdiliberto.github.io)
+
+![alexdiliberto.com favicon](/favicon.ico) alexdiliberto.com
 =================
 
 **web developer . geek**
