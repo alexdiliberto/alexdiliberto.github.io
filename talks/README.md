@@ -8,8 +8,8 @@ https://github.com/hakimel/reveal.js/#full-setup
 1. Update Title/Author/Description
 
     ```html
-    <title>Alex DiLiberto | {{title}}</title>
-    <meta name="description" content='Presentation by Alex DiLiberto - "{{title}}"'>
+    <title>{{title}} | Alex DiLiberto</title>
+    <meta name="description" content="{{description}}">
     <meta name="author" content="Alex DiLiberto">
     ```
 
