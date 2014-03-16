@@ -128,6 +128,7 @@
 
 
 
+
             <!-- TODO: UPDATE -->
             <p>Shoutout to Matthew Beale who did some great work on integrating the didTransition hook into the router - which really helps to make this implementation so much cleaner.</p>
             <p>Didn't like the idea of including some mixing for every route because this is an application wide requirement.</p>
@@ -135,10 +136,136 @@
             <p>Talk about naïve approaches and better solutions</p>
             <p>Full demo time</p>
 
+
+
+
           </aside>
         </section>
 
         <section class="slide-4">
+          <h2>Naive approach</h2>
+          <pre>
+            <code class="javascript">
+  Ember.Analytics = Ember.Mixin.create({
+    trackPageView: function() {
+      Ember.run.next(function() {
+        var loc = window.location,
+            page = loc.hash ? loc.hash.substring(1) : loc.pathname + loc.search;
+        ga('send', 'pageview', page);
+      });
+    }.observes('currentPath')
+  });
+            </code>
+          </pre>
+
+          <a href="http://emberjs.jsbin.com/puzax/12/edit">http://emberjs.jsbin.com/puzax/12/edit</a>
+
+          <aside class="notes">
+            <p>Page View Tracking</p>
+            <p>A beginning naive approach would be to create a Mixin/currentPath observer.</p>
+            <ul>
+              <li>If you want this on the application controller and it was being generated for you then you must still instantiate an empty controller using the mixin.</li>
+              <li>Even worse, inject this Mixin onto each controller you want to track. (UGHHH!)</li>
+              <li>Doesn't scale well particularly well</li>
+              <li>Manually grabbing the URL via window.location (not Ember friendly!)</li>
+              <li>Don't have access to the internal router object within the scope of this Mixin</li>
+              <li>Does NOT work for dynamic routes with model changes only (e.g posts/1 -> posts/2)</li>
+              <li>Does NOT work for loading state or error state</li>
+            </ul>
+            <b>Not a good solution!</b>
+          </aside>
+        </section>
+
+        <section class="slide-5">
+          <h2>Winning approach</h2>
+          <pre>
+            <code>
+  App.ApplicationRoute = Ember.Route.extend({
+    actions: {
+      didTransition: function() {
+        Ember.run.once(this, function() {
+          ga('send', 'pageview', router.get('url'));
+        });
+      }
+    }
+  });
+            </code>
+          </pre>
+
+          <a href="http://emberjs.jsbin.com/puzax/14/edit">http://emberjs.jsbin.com/puzax/14/edit</a>
+
+          <aside class="notes">
+            <p>Page View Tracking</p>
+            <p>A winning solution would be to add a `didTransition` hook to the Application Route.</p>
+            <ul>
+              <li>Clean</li>
+              <li>Can simply rely on generate application controller if needed.</li>
+              <li>Scales well (if for some weird reason you had routes that you didn't need to track, you could just create a lookup table)</li>
+              <li>Grabbing the URL via the internal router object (Ember friendly now!)</li>
+              <li>Works perfectly for both route changes, dynamic model changes, loading state, and error state</li>
+            </ul>
+            <p>Aghhh, much better!</p>
+          </aside>
+        </section>
+
+        <section class="slide-6">
+          <h2>Naive approach</h2>
+          <pre>
+            <code class="xml">
+  <script type="text/x-handlebars" data-template-name="about/him">
+    <h2>about/him</h2>
+    <button {{action 'track' 'like him'}}>Like Him</button>
+  </script>
+  <script type="text/x-handlebars" data-template-name="about/her">
+    <h2>about/her</h2>
+    <button {{action 'track' 'like her'}}>Like Her</button>
+  </script>
+            </code>
+            <code class="javascript">
+  App.ApplicationRoute = Ember.Route.extend({
+    actions: {
+      track: function(data) {
+        ga('send', 'event', event.target.nodeName, event.type,
+           event.target.className, data);
+      }
+    }
+  });
+            </code>
+          </pre>
+
+          <a href="http://emberjs.jsbin.com/puzax/18/edit">http://emberjs.jsbin.com/puzax/18/edit</a>
+
+          <aside class="notes">
+            <p>Event Tracking</p>
+            <p>A naive solution would be to add {{action}} handlers on the specific elements within each template then bubble up to ApplicationRoute and track.</p>
+            <ul>
+              <li>Litters templates with analytics-specific actions</li>
+              <li>No encapsulation so the code begins to fragment extrememly quickly</li>
+              <li>Doesn't scale well for a larger applications</li>
+            </ul>
+            <p>Not good!</p>
+          </aside>
+        </section>
+
+        <section class="slide-7">
+          <h2>Winning approach</h2>
+          <pre>
+            <code class="xml">
+
+            </code>
+          </pre>
+
+          <a href="http://emberjs.jsbin.com/puzax/19/edit">http://emberjs.jsbin.com/puzax/19/edit</a>
+
+          <aside class="notes">
+Notes on the ActionHandler approach:
+- Bubbling actions (returning true from an action handler) only trigger capturing once, at the top-most level.
+- Catches programmatic action sending and exposes it to logging as well.
+- Allows for a fully declarative analytics pattern.
+          </aside>
+        </section>
+
+        <section class="slide-8">
           <img src="img/tomster-under-construction.png" alt="Tomster mascot with a hardhat" width="472" height="529" class="ember-hardhat">
         </section>
 
