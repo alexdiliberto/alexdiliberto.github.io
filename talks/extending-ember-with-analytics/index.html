@@ -251,17 +251,25 @@
           <h2>Winning approach</h2>
           <pre>
             <code class="xml">
-
+  // Code Here
             </code>
           </pre>
 
-          <a href="http://emberjs.jsbin.com/puzax/19/edit">http://emberjs.jsbin.com/puzax/19/edit</a>
+          <a href="http://emberjs.jsbin.com/puzax/35/edit">http://emberjs.jsbin.com/puzax/35/edit</a>
 
           <aside class="notes">
-Notes on the ActionHandler approach:
-- Bubbling actions (returning true from an action handler) only trigger capturing once, at the top-most level.
-- Catches programmatic action sending and exposes it to logging as well.
-- Allows for a fully declarative analytics pattern.
+            <p>Event Tracking</p>
+            <p>A winning solution would be to leverage Ember.ActionHandler internals to do your actions processing.</p>
+            <ul>
+              <li>Fully declarative analytics pattern.</li>
+              <li>No more littered templates with analytics-specific actions</li>
+              <li>Works for all template based actions as well as programmatic based actions ({{action}}, this.send(), this.sendAction(), this.triggerAction())</li>
+              <li>Flexibility</li>
+              <li>Encapsulation</li>
+              <li>Decouples the templates from the analytics handling</li>
+              <li>Scale extremely well</li>
+              <li>Centralized processed</li>
+            </ul>
           </aside>
         </section>
 
