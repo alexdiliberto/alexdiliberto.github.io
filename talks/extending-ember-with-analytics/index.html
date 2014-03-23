@@ -62,24 +62,29 @@
           <p>Alex DiLiberto</p>
           <p><a href="http://twitter.com/alex_diliberto">@alex_diliberto</a></p>
           <p><a href="http://alexdiliberto.com">alexdiliberto.com</a></p>
+
+          <aside class="notes">
+            <p>Hey I'm Alex DiLiberto, today we'll be talking about <strong>techniques</strong> you can <strong>use in your Ember projects today</strong>, to help <strong>integrate different web analytics tools</strong>.</p>
+          </aside>
         </section>
 
         <section class="slide-1">
           <h2>Web Analytics?</h2>
 
           <aside class="notes">
-            <p>Basically the measurement &amp; reporting of website visitor data to help understand and optimize website usage.</p>
+            <p><strong><u>Web analytics give you the power to know how your visitors use your web application.</u></strong> It allows you to <strong>identify trends</strong> and make <strong>adjustments based on real data</strong>. Data like...</p>
             <ul>
-              <li>how many people visited your website</li>
-              <li>where they were from</li>
-              <li>which pages they visited</li>
-              <li>how long they stayed on those pages</li>
-              <li>if they are a returning visitor</li>
-              <li>which search keywords they used to get them to your website</li>
-              <li>user brower information</li>
+              <li><strong>how many</strong> people visited your webapp</li>
+              <li><strong>where</strong> they were from</li>
+              <li><strong>which</strong> pages they visited</li>
+              <li><strong>how long</strong> they stayed on those pages</li>
+              <li>if they are a <strong>returning visitor</strong></li>
+              <li>which <strong>search keywords</strong> they used to get them to your webapp</li>
+              <li>user <strong>browser info</strong></li>
             </ul>
-            <small>Even higher level things like - Do they like your recent changes and updates? How effective are your marketing campaigns?</small>
-            <p>Summary: Web analytics give you the power to know how your visitors use your website. It allows you to identify trends and make adjustments based on real data.</p>
+            <small>Even <strong>higher level</strong> things like - Do they like your recent changes and updates? <strong>Help you to determine how effective your marketing campaigns are.</strong></small>
+            <p><strong>Utilize A/B tests</strong> to tweak design and improve conversion rate in key areas of your webapp</p>
+            <p>These are just some of the many reasons why we want to move forward and integrate these analytics libraries with our single page ember apps</p>
           </aside>
         </section>
 
@@ -87,11 +92,11 @@
           <img src="img/ember-logo.png" alt="Ember logo" width="596" height="227" class="ember-logo">
           <img src="img/google-analytics-logo.png" alt="Google Analytics logo" width="384" height="384" class="google-analytics-logo">
           <aside class="notes">
-            <p>GA logo - Talk will be library agnostic. Few GA example snippets here an there embedded in the code examples but that's it. Theres so many different web analytics tools out there</p>
-            <p>Integration: Easy right? Sign up online with your favorite analytics software, copy/paste the tracking javascript with your unique identifier and you're all set.</p>
-            <p>SPWebApps, that easy integration becomes far less trivial.</p>
-            <p>The whole application lives on a one HTML page so all Analytics would report back to you is how many people loaded your application. <small>No visibility into what they are doing after that.</small></p>
-            <p>Lets Fix This! Just have to recreate some of the things we get for free with classic fullpage reloads.</p>
+            <p>GA logo - Talk will genrally be <strong>library agnostic</strong>. Few GA example snippets here an there embedded in the code examples but that's it. Theres so <strong>many different</strong> web analytics tools out there</p>
+            <p><strong>Integration</strong>: Easy right? <strong>Sign up</strong> online with your favorite analytics software, <strong>copy/paste</strong> the tracking javascript with your <strong>unique identifier</strong> and you're all set.</p>
+            <p><strong>SPWebApps</strong>, that easy integration becomes <strong>far less trivial</strong>.</p>
+            <p>The whole application lives on a <strong>one HTML page</strong> so all Analytics would report back to you is <strong>how many people loaded your application</strong>. <small>No visibility into what they are doing after that.</small></p>
+            <p>Lets <strong>Fix This</strong>! Just have to <strong>recreate</strong> some of the things we get for free with classic fullpage reloads.</p>
           </aside>
         </section>
 
@@ -120,14 +125,14 @@
           </ol>
 
           <aside class="notes">
-            <p>Page view tracking basically just translates to route changes.</p>
-            <p>Internally sendAction() calls triggerAction() which calls send(). So we see that send is one of the lower level api calls. We'll leverage this later as a hook, if you will, for our action implementation.</p>
-            <p>Simple actions: User actions that you want to track which don't really need to fire any sort of event.</p>
+            <p><strong>Page view tracking</strong> basically just translates to <strong>route changes</strong>.</p>
+            <p>Internally <strong>sendAction() calls triggerAction() which calls send()</strong>. So we see that <strong>send is one of the lower level api calls</strong>. We'll <strong>leverage this later</strong> as a hook, if you will, for our action implementation.</p>
+            <p><strong>Simple actions</strong>: User actions that you want to track which <strong>don't need to execuete any default event handling</strong>.</p>
             <small>
               <ul>
-                <li>Typing in a username then pressing tab</li>
-                <li>Tracking a successful login promise resolution</li>
-                <li>Tracking a user timeout warning</li>
+                <li>Typing in a <strong>username</strong> then pressing tab</li>
+                <li>Tracking a successful <strong>login promise</strong> resolution and <strong>how long that took</strong></li>
+                <li>Tracking a <strong>user timeout</strong> warning</li>
               </ul>
             </small>
           </aside>
@@ -149,7 +154,7 @@
             </div>
 
             <aside class="notes">
-              <p>Next two sections I'll cover different implementations for page view tracking and action tracking within Ember, discussing both good and bad techniques.</p>
+              <p>Next two sections I'll cover <strong>different implementations</strong> for page view tracking and action tracking within Ember, discussing both <strong>good and bad techniques</strong>.</p>
             </aside>
           </section>
 
@@ -172,10 +177,11 @@
             <a href="http://emberjs.jsbin.com/puzax/12/edit">http://emberjs.jsbin.com/puzax/12/edit</a>
 
             <aside class="notes">
-              <p>Mixin</p>
-              <p>Ember.run.next() - Perhaps unfamiliar with the run loop. Without it there you it will only log the currentPath before you clicked on the new link.</p>
-              <p>Grab URL in this fashion - should set off a few alarms with many of you.</p>
-              <p>Observer on currentPath property which is built in to the application controller</p>
+              <p>Start by noting the <strong>EmberJS Bins</strong> to follow along with</p>
+              <p><strong>Mixin</strong></p>
+              <p><strong>Ember.run.next()</strong>- Perhaps <strong>unfamiliar</strong> with the run loop. Because of the <strong>router and asyncronous behavior</strong>, Without it there you it will only <strong>log the currentPath before you clicked</strong> on the new link.</p>
+              <p><strong>Manually grab URL </strong>in this fashion - should <strong>set off a few alarms</strong> with many of you.</p>
+              <p><strong>Observer on currentPath</strong> property which is built in to the application controller</p>
             </aside>
           </section>
 
@@ -193,9 +199,9 @@
             <img src="img/tomster-bug.png" alt="Tomster smelly fish" class="h-center">
 
             <aside class="notes">
-              <p>A beginning naive approach would be to create a Mixin/currentPath observer.</p>
-              <p>Grabbing URL via window.location - not Ember friendly if you ask me!</li>
-              <p>currentPath observer won't fire on model change</p>
+              <p>A beginning <strong>naive approach</strong> would be to <strong>create a Mixin/currentPath observer</strong>.</p>
+              <p>Grabbing URL via <strong>window.location - not Ember friendly </strong>if you ask me!</li>
+              <p>currentPath observer <strong>won't fire on model change</strong></p>
               <b>Not a good solution!</b>
             </aside>
           </section>
@@ -219,9 +225,9 @@
             <a href="http://emberjs.jsbin.com/puzax/14/edit">http://emberjs.jsbin.com/puzax/14/edit</a>
 
             <aside class="notes">
-              <p>No Mixin, simply a hook on the application controller</p>
-              <p>Ember.run.once() - More efficient in the same run loop iteration</p>
-              <p>Grab URL in true Ember fashion</p>
+              <p>No Mixin, simply a <strong>hook on the application route</strong></p>
+              <p><strong>Ember.run.once()</strong> - More <strong>efficient</strong> in the same run loop iteration</p>
+              <p><strong>Use router to Grab URL</strong> in true Ember fashion</p>
             </aside>
           </section>
 
@@ -231,7 +237,7 @@
               <li>Clean</li>
               <li>Simply use the auto-generated <code class="emphasis">controller:application</code></li>
               <li>Scales well</li>
-              <li>Grabbing the URL via the internal router object</li>
+              <li>Grabbing the URL via the internal <strong class="emphasis">router object</strong></li>
               <li>Works great in all conditions
                 <ul>
                   <li>Route changes</li>
@@ -243,12 +249,12 @@
             </ul>
 
             <aside class="notes">
-              <p>A winning solution would be to add a `didTransition` hook to the Application Route.</p>
-              <p>No observers floating around no more window.whatever</p>
-              <p>Use auto-generated application controller if you wish</p>
-              <p>Scales well - logic centralized in single location</p>
-              <p>Ember friendly now - router.get('url')</p>
-              <small>Shoutout to Matthew Beale who did some great work on integrating the didTransition hook into the router - which really helps to make this implementation so much cleaner.</small>
+              <p>A winning solution would be to add a <strong>`didTransition` hook</strong> to the Application Route.</p>
+              <p><strong>No observers floating</strong> around no more <strong>window.whatever</strong></p>
+              <p>Use <strong>auto-generated application controller</strong> if you wish</p>
+              <p>Scales well - <strong>logic centralized</strong> in single location</p>
+              <p><strong>Ember friendly</strong> now - router.get('url')</p>
+              <small><strong>Shoutout to Matthew Beale</strong> who did some great work on <strong>integrating the didTransition hook into the router</strong> - which really helps to make this implementation so much cleaner.</small>
             </aside>
           </section>
         </section>
@@ -308,7 +314,7 @@
             <a href="http://emberjs.jsbin.com/puzax/18/edit">http://emberjs.jsbin.com/puzax/18/edit</a>
 
             <aside class="notes">
-              <p>A single 'track' action on the application route which is fed by template {{actions}}</p>
+              <p>A <strong>single 'tracking' action</strong> on the application route which is <strong>fed by template {{actions}}</strong></p>
             </aside>
           </section>
 
@@ -320,13 +326,13 @@
               <li>Code begins to fragment extremely quickly</li>
               <li>Not a robust solution</li>
               <li>Does not scale well</li>
-              <li>Does <strong class="emphasis">NOT</strong> allow programmatic action handling</li>
+              <li>Does <strong class="emphasis">NOT</strong> allow easy-to-use/integrated programmatic action handling</li>
             </ul>
             <img src="img/tomster-bug.png" alt="Tomster smelly fish" class="h-center">
 
             <aside class="notes">
-              <p>A naive solution would be to add {{action}} handlers on the specific elements within each template then bubble up to ApplicationRoute and track.</p>
-              <p>Bloated templates</p>
+              <p>A naive solution would be to <strong>add {{action}} handlers</strong> on the specific elements <strong>within each template</strong> then <strong>bubble up to ApplicationRoute</strong> and track.</p>
+              <p><strong>Bloated</strong> templates</p>
               <b>Not a good solution!</b>
             </aside>
           </section>
@@ -337,14 +343,14 @@
               <code class="javascript">
     var analyticsObject = Ember.Object.create({
       // Default data to be passed on every request
-      _: { site: "My Website" },
+      _: { site: "My Webapp Name" },
       // Non route-based/global or fallback actions
       _global: { _trackPromise: function(r, s) { return { route: r, status: s }; },
       },
-      // Route-specific - e.g. {{action "qux"}} in foo.bar
+      // Route-specific - e.g. {{action "baz"}} in foo.bar
       //     foo: { //Route name
       //       bar: {  //Leaf-most route name
-      //         qux: { var: 'borf' } //Action name
+      //         baz: { var: 'borf' } //Action name
       //       }
       //     }
       products: {
@@ -360,9 +366,9 @@
             <a href="http://emberjs.jsbin.com/puzax/47/edit">http://emberjs.jsbin.com/puzax/47/edit</a>
 
             <aside class="notes">
-              <p>You may set the processor to be either a function or return a POJO.</p>
-              <p>If function, I can either pass in named parameters or, even better, since I have access to the current route scope so I can grab any route-specific data for even more dynamic analytics tracking.</p>
-              <p>No tracking if action is not explictly listed</p>
+              <p>You may set the processor to be either a <strong>function</strong> or return a <strong>POJO</strong>.</p>
+              <p>If function, I can <strong>either pass in named parameters</strong> or, even better, since I have <strong>access to the current route scope</strong> so I can grab any route-specific data for even more dynamic analytics tracking.</p>
+              <p>Not listed, No tracking</p>
             </aside>
           </section>
 
@@ -384,8 +390,8 @@
             <a href="http://emberjs.jsbin.com/puzax/47/edit">http://emberjs.jsbin.com/puzax/47/edit</a>
 
             <aside class="notes">
-              <p>`reopen` augments the ActionHandler Prototype with an updated `send()` function</p>
-              <p></p>
+              <p><strong>ActionHandler is a Mixin</strong> under the hook which <strong>implementes the send</strong> function. With <strong>inheritance</strong> it's available to all <strong>Routes, Controllers, Components and Views</strong></p>
+              <p><strong>`reopen` augments the its Prototype</strong> with an <strong>updated `send()`</strong> function</p>
             </aside>
           </section>
 
@@ -396,7 +402,7 @@
   // Condensed analyticsHandler
   var analyticsHandler = function(actionName) {
     var router = this.target ? this.target.router : this.router.router,
-      activeTrans = router.activeTrans &amp;&amp; router.activeTrans.targetName,
+      activeTrans = router.activeTransition &amp;&amp; router.activeTransition.targetName,
       curHandlerInfos = router.currentHandlerInfos,
       activeLeafMostRoute = curHandlerInfos[curHandlerInfos.length - 1].name,
       routeName = activeTrans || activeLeafMostRoute,
@@ -418,28 +424,29 @@
             <a href="http://emberjs.jsbin.com/puzax/47/edit">http://emberjs.jsbin.com/puzax/47/edit</a>
 
             <aside class="notes">
-              <p>Get the correctly scoped router object (diff for {{action}} vs send)</p>
-              <p>If currently active transition, grab the destination target name</p>
-              <p>currentHandlerInfos: array of currently resolved routes in nested order</p>
-              <p><b>routeName/trackobject:</b>
+              <p>Thinking back, <strong>we have our analytics object</strong>. We have our <strong>hook into the ActionHandler</strong>.</p>
+              <p>Get the <strong>correctly scoped router object</strong> (diff for {{action}} vs send)</p>
+              <p>If currently <strong>active transition</strong>, grab the destination target name</p>
+              <p>currentHandlerInfos: <strong>array of currently resolved routes</strong> in nested order</p>
+              <p><strong>routeName/trackobject:</strong> Used to<strong> determine the final data</strong> which is <strong>sent to our analytics library</strong>.
               <ol>
-                <li>Currently transitioning (this.send()), get that new route's handler</li>
-                <li>Otherwise, get the active leaf-most route handler</li>
-                <li>If neither of these resolve, look in _global
-                <li>Finally, if nothing resolves, then no tracking</li>
+                <li><strong>Currently transitioning</strong> (this.send()), get that <strong>new route's handler</strong></li>
+                <li><strong>Otherwise</strong>, get the <strong>active leaf-most</strong> route handler</li>
+                <li>If <strong>neither</strong> of these resolve, look in <strong>_global</strong>
+                <li>Finally, if <strong>nothing resolves</strong>, then <strong>no tracking</strong></li>
               </ol>
-              <p>If handler is a function then apply the supplied arguments</p>
-              <p>Merge the route handler with the variables sent on every route, then call analytics library</p>
-              <p>Skip the default action handling on simple tracking <small>e.g. (Typing in a username then pressing tab - Tracking a successful login - Tracking a user timeout warning)</small></p>
+              <p>If <strong>handler is a function</strong>, then apply the supplied arguments. Now you have the <strong>returned Object from the function</strong>.</p>
+              <p><strong>Merge</strong> the route handler with the variables sent on every route, <strong>then call analytics</strong> library</p>
+              <p><strong>Skip</strong> the default action handling on simple tracking <small>e.g. (Typing in a username then pressing tab - Tracking a successful login - Tracking a user timeout warning)</small></p>
             </aside>
           </section>
 
-          <section class="slide-5-2">
+          <section class="slide-5-6">
             <h2>Much Better!</h2>
             <ul>
               <li>Fully <strong class="emphasis">declarative</strong> analytics pattern</li>
               <li>No more littered templates with analytics-specific actions</li>
-              <li>Works for template <strong class="emphasis">as well as</strong> based actions
+              <li>Works for template <strong class="emphasis">as well as</strong> programmatic based actions
                 <ul>
                   <li><code>{{action}}</code></li>
                   <li><code>this.send()</code></li>
@@ -449,29 +456,30 @@
               <li>Flexibility / Encapsulation</li>
               <li><strong class="emphasis">Decouples</strong> templates from analytics handling</li>
               <li>Scales extremely well</li>
-              <li>Centralized processed</li>
+              <li>Centralized processing</li>
               <li>Leverages existing lower level API</li>
             </ul>
 
             <aside class="notes">
-              <p>A winning solution would be to integrating with the framework's existing lower level API's and leverage Ember.ActionHandler internals to do your actions processing.</p>
+              <p>A winning solution would be to <strong>integrating with the framework's existing lower level API's</strong> and <strong>leverage Ember.ActionHandler</strong> internals to do your actions processing.</p>
             </aside>
           </section>
         </section>
 
-        <section class="slide-8">
+        <section class="slide-6">
           <img src="img/tomster-under-construction.png" alt="Tomster mascot with a hardhat" width="472" height="529" class="ember-hardhat">
         </section>
 
-        <section class="slide-13">
+        <section class="slide-7">
           <h2>References</h2>
           <div class="references">
             <p><a href="http://www.agilestyle.com/blog/what-are-web-analytics-and-why-should-i-care">What are Web Analytics and Why Should I Care? | agilestyle.com</a></p>
+            <p><a href="https://github.com/alexdiliberto/emberconf-2014-demo">alexdiliberto/emberconf-2014-demo</a></p>
             <p><a href="https://github.com/emberjs/ember.js/pull/3453">emberjs/ember.js issue #3453</a></p>
           </div>
         </section>
 
-        <section class="slide-14">
+        <section class="slide-8">
           <h2>Thanks!</h2>
           <p>Alex DiLiberto</p>
           <p><a href="http://twitter.com/alex_diliberto">@alex_diliberto</a></p>
