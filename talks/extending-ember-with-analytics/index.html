@@ -64,7 +64,7 @@
           <p><a href="http://alexdiliberto.com">alexdiliberto.com</a></p>
 
           <aside class="notes">
-            <p>Hey I'm Alex DiLiberto, today we'll be talking about <strong>techniques</strong> you can <strong>use in your Ember projects today</strong>, to help <strong>integrate different web analytics tools</strong>.</p>
+            <p>Hey I'm Alex DiLiberto, today we'll be talking about <strong>techniques</strong> you can <strong>use in your Ember projects right now</strong>, to help <strong>integrate with different web analytics tools</strong>.</p>
           </aside>
         </section>
 
@@ -92,7 +92,7 @@
           <img src="img/ember-logo.png" alt="Ember logo" width="596" height="227" class="ember-logo">
           <img src="img/google-analytics-logo.png" alt="Google Analytics logo" width="384" height="384" class="google-analytics-logo">
           <aside class="notes">
-            <p>GA logo - Talk will genrally be <strong>library agnostic</strong>. Few GA example snippets here an there embedded in the code examples but that's it. Theres so <strong>many different</strong> web analytics tools out there</p>
+            <p>GA logo - Talk will genrally be <strong>library agnostic</strong>. Simply because of its popularity, I have a few GA example snippets here an there embedded in the code examples but that's it. Theres so <strong>many different</strong> web analytics tools out there</p>
             <p><strong>Integration</strong>: Easy right? <strong>Sign up</strong> online with your favorite analytics software, <strong>copy/paste</strong> the tracking javascript with your <strong>unique identifier</strong> and you're all set.</p>
             <p><strong>SPWebApps</strong>, that easy integration becomes <strong>far less trivial</strong>.</p>
             <p>The whole application lives on a <strong>one HTML page</strong> so all Analytics would report back to you is <strong>how many people loaded your application</strong>. <small>No visibility into what they are doing after that.</small></p>
@@ -333,6 +333,7 @@
             <aside class="notes">
               <p>A naive solution would be to <strong>add {{action}} handlers</strong> on the specific elements <strong>within each template</strong> then <strong>bubble up to ApplicationRoute</strong> and track.</p>
               <p><strong>Bloated</strong> templates</p>
+              <p>For <strong>every normal this.send()</strong> action, you would need an <strong>additional this.send('track')</strong> action.</p>
               <b>Not a good solution!</b>
             </aside>
           </section>
@@ -390,8 +391,8 @@
             <a href="http://emberjs.jsbin.com/puzax/47/edit">http://emberjs.jsbin.com/puzax/47/edit</a>
 
             <aside class="notes">
-              <p><strong>ActionHandler is a Mixin</strong> under the hook which <strong>implementes the send</strong> function. With <strong>inheritance</strong> it's available to all <strong>Routes, Controllers, Components and Views</strong></p>
-              <p><strong>`reopen` augments the its Prototype</strong> with an <strong>updated `send()`</strong> function</p>
+              <p><strong>ActionHandler is a Mixin</strong> under the hood which <strong>implementes the send</strong> function. With <strong>inheritance</strong> it's available to all <strong>Routes, Controllers, Components and Views</strong></p>
+              <p><strong>`reopen` augments ActionHandlers's Prototype</strong> with an <strong>updated `send()`</strong> function</p>
             </aside>
           </section>
 
@@ -424,7 +425,7 @@
             <a href="http://emberjs.jsbin.com/puzax/47/edit">http://emberjs.jsbin.com/puzax/47/edit</a>
 
             <aside class="notes">
-              <p>Thinking back, <strong>we have our analytics object</strong>. We have our <strong>hook into the ActionHandler</strong>.</p>
+              <p>Thinking back, <strong>we have our analytics object</strong>. We have our <strong>hook into the ActionHandler</strong>. So Now we need an <strong>analytics handler to integrate </strong>these two.</p>
               <p>Get the <strong>correctly scoped router object</strong> (diff for {{action}} vs send)</p>
               <p>If currently <strong>active transition</strong>, grab the destination target name</p>
               <p>currentHandlerInfos: <strong>array of currently resolved routes</strong> in nested order</p>
