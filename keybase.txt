@@ -1,0 +1,70 @@
+==================================================================
+https://keybase.io/alexdiliberto
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://alexdiliberto.com
+  * I am alexdiliberto (https://keybase.io/alexdiliberto) on keybase.
+  * I have a public key with fingerprint D459 24CF C99C AA00 6601  BE19 AE9D DA82 D390 76C9
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "d45924cfc99caa006601be19ae9dda82d39076c9",
+            "host": "keybase.io",
+            "key_id": "AE9DDA82D39076C9",
+            "uid": "825c236c63a5e6141215992d7806e500",
+            "username": "alexdiliberto"
+        },
+        "service": {
+            "hostname": "alexdiliberto.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1397349610,
+    "expire_in": 157680000,
+    "prev": "7dd1dd9f7d9737c1aa77751cd7cf909e67171e98516e730eea417be739758d56",
+    "seqno": 3,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+Comment: GPGTools - https://gpgtools.org
+
+owGbwMvMwMW4ZoVIhWnOJk3G0wd+JzEEe955Xa2UlJ9SqWRVrZSdCqbSMvPSU4sK
+ijLzSpSslFJMTC2NTJLTki0tkxMTDQzMzAwMk1INLRNTLVNSEi2MUowtDczNki2V
+dJQy8otBOoDGJCUWp+pl5gPFgJz4zBSgqKOrpYuLo4WRC1i9M0h9KVjCwsg02cjY
+LNnMONE01czQxNDI0NTS0ijF3MLALNXUwACksDi1KC8xNxWoOjEntSIlMyczKbWo
+JF+pVkcJKFWWmZwKcjjIfmzK9JLzc4GmFBTll+Qn5+cApTNKSgqsQLpLKgtAystT
+k+KhBsUnZealAEMAqKEstag4Mz9PycoQqDK5JBNksqGxpbmxiaWZoYGOUmpFQWZR
+anwmSIWpuZmFARCArEktAxppnpJimJJimWaeAtRgnmyYmGhubm5qmJxinpxmaWCZ
+amZuaG6YamlhamiWam5skJqaaGJongRkWpqbWqSYmimBvFaYl69kZQx0ZmI60Mji
+zPS8xJLSolSl2k4mGRYGRi4GNlYmUBwycHEKwGK2I47/r4zwddkH21bd8ea9PmOl
+bSBT5pU55jx9yaoiT6ME7yu8Weytd+cye9Y/hdr6jUIOGS3rtx/3vX5mjVjPrdKf
+V6NfGp0SZXdyitFn2x04mWeZwELf0683Ll9z+/8rLtbI/8mXt33qiJ0mki1wkvvH
+4Q+7u+bnclWe7PcTqkicrp920rDuauKxpsc+SuWFb7dsjN9ulfrS3aYsoP6pbf5H
+51ietxWL+J8st334YAKPSsrHZbeTBF7bs4dkJW7dwtbjx14aJH5m89uXRskvtusn
+bdgtNduBfVZ7g8ieh2k5yyYoBFaHzYkx9Pij+9pIofLw4Wvvk0TlFyxPvMO+/kdQ
+boant1XFzQfr2v4eknVgf/H+4dZtT4Pj3mbv5Vqr7R568Mqbh8ed976X/bs+5o9D
+PY8r3wJ14SOLYjfsy7+14+qcAGFv0cUVLu0+bZ0PDwTanq3/tyq4sL3FIEdHs3iF
+SkwYH//////XCPYUrbSRdntdPeHSkzfTv+y/tNyJo/NL2qwf813d2hl+pi/k7aop
+ZWL7EOlfvkJm1g6H5p1iRfdnKod8vZp4rqTqWmauf+Lk5hnL2hRn/314VtPw7LfO
+K1a3Opa/v6ZZe+MV847Tv5STLrMl6PgqZ9kvVM7ZHpi59tPU7g37rjWcnXu68tkL
+Rjd1zUdLSmuZL/9ob57faW82211w0qSz8V33ngT+3zn/8fNam6N7Dievm56+khUA
+=6RiZ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/alexdiliberto
+
+==================================================================
