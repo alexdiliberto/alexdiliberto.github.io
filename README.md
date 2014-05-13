@@ -3,12 +3,21 @@
 ![alexdiliberto.com favicon](/favicon.ico) alexdiliberto.com
 =================
 
-**web developer . geek**
+**web developer**
 
-Instructions to begin local development:
+## Information
 
-```js
-npm install
-gulp
-gulp watch
+* Source: [https://github.com/alexdiliberto/alexdiliberto.github.io](https://github.com/alexdiliberto/alexdiliberto.github.io)
+* Homepage: [http://alexdiliberto.com](http://alexdiliberto.com)
+* Twitter: [@alex_diliberto](http://twitter.com/alex_diliberto)
+
+##Instructions to begin local development:
+
+```sh
+$ gem install jekyll
+$ jekyll new myblog
+$ cd myblog
+~/myblog $ jekyll serve --watch --drafts
+
+# => Now browse to http://localhost:4000
 ```

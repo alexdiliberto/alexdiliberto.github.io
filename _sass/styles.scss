@@ -1,0 +1,159 @@
+/*****************************************************************************/
+/*
+/* Global
+/*
+/*****************************************************************************/
+
+main {
+  max-width: 43.75rem;
+  margin: 0 auto;
+  padding: 0 .5rem 2rem;
+  a {
+    color: #a95d4c;
+    &:hover, &:focus {
+      color: darken($color2, 20%); /* #762A19 */
+      > svg {
+        fill: darken($color2, 20%); /* #762A19 */
+      }
+    }
+    > svg {
+      fill: $color2;
+    }
+    &.video {
+      color: $default-color;
+      padding-left: .2rem;
+      > svg {
+        @include transition(.2s);
+        width: 1.38888888888889rem;
+        height: 1.38888888888889rem;
+        fill: $default-color;
+        &:hover, &:focus {
+          @include transform(scale(1.2));
+        }
+      }
+    }
+  }
+  li {
+    margin-bottom: .5rem;
+    > a {
+      @include word-wrap(break-word);
+      position: relative; /* Needed for a:active */;
+      color: $color2;
+      text-decoration: underline;
+      &:active {
+        top: 1px;
+      }
+    }
+  }
+  > article {
+    > header.title {
+      border-left: .3125rem solid $color3; /* 5px */
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+      > h1 {
+        margin-bottom: 0;
+      }
+      > svg {
+        width: 1.38888888888889rem;
+        height: 1.38888888888889rem;
+        fill: #727272;
+      }
+    }
+    > footer {
+      margin-top: 2rem;
+      > .back-link > svg {
+        @include transform(rotate(180deg));
+        width: 1rem;
+        height: 1rem;
+        position: relative;
+        bottom: 1px;
+      }
+    }
+  }
+}
+
+.main-header {
+  overflow-x: hidden;
+  .name {
+    text-align: center;
+    a {
+      color: $default-color;
+      font-weight: normal;
+      &:hover, &:focus {
+        color: $color3;
+      }
+    }
+  }
+}
+
+.header-triangles {
+  display: block;
+  margin: 0 auto;
+}
+
+footer > .back-link {
+  position: relative; /* Needed for a:active */;
+  &:active {
+    top: 1px;
+  }
+}
+
+.main-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 200px; /* constant footer height */
+  width: 100%;
+  background: $color3;
+  text-align: center;
+  min-width: 18.75rem; /* 300px */
+  a {
+    color: $default-color;
+    &:hover, &:focus {
+      color: #FFF;
+    }
+  }
+  > .copyright {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 2rem;
+  }
+  > .name {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: center;
+    margin: inherit;
+    padding: 1rem 0;
+  }
+  > .meta {
+    @include user-select(none);
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 2rem;
+    svg {
+      @include transition(.2s);
+      &:hover, &:focus {
+        @include transform(scale(1.2));
+      }
+    }
+    > a {
+      &:last-child > svg {
+        margin-right: 0;
+      }
+      > svg {
+        width: 3rem;
+        height: 3rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+small.date {
+  display: block;
+}

@@ -11,6 +11,7 @@
 *.sass-cache
 
 # Always-ignore directories
+_site/
 doc/
 backups/
 demo/

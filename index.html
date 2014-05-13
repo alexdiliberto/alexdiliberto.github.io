@@ -1,99 +1,28 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Alex DiLiberto | Web Developer</title>
-    <meta name="description" content="My name is Alex DiLiberto. I'm a web developer living in Charlotte, NC and a proud graduate of Clemson University.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index,follow">
+---
+layout: default
+---
 
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160" />
-    <meta name="msapplication-TileColor" content="#2d89ef" />
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
-    <meta name="msapplication-square70x70logo" content="/mstile-70x70.png" />
-    <meta name="msapplication-square150x150logo" content="/mstile-150x150.png" />
-    <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
+<h2>Posts</h2>
+<ul class="posts">
+{% for post in site.posts %}
+  <li><a href="{{ post.url }}" class="title">{{ post.title }}</a><small class="date">{{ post.date | date: '%B %-d, %Y' }}</small></li>
+{% endfor %}
+</ul>
 
-    <link rel="stylesheet" href="dist/css/normalize.min.css">
-    <link rel="stylesheet" href="dist/css/main.min.css">
-    <script src="dist/js/vendor/modernizr-2.7.1.min.js"></script>
-  </head>
-  <body>
-    <!--
-     _____ _            ____  _ __    _ _           _
-    |  _  | |___ _ _   |    \|_|  |  |_| |_ ___ ___| |_ ___
-    |     | | -_|_'_|  |  |  | |  |__| | . | -_|  _|  _| . |
-    |__|__|_|___|_,_|  |____/|_|_____|_|___|___|_| |_| |___|
-                                          web developer.geek
-    -->
-    <!--[if lt IE 9]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <div class="wrapper">
-      <header>
-        <h1 class="name font-effect-3d-float">Alex DiLiberto</h1>
-        <span class="description">web developer . geek</span>
-      </header>
-
-      <main role="main" class="clearfix">
-        <section class="social">
-          <div class="social-icon-wrap">
-            <a href="https://www.facebook.com/diliberto.alex" class="animated bounceIn">
-              <span class="icon-facebook" aria-hidden="true" data-icon="&#xe001;"></span><strong class="visuallyhidden">Facebook</strong>
-            </a>
-          </div>
-          <div class="social-icon-wrap">
-            <a href="https://twitter.com/alex_diliberto" class="animated bounceIn">
-              <span class="icon-twitter" aria-hidden="true" data-icon="&#xe002;"></span><strong class="visuallyhidden">Twitter</strong>
-            </a>
-          </div>
-          <div class="social-icon-wrap">
-            <a href="https://plus.google.com/+AlexDiLiberto?rel=author" class="animated bounceIn">
-              <span class="icon-google-plus" aria-hidden="true" data-icon="&#xe003;"></span><strong class="visuallyhidden">Google+</strong>
-            </a>
-          </div>
-          <div class="social-icon-wrap">
-            <a href="https://github.com/alexdiliberto" class="animated bounceIn">
-              <span class="icon-github" aria-hidden="true" data-icon="&#xe004;"></span><strong class="visuallyhidden">GitHub</strong>
-            </a>
-          </div>
-          <div class="social-icon-wrap">
-            <a href="http://www.linkedin.com/in/alexdiliberto" class="animated bounceIn">
-              <span class="icon-linkedin" aria-hidden="true" data-icon="&#xe005;"></span><strong class="visuallyhidden">LinkedIn</strong>
-            </a>
-          </div>
-        </section><!-- section.social END  -->
-      </main>
-
-      <footer>
-        <p>&copy; <script>document.write(new Date().getFullYear())</script><noscript>2014</noscript> Alex DiLiberto</p>
-      </footer>
-    </div><!-- div.wrapper END  -->
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="dist/js/vendor/jquery-2.1.0.min.js"><\/script>')</script>
-    <script src="dist/js/main.min.js"></script>
-
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-40099364-1');ga('send','pageview');
-    </script>
-  </body>
-</html>
+<h2>Talks</h2>
+<ul class="talks">
+  <li>
+    <a href="{{ "/talks/extending-ember-with-analytics/#/" | prepend: site.baseurl }}">Extending Ember with Analytics</a>
+    <a href="http://confreaks.com/videos/3456-emberconf2014-extending-ember-with-analytics" class="video">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+        <path id="youtube-new-icon" d="M458.388,180.186c-6.477-55.046-28.296-62.633-71.718-65.586c-61.736-4.2-199.561-4.203-261.34,0c-43.421,2.954-65.241,10.541-71.717,65.586c-4.809,40.867-4.825,110.619,0,151.627c6.477,55.046,28.296,62.633,71.717,65.588c61.779,4.202,199.604,4.199,261.34,0c43.422-2.955,65.241-10.542,71.718-65.588C463.196,290.946,463.212,221.195,458.388,180.186zM214.974,313.524V198.602l110.208,57.462L214.974,313.524z"/>
+      </svg>
+      <span class="icon-youtube"></span><span class="visuallyhidden">YouTube</span>
+    </a>
+    <small class="date">March 2014</small>
+  </li>
+  <li>
+    <a href="{{ "/talks/all-things-git/#/" | prepend: site.baseurl }}">All Things Git</a>
+    <small class="date">July 2013</small>
+  </li>
+</ul>
