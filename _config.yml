@@ -1,0 +1,34 @@
+# Site settings
+title: Alex DiLiberto
+baseurl: ""
+url: "http://alexdiliberto.com"
+header_title: "Alex<b>DiLiberto</b>"
+firstname: Alex
+lastname: DiLiberto
+author: Alex DiLiberto
+
+
+# Contact settings
+username: alexdiliberto
+twitter_username: alex_diliberto
+email: alex@alexdiliberto.com
+
+
+# Build settings
+markdown: kramdown
+permalink: /posts/:title/
+
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+
+# Defaults
+defaults:
+  -
+    scope:
+      path: "" # empty string represents all files
+    values:
+      description: "Hi! I'm Alex DiLiberto. I'm a web developer living in Charlotte, NC and this is my personal site."
