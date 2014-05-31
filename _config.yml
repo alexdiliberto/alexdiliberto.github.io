@@ -25,6 +25,11 @@ sass:
   style: :compressed
 
 
+# Ruby Gems
+gems:
+  - jekyll-sitemap
+
+
 # Defaults
 defaults:
   -

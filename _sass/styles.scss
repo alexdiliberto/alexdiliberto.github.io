@@ -101,12 +101,15 @@ footer > .back-link {
 .main-footer {
   position: absolute;
   left: 0;
+  right: 0;
   bottom: 0;
   height: 200px; /* constant footer height */
   width: 100%;
   background: $color3;
   text-align: center;
+  margin: 0 auto;
   min-width: 18.75rem; /* 300px */
+  max-width: 2000px; /* Header banner size */
   a {
     color: $default-color;
     &:hover, &:focus {
