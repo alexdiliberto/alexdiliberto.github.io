@@ -46,6 +46,9 @@ main {
     }
   }
   > article {
+    .post a {
+      text-decoration: underline;
+    }
     > header.title {
       border-left: .3125rem solid $color3; /* 5px */
       padding-left: 1rem;
