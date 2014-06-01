@@ -3,13 +3,21 @@
  These examples override the primary ('mobile first') styles.
  ========================================================================== */
 
+/* 400px */
+@media screen and (min-width: 25em) {
+  .main-footer > .meta {
+    top: 2rem;
+    > a > svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}
+
 /* 500px */
 @media screen and (min-width: 31.25em) {
-  main li {
-    @include clearfix;
-    > a {
-      float: left;
-    }
+  main li > a {
+    float: left;
   }
   small.date {
     float: right;
