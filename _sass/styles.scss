@@ -4,6 +4,13 @@
 /*
 /*****************************************************************************/
 
+a {
+  position: relative;
+  &:active {
+    top: 1px;
+  }
+}
+
 main {
   max-width: $main-max-width;
   margin: 0 auto;
@@ -21,7 +28,7 @@ main {
     }
     &.video {
       color: $default-color;
-      padding-left: .2rem;
+      margin-left: .3rem;
       > svg {
         @include transition(.2s);
         width: 1.38888888888889rem;
@@ -38,12 +45,8 @@ main {
     margin-bottom: .5rem;
     > a {
       @include word-wrap(break-word);
-      position: relative; /* Needed for a:active */;
       color: $color2;
       text-decoration: underline;
-      &:active {
-        top: 1px;
-      }
     }
   }
   > article {
@@ -161,13 +164,14 @@ footer > .back-link {
       }
     }
     > a {
-      &:last-child > svg {
+      display: inline-block;
+      margin-right: .5rem;
+      &:last-child {
         margin-right: 0;
       }
       > svg {
         width: 2rem;
         height: 2rem;
-        margin-right: 0.5rem;
       }
     }
   }
