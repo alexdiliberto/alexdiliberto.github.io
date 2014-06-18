@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ember "Toggle All" Checkbox'
+title: "Ember 'Toggle All' Checkbox"
 date: 2014-06-01
 categories: ember
 description: Quick tutorial regarding a common UI pattern for Ember using checkboxes to display a list of items with a 'Toggle All' checkbox for the list.
