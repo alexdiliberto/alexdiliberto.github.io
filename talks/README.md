@@ -1,11 +1,14 @@
-### Follow these instructions:
+### Only Follow these instructions if you want a clean and fully up-to-date setup:
 
 https://github.com/hakimel/reveal.js/#full-setup
 
+For our purposes, since I've moved all the reveal.js boilerplate library code into it's own directory `(talks/reveal.js)`, we'll just copy the last talk and doing some quick manual updates to the directory names and the `index.html`. Each talks directory really only needs an `img/` directory and an `index.html` file
 
-### Updates:
+### Create a new talk using the Reveal JS template:
 
-1. Update Title/Author/Description
+1. Copy/Paste the latest talk directory and we'll just do manual updates from here because things like global CSS and themes are already setup
+
+2. Update Title/Author/Description
 
     ```html
     <title>{{title}} | Alex DiLiberto</title>
@@ -13,7 +16,7 @@ https://github.com/hakimel/reveal.js/#full-setup
     <meta name="author" content="Alex DiLiberto">
     ```
 
-2. Add custom CSS block
+3. Tweak the custom CSS block
     
     ```html
         <!-- Alex's Global CSS -->
@@ -34,49 +37,4 @@ https://github.com/hakimel/reveal.js/#full-setup
         </style>
     ```
 
-3. Set my Theme
-
-    ```html
-    <link rel="stylesheet" href="css/theme/night.css" id="theme">
-    ```
-
-4. Update Reveal initialization with my customizations
-    
-    ```js
-        <script>
-    
-          // Full list of configuration options available here:
-          // https://github.com/hakimel/reveal.js#configuration
-          Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
-            rollingLinks: true,
-    
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-    
-            // Parallax scrolling
-            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-            // parallaxBackgroundSize: '2100px 900px',
-    
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-              { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-            ]
-          });
-    
-        </script>
-    ```
-
-5. Remove unnecessary files
-
-    ```sh
-    rm -rf .git LICENSE .travis.yml
-    ```
+4. Begin working on the slides content
