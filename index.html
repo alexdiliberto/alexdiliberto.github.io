@@ -5,7 +5,8 @@ layout: default
 <h2>Posts</h2>
 <ul class="posts">
 {% for post in site.posts %}
-  <li><a href="{{ post.url }}" class="title">{{ post.title }}</a><small class="date">{{ post.date | date: '%B %-d, %Y' }}</small></li>
+  <li><a href="{{ post.url }}" class="title">{{ post.title }}</a>
+  <time datetime="{{ post.date | date: '%Y-%m-%d' }}"><small class="date">{{ post.date | date: '%B %-d, %Y' }}</small></time></li>
 {% endfor %}
 </ul>
 
@@ -18,10 +19,10 @@ layout: default
         <use xlink:href="{{ "/img/sprite.svg#icon-video" | prepend: site.baseurl }}"></use>
       </svg>
     </a>
-    <small class="date">March 2014</small>
+    <time datetime="2014-03"><small class="date">March 2014</small></time>
   </li>
   <li>
     <a href="{{ "/talks/all-things-git/#/" | prepend: site.baseurl }}">All Things Git</a>
-    <small class="date">July 2013</small>
+    <time datetime="2013-07"><small class="date">July 2013</small></time>
   </li>
 </ul>
