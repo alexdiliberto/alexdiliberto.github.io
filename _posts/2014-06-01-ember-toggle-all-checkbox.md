@@ -12,7 +12,7 @@ I recently read an interesting article by Mark Przepiora titled [Ember.js Recipe
 
 I thought this would be a fun starting point for a quick post of my own, so I took Mark's idea and slightly expanded upon it by adding a *"Toggle Select All"* checkbox. Below I'll show my demo JS Bin and highlight some of the more interesting bits of code. Check it out.
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/coliwiwa/2/embed?output">Alex's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://emberjs.jsbin.com/coliwiwa/5/embed?output">Alex's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 The templates are pretty straightforward, as I only made a few small changes from the original example. First, I'm setting the <code class="inline-code">itemController</code> inside the <code class="inline-code">{% raw %}{{#each}}{% endraw %}</code> helper rather than inside the controller. Second, I'm using an  <code class="inline-code">{% raw %}{{else}}{% endraw %}</code> block helper to render some content when there are no checkboxes remaining.
 
