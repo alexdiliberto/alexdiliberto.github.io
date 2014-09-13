@@ -15,30 +15,43 @@ $color5: #6cd37d;
 $default-font-size: 16px;
 $default-font-size-large: 18px;
 
+/*****************************************************************************/
+/*
+/* Mixins
+/*
+/*****************************************************************************/
+
+@mixin clearfix {
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
 
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 
 /*
-* What follows is the result of much research on cross-browser styling.
-* Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
-* Kroc Camen, and the H5BP dev community and team.
-*/
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
 
 /* ==========================================================================
- Base styles: opinionated defaults
- ========================================================================== */
+   Base styles: opinionated defaults
+   ========================================================================== */
 
 html {
-  color: $default-color;
-  font-size: $default-font-size;
+  color: #222;
+  font-size: 1em;
   line-height: 1.4;
 }
 
 /*
-* Remove text-shadow in selection highlight: h5bp.com/i
-* These selection rule sets have to be separate.
-* Customize the background color to match your design.
-*/
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -51,8 +64,8 @@ html {
 }
 
 /*
-* A better looking default horizontal rule
-*/
+ * A better looking default horizontal rule
+ */
 
 hr {
   display: block;
@@ -64,9 +77,9 @@ hr {
 }
 
 /*
-* Remove the gap between images, videos, audio and canvas and the bottom of
-* their containers: h5bp.com/i/440
-*/
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
 
 audio,
 canvas,
@@ -77,8 +90,8 @@ video {
 }
 
 /*
-* Remove default fieldset styles.
-*/
+ * Remove default fieldset styles.
+ */
 
 fieldset {
   border: 0;
@@ -87,22 +100,11 @@ fieldset {
 }
 
 /*
-* Allow only vertical resizing of textareas.
-*/
+ * Allow only vertical resizing of textareas.
+ */
 
 textarea {
   resize: vertical;
-}
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #6cd37d;
-  color: black;
-  padding: 1em;
-}
-
-.browsehappy a {
-  color: #a95d4c;
 }
 
 
@@ -113,7 +115,8 @@ textarea {
 /*****************************************************************************/
 
 *, *:before, *:after {
-  @include box-sizing(border-box)
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 html {
   position: relative;
@@ -127,7 +130,8 @@ body {
   min-width: 18.75rem; /* 300px */
 }
 a, a > svg {
-  @include transition(.2s);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
   text-decoration: none;
 }
 ul {
