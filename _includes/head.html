@@ -1,14 +1,30 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <!-- "The Magic Viewport" [https://www.youtube.com/watch?v=3Bq521dIjCM#t=1273] -->
     <!-- Allows Chrome GPU rasterization on a set of android devices -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+
+    <!-- Prefetch DNS for external assets -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//ajax.googleapis.com">
+    <link rel="dns-prefetch" href="//emberjs.jsbin.com">
+    <link rel="dns-prefetch" href="//run.jsbin.com">
+    <link rel="dns-prefetch" href="//static.jsbin.com">
+    <link rel="dns-prefetch" href="//alexdiliberto.disqus.com">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+
     <meta name="robots" content="index,follow">
     <meta name="author" content="{{ site.author }}">
     <meta name="description" content="{{ page.description }}">
     <meta name="bitly-verification" content="cbe30a98bd2a">
+
     <!-- Customize home screen title -->
     <meta name="apple-mobile-web-app-title" content="Alex DiLiberto">
     <meta name="HandheldFriendly" content="True">
@@ -80,10 +96,6 @@
       <meta property="article:tag" content="{{ tag }}">
       {% endfor %}
     {% endif %}
-
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-
-    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 </head>
