@@ -2,12 +2,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!-- "The Magic Viewport" [https://www.youtube.com/watch?v=3Bq521dIjCM#t=1273] -->
+    <!-- Allows Chrome GPU rasterization on a set of android devices -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta name="robots" content="index,follow">
     <meta name="author" content="{{ site.author }}">
     <meta name="description" content="{{ page.description }}">
-
     <meta name="bitly-verification" content="cbe30a98bd2a">
+
+    <link rel="icon" sizes="192x192" href="favicon-192x192.png">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary">
