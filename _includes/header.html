@@ -5,9 +5,13 @@
   <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
 
-<header role="banner" class="main-header clearfix">
+<header role="banner" class="main-header">
   <h1 class="name">
-    <a href="{{ site.baseurl }}/">{{ site.header_title }}</a>
+    <a href="{{ site.baseurl }}/">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="244px" height="35px" viewBox="0 0 244 35" enable-background="new 0 0 244 35" xml:space="preserve" aria-labelledby="title-site-logo" aria-describedby="desc-site-logo">
+        <use xlink:href="{{ "/img/sprite.svg#site-logo" | prepend: site.baseurl }}"></use>
+      </svg>
+    </a>
   </h1>
 
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="2000" height="100" class="header-triangles" role="presentation">
