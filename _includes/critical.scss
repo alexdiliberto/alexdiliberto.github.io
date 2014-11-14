@@ -428,7 +428,7 @@ th {
 
 /*****************************************************************************/
 /*
-/* Variables (DUPLICATES NEEDED FOR CRITICAL CSS)
+/* Variables (DUPLICATES FROM BASE.SCSS NEEDED FOR CRITICAL CSS)
 /*
 /*****************************************************************************/
 
@@ -754,11 +754,10 @@ main {
   overflow-x: hidden;
   .name {
     text-align: center;
-    a {
-      color: $default-color;
-      font-weight: normal;
+    svg {
+      fill: $default-color;
       &:hover, &:focus {
-        color: $color3;
+        fill: $color3;
       }
     }
   }
