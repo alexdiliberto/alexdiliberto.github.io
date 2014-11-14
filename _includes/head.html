@@ -23,20 +23,6 @@
       {% endcapture %}
       {{ critical_css | scssify }}
     </style>
-    <script type="text/javascript">
-      WebFontConfig = {
-        google: { families: [ 'Open+Sans:400,300,700:latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1.5.6/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })();
-    </script>
     <script>
       /*!
       loadCSS: load a CSS file asynchronously.
@@ -45,6 +31,7 @@
       */
       function loadCSS(e,t,n){"use strict";function r(){for(var t,i=0;i<d.length;i++)d[i].href&&d[i].href.indexOf(e)>-1&&(t=!0);t?o.media=n||"all":setTimeout(r)}var o=window.document.createElement("link"),i=t||window.document.getElementsByTagName("script")[0],d=window.document.styleSheets;return o.rel="stylesheet",o.href=e,o.media="only x",i.parentNode.insertBefore(o,i),r(),o}
 
+      loadCSS( 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' );
       loadCSS( '{{ "/css/main.css" | prepend: site.baseurl }}' );
     </script>
 
