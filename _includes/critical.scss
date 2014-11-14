@@ -681,8 +681,11 @@ main {
   overflow-x: hidden;
   .name {
     text-align: center;
-    a:active {
-      top: 0;
+    a {
+      display: inline-block;
+      &:active {
+        top: 0;
+      }
     }
     svg {
       fill: $default-color;
@@ -775,6 +778,51 @@ footer > .back-link {
 }
 small.date {
   display: block;
+}
+
+/*****************************************************************************/
+/*
+/* Critical Media Queries (NON-CRITICAL IN MQ.SCSS)
+/*
+/*****************************************************************************/
+
+/* 400px */
+@media screen and (min-width: 25em) {
+  .main-footer > .meta {
+    top: 2rem;
+    > a > svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}
+
+/* 500px */
+@media screen and (min-width: 31.25em) {
+  main li > a {
+    float: left;
+  }
+  small.date {
+    float: right;
+    display: inherit;
+  }
+  .main-footer > .meta > a > svg {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+/* 752px */
+@media screen and (min-width: 47em) {
+  html {
+    font-size: $default-font-size-large;
+  }
+  main a.video {
+    margin-left: .5rem;
+  }
+  .main-footer > .copyright {
+    bottom: 1rem;
+  }
 }
 
 /*!--------------------------------------------------------------------
