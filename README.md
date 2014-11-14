@@ -13,7 +13,7 @@
 ###Instructions to begin local development:
 
 ```sh
-$ gem install jekyll
+$ gem install jekyll jekyll-sitemap
 $ jekyll new myblog
 $ cd myblog
 ~/myblog $ jekyll serve --watch --drafts
