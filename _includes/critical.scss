@@ -582,13 +582,6 @@ small {
 /*
 /*****************************************************************************/
 
-a {
-  position: relative;
-  &:active {
-    top: 1px;
-  }
-}
-
 main {
   max-width: $main-max-width;
   margin: 0 auto;
@@ -683,9 +676,6 @@ main {
     text-align: center;
     a {
       display: inline-block;
-      &:active {
-        top: 0;
-      }
     }
     svg {
       fill: $default-color;
@@ -701,13 +691,6 @@ main {
 .header-triangles {
   display: block;
   margin: 0 auto;
-}
-
-footer > .back-link {
-  position: relative; /* Needed for a:active */;
-  &:active {
-    top: 1px;
-  }
 }
 
 .main-footer {
