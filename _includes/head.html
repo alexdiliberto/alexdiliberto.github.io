@@ -67,9 +67,9 @@
       <meta name="twitter:description" content="{{ site.description }}">
     {% endif %}
     {% if page.image %}
-      <meta name="twitter:image:src" content="{{ site.baseurl }}img/{{ page.image }}">
+      <meta name="twitter:image:src" content="{{ site.url }}{{ site.baseurl }}/img/{{ page.image }}">
     {% else %}
-      <meta name="twitter:image:src" content="{{ "/tile.png" | prepend: site.baseurl }}">
+      <meta name="twitter:image:src" content="{{ "/tile.png" | prepend: site.baseurl | prepend: site.url }}">
     {% endif %}
 
     <!-- Open Graph data -->
@@ -97,9 +97,9 @@
       <meta property="article:author" content="{{ site.url }}">
     {% endif %}
     {% if page.image %}
-      <meta property="og:image" content="{{ site.baseurl }}img/{{ page.image }}">
+      <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/img/{{ page.image }}">
     {% else %}
-      <meta property="og:image" content="{{ "/tile.png" | prepend: site.baseurl }}">
+      <meta property="og:image" content="{{ "/tile.png" | prepend: site.baseurl | prepend: site.url }}">
     {% endif %}
     {% if page.categories %}
       {% for category in page.categories limit:1 %}
