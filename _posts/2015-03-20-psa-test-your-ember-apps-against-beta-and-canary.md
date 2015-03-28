@@ -6,7 +6,7 @@ categories: ember
 description: This is my simple development process describing how to setup each of your Ember applications against dedicated branches for Ember Release, Ember Beta, and Ember Canary
 ---
 
-A couple of weeks ago, I returned home from another amazing week in Portland attending [EmberConf](http://emberconf.com/). This was my second straight year attending the conference and it lived up to each and every one of my high expectations set from years experience. I cannot give enough praise to [Leah](https://github.com/wifelette) and the people behind the scenes who put in all the work to flawlessly assemble such a massive event.
+A couple of weeks ago, I returned home from another amazing week in Portland attending [EmberConf](http://emberconf.com/). This was my second straight year attending the conference and it lived up to each and every one of my high expectations set from last years experience. I cannot give enough praise to [Leah](https://github.com/wifelette) and the people behind the scenes who put in all the work to flawlessly assemble such a massive event.
 
 Among all of the interactions, talks, and technical discussions, one of my biggest takeaways was actually something that turns out to be quite small but has paid off tremendously for all of my Ember applications. I was a developer who would simply live on the latest Ember Release build and just update as needed when the next minor release version was tagged.
 
