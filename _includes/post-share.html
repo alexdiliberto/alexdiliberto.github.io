@@ -1,0 +1,25 @@
+<section class="post-share">
+  <ul class="post-share-menu">
+    <li class="post-share-menu-item">
+      <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&amp;url={{ site.url | url_encode }}{{ page.url | url_encode }}&amp;via={{ site.twitter_username }}" class="post-share-menu-link post-share-menu-link--twitter js-social-twitter-share" title="Share on Twitter" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12 12" enable-background="new 0 0 12 12" preserveAspectRatio="xMidYMid meet" class="svg-icon svg-icon-twitter" role="img">
+          <use xlink:href="{{ "/img/sprite.svg#icon-twitter-share" | prepend: site.baseurl }}"></use>
+        </svg>
+      </a>
+    </li>
+    <li class="post-share-menu-item">
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url | url_encode }}{{ page.url | url_encode }}" data-share-url="{{ site.url }}{{ page.url }}" class="post-share-menu-link post-share-menu-link--facebook js-social-facebook-share" title="Share on Facebook" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12 12" enable-background="new 0 0 12 12" preserveAspectRatio="xMidYMid meet" class="svg-icon svg-icon-facebook" role="img">
+          <use xlink:href="{{ "/img/sprite.svg#icon-facebook-share" | prepend: site.baseurl }}"></use>
+        </svg>
+      </a>
+    </li>
+    <li class="post-share-menu-item">
+      <a href="https://plus.google.com/share?url={{ site.url | url_encode }}{{ page.url | url_encode }}" class="post-share-menu-link post-share-menu-link--google js-social-google-share" title="Share on Google+" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12 12" enable-background="new 0 0 12 12" preserveAspectRatio="xMidYMid meet" class="svg-icon svg-icon-google" role="img">
+          <use xlink:href="{{ "/img/sprite.svg#icon-google-plus-share" | prepend: site.baseurl }}"></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</section>

@@ -650,6 +650,62 @@ main {
         position: relative;
         bottom: 1px;
       }
+      .post-share {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .post-share-menu-item {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 0;
+        margin-bottom: 0;
+      }
+      .post-share-menu-link {
+        padding: .625rem;
+        border: 0;
+        display: block;
+      }
+      .post-share-menu-link .svg-icon {
+        width: 1.375rem;
+        height: 1.375rem;
+      }
+      .post-share-menu-link--twitter {
+        &:hover {
+          background-color: #55acee;
+          .svg-icon {
+            fill: #fff;
+          }
+        }
+        .svg-icon {
+          fill: #55acee;
+        }
+      }
+      .post-share-menu-link--facebook {
+        &:hover {
+          background-color: #3b5998;
+          .svg-icon {
+            fill: #fff;
+          }
+        }
+        .svg-icon {
+          fill: #3b5998;
+        }
+      }
+      .post-share-menu-link--google {
+        &:hover {
+          background-color: #dd4b39;
+          .svg-icon {
+            fill: #fff;
+          }
+        }
+        .svg-icon {
+          fill: #dd4b39;
+        }
+      }
+      a .svg-icon path {
+        -webkit-transition: fill .15s linear;
+        transition: fill .15s linear;
+      }
       > .back-link > svg {
         -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);

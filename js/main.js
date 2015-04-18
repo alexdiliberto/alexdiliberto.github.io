@@ -27,6 +27,18 @@ svg4everybody v1.0.0 | github.com/jonathantneal/svg4everybody
 /*--------------------------------------------------------------------
  alexdiliberto.com scripts
 -----------------------------------------------------------------------*/
+function windowPopup(url, width, height) {
+  // Calculate the position of the popup so it’s centered on the screen.
+  var left = (screen.width / 2) - (width / 2);
+  var top = (screen.height / 2) - (height / 2);
+
+  window.open(
+    url,
+    "",
+    "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=" + width + ",height=" + height + ",top=" + top + ",left=" + left
+  );
+}
+
 $(document).ready(function() {
   outdatedBrowser({
     bgColor: '#f25648',
@@ -39,5 +51,10 @@ $(document).ready(function() {
 
   $("a.top-link").click(function() {
     $("html, body").animate({ scrollTop: 0 }, 1000);
+  });
+
+  $(".post-share-menu-link").click(function(e) {
+    e.preventDefault();
+    windowPopup($(this).attr("href"), 500, 300);
   });
 });
