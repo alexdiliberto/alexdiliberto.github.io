@@ -29,7 +29,7 @@
       [c]2014 @scottjehl, Filament Group, Inc.
       Licensed MIT
       */
-      function loadCSS(e,t,n){"use strict";function r(){for(var t,i=0;i<d.length;i++)d[i].href&&d[i].href.indexOf(e)>-1&&(t=!0);t?o.media=n||"all":setTimeout(r)}var o=window.document.createElement("link"),i=t||window.document.getElementsByTagName("script")[0],d=window.document.styleSheets;return o.rel="stylesheet",o.href=e,o.media="only x",i.parentNode.insertBefore(o,i),r(),o}
+      function loadCSS(e,n,o,t){"use strict";var d=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],s=window.document.styleSheets;return d.rel="stylesheet",d.href=e,d.media="only x",t&&(d.onload=t),i.parentNode.insertBefore(d,i),d.onloadcssdefined=function(n){for(var o,t=0;t<s.length;t++)s[t].href&&s[t].href.indexOf(e)>-1&&(o=!0);o?n():setTimeout(function(){d.onloadcssdefined(n)})},d.onloadcssdefined(function(){d.media=o||"all"}),d}
 
       loadCSS( 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' );
       loadCSS( '{{ "/css/main.css" | prepend: site.baseurl }}' );
@@ -40,8 +40,12 @@
     <meta name="description" content="{{ page.description }}">
     <meta name="bitly-verification" content="cbe30a98bd2a">
 
-    <!-- Customize home screen title -->
+    <!-- Allow web app to be run in full-screen mode -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Customize home screen app title -->
     <meta name="apple-mobile-web-app-title" content="Alex DiLiberto">
+    <!-- Configure the status bar -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta http-equiv="cleartype" content="on">
