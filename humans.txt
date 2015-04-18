@@ -12,9 +12,5 @@
     Internets
 
 
-# TECHNOLOGY COLOPHON
-    HTML5, CSS3, Jekyll, Normalize.css, H5BP, Git, GitHub, Sublime Text 2
-
-
 # LAST UPDATE
     {{ site.time | date_to_rfc822 }}
