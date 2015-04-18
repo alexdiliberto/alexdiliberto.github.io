@@ -641,6 +641,10 @@ main {
     }
     > footer {
       margin-top: 2rem;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       a {
         font-size: 1.5rem;
       }
@@ -719,6 +723,12 @@ main {
           transform: rotate(-90deg);
         }
       }
+    }
+    > .comments {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
   }
 }
