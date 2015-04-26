@@ -544,8 +544,11 @@ body {
   margin: 0 0 200px; /* constant footer height */
   padding: 0;
   background-color: $body-bg-color;
-  font-family: 'Open Sans', sans-serif;
+  font-family: sans-serif;
   min-width: 18.75rem; /* 300px */
+}
+.fonts-loaded body {
+  font-family: 'Open Sans', sans-serif;
 }
 a {
   -webkit-transition: 0.2s;
