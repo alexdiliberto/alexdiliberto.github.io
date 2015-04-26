@@ -633,6 +633,11 @@ main {
     .post a {
       text-decoration: underline;
     }
+    img {
+      display: block;
+      max-width: 42rem;
+      margin: 0 auto;
+    }
     > header.title {
       border-left: .3125rem solid $color3; /* 5px */
       padding-left: 1rem;
