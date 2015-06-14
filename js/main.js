@@ -50,7 +50,7 @@ function ready(fn) {
 
 ready(function() {
   var socialLinks = document.querySelectorAll(".post-share-menu-link");
-  var goToTopLink = document.querySelector("a.top-link");
+  var goToTopLinks = document.querySelectorAll("a.top-link");
 
   outdatedBrowser({
     bgColor: '#f25648',
@@ -61,9 +61,11 @@ ready(function() {
 
   FastClick.attach(document.body);
 
-  goToTopLink.addEventListener('click', function() {
-    Velocity(document.documentElement, 'scroll', { duration: 1000 , offset: 0 });
-  }, false);
+  [].forEach.call(goToTopLinks, function(link) {
+    link.addEventListener('click', function(e) {
+      Velocity(document.documentElement, 'scroll', { duration: 1000 , offset: 0 });
+    }, false);
+  });
 
   [].forEach.call(socialLinks, function(link) {
     link.addEventListener('click', function(e) {
