@@ -39,7 +39,19 @@ function windowPopup(url, width, height) {
   );
 }
 
-$(document).ready(function() {
+
+function ready(fn) {
+  if (document.readyState != 'loading') {
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+}
+
+ready(function() {
+  var socialLinks = document.querySelectorAll(".post-share-menu-link");
+  var goToTopLink = document.querySelector("a.top-link");
+
   outdatedBrowser({
     bgColor: '#f25648',
     color: '#ffffff',
@@ -49,12 +61,14 @@ $(document).ready(function() {
 
   FastClick.attach(document.body);
 
-  $("a.top-link").click(function() {
-    $("html, body").animate({ scrollTop: 0 }, 1000);
-  });
+  goToTopLink.addEventListener('click', function() {
+    Velocity(document.documentElement, 'scroll', { duration: 1000 , offset: 0 });
+  }, false);
 
-  $(".post-share-menu-link").click(function(e) {
-    e.preventDefault();
-    windowPopup($(this).attr("href"), 500, 300);
+  [].forEach.call(socialLinks, function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      windowPopup(this.href, 500, 300);
+    }, false);
   });
 });
