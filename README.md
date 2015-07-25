@@ -20,3 +20,12 @@ $ cd myblog
 
 # => Now browse to http://localhost:4000
 ```
+
+###Instructions to test local environment on a mobile device:
+
+```sh
+~/myblog $ jekyll serve --host=0.0.0.0
+
+# => Now on the mobile device, browse to http://192.168.#.#:4000
+```
+
