@@ -10,7 +10,7 @@
 * Homepage: [http://alexdiliberto.com](http://alexdiliberto.com)
 * Twitter: [@alex_diliberto](http://twitter.com/alex_diliberto)
 
-###Instructions to begin local development:
+### Instructions to begin local development:
 
 ```sh
 $ gem install jekyll jekyll-sitemap
@@ -21,7 +21,7 @@ $ cd myblog
 # => Now browse to http://localhost:4000
 ```
 
-###Instructions to test local environment on a mobile device:
+### Instructions to test local environment on a mobile device:
 
 ```sh
 ~/myblog $ jekyll serve --host=0.0.0.0
@@ -29,3 +29,6 @@ $ cd myblog
 # => Now on the mobile device, browse to http://192.168.#.#:4000
 ```
 
+### Fetch new Facebook Scrape Information
+
+https://developers.facebook.com/tools/debug/og/object/
