@@ -14,7 +14,7 @@ Here is a quick example highlighting the change:
 
 {% highlight handlebars %}
 {% raw %}
-<button {{action "announce" on="click"}}>Winter is Coming</button>
+<button onclick={{action "announce"}}>Winter is Coming</button>
 {% endraw %}
 {% endhighlight %}
 
@@ -22,7 +22,7 @@ This would be written using a closure action as follows:
 
 {% highlight handlebars %}
 {% raw %}
-<button {{action (action "announce") on="click"}}>Winter is Coming</button>
+<button onclick={{action (action "announce")}}>Winter is Coming</button>
 {% endraw %}
 {% endhighlight %}
 
