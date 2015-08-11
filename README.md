@@ -4,7 +4,7 @@
 ![alexdiliberto.com favicon](/favicon.ico) alexdiliberto.com
 =================
 
-### Information
+### Information 
 
 * Source: [https://github.com/alexdiliberto/alexdiliberto.github.io](https://github.com/alexdiliberto/alexdiliberto.github.io)
 * Homepage: [http://alexdiliberto.com](http://alexdiliberto.com)
