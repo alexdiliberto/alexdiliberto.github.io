@@ -6,6 +6,11 @@ categories: ember
 description: Overview of the new closure actions feature introduced in the Ember v1.13.0 release
 ---
 
+<iframe
+  width="178" height="24" style="border:0px"
+  src="https://mixonic.github.io/ember-community-versions/2015/07/25/ember-closure-actions.html">
+</iframe>
+
 I am really excited be spotlighting one of my favorite Ember features in a long time, [closure actions](http://emberjs.com/blog/2015/06/12/ember-1-13-0-released.html#toc_closure-actions).
 
 Closure actions are brand new as of the current [Ember v1.13.0](https://github.com/emberjs/ember.js/releases/tag/v1.13.0) release. This feature creates a whole new action handling approach which simplifies the entire process in general, as well as allows for the new function-passing solution to replace the old action bubbling mechanism. Under the hood, the <code class="inline-code">{% raw %}{{action}}{% endraw %}</code> helper is now improved to allow for the creation of closed-over functions which pass the action handlers between components and controllers.

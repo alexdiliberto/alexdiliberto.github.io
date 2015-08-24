@@ -6,6 +6,11 @@ categories: ember
 description: This is my instant reaction to some of the highlights and changes proposed for Ember 2.0
 ---
 
+<iframe
+  width="178" height="24" style="border:0px"
+  src="https://mixonic.github.io/ember-community-versions/2014/11/05/road-to-ember-2.0-reaction.html">
+</iframe>
+
 So I just finished reading the [Road to Ember 2.0 RFC](https://github.com/emberjs/rfcs/pull/15) which highlights the latest proposed updates for the next major version release - Ember 2.0. For those unfamiliar, the Ember <abbr title="Request For Comments">RFC</abbr> process is intended to provide a controlled pipeline for new features to enter the framework. This is vital tool where the entire community comes together to provide important and transparent feedback for individual feature proposals.
 
 It is extremely refreshing to have a clear direction on the future of the framework with detailed transition instructions. The overarching theme here is *"Simplicity"* and *"Stability without Stagnation"* as opposed to *"Gigantic Sweeping Changes"*. The goal is to have development teams be able to easily port their applications over to 2.0 incrementally and without much fuss.

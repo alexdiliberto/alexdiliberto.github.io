@@ -4,11 +4,12 @@ title: "Ember 'Toggle All' Checkbox"
 date: 2014-06-01
 categories: ember
 description: Quick tutorial regarding a common UI pattern for Ember using checkboxes to display a list of items with a 'Toggle All' checkbox for the list.
-start_version: "1.3"
-end_version: "1.12"
 ---
 
-<iframe width="178" height="24" style="border:0px" src="http://alexdiliberto.github.io/posts/ember-toggle-all-checkbox"></iframe>
+<iframe
+  width="178" height="24" style="border:0px"
+  src="https://mixonic.github.io/ember-community-versions/2014/06/01/ember-toggle-all-checkbox.html">
+</iframe>
 
 I recently read an interesting article by Mark Przepiora titled [Ember.js Recipes: Checkboxable Index Pages Using itemController](http://codeflip.przepiora.ca/blog/2014/05/22/ember-js-recipes-checkboxable-index-pages-using-itemcontroller/). Mark makes several good points regarding the logical separation between controllers and models in Ember. He shows how to identify use cases when it's appropriate to leverage an <code class="inline-code">itemController</code> to wrap each item in a collection. Here is his JS Bin demo which shows a simple implementation for a UI structure with a list of checkbox items and a delete button.
 
