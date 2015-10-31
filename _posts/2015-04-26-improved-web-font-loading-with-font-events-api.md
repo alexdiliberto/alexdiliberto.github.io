@@ -36,10 +36,14 @@ body {
 I tested with [WebPageTest](http://www.webpagetest.org/) in Chrome using a 3G connection from the Dulles, VA location. Here are the [before](http://www.webpagetest.org/video/compare.php?tests=150426_8B_PA9-r%3A1-c%3A0&thumbSize=200&ival=500&end=visual) and [after](http://www.webpagetest.org/video/compare.php?tests=150426_K4_PDX-r%3A1-c%3A0&thumbSize=200&ival=500&end=visual)
  results:
 
-<img src="{{ '/img/posts/2015-04-26-filmstrip-old.png' | prepend: site.baseurl }}" alt="Before: Web font loading with FOIT">
+<div class="embed">
+  <img src="{{ '/img/posts/2015-04-26-filmstrip-old.png' | prepend: site.baseurl }}" alt="Before: Web font loading with FOIT">
+</div>
 
 Here, on the slower 3G connection, you can clearly see the FOIT in the middle frames before the web font is loaded and rendered in the final frame.
 
-<img src="{{ '/img/posts/2015-04-26-filmstrip-new.png' | prepend: site.baseurl }}" alt="After: Improved web font loading without FOIT">
+<div class="embed">
+  <img src="{{ '/img/posts/2015-04-26-filmstrip-new.png' | prepend: site.baseurl }}" alt="After: Improved web font loading without FOIT">
+</div>
 
 The web font is still rendered in the final frame but now the FOIT is all gone!

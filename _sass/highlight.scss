@@ -1,4 +1,10 @@
 /* Syntax highlighting styles */
+.highlight {
+    min-width: 110%;
+    max-width: 110%;
+    margin-left: -5%;
+}
+
 code.inline-code {
   background-color: rgba(222,222,222,.2);
   border-radius: 3px;
@@ -19,7 +25,7 @@ code.inline-code {
  */
 .highlight pre, pre, .highlight .hll { font-size: 14px; background-color: #fff; border: 1px solid #ccc; padding: 6px 10px; border-radius: 3px; }
 .highlight .c { color: #999988; font-style: italic; }
-.highlight .err { color: #a61717; background-color: #e3d2d2; }
+/* .highlight .err { color: #a61717; background-color: #e3d2d2; } */
 .highlight .k { font-weight: bold; }
 .highlight .o { font-weight: bold; }
 .highlight .cm { color: #999988; font-style: italic; }

@@ -13,7 +13,7 @@ Among all of the interactions, talks, and technical discussions, one of my bigge
 My new development process involves a very simple system where I have a dedicated branch in git for each application set up against [Ember Release](http://emberjs.com/builds/#/release), [Ember Beta](http://emberjs.com/builds/#/beta), and [Ember Canary](http://emberjs.com/builds/#/canary).
 
 {% highlight bash %}
-macbookpro:my-app alex$ git branch
+$ git branch
 * my-app-ember-release
   my-app-ember-beta
   my-app-ember-canary

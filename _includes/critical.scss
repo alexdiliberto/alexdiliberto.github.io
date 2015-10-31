@@ -431,7 +431,7 @@ th {
 
 $default-color: #444;
 $body-bg-color: #F8F8F8;
-$main-max-width: 43.75rem;
+$main-max-width: 41.75rem;
 $color1: #6051bb; //violet
 $color2: #a95d4c; //salmon
 $color3: #5dc76f; //limegreen
@@ -440,7 +440,7 @@ $color5: #6cd37d;
 $default-font-size: 16px;
 $default-font-size-large: 18px;
 
-/*! HTML5 Boilerplate v5.1.0 | MIT License | https://html5boilerplate.com/ */
+/*! HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
 
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -594,7 +594,7 @@ small {
 main {
   max-width: $main-max-width;
   margin: 0 auto;
-  padding: 0 .5rem 2rem;
+  padding: 0 2rem 2rem;
   a {
     color: #a95d4c;
     &:hover, &:focus {
@@ -629,7 +629,6 @@ main {
     > a {
       word-wrap: break-word;
       overflow-wrap: break-word;
-      word-break: break-all;
       color: $color2;
       text-decoration: underline;
     }
@@ -750,6 +749,12 @@ main {
   }
 }
 
+.embed {
+  min-width: 110%;
+  max-width: 110%;
+  margin-left: -5%;
+}
+
 .main-header {
   overflow-x: hidden;
   .name {
@@ -862,13 +867,6 @@ small.date {
 
 /* 500px */
 @media screen and (min-width: 31.25em) {
-  main li > a {
-    float: left;
-  }
-  small.date {
-    float: right;
-    display: inherit;
-  }
   .main-footer > .meta > a > svg {
     width: 4rem;
     height: 4rem;
@@ -879,6 +877,13 @@ small.date {
 @media screen and (min-width: 47em) {
   html {
     font-size: $default-font-size-large;
+  }
+  main li > a {
+    float: left;
+  }
+  small.date {
+    float: right;
+    display: inherit;
   }
   main a.video {
     margin-left: .5rem;
@@ -913,4 +918,3 @@ website:    http://www.burocratik.com
     display: block; position: relative; width: 100%; height: 100%;
     text-decoration: none; color: #ffffff; font-size: 36px; line-height: 36px;
 }
-

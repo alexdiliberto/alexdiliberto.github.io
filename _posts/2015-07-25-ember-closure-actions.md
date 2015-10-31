@@ -138,4 +138,6 @@ These are just some of the cool features provided by the new Ember closure actio
 
 To get a taste of some of these awesome closure action capabilities working together in tandem, check out the following example. It combines several great features &mdash; block parameters, closure actions *(specifically yielding up an action to a block within a higher level scope)*, and the <code class="inline-code">{% raw %}{{component}}{% endraw %}</code> helper.
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/dejegu/2/embed?html,js,output">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?3.34.1"></script>
+<div class="embed">
+  <a class="jsbin-embed" href="http://emberjs.jsbin.com/dejegu/2/embed?html,js,output">Ember Closure Actions Demo</a><script src="http://static.jsbin.com/js/embed.min.js?3.34.1"></script>
+</div>

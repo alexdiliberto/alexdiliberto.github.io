@@ -13,11 +13,15 @@ description: Quick tutorial regarding a common UI pattern for Ember using checkb
 
 I recently read an interesting article by Mark Przepiora titled [Ember.js Recipes: Checkboxable Index Pages Using itemController](http://codeflip.przepiora.ca/blog/2014/05/22/ember-js-recipes-checkboxable-index-pages-using-itemcontroller/). Mark makes several good points regarding the logical separation between controllers and models in Ember. He shows how to identify use cases when it's appropriate to leverage an <code class="inline-code">itemController</code> to wrap each item in a collection. Here is his JS Bin demo which shows a simple implementation for a UI structure with a list of checkbox items and a delete button.
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/kiwijowe/9/embed?output">Mark's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<div class="embed">
+  <a class="jsbin-embed" href="http://emberjs.jsbin.com/kiwijowe/9/embed?output">Mark's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+</div>
 
 I thought this would be a fun starting point for a quick post of my own, so I took Mark's idea and slightly expanded upon it by adding a *"Toggle Select All"* checkbox. Below I'll show my demo JS Bin and highlight some of the more interesting bits of code. Check it out.
 
-<a class="jsbin-embed" href="http://emberjs.jsbin.com/coliwiwa/5/embed?output">Alex's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<div class="embed">
+  <a class="jsbin-embed" href="http://emberjs.jsbin.com/coliwiwa/5/embed?output">Alex's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
+</div>
 
 The templates are pretty straightforward, as I only made a few small changes from the original example. First, I'm setting the <code class="inline-code">itemController</code> inside the <code class="inline-code">{% raw %}{{#each}}{% endraw %}</code> helper rather than inside the controller. Second, I'm using an  <code class="inline-code">{% raw %}{{else}}{% endraw %}</code> block helper to render some content when there are no checkboxes remaining.
 
@@ -45,15 +49,15 @@ App.IndexController = Ember.ObjectController.extend({
    Simply a placeholder array for each child `itemController`
   */
   toggles: function(){ return Ember.A([]) }.property(),
-  
+
   /**
-   This computed property acts as both a setter and a getter. Check 
+   This computed property acts as both a setter and a getter. Check
    out the docs for more information on this type of computed property:
      http://emberjs.com/guides/object-model/computed-properties/#toc_setting-computed-properties
      http://emberjs.com/guides/getting-started/toggle-all-todos/
   */
   allChecked: function(key, value){
-    if (arguments.length === 1) /* get */ { 
+    if (arguments.length === 1) /* get */ {
       /* Executes `if` block on get when the user toggles any of the individual `itemController` checkboxes */
       var toggles = this.get('toggles');
       return toggles && toggles.isEvery('isChecked')
@@ -63,11 +67,11 @@ App.IndexController = Ember.ObjectController.extend({
       return value;
     }
   }.property('toggles.@each.isChecked'),
-  
+
   /* Get the total number of selected checkboxes */
   allSelectedItems: Ember.computed.filterBy('toggles', 'isChecked', true),
   totalSelectedCount: Ember.computed.alias('allSelectedItems.length'),
-  
+
   actions: {
     /* Called when each child `itemController` is initialized (initial state/dynamically added) */
     registerToggle: function(toggle) {
@@ -79,7 +83,7 @@ App.IndexController = Ember.ObjectController.extend({
     },
     add: function() {
       var color = COLORS[Math.floor(Math.random() * COLORS.length)];
-      this.get('model').pushObject({color: color, id: ID++}); 
+      this.get('model').pushObject({color: color, id: ID++});
     },
     remove: function() {
       var allSelectedItems = this.get('allSelectedItems').mapBy('content');
@@ -94,11 +98,11 @@ Finally, you can see my <code class="inline-code">App.ColorController</code> whi
 {% highlight javascript linenos %}
 App.ColorController = Ember.ObjectController.extend({
   isChecked: false,
-  
+
   colorId: function() {
     return 'checkbox' + this.get('id');
   }.property('id'),
-  
+
   /**
    When a checkbox is initially or dynamically added, this declarative init handler will register the checkbox on its `parentController`
   */
