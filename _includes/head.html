@@ -1,155 +1,155 @@
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- "The Magic Viewport" [https://www.youtube.com/watch?v=3Bq521dIjCM#t=1273] -->
-    <!-- Allows Chrome GPU rasterization on a set of android devices -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- "The Magic Viewport" [https://www.youtube.com/watch?v=3Bq521dIjCM#t=1273] -->
+  <!-- Allows Chrome GPU rasterization on a set of android devices -->
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 
-    <!-- Prefetch DNS for external assets -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="dns-prefetch" href="//www.google-analytics.com">
-    <link rel="dns-prefetch" href="//ajax.googleapis.com">
-    <link rel="dns-prefetch" href="//emberjs.jsbin.com">
-    <link rel="dns-prefetch" href="//run.jsbin.com">
-    <link rel="dns-prefetch" href="//static.jsbin.com">
-    <link rel="dns-prefetch" href="//alexdiliberto.disqus.com">
+  <!-- Prefetch DNS for external assets -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//www.google-analytics.com">
+  <link rel="dns-prefetch" href="//ajax.googleapis.com">
+  <link rel="dns-prefetch" href="//emberjs.jsbin.com">
+  <link rel="dns-prefetch" href="//run.jsbin.com">
+  <link rel="dns-prefetch" href="//static.jsbin.com">
+  <link rel="dns-prefetch" href="//alexdiliberto.disqus.com">
 
-    <style type="text/css">
-      {% capture critical_css %}
-        {% include critical.scss %}
-      {% endcapture %}
-      {{ critical_css | scssify }}
-    </style>
-    <script>
-      /*!
-      loadCSS: load a CSS file asynchronously.
-      [c]2015 @scottjehl, Filament Group, Inc.
-      Licensed MIT
-      v0.2.4
-      */
-      !function(e){"use strict";var n=function(n,t,o){var l,r=e.document,i=r.createElement("link");if(t)l=t;else{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e){for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function(){f(e)})};return i.onloadcssdefined=f,f(function(){i.media=o||"all"}),i};"undefined"!=typeof module?module.exports=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
+  <style type="text/css">
+    {% capture critical_css %}
+      {% include critical.scss %}
+    {% endcapture %}
+    {{ critical_css | scssify }}
+  </style>
+  <script>
+    /*!
+    loadCSS: load a CSS file asynchronously.
+    [c]2015 @scottjehl, Filament Group, Inc.
+    Licensed MIT
+    v0.2.4
+    */
+    !function(e){"use strict";var n=function(n,t,o){var l,r=e.document,i=r.createElement("link");if(t)l=t;else{var a=(r.body||r.getElementsByTagName("head")[0]).childNodes;l=a[a.length-1]}var d=r.styleSheets;i.rel="stylesheet",i.href=n,i.media="only x",l.parentNode.insertBefore(i,t?l:l.nextSibling);var f=function(e){for(var n=i.href,t=d.length;t--;)if(d[t].href===n)return e();setTimeout(function(){f(e)})};return i.onloadcssdefined=f,f(function(){i.media=o||"all"}),i};"undefined"!=typeof module?module.exports=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
 
-      loadCSS( 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' );
-      loadCSS( '{{ "/css/main.css" | prepend: site.baseurl }}' );
-    </script>
-    <script>
-      /* fontfaceobserver.js v1.5.4 - https://github.com/bramstein/fontfaceobserver */
-      (function(){'use strict';var f=[];function g(a){f.push(a);1===f.length&&l()}function m(){for(;f.length;)f[0](),f.shift()}if(window.MutationObserver){var n=document.createElement("div");(new MutationObserver(m)).observe(n,{attributes:!0});var l=function(){n.setAttribute("x",0)}}else l=function(){setTimeout(m)};function p(a){this.a=q;this.b=void 0;this.f=[];var b=this;try{a(function(a){r(b,a)},function(a){t(b,a)})}catch(c){t(b,c)}}var q=2;function u(a){return new p(function(b,c){c(a)})}function v(a){return new p(function(b){b(a)})}
-      function r(a,b){if(a.a===q){if(b===a)throw new TypeError("Promise settled with itself.");var c=!1;try{var d=b&&b.then;if(null!==b&&"object"===typeof b&&"function"===typeof d){d.call(b,function(b){c||r(a,b);c=!0},function(b){c||t(a,b);c=!0});return}}catch(e){c||t(a,e);return}a.a=0;a.b=b;w(a)}}function t(a,b){if(a.a===q){if(b===a)throw new TypeError("Promise settled with itself.");a.a=1;a.b=b;w(a)}}
-      function w(a){g(function(){if(a.a!==q)for(;a.f.length;){var b=a.f.shift(),c=b[0],d=b[1],e=b[2],b=b[3];try{0===a.a?"function"===typeof c?e(c.call(void 0,a.b)):e(a.b):1===a.a&&("function"===typeof d?e(d.call(void 0,a.b)):b(a.b))}catch(h){b(h)}}})}p.prototype.g=function(a){return this.c(void 0,a)};p.prototype.c=function(a,b){var c=this;return new p(function(d,e){c.f.push([a,b,d,e]);w(c)})};
-      function x(a){return new p(function(b,c){function d(c){return function(d){h[c]=d;e+=1;e===a.length&&b(h)}}var e=0,h=[];0===a.length&&b(h);for(var k=0;k<a.length;k+=1)v(a[k]).c(d(k),c)})}function y(a){return new p(function(b,c){for(var d=0;d<a.length;d+=1)v(a[d]).c(b,c)})};window.Promise||(window.Promise=p,window.Promise.resolve=v,window.Promise.reject=u,window.Promise.race=y,window.Promise.all=x,window.Promise.prototype.then=p.prototype.c,window.Promise.prototype["catch"]=p.prototype.g);}());
+    loadCSS( 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' );
+    loadCSS( '{{ "/css/main.css" | prepend: site.baseurl }}' );
+  </script>
+  <script>
+    /* fontfaceobserver.js v1.5.4 - https://github.com/bramstein/fontfaceobserver */
+    (function(){'use strict';var f=[];function g(a){f.push(a);1===f.length&&l()}function m(){for(;f.length;)f[0](),f.shift()}if(window.MutationObserver){var n=document.createElement("div");(new MutationObserver(m)).observe(n,{attributes:!0});var l=function(){n.setAttribute("x",0)}}else l=function(){setTimeout(m)};function p(a){this.a=q;this.b=void 0;this.f=[];var b=this;try{a(function(a){r(b,a)},function(a){t(b,a)})}catch(c){t(b,c)}}var q=2;function u(a){return new p(function(b,c){c(a)})}function v(a){return new p(function(b){b(a)})}
+    function r(a,b){if(a.a===q){if(b===a)throw new TypeError("Promise settled with itself.");var c=!1;try{var d=b&&b.then;if(null!==b&&"object"===typeof b&&"function"===typeof d){d.call(b,function(b){c||r(a,b);c=!0},function(b){c||t(a,b);c=!0});return}}catch(e){c||t(a,e);return}a.a=0;a.b=b;w(a)}}function t(a,b){if(a.a===q){if(b===a)throw new TypeError("Promise settled with itself.");a.a=1;a.b=b;w(a)}}
+    function w(a){g(function(){if(a.a!==q)for(;a.f.length;){var b=a.f.shift(),c=b[0],d=b[1],e=b[2],b=b[3];try{0===a.a?"function"===typeof c?e(c.call(void 0,a.b)):e(a.b):1===a.a&&("function"===typeof d?e(d.call(void 0,a.b)):b(a.b))}catch(h){b(h)}}})}p.prototype.g=function(a){return this.c(void 0,a)};p.prototype.c=function(a,b){var c=this;return new p(function(d,e){c.f.push([a,b,d,e]);w(c)})};
+    function x(a){return new p(function(b,c){function d(c){return function(d){h[c]=d;e+=1;e===a.length&&b(h)}}var e=0,h=[];0===a.length&&b(h);for(var k=0;k<a.length;k+=1)v(a[k]).c(d(k),c)})}function y(a){return new p(function(b,c){for(var d=0;d<a.length;d+=1)v(a[d]).c(b,c)})};window.Promise||(window.Promise=p,window.Promise.resolve=v,window.Promise.reject=u,window.Promise.race=y,window.Promise.all=x,window.Promise.prototype.then=p.prototype.c,window.Promise.prototype["catch"]=p.prototype.g);}());
 
-      (function(){'use strict';function h(a){document.body?a():document.addEventListener("DOMContentLoaded",a)};function v(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.g=document.createElement("span");this.f=-1;this.b.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
-      this.g.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;";this.b.appendChild(this.h);this.c.appendChild(this.g);this.a.appendChild(this.b);this.a.appendChild(this.c)}
-      function w(a,c,b){a.a.style.cssText="min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font-size:100px;font-family:"+c+";"+b}function x(a){var c=a.a.offsetWidth,b=c+100;a.g.style.width=b+"px";a.c.scrollLeft=b;a.b.scrollLeft=a.b.scrollWidth+100;return a.f!==c?(a.f=c,!0):!1}
-      function y(a,c){a.b.addEventListener("scroll",function(){x(a)&&null!==a.a.parentNode&&c(a.f)},!1);a.c.addEventListener("scroll",function(){x(a)&&null!==a.a.parentNode&&c(a.f)},!1);x(a)};function z(a,c){var b=c||{};this.family=a;this.style=b.style||"normal";this.variant=b.variant||"normal";this.weight=b.weight||"normal";this.stretch=b.stretch||"normal";this.featureSettings=b.featureSettings||"normal"}var B=null;
-      z.prototype.a=function(a,c){var b=a||"BESbswy",C=c||3E3,k="font-style:"+this.style+";font-variant:"+this.variant+";font-weight:"+this.weight+";font-stretch:"+this.stretch+";font-feature-settings:"+this.featureSettings+";-moz-font-feature-settings:"+this.featureSettings+";-webkit-font-feature-settings:"+this.featureSettings+";",g=document.createElement("div"),l=new v(b),m=new v(b),n=new v(b),d=-1,e=-1,f=-1,q=-1,r=-1,t=-1,p=this;return new Promise(function(a,b){function c(){null!==g.parentNode&&g.parentNode.removeChild(g)}
-      function u(){if(-1!==d&&-1!==e||-1!==d&&-1!==f||-1!==e&&-1!==f)if(d===e||d===f||e===f){if(null===B){var b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent);B=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))}B?d===q&&e===q&&f===q||d===r&&e===r&&f===r||d===t&&e===t&&f===t||(c(),a(p)):(c(),a(p))}}h(function(){function a(){if(Date.now()-D>=C)c(),b(p);else{var A=document.hidden;if(!0===A||void 0===A)d=l.a.offsetWidth,e=m.a.offsetWidth,f=n.a.offsetWidth,
-      u();setTimeout(a,50)}}var D=Date.now();w(l,"sans-serif",k);w(m,"serif",k);w(n,"monospace",k);g.appendChild(l.a);g.appendChild(m.a);g.appendChild(n.a);document.body.appendChild(g);q=l.a.offsetWidth;r=m.a.offsetWidth;t=n.a.offsetWidth;a();y(l,function(a){d=a;u()});w(l,'"'+p.family+'",sans-serif',k);y(m,function(a){e=a;u()});w(m,'"'+p.family+'",serif',k);y(n,function(a){f=a;u()});w(n,'"'+p.family+'",monospace',k)})})};window.FontFaceObserver=z;window.FontFaceObserver.prototype.check=z.prototype.a;}());
+    (function(){'use strict';function h(a){document.body?a():document.addEventListener("DOMContentLoaded",a)};function v(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.g=document.createElement("span");this.f=-1;this.b.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
+    this.g.style.cssText="display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;";this.b.appendChild(this.h);this.c.appendChild(this.g);this.a.appendChild(this.b);this.a.appendChild(this.c)}
+    function w(a,c,b){a.a.style.cssText="min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font-size:100px;font-family:"+c+";"+b}function x(a){var c=a.a.offsetWidth,b=c+100;a.g.style.width=b+"px";a.c.scrollLeft=b;a.b.scrollLeft=a.b.scrollWidth+100;return a.f!==c?(a.f=c,!0):!1}
+    function y(a,c){a.b.addEventListener("scroll",function(){x(a)&&null!==a.a.parentNode&&c(a.f)},!1);a.c.addEventListener("scroll",function(){x(a)&&null!==a.a.parentNode&&c(a.f)},!1);x(a)};function z(a,c){var b=c||{};this.family=a;this.style=b.style||"normal";this.variant=b.variant||"normal";this.weight=b.weight||"normal";this.stretch=b.stretch||"normal";this.featureSettings=b.featureSettings||"normal"}var B=null;
+    z.prototype.a=function(a,c){var b=a||"BESbswy",C=c||3E3,k="font-style:"+this.style+";font-variant:"+this.variant+";font-weight:"+this.weight+";font-stretch:"+this.stretch+";font-feature-settings:"+this.featureSettings+";-moz-font-feature-settings:"+this.featureSettings+";-webkit-font-feature-settings:"+this.featureSettings+";",g=document.createElement("div"),l=new v(b),m=new v(b),n=new v(b),d=-1,e=-1,f=-1,q=-1,r=-1,t=-1,p=this;return new Promise(function(a,b){function c(){null!==g.parentNode&&g.parentNode.removeChild(g)}
+    function u(){if(-1!==d&&-1!==e||-1!==d&&-1!==f||-1!==e&&-1!==f)if(d===e||d===f||e===f){if(null===B){var b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent);B=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))}B?d===q&&e===q&&f===q||d===r&&e===r&&f===r||d===t&&e===t&&f===t||(c(),a(p)):(c(),a(p))}}h(function(){function a(){if(Date.now()-D>=C)c(),b(p);else{var A=document.hidden;if(!0===A||void 0===A)d=l.a.offsetWidth,e=m.a.offsetWidth,f=n.a.offsetWidth,
+    u();setTimeout(a,50)}}var D=Date.now();w(l,"sans-serif",k);w(m,"serif",k);w(n,"monospace",k);g.appendChild(l.a);g.appendChild(m.a);g.appendChild(n.a);document.body.appendChild(g);q=l.a.offsetWidth;r=m.a.offsetWidth;t=n.a.offsetWidth;a();y(l,function(a){d=a;u()});w(l,'"'+p.family+'",sans-serif',k);y(m,function(a){e=a;u()});w(m,'"'+p.family+'",serif',k);y(n,function(a){f=a;u()});w(n,'"'+p.family+'",monospace',k)})})};window.FontFaceObserver=z;window.FontFaceObserver.prototype.check=z.prototype.a;}());
 
-      var OpenSans300 = new FontFaceObserver("Open Sans", { weight: 300 });
-      var OpenSans400 = new FontFaceObserver("Open Sans", { weight: 400 });
-      var OpenSans700 = new FontFaceObserver("Open Sans", { weight: 700 });
+    var OpenSans300 = new FontFaceObserver("Open Sans", { weight: 300 });
+    var OpenSans400 = new FontFaceObserver("Open Sans", { weight: 400 });
+    var OpenSans700 = new FontFaceObserver("Open Sans", { weight: 700 });
 
-      Promise.all([
-        OpenSans300.check(),
-        OpenSans400.check(),
-        OpenSans700.check()
-      ]).then(function() {
-        document.documentElement.className += " fonts-loaded";
-      });
-    </script>
+    Promise.all([
+      OpenSans300.check(),
+      OpenSans400.check(),
+      OpenSans700.check()
+    ]).then(function() {
+      document.documentElement.className += " fonts-loaded";
+    });
+  </script>
 
-    <meta name="robots" content="index,follow">
-    <meta name="author" content="{{ site.author }}">
-    <meta name="description" content="{{ page.description }}">
-    <meta name="bitly-verification" content="cbe30a98bd2a">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="{{ site.author }}">
+  <meta name="description" content="{{ page.description }}">
+  <meta name="bitly-verification" content="cbe30a98bd2a">
 
-    <!-- Allow web app to be run in full-screen mode -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Customize home screen app title -->
-    <meta name="apple-mobile-web-app-title" content="Alex DiLiberto">
-    <!-- Configure the status bar -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta http-equiv="cleartype" content="on">
+  <!-- Allow web app to be run in full-screen mode -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Customize home screen app title -->
+  <meta name="apple-mobile-web-app-title" content="Alex DiLiberto">
+  <!-- Configure the status bar -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta http-equiv="cleartype" content="on">
 
-    <link rel="icon" sizes="192x192" href="favicon-192x192.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" sizes="192x192" href="favicon-192x192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@{{ site.twitter_username }}">
-    <meta name="twitter:creator" content="@{{ site.twitter_username }}">
-    {% if page.title %}
-      <meta name="twitter:title" content="{{ page.title }}">
-    {% else %}
-      <meta name="twitter:title" content="{{ site.title }}">
-    {% endif %}
-    {% if page.url %}
-      <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
-    {% endif %}
-    {% if page.description %}
-      <meta name="twitter:description" content="{{ page.description }}">
-    {% else %}
-      <meta name="twitter:description" content="{{ site.description }}">
-    {% endif %}
-    {% if page.image %}
-      <meta name="twitter:image:src" content="{{ site.url }}{{ site.baseurl }}/img/{{ page.image }}">
-    {% else %}
-      <meta name="twitter:image:src" content="{{ "/tile.png" | prepend: site.baseurl | prepend: site.url }}">
-    {% endif %}
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@{{ site.twitter_username }}">
+  <meta name="twitter:creator" content="@{{ site.twitter_username }}">
+  {% if page.title %}
+    <meta name="twitter:title" content="{{ page.title }}">
+  {% else %}
+    <meta name="twitter:title" content="{{ site.title }}">
+  {% endif %}
+  {% if page.url %}
+    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+  {% endif %}
+  {% if page.description %}
+    <meta name="twitter:description" content="{{ page.description }}">
+  {% else %}
+    <meta name="twitter:description" content="{{ site.description }}">
+  {% endif %}
+  {% if page.image %}
+    <meta name="twitter:image:src" content="{{ site.url }}{{ site.baseurl }}/img/{{ page.image }}">
+  {% else %}
+    <meta name="twitter:image:src" content="{{ "/tile.png" | prepend: site.baseurl | prepend: site.url }}">
+  {% endif %}
 
-    <!-- Open Graph data -->
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="{{ site.title }}">
-    {% if page.title %}
-      <meta property="og:title" content="{{ page.title }}">
-    {% else %}
-      <meta property="og:title" content="{{ site.title }}">
-    {% endif %}
-    {% if page.title %}
-      <meta property="og:type" content="article">
-    {% else %}
-      <meta property="og:type" content="website">
-    {% endif %}
-    {% if page.description %}
-      <meta property="og:description" content="{{ page.description }}">
-    {% else %}
-      <meta property="og:description" content="{{ site.description }}">
-    {% endif %}
-    {% if page.url %}
-      <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    {% endif %}
-    {% if page.date %}
-      <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-      <meta property="article:author" content="https://www.facebook.com/{{ site.facebook_username }}">
-    {% endif %}
-    {% if page.image %}
-      <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/img/{{ page.image }}">
-    {% else %}
-      <meta property="og:image" content="{{ "/tile.png" | prepend: site.baseurl | prepend: site.url }}">
-    {% endif %}
-    {% if page.categories %}
-      {% for category in page.categories limit:1 %}
-      <meta property="article:section" content="{{ category }}">
-      {% endfor %}
-    {% endif %}
-    {% if page.tags %}
-      {% for tag in page.tags %}
-      <meta property="article:tag" content="{{ tag }}">
-      {% endfor %}
-    {% endif %}
-    <meta property="fb:admins" content="12700840">
+  <!-- Open Graph data -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="{{ site.title }}">
+  {% if page.title %}
+    <meta property="og:title" content="{{ page.title }}">
+  {% else %}
+    <meta property="og:title" content="{{ site.title }}">
+  {% endif %}
+  {% if page.title %}
+    <meta property="og:type" content="article">
+  {% else %}
+    <meta property="og:type" content="website">
+  {% endif %}
+  {% if page.description %}
+    <meta property="og:description" content="{{ page.description }}">
+  {% else %}
+    <meta property="og:description" content="{{ site.description }}">
+  {% endif %}
+  {% if page.url %}
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  {% endif %}
+  {% if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    <meta property="article:author" content="https://www.facebook.com/{{ site.facebook_username }}">
+  {% endif %}
+  {% if page.image %}
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/img/{{ page.image }}">
+  {% else %}
+    <meta property="og:image" content="{{ "/tile.png" | prepend: site.baseurl | prepend: site.url }}">
+  {% endif %}
+  {% if page.categories %}
+    {% for category in page.categories limit:1 %}
+    <meta property="article:section" content="{{ category }}">
+    {% endfor %}
+  {% endif %}
+  {% if page.tags %}
+    {% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag }}">
+    {% endfor %}
+  {% endif %}
+  <meta property="fb:admins" content="12700840">
 
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-    <!-- BEGIN TRACKJS -->
-    <script type="text/javascript">window._trackJs = { token: '4e39045849b146e4a65eb13645e70d3f' };</script>
-    <script type="text/javascript" src="https://d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js"></script>
-    <!-- END TRACKJS -->
+  <!-- BEGIN TRACKJS -->
+  <script type="text/javascript">window._trackJs = { token: '4e39045849b146e4a65eb13645e70d3f' };</script>
+  <script type="text/javascript" src="https://d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js"></script>
+  <!-- END TRACKJS -->
 </head>
