@@ -632,6 +632,13 @@ main {
     .post a {
       text-decoration: underline;
     }
+    .post ul {
+      padding: .1rem 0 0 1rem;
+      & li {
+        margin-bottom: 0;
+        list-style-type: disc;
+      }
+    }
     img {
       display: block;
       max-width: 100%;
@@ -874,7 +881,9 @@ small.date {
   html {
     font-size: $default-font-size-large;
   }
-  main li > a {
+  main .posts li > a,
+  main .talks li > a,
+  main .ember-addons li > a {
     float: left;
   }
   small.date {
