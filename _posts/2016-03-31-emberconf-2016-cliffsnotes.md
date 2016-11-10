@@ -61,7 +61,7 @@ Opening Keynote <small>- Yehuda Katz, Tom Dale</small>
     + Written in Typescript
   + The way we build web applications is changing
     + Ember - an SDK for the web
-    + [bit.ly/emberconfapp](bit.ly/emberconfapp)
+    + [ember-appcache-demo by Erik Bryn](https://bit.ly/emberconfapp)
 
 
 Using Service Workers in Ember <small>- John Kleinschmidt</small>
