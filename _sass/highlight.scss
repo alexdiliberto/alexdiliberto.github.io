@@ -6,21 +6,18 @@ pre {
   margin-left: -5%;
 }
 
-.highlight .lineno {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/*
- * GitHub style for Pygments syntax highlighter, for use with Jekyll
- * Courtesy of GitHub.com
- */
 pre {
   font-size: 14px;
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 6px 10px;
   border-radius: 3px;
+  overflow: auto;
+}
+
+.highlight .lineno {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
