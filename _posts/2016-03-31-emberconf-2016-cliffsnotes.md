@@ -84,14 +84,14 @@ Selecting Good Ember Patterns <small>- Brenna O'Brien</small>
 --------
 
   + Select element is 2 way bound by default
-  + <code class="inline-code">{% raw %}{{view "select"}}{% endraw %}</code> has since been deprecated
+  + `{% raw %}{{view "select"}}{% endraw %}` has since been deprecated
   + DDAU approach
-  + Actions Up: <code class="inline-code">{% raw %}onchange={{action "selectDidChange"}} value="target.value"}}{% endraw %}</code>
-  + Data Down: <code class="inline-code">{% raw %}selected={{is-equal language selectedLanguage}}{% endraw %}</code>
+  + Actions Up: `{% raw %}onchange={{action "selectDidChange"}} value="target.value"}}{% endraw %}`
+  + Data Down: `{% raw %}selected={{is-equal language selectedLanguage}}{% endraw %}`
   + Closure actions for better nested component action handling
-  + Dynamic key lookup, use <code class="inline-code">{% raw %}{{get}}{% endraw %}</code> helper
-  + <code class="inline-code">{% raw %}{{mut}}{% endraw %}</code> helper for 2 way binding. <code class="inline-code">{% raw %}onchange=(action (mut selectedFruit)){% endraw %}</code>
-  + <code class="inline-code">{% raw %}{{ted-select}}{% endraw %}</code> [http://tedconf.github.io/ember-ted-select](http://tedconf.github.io/ember-ted-select)
+  + Dynamic key lookup, use `{% raw %}{{get}}{% endraw %}` helper
+  + `{% raw %}{{mut}}{% endraw %}` helper for 2 way binding. `{% raw %}onchange=(action (mut selectedFruit)){% endraw %}`
+  + `{% raw %}{{ted-select}}{% endraw %}` [http://tedconf.github.io/ember-ted-select](http://tedconf.github.io/ember-ted-select)
 
 
 Building Desktop Apps with Ember and Electron <small>- Felix Rieseberg</small>
@@ -102,11 +102,11 @@ Building Desktop Apps with Ember and Electron <small>- Felix Rieseberg</small>
   + [ember-electron](https://github.com/felixrieseberg/ember-electron) (based on ember-cli-nwjs and ember-cli-remote-inspector)
     + CLI TDD and server-mode tests
     + Build/run workflow with live reload
-    + <code class="inline-code">ember install ember-electron</code> - installs prebuilt electron binaries
-  + Run <code class="inline-code">ember electron</code> instead of <code class="inline-code">ember server</code> to spin-up a new desktop app
+    + `ember install ember-electron` - installs prebuilt electron binaries
+  + Run `ember electron` instead of `ember server` to spin-up a new desktop app
   + Can use ember inpsector remotely over web sockets to debug. You have access to Node APIs as well
-  + <code class="inline-code">ember election:test</code>
-  + <code class="inline-code">ember electron:package --platform darwin</code>
+  + `ember election:test`
+  + `ember electron:package --platform darwin`
 
 
 Building Mobile Applications with Ember <small>- Alex Blom</small>
@@ -118,14 +118,14 @@ Building Mobile Applications with Ember <small>- Alex Blom</small>
   + Good Code === Good Hybrid
     + Desktop lets us be lazier
     + JS ecosystem is littered with bad/leaky code
-  + <code class="inline-code">ember-cli-cordova</code> -> <code class="inline-code">ember-cordova</code>
-  + <code class="inline-code">ember new mobile-project; ember install ember-codova</code>
-  + Splash screen handling via <code class="inline-code">SplashScreenMixin</code> (hides on afterModel hook)
-  + Platform service <code class="inline-code">platform: inject.service("device/platform")</code>
-    + <code class="inline-code">if (platform.get('isIOS'))</code>
-  + Cordova service <code class="inline-code">cordova: inject.service()</code>
-    + <code class="inline-code">onVolumeUp</code>
-  + Keyboard service <code class="inline-code">keyboard: inject.service("cordova/keyboard")</code>
+  + `ember-cli-cordova` -> `ember-cordova`
+  + `ember new mobile-project; ember install ember-codova`
+  + Splash screen handling via `SplashScreenMixin` (hides on afterModel hook)
+  + Platform service `platform: inject.service("device/platform")`
+    + `if (platform.get('isIOS'))`
+  + Cordova service `cordova: inject.service()`
+    + `onVolumeUp`
+  + Keyboard service `keyboard: inject.service("cordova/keyboard")`
     + Viewport changes when keyboard is on the screen
   + Performance
     + Crosswalk - Built by intel
@@ -139,18 +139,18 @@ Building Mobile Applications with Ember <small>- Alex Blom</small>
     + Garbage Collection: 2 types (Young Generation & Old Generation)
     + Old Generation collection is **very** expensive
     + Don't create variables you don't need
-    + <code class="inline-code">null</code> out references to unused DOM fragments (willDestroyElement hook)
+    + `null` out references to unused DOM fragments (willDestroyElement hook)
     + Profiles > Take Heap Snapshot
     + Containment View > Detached Nodes (these are bad and just hogging resources)
-  + <code class="inline-code">window.performance</code>
-  + <code class="inline-code">window.performance.mark('foo')</code>
+  + `window.performance`
+  + `window.performance.mark('foo')`
   + Manage Reflows
     + Resizing browser window
     + Computed styles in JS
     + Adding/removing elements from the DOM
     + Changing an elements classes
   + Use CSS Transforms
-  + Use <code class="inline-code">visibility:hidden</code> to avoid reflow
+  + Use `visibility:hidden` to avoid reflow
   + Animations - Use [Velocity JS](http://julian.com/research/velocity/)
 
 
@@ -177,9 +177,9 @@ Dissecting an Ember CLI Build <small>- Estelle DeBlois</small>
   + Broccoli used within Ember CLI to manage the build pipeline using a Tree primitive
     + Tree: Directory of files
   + Entire build pipeline can be represented as a DAG (directed graph)
-  + <code class="inline-code">BROCCOLI_VIZ=true ember build</code>
-  + <code class="inline-code">dot -Tpng graph.<version>.dot > out.png</code>
-  + <code class="inline-code">broccoli-stew</code> for easy debugging
+  + `BROCCOLI_VIZ=true ember build`
+  + `dot -Tpng graph.<version>.dot > out.png`
+  + `broccoli-stew` for easy debugging
 
 
 DAY 2
@@ -191,7 +191,7 @@ Ember CLI The Next Generation <small>- Stefan Penner</small>
 
   + ember-cli being adopted by angular-cli and react-cli
   + Migrating away from Bower to NPM
-  + Move bower support to <code class="inline-code">ember-cli-bower</code> addon
+  + Move bower support to `ember-cli-bower` addon
   + Big apps are a sign of success
   + Engines are a great solution of large apps and app.js files
 
@@ -204,7 +204,7 @@ Idiomatic Ember: Sweet Spot of Performance and Productivity <small>- Lauren Tan<
   + Use declarative helpers in your templates for easy composability without side effects
     + Be very wary to not overuse this power
   + Helpers are better suited for UI and presentational logic in contrast to CP's which are highly coupled to data
-  + <code class="inline-code">ember-composable-helpers</code>
+  + ember-composable-helpers`
   + CP's should be used to express business logic
     + Reusable
     + React to changes

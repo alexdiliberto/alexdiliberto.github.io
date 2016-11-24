@@ -10,7 +10,7 @@ Last year when I created this site, I set out with the goal of performance as my
 
 In the article, Scott mentions a few Font Load Event API polyfills. For my approach, I'm using Bram Stein's [FontFaceObserver](https://github.com/bramstein/fontfaceobserver) script.
 
-{% highlight javascript %}
+```js
 var OpenSans300 = new FontFaceObserver("Open Sans", { weight: 300 });
 var OpenSans400 = new FontFaceObserver("Open Sans", { weight: 400 });
 var OpenSans700 = new FontFaceObserver("Open Sans", { weight: 700 });
@@ -22,16 +22,16 @@ Promise.all([
 ]).then(function() {
   document.documentElement.className += " fonts-loaded";
 });
-{% endhighlight %}
+```
 
-{% highlight scss %}
+```scss
 body {
   font-family: sans-serif;
 }
 .fonts-loaded body {
   font-family: 'Open Sans', sans-serif;
 }
-{% endhighlight %}
+```
 
 I tested with [WebPageTest](http://www.webpagetest.org/) in Chrome using a 3G connection from the Dulles, VA location. Here are the [before](http://www.webpagetest.org/video/compare.php?tests=150426_8B_PA9-r%3A1-c%3A0&thumbSize=200&ival=500&end=visual) and [after](http://www.webpagetest.org/video/compare.php?tests=150426_K4_PDX-r%3A1-c%3A0&thumbSize=200&ival=500&end=visual)
  results:

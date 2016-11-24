@@ -27,9 +27,9 @@ While I understand the thinking behind this, I would personally rather see the o
 
 This still feels awkward to me. Initially, routing is handled through Ember via:
 
-{% highlight html %}
+```text
   Route > Controller > View/Template
-{% endhighlight %}
+```
 
 In Ember 2.0, routes will route straight to a component instead. For me, The removal of that controller blurs some lines concerning the representation of application state. Perhaps it's the name itself that is still making me scratch my head. When I think component, I think modular and reusable chunk of code. The name could lend itself to some confusion for newer developers.
 

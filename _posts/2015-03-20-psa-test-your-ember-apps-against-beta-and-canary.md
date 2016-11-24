@@ -12,14 +12,14 @@ Among all of the interactions, talks, and technical discussions, one of my bigge
 
 My new development process involves a very simple system where I have a dedicated branch in git for each application set up against [Ember Release](http://emberjs.com/builds/#/release), [Ember Beta](http://emberjs.com/builds/#/beta), and [Ember Canary](http://emberjs.com/builds/#/canary).
 
-{% highlight bash %}
+```bash
 $ git branch
 * my-app-ember-release
   my-app-ember-beta
   my-app-ember-canary
-{% endhighlight %}
+```
 
-You may now setup your own syncing timetable for the three branches. At the end of the day or the end of the week simply sync changes up the chain from your Release branch into your Beta branch and finally into your Canary branch. Every branch of your project will contain the same code, with each newer branch containing all of the new and shiny toys specific to that version of Ember. For example, In my Beta branches, I went through and updated my templates to [Bound Attribute Syntax](http://emberjs.com/blog/2015/02/07/ember-1-10-0-released.html#toc_bound-attribute-syntax) all the things *(at the time of this writing - <code class="inline-code">1.11.0-beta.5</code>)*. Don't forget to keep your <code class="inline-code">bower.json</code> and <code class="inline-code">package.json</code> files up to date with the latest dependencies corresponding to each branch version.
+You may now setup your own syncing timetable for the three branches. At the end of the day or the end of the week simply sync changes up the chain from your Release branch into your Beta branch and finally into your Canary branch. Every branch of your project will contain the same code, with each newer branch containing all of the new and shiny toys specific to that version of Ember. For example, In my Beta branches, I went through and updated my templates to [Bound Attribute Syntax](http://emberjs.com/blog/2015/02/07/ember-1-10-0-released.html#toc_bound-attribute-syntax) all the things *(at the time of this writing - `1.11.0-beta.5`)*. Don't forget to keep your `bower.json` and `package.json` files up to date with the latest dependencies corresponding to each branch version.
 
 This new setup not only helps me, but ends up helping the Ember community as a whole. Now I can see well ahead of time if there is anything coming down the Ember pipeline which will have any impact on my application. I can submit Pull Requests to my upstream dependencies regarding any breaking changes. I can also submit issue reports for any bugs or regressions that I encounter.
 

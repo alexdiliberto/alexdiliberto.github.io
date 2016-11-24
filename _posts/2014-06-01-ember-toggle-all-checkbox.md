@@ -11,7 +11,7 @@ description: Quick tutorial regarding a common UI pattern for Ember using checkb
   src="https://mixonic.github.io/ember-community-versions/2014/06/01/ember-toggle-all-checkbox.html">
 </iframe>
 
-I recently read an interesting article by Mark Przepiora titled [Ember.js Recipes: Checkboxable Index Pages Using itemController](http://codeflip.przepiora.ca/blog/2014/05/22/ember-js-recipes-checkboxable-index-pages-using-itemcontroller/). Mark makes several good points regarding the logical separation between controllers and models in Ember. He shows how to identify use cases when it's appropriate to leverage an <code class="inline-code">itemController</code> to wrap each item in a collection. Here is his JS Bin demo which shows a simple implementation for a UI structure with a list of checkbox items and a delete button.
+I recently read an interesting article by Mark Przepiora titled [Ember.js Recipes: Checkboxable Index Pages Using itemController](http://codeflip.przepiora.ca/blog/2014/05/22/ember-js-recipes-checkboxable-index-pages-using-itemcontroller/). Mark makes several good points regarding the logical separation between controllers and models in Ember. He shows how to identify use cases when it's appropriate to leverage an `itemController` to wrap each item in a collection. Here is his JS Bin demo which shows a simple implementation for a UI structure with a list of checkbox items and a delete button.
 
 <div class="embed">
   <a class="jsbin-embed" href="http://emberjs.jsbin.com/kiwijowe/9/embed?output">Mark's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
@@ -23,11 +23,10 @@ I thought this would be a fun starting point for a quick post of my own, so I to
   <a class="jsbin-embed" href="http://emberjs.jsbin.com/coliwiwa/5/embed?output">Alex's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
 </div>
 
-The templates are pretty straightforward, as I only made a few small changes from the original example. First, I'm setting the <code class="inline-code">itemController</code> inside the <code class="inline-code">{% raw %}{{#each}}{% endraw %}</code> helper rather than inside the controller. Second, I'm using an  <code class="inline-code">{% raw %}{{else}}{% endraw %}</code> block helper to render some content when there are no checkboxes remaining.
+The templates are pretty straightforward, as I only made a few small changes from the original example. First, I'm setting the `itemController` inside the `{% raw %}{{#each}}{% endraw %}` helper rather than inside the controller. Second, I'm using an `{% raw %}{{else}}{% endraw %}` block helper to render some content when there are no checkboxes remaining.
 
-
-{% highlight html linenos %}
 {% raw %}
+```hbs
 <!-- index.hbs -->
 {{#if model}}
   ...
@@ -38,12 +37,12 @@ The templates are pretty straightforward, as I only made a few small changes fro
 {{else}}
   <strong>Please Add A Color...</strong>
 {{/if}}
+```
 {% endraw %}
-{% endhighlight %}
 
-Here's where things get a little more fun. You can see my <code class="inline-code">App.IndexController</code> with comments describing each of the main code blocks and properties.
+Here's where things get a little more fun. You can see my `App.IndexController` with comments describing each of the main code blocks and properties.
 
-{% highlight javascript linenos %}
+```js
 App.IndexController = Ember.ObjectController.extend({
   /**
    Simply a placeholder array for each child `itemController`
@@ -91,11 +90,11 @@ App.IndexController = Ember.ObjectController.extend({
     }
   }
 });
-{% endhighlight %}
+```
 
-Finally, you can see my <code class="inline-code">App.ColorController</code> which acts as an <code class="inline-code">itemController</code> for each object in the model array.
+Finally, you can see my `App.ColorController` which acts as an `itemController` for each object in the model array.
 
-{% highlight javascript linenos %}
+```js
 App.ColorController = Ember.ObjectController.extend({
   isChecked: false,
 
@@ -117,4 +116,4 @@ App.ColorController = Ember.ObjectController.extend({
     this.send('deregisterToggle', this);
   }
 });
-{% endhighlight %}
+```
