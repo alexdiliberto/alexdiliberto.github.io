@@ -17,7 +17,7 @@ email: hello@alexdiliberto.com
 # Build settings
 encoding: utf-8
 markdown: kramdown
-highlighter: rogue
+highlighter: rouge
 permalink: /posts/:title/
 
 
