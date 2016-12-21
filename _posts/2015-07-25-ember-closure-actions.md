@@ -128,7 +128,7 @@ Additionally, the closure actions approach allows you to `{% raw %}{{yield}}{% e
   <button onclick={{action drinkWine}}>Drink Wine</button>
 
   {{! calls the yielded "snark" action from the tyrion-lannister component scope }}
-  {{#my-button doSnark=(action snark)}}Make Snarky Comment{{/my-button}}
+  {{#my-button doSnark=snark}}Make Snarky Comment{{/my-button}}
 
   {{! calls the "cavort" action on the outer scope }}
   <button onclick={{action "cavort"}}>Cavort</button>
