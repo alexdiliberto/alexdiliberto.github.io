@@ -267,17 +267,19 @@ Data Loading Patterns with JSON API <small>- Balint Erdi</small>
   + [`shouldBackgroundReloadRecord`](https://emberjs.com/api/data/classes/DS.Adapter.html#method_shouldBackgroundReloadRecord) &amp; [`shouldBackgroundReloadAll`](https://emberjs.com/api/data/classes/DS.Adapter.html#method_shouldBackgroundReloadAll)
   + Fetching relationship data
     + Lazy fetching
-      + Simple, just works, on demand data fetch
-      + Might trigger `N` requests
-    + Model hook `return Ember.RSVP.hash()` blocks rendering of template until the promise resolves and XHR is finished
-      + Better UX but the `N` request issue persists
+      + Simple, on demand data fetch
+      + Might trigger `N` requests, flicker
+    + Pre-loading: `model()` hook `return Ember.RSVP.hash()`
+      + Moves relationship data to route's `model()` hook - blocks rendering of template
+      + Better UX but the `N` request issue persists, `RSVP.hash()` is a model hook anti-pattern
     + Compound document syncing (side-loading)
       + `this.store.findRecord('band', params.id, { include 'songs', reload: true });`
       + `/band/1?include=songs`
       + Leverage JSON API, explicit control over fetching relationship data
-      + Delays rendering
+      + Delays rendering of the child template
   + [Ember Data Patterns](https://github.com/balinterdi/ember-data-patterns)
   + https://balinterdi.com/emberconf/
+  + [Slides](https://speakerdeck.com/balint/data-loading-patterns-with-json-api)
 
 
 Higher Order Components <small>- Miguel Camba</small>
@@ -299,9 +301,91 @@ Higher Order Components <small>- Miguel Camba</small>
     + A well crafted component should be easy to adapt to new uses
   + Initial approach: Bindings - `{% raw %}{{x-toggle checked=checked}}{% endraw %}`
   + Solution DDAU - `onChange=(action (mut checked))`
-  + Now what if I want different colors and sizes and labels and images? :confounded:
+  + Now what if I want different colors and siz :confounded:
   + [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) by Dan Abramov
   + [Contextual Components](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components)
     + Flexibility, composability and the right level of abstractions
   + Use `hasBlock` template helper to make the contextual component "Opt In"
     + Now just pass in non-block form for sensible defaults
+
+
+DAY 2
+========
+
+
+Empowering the Next Million Creators <small>- Edward Faulkner</small>
+--------
+
+  + How do we grow to empower wider audiences of people?
+  + Continuum from small applications with less features &rarr; bigger application with more features
+    + `npm install` your way up from [Glimmer.js](https://glimmerjs.com/) to Ember
+    + Small: Glimmer.js
+    + Medium: Ember.js
+    + Big: Drupal, Wordpress
+  + Glimmer.js - Flexible, Expandable Modern-web platform
+  + The web is about HTML
+    + Good level of power for the task it is assigned
+    + Fairly easy to learn and pick up
+    + Templates in Ember are just a superset of HTML - Flexible (Ember strength)
+  + Addon ecosystem
+    + Drupal: You need your site up and running. Problem: developers are very expensive
+      + Focus on a few unique tasks &rarr; offload the rest on to the community
+    + A community that invests in shared standards
+  + **NEW** :rotating_light::rotating_light::rotating_light:: [Card stack application architecture](http://cardstack.io/) Drop-in tools to give you a WYSIWYG editor for your Ember components (Big on the continuum scale)
+    + `ember install @cardstack/cardstack-tools`
+    + `{% raw %}{{#cardstack-tools}}{{outlet}}{{#cardstack-tools}}{% endraw %}`
+    + [`ember install squishable-container`](https://github.com/cardstack/squishable-container) - simple component that takes it's initial size and is able to scale itself
+    + `{% raw %}{{#cardstack-tools}}{{#squishable-container}}{{outlet}}{{squishable-container}}{{#cardstack-tools}}{% endraw %}`
+    + [`ember-toolbars`](https://github.com/cardstack/ember-toolbars)
+    + `{% raw %}{{cardstack-content}{% endraw %}}`
+    + `ember install @cardstack/core-types` - I'm NPM installing my way to my final app state
+    + `ember install @cardstack/mobiledoc` - Rich text editing on the web
+  + [ember-overlays](https://github.com/ef4/ember-overlays)
+  + `@cardstack/hub` - layer that bridges together all sources of data your application needs, into a single source that follows the same authentication and configures to your application standards
+  + Authentication &amp; Authorization
+
+SVG Animation and Interaction in Ember <small>- Jen Weber</small>
+--------
+
+  + SVG - images made of code
+  + SVG Basics
+    + [SVG elements can be transformed with CSS](https://css-tricks.com/svg-animation-on-css-transforms/)
+    + Simply style using CSS
+      + `outline` &rarr; `stroke`
+      + `background-color` &rarr; `fill`
+    + Follows paint order, not `z-index`. Lowest in DOM order forms top layer visible to the user
+    + `<g>` group wrapper
+  + Using SVGs in Ember
+    + Easily add actions to SVGs
+    + Binding attributes and classes
+  + Avoiding pitfalls
+    + `<rect class="temperature {% raw %}{{tempStatus}}{% endraw %}" width="117.6" height={% raw %}{{thermHeight}}{% endraw %} />` Doesn't always work (height goes down instead of up!)
+    + Top left corner is `0,0`
+    + Shapes are positioned using x and y coordinates within the SVG `viewBox`
+    + Elements can be spinned, stretched, squished, etc.
+    + `<rect class="temperature {% raw %}{{tempStatus}}{% endraw %}" width="117.6" height={% raw %}{{thermHeight}}{% endraw %} transform="rotate(180 365 710)"/>` Fixes the issue by essentially rotating the axis of the rectangle so the height eases up instead of down
+    + Default Ember component `<div>` wrapper inside SVG === bad. Use [`tagName='g'`](https://emberjs.com/api/classes/Ember.Component.html#property_tagName) instead
+    + Paint order Problems: Use `Ember.computed.sort()` so data with the lowest `y` coordinate gets rendered first
+    + Upgrade app > Ember v1.8.0
+  + Use computed properties in the model to manipulate plotted/transformed SVG data &amp; coordinates
+  + [Accessible SVG](https://www.sitepoint.com/tips-accessible-svg/)
+  + [SVG Optimization Tools](https://sarasoueidan.com/blog/svgo-tools/)
+
+Mastering Ember from the Perspective of a N00b <small>- Madison Kerndt</small>
+--------
+
+  + [Dreyfus model](https://en.wikipedia.org/wiki/Dreyfus_model_of_skill_acquisition)
+    + Novice &rarr; Advanced Beginner &rarr; Competent &rarr; Proficient &rarr; Expert
+    + Biggest shift: Proficient &rarr; Expert
+      + Proficient developer sees all the details and complexities in the **Tree**
+      + Expert developer sees all of the details and complexities in the **Forrest**
+      + Intuition: ability to understand something without the need for conscious reasoning
+  + [Adriaan de Groot](https://en.wikipedia.org/wiki/Adriaan_de_Groot)
+    + Neuroscience and psychology research using Chess
+    + [Can you remember the pieces?](https://www.mheducation.ca/blog/series-classic-learning-science-expertise-and-expert-performance-in-chess/)
+    + In order to retain information, we have to organize it in a way that is meaninful &rarr; Intuitiion
+  + Zone of Proximal Development - What a learner can do with and without help
+  + Optimal pacing is challenging people just beyond their learning ability level
+  + Mental Model
+    + Router &rarr; Route &rarr; Model &rarr; Parent Template &rarr; Component
+  + [`{% raw %}{{outlet}}{% endraw %}`](https://guides.emberjs.com/v2.12.0/routing/rendering-a-template/) - lets you specific where a child route should render inside of a template
