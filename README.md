@@ -3,7 +3,7 @@
 ![alexdiliberto.com favicon](/favicon.ico) alexdiliberto.com
 =================
 
-### Information 
+### Information
 
 * Source: [https://github.com/alexdiliberto/alexdiliberto.github.io](https://github.com/alexdiliberto/alexdiliberto.github.io)
 * Homepage: [http://alexdiliberto.com](http://alexdiliberto.com)
@@ -12,10 +12,11 @@
 ### Instructions to begin local development:
 
 ```sh
-$ gem install jekyll jekyll-sitemap
+$ gem install jekyll jekyll-sitemap jemoji
 $ jekyll new myblog
 $ cd myblog
-~/myblog $ jekyll serve -w -D -I
+$ bundle install
+~/myblog $ bundle exec jekyll serve -w -D -I
 
 # => Now browse to http://localhost:4000
 ```
@@ -23,7 +24,7 @@ $ cd myblog
 ### Instructions to test local environment on a mobile device:
 
 ```sh
-~/myblog $ jekyll serve --host=0.0.0.0
+~/myblog $ bundle exec jekyll serve --host=0.0.0.0
 
 # => Now on the mobile device, browse to http://192.168.#.#:4000
 ```
@@ -31,3 +32,7 @@ $ cd myblog
 ### Fetch new Facebook Scrape Information
 
 https://developers.facebook.com/tools/debug/og/object/
+
+### Help
+
+https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/

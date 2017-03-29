@@ -30,6 +30,7 @@ sass:
 # Ruby Gems
 gems:
   - jekyll-sitemap
+  - jemoji
 
 
 # Defaults
