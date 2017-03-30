@@ -16,27 +16,27 @@ DAY 1
 Opening Keynote <small>- Yehuda Katz, Tom Dale</small>
 --------
 
-  + 5 Years of EmberConf!
+  + 5 Years of EmberConf! :birthday:
     + [Announcing Amber.js](http://yehudakatz.com/2011/12/08/announcing-amber-js/) - Dec 8, 2011
-  + New core team members
+  + New core team members :star:
     + [Katie Gengler](https://github.com/kategengler), [Chat Hietala](https://github.com/chadhietala), [Ricardo Mendes](https://github.com/locks)
   + Ember 2.x Series
-    + What didn't work:
+    + What didn't work: :-1:
       + Routable components
       + Deprecating controllers
       + `<angle-bracket>` components
       + Pods
-    + What did work:
+    + What did work: :+1:
       + [Fastboot](https://ember-fastboot.com/)
       + [Engines](http://ember-engines.com/)
       + Glimmer / Glimmer 2.0 (~30% smaller download size and 2x app speed improvement)
     + Overall better experience
-  + What have we learned?
+  + What have we learned? :book:
     + Big up front design
     + Small Kernel &rarr; Addon
       + Fastboot - Ember simply landed the `App.visit()` [API](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_code-visit-code-api) &rarr; ember-fastboot addon
     + Drop-in compatibility for new features
-    + Experimentation is :key:
+    + Experimentation is key :key:
       + [ember-redux](http://www.ember-redux.com/)
       + [ember-concurrency](http://ember-concurrency.com/)
       + [ember-orbit](https://github.com/orbitjs/ember-orbit)
@@ -72,9 +72,9 @@ Going Progressive with Ember <small>- Samanta de Barros</small>
 --------
 
   + [Progressive Web Apps](https://addyosmani.com/blog/getting-started-with-progressive-web-apps)
-    + Fast
-    + Work offline
-    + Install on the device
+    + Fast :zap:
+    + Work offline :x:
+    + Install on the device :iphone:
   + 69% of web traffic today comes from smartphone devices
   + Native vs. Web
     + Gap is rapidly shrinking
@@ -203,9 +203,9 @@ Understanding JavaScript Performance <small>- Godfrey Chan</small>
 Counter-spells and the Art of Keeping Your Application Safe <small>- Ingrid Epure</small>
 --------
 
-  + [Gifar image vulnerability attack](https://hackaday.com/2008/08/04/the-gifar-image-vulnerability/) ~2008
-  + [Image EXIF embedding PHP code](https://websec.io/2012/09/05/A-Silent-Threat-PHP-in-EXIF.html) ~2012
-  + First rule of web security: Never (EVER) trust user submitted data
+  + [Gifar image vulnerability attack](https://hackaday.com/2008/08/04/the-gifar-image-vulnerability/) ~2008 :floppy_disk:
+  + [Image EXIF embedding PHP code](https://websec.io/2012/09/05/A-Silent-Threat-PHP-in-EXIF.html) ~2012 :floppy_disk:
+  + First rule of web security: Never (EVER) trust user submitted data :closed_lock_with_key:
   + Reflected XSS `GET http://myapp.com/list/all?search_term=<img """><script>alert(document.cookie)</script>">`
   + Ember:
     + HTML escaping
@@ -217,7 +217,7 @@ Counter-spells and the Art of Keeping Your Application Safe <small>- Ingrid Epur
       + `Content-Security-Policy "script-src 'self' static.mysite.com"`
       + Use CSP V2 and V3 only
       + hash-source and nonce-source for inline script support
-  + Avoid `htmlSafe()`
+  + Avoid `htmlSafe()` :x:
     + Use only with proper sanitization
     + Never use directly on user input
     + Use [Ember Contextual Components](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components)
@@ -225,7 +225,7 @@ Counter-spells and the Art of Keeping Your Application Safe <small>- Ingrid Epur
     + Use DOM to [create text nodes](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode)
     + Set style attributes
     + Append child
-  + Avoid Triple Curlies - `{% raw %}{{{foo}}}{% endraw %}`
+  + Avoid Triple Curlies - `{% raw %}{{{foo}}}{% endraw %}` :x:
   + Always use `rel="noopener noreferrer"` with `target=_blank`
     + [`target=_blank` vulnerability](https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/)
     + Built-in lint rules via [ember-cli-template-lint](https://github.com/rwjblue/ember-cli-template-lint)
@@ -293,7 +293,7 @@ Higher Order Components <small>- Miguel Camba</small>
     + [`hash` helper](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_hash-helper) used to explicitly define a Public API for the component
     + `{% raw %}{{yield (hash avatar=(component "user-avatar") image=user.pic size="big")}}{% endraw %}`
     + Now this is accessible as a variable in the block from the callee in the parent template - `{% raw %}{{t.avatar}}{% endraw %}`
-  + API design is very important
+  + API design is very important :art:
     + Less options are better
     + Don't abuse bindings to communicate with parent
     + Minimize mandatory options with sensible defaults
@@ -301,7 +301,7 @@ Higher Order Components <small>- Miguel Camba</small>
     + A well crafted component should be easy to adapt to new uses
   + Initial approach: Bindings - `{% raw %}{{x-toggle checked=checked}}{% endraw %}`
   + Solution DDAU - `onChange=(action (mut checked))`
-  + Now what if I want different colors and siz :confounded:
+  + Now what if I want different colors and size :confounded:
   + [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) by Dan Abramov
   + [Contextual Components](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components)
     + Flexibility, composability and the right level of abstractions
@@ -389,3 +389,135 @@ Mastering Ember from the Perspective of a N00b <small>- Madison Kerndt</small>
   + Mental Model
     + Router &rarr; Route &rarr; Model &rarr; Parent Template &rarr; Component
   + [`{% raw %}{{outlet}}{% endraw %}`](https://guides.emberjs.com/v2.12.0/routing/rendering-a-template/) - lets you specific where a child route should render inside of a template
+
+
+State, Time, and Concurrency <small>- Alex Matchneer</small>
+--------
+
+  + **State** is the data in your app that changes over time
+  + **Concurrency** is when you have more than one state change operation occurring at the same time.
+  + [ember-concurrency](http://ember-concurrency.com/)
+  + :warning: Error: Calling set on destroyed object
+  + No `isSubmitting` flag
+  + No `isDestroyed` check
+  + No "Am I Still Running?" checks
+  + No `.set()` calls necessary at all
+  + Task
+    + Better syntax for expressing async operations
+    + Allows for cancellation
+    + Declarative API
+    + Derived State
+  + Task Modifiers
+    + `.drop()`
+    + `.enqueue()`
+    + `.restartable()`
+  + Task Groups
+  + Derived State: Helpful "out-of-the-box" state
+    + `<TaskInstance>.isRunning`
+    + `<TaskInstance>.performCount`
+    + `<TaskInstance>.concurrency`
+  + Anti-Pattern: Manual state tracking
+    + `this.set('isShipping', true); yield asyncTask(); this.set('isShipping', false);`
+    + Redundant, Point of easy failure, Error-prone
+  + Respect the 4th Dimension :clock:
+  + When you `.perform()` a *Task* it creates a *TaskInstance*
+  + [Essential State vs Accidental State](http://shaffner.us/cs/papers/tarpit.pdf)
+    + Solution: Derived State (Computed Properties)
+  + Declarative APIs > Imperative APIs
+  + [Slides](https://machty.s3.amazonaws.com/emberconf2017/index.html)
+
+
+Confessions of an Ember Addon Author <small>- Lauren Elizabeth Tan</small>
+--------
+
+  + ~3.5k addons out there today
+  + What makes an addon good?
+    + #1. Solve an interesting problem
+    + #2. Straightforward to setup and use (docs and examples)
+    + #3. API needs to be deliberate
+    + #4. Reliable (tests)
+    + EX: [ember-power-select](http://www.ember-power-select.com/), [ember-concurrency](http://ember-concurrency.com/), [liquid-fire](https://ember-animation.github.io/liquid-fire/), [ember-cli-deploy](http://ember-cli-deploy.com/), [ember-cli-mirage](http://www.ember-cli-mirage.com/)
+  + DDD - Documentation Driven Development
+    + If it's not documented, it **doesn't exist**
+    + First class citizen
+    + [JSDoc](http://usejsdoc.org/), [YUIDoc](https://yui.github.io/yuidoc/)
+  + Any successful project requires two things
+    + Solve a problem
+    + Convince people to use your addon
+  + Project doesn't end after you type `npm publish`
+  + Addon Anatomy
+    + Folder structure looks very similar to regular Ember App
+    + Certain folders in Ember-land, certain folders in Node-land
+    + `/addon` doesn't get merged into consuming app's tree
+    + Allow for overriding
+    + Be deliberate about what get's merged into consuming app
+    + :warning: Addon internals are not actually private :warning:
+      + There are still ways for consuming apps to access :unlock:
+    + Blueprints
+    + Addon hooks in `index.js` are really powerful
+      + [ember-test-selectors](https://github.com/simplabs/ember-test-selectors) - Removes itself from the application during a prod build
+      + [ember-composable-helpers](https://github.com/DockYard/ember-composable-helpers) - Whitelist/Blacklist specific helpers from your application `filterHelpers()`
+      + ember-cli-deploy - Augments ember-cli with custom commands
+  + One Weird Trick
+    + Tell a story - Write great docs
+    + What is the Public API? - [Ramda documentation](http://ramdajs.com/docs/) is a great example
+    + Show don't tell - [ember-burger-menu](https://offirgolan.github.io/ember-burger-menu/)
+    + Testing your addon - [ember-try](https://github.com/ember-cli/ember-try)
+    + Test with a real browser
+  + Configuration
+    + [ember-metrics](https://github.com/poteto/ember-metrics) - allows different behaviors based on configuration found in `config/environment.js`
+    + ember-cli-build.js
+  + [ember-factory-for-polyfill](https://github.com/rwjblue/ember-factory-for-polyfill)
+  + [Dash](https://kapeli.com/dash) offline documentation
+  + Always [SemVer](http://semver.org/)
+
+
+EmberConf MiniTalks
+--------
+
+  + [Ember Beta Docs](https://emberjs.com/api-beta)
+  + QUnit-CLI - `npm install -g qunitjs; qunit --help;`
+  + `QUnit.todo();` - Expects failures but report Green to test reporters
+  + `QUnit.begin();` &rarr; `QUnit.on('runStart');`
+  + [Heimdall](https://github.com/heimdalljs/heimdalljs-lib)
+    + Reduce/Reuse/Recycle :recycle:
+    + `ember install ember-perf-timeline`
+    + `ember install ember-heimdall`
+    + Timeline integration
+    + Stripped from prod code
+
+
+Spin Me a Yarn <small>- Serena Fritsch</small>
+--------
+
+  + NPM released in 2010
+  + 11k packages published per week
+  + [Yarn](https://github.com/yarnpkg/yarn) - Fast, reliable, and secure dependency management
+  + Package :package:: Piece of software that can be downloaded; may depend on other packages
+  + Multiple levels of dependencies (nested)
+    + Allows us to install packages with different versions
+  + [So you want to write a package manager](https://medium.com/@sdboyer/so-you-want-to-write-a-package-manager-4ae9c17d9527) by Sam Boyer
+  + Install phase:
+    + Dependency Resolution :mag:
+    + Fetching Packages :truck:
+    + Linking Packages :link:
+  + `package.json`: "What I want" vs. `yarn.lock`: "What I had"
+  + NPM === Nondeterministic
+  + Always `git commit` your `yarn.lock` file
+  + Ember CLI 2.13 onwards is "yarn aware"
+
+
+An Animated Guide to Ember Internals <small>- Gavin Joyce</small>
+--------
+
+  + Classic action vs Closure action
+  + Boot:
+    + [Journey through Ember.js Glue: Booting Up](https://www.youtube.com/watch?v=BEteW2srG0w) by Mike North
+    + 27 events handled by default and triggered on body
+  + Initial Render:
+    + Handlebars template &rarr; Wire format
+    + Compilation step: Wire format &rarr; Op Codes
+    + Op Codes are then executed at runtime
+  + Glimmer VMs
+    + Append VM - Run initially
+    + Update VM - Run on update
