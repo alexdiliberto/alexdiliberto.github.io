@@ -158,6 +158,4 @@ These are just some of the cool features afforded by closure actions. Also, keep
 
 To get a taste of some of these awesome closure action capabilities working together in tandem, check out the following example. It combines several great features &mdash; block parameters, closure actions *(specifically yielding up an action to a block within a higher level scope)*, and the `{% raw %}{{component}}{% endraw %}` helper.
 
-<div class="embed no-print">
-  <a class="jsbin-embed" href="http://emberjs.jsbin.com/dojutujeqe/3/embed?html,js,output">Ember Closure Actions Demo</a><script src="http://static.jsbin.com/js/embed.min.js?3.34.1"></script>
-</div>
+<div class="embed no-print" style="position: relative; height: 0px; overflow: hidden; max-width: 100%; padding-bottom: 56.25%;"><iframe src="https://ember-twiddle.com/3b27c95c5f6690e359b05695bb35a6db?fullScreen=true" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div>

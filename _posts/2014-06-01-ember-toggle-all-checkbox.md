@@ -11,17 +11,13 @@ description: Quick tutorial regarding a common UI pattern for Ember using checkb
   src="https://mixonic.github.io/ember-community-versions/2014/06/01/ember-toggle-all-checkbox.html">
 </iframe>
 
-I recently read an interesting article by Mark Przepiora titled [Ember.js Recipes: Checkboxable Index Pages Using itemController](http://codeflip.przepiora.ca/blog/2014/05/22/ember-js-recipes-checkboxable-index-pages-using-itemcontroller/). Mark makes several good points regarding the logical separation between controllers and models in Ember. He shows how to identify use cases when it's appropriate to leverage an `itemController` to wrap each item in a collection. Here is his JS Bin demo which shows a simple implementation for a UI structure with a list of checkbox items and a delete button.
+I recently read an interesting article by Mark Przepiora titled [Ember.js Recipes: Checkboxable Index Pages Using itemController](http://codeflip.przepiora.ca/blog/2014/05/22/ember-js-recipes-checkboxable-index-pages-using-itemcontroller/). Mark makes several good points regarding the logical separation between controllers and models in Ember. He shows how to identify use cases when it's appropriate to leverage an `itemController` to wrap each item in a collection. Here is his demo which shows a simple implementation for a UI structure with a list of checkbox items and a delete button.
 
-<div class="embed no-print">
-  <a class="jsbin-embed" href="http://emberjs.jsbin.com/kiwijowe/9/embed?output">Mark's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
-</div>
+<div class="embed no-print" style="position: relative; height: 0px; overflow: hidden; max-width: 100%; padding-bottom: 56.25%;"><iframe src="https://ember-twiddle.com/98db39c9da13f2d48060a96c3be04493?fullScreen=true" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div>
 
-I thought this would be a fun starting point for a quick post of my own, so I took Mark's idea and slightly expanded upon it by adding a *"Toggle Select All"* checkbox. Below I'll show my demo JS Bin and highlight some of the more interesting bits of code. Check it out.
+I thought this would be a fun starting point for a quick post of my own, so I took Mark's idea and slightly expanded upon it by adding a *"Toggle Select All"* checkbox. Below I'll show my demo and highlight some of the more interesting bits of code. Check it out.
 
-<div class="embed no-print">
-  <a class="jsbin-embed" href="http://emberjs.jsbin.com/coliwiwa/5/embed?output">Alex's JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script>
-</div>
+<div class="embed no-print" style="position: relative; height: 0px; overflow: hidden; max-width: 100%; padding-bottom: 56.25%;"><iframe src="https://ember-twiddle.com/3de32b1404d8852665ef7d7af2c44950?fullScreen=true" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div>
 
 The templates are pretty straightforward, as I only made a few small changes from the original example. First, I'm setting the `itemController` inside the `{% raw %}{{#each}}{% endraw %}` helper rather than inside the controller. Second, I'm using an `{% raw %}{{else}}{% endraw %}` block helper to render some content when there are no checkboxes remaining.
 
