@@ -6,7 +6,7 @@
 ### Information
 
 * Source: [https://github.com/alexdiliberto/alexdiliberto.github.io](https://github.com/alexdiliberto/alexdiliberto.github.io)
-* Homepage: [http://alexdiliberto.com](http://alexdiliberto.com)
+* Homepage: [https://alexdiliberto.com](https://alexdiliberto.com)
 * Twitter: [@alex_diliberto](http://twitter.com/alex_diliberto)
 
 ### Instructions to begin local development:
