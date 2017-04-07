@@ -35,7 +35,7 @@ HTTPS is now configured with Cloudflare
 
 https://www.cloudflare.com/a/overview/alexdiliberto.com
 
-## Purge Cache
+### Purge Cache
 
 "Purge Everything" After successfully deploying a post 
 
