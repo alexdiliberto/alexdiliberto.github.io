@@ -29,6 +29,12 @@ $ bundle install
 # => Now on the mobile device, browse to http://192.168.#.#:4000
 ```
 
+### HTTPS
+
+HTTPS is now configured with Cloudflare 
+
+https://www.cloudflare.com/a/overview/alexdiliberto.com
+
 ### Fetch new Facebook Scrape Information
 
 https://developers.facebook.com/tools/debug/og/object/
