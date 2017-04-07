@@ -35,6 +35,12 @@ HTTPS is now configured with Cloudflare
 
 https://www.cloudflare.com/a/overview/alexdiliberto.com
 
+## Purge Cache
+
+"Purge Everything" After successfully deploying a post 
+
+https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings
+
 ### Fetch new Facebook Scrape Information
 
 https://developers.facebook.com/tools/debug/og/object/
