@@ -1,7 +1,13 @@
-[![Built with Jekyll](http://img.shields.io/badge/Built%20with-Jekyll-blue.svg)](http://jekyllrb.com/)
-[![License MIT](http://img.shields.io/badge/license-MIT-blue.svg)](http://en.wikipedia.org/wiki/MIT_License)
-![alexdiliberto.com favicon](/favicon.ico) alexdiliberto.com
-=================
+<p align="center">
+  <a href="https://alexdiliberto.com"><img src="https://github.com/alexdiliberto/alexdiliberto.github.io/raw/master/favicon-192x192.png" alt="alexdiliberto.com website favicon"></a>
+</p>
+
+<h1 align="center">Alex's Personal Website &amp; Blog</h1>
+
+<p align="center">
+  <a href="https://jekyllrb.com/"><img src="http://img.shields.io/badge/Built%20with-Jekyll-blue.svg" alt="Built with Jekyll"></a>
+  <a href="http://en.wikipedia.org/wiki/MIT_License"><img src="http://img.shields.io/badge/license-MIT-blue.svg" alt="License MIT"></a>
+</p>
 
 ### Information
 
@@ -31,13 +37,13 @@ $ bundle install
 
 ### HTTPS
 
-HTTPS is now configured with Cloudflare 
+HTTPS is now configured with Cloudflare
 
 https://www.cloudflare.com/a/overview/alexdiliberto.com
 
 ### Purge Cache
 
-"Purge Everything" After successfully deploying a post 
+"Purge Everything" After successfully deploying a post
 
 https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings
 
