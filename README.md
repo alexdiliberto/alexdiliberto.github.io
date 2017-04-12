@@ -35,11 +35,15 @@ $ bundle install
 # => Now on the mobile device, browse to http://192.168.#.#:4000
 ```
 
-### HTTPS
+### HTTPS and Email Forwarding
 
 HTTPS is now configured with Cloudflare
 
 https://www.cloudflare.com/a/overview/alexdiliberto.com
+
+Email Forwarding through MailGun
+
+https://app.mailgun.com
 
 ### Purge Cache
 
