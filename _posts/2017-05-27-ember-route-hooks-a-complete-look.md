@@ -14,7 +14,7 @@ If you are like me and want to get your hands on something to hack around, I cre
 
 The route hook lifecycle in Ember can be broken up into two distinct phases: the **validation phase** and the **setup phase**. These two phases are surrounded by two separate actions that get triggered within the context of the route: [`willTransition()`](https://www.emberjs.com/api/classes/Ember.Route.html#event_willTransition) at the beginning and [`didTransition()`](https://www.emberjs.com/api/classes/Ember.Route.html#event_didTransition) at the end after a successful transition.
 
-Please note that I will simply describe the _most general_ route transition case. Additionally, I will outline, in call order, the major routing hooks which will be triggered for the route transition lifecycle. I'm not including _all_ hooks, only those which I believe are the most useful to understand.
+Please note that below I will simply describe the _most general_ route transition case. Additionally, I will outline, in call order, the major routing hooks which will be triggered for the route transition's lifecycle. The major hooks being those which I believe are the most useful to understand.
 
 ### Starting the Route Transition
 Given that you will begin inside of a specific route within your Ember application and take one of the following actions to perform a route transition: click on a `{% raw %}{{#link-to}}{% endraw %}` Handlebars helper or click on a UI element which performs a programmatic [`transitionTo()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_transitionTo) or [`replaceWith()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_replaceWith) call to navigate into another route.
