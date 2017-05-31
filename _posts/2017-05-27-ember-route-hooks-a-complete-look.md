@@ -98,13 +98,13 @@ import Ember from 'ember';
 const { Route, set } = Ember;
 
 export default Route.extend({
-  setupController() {
+  setupController(controller/*, model*/) {
     // Hey Ember! Don't forget to do your stuff!
     this._super(...arguments)
     
     // OK good, Ember is done with it's internal work
     // Now I'm going to ignore Alex's advice and do some stuff here anyway :)
-    set(this, 'foo', 123);
+    set(controller, 'foo', 123);
   }
 });
 ```
