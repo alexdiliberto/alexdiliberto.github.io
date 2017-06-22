@@ -652,7 +652,6 @@ main {
         fill: $default-color;
         &:hover, &:focus {
           -webkit-transform: scale(1.2);
-          -ms-transform: scale(1.2);
           transform: scale(1.2);
         }
       }
@@ -771,14 +770,12 @@ main {
       }
       > .back-link > svg {
         -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
         transform: rotate(180deg);
       }
       > .top-link {
         float: right;
         > svg {
           -webkit-transform: rotate(-90deg);
-          -ms-transform: rotate(-90deg);
           transform: rotate(-90deg);
         }
       }
@@ -799,6 +796,8 @@ main {
 }
 
 .main-header {
+  background-image: linear-gradient(180deg, rgba($color4, 1), rgba($body-bg-color, 0));
+  padding-bottom: 30px;
   overflow-x: hidden;
   .name {
     text-align: center;
@@ -810,7 +809,8 @@ main {
       -webkit-transition: 0.2s;
       transition: 0.2s;
       &:hover, &:focus {
-        fill: $color3;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
       }
     }
   }
@@ -828,7 +828,7 @@ main {
   bottom: 0;
   height: 200px; /* constant footer height */
   width: 100%;
-  background: $color3;
+  background-image: linear-gradient(0deg, rgba($color4, 1), rgba($body-bg-color, 0));
   text-align: center;
   margin: 0 auto;
   min-width: 18.75rem; /* 300px */
@@ -870,7 +870,6 @@ main {
       transition: 0.2s;
       &:hover, &:focus {
         -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
         transform: scale(1.2);
       }
     }
