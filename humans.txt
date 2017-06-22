@@ -5,12 +5,8 @@
 # The humans responsible & technology colophon
 
 # TEAM
-  {{ site.author }} | Developer | @{{ site.twitter_username }} | Charlotte, NC, USA
-
-
-# THANKS
-    Internets
+  {{ site.author }} | Software Engineer | @{{ site.twitter_username }} | {{ site.city }}
 
 
 # LAST UPDATE
-    {{ site.time | date_to_rfc822 }}
+  {{ site.time | date_to_rfc822 }}
