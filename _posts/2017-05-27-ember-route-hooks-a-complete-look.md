@@ -14,7 +14,7 @@ If you are like me and want to get your hands on something to hack around, I cre
 
 The route hook lifecycle in Ember can be broken up into two distinct phases: the **validation phase** and the **setup phase**. These two phases are surrounded by two separate actions that get triggered within the context of the route: [`willTransition()`](https://www.emberjs.com/api/classes/Ember.Route.html#event_willTransition) at the beginning and [`didTransition()`](https://www.emberjs.com/api/classes/Ember.Route.html#event_didTransition) at the end after a successful transition.
 
-Please note that I will simply describe the _most general_ route transition case. Additionally, I will outline, in call order, the major routing hooks which will be triggered for the route transition lifecycle. I'm not including _all_ hooks, only those which I believe are the most useful to understand.
+Please note that below I will simply describe the _most general_ route transition case. Additionally, I will outline, in call order, the major routing hooks which will be triggered for the route transition's lifecycle. The major hooks being those which I believe are the most useful to understand.
 
 ### Starting the Route Transition
 Given that you will begin inside of a specific route within your Ember application and take one of the following actions to perform a route transition: click on a `{% raw %}{{#link-to}}{% endraw %}` Handlebars helper or click on a UI element which performs a programmatic [`transitionTo()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_transitionTo) or [`replaceWith()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_replaceWith) call to navigate into another route.
@@ -73,23 +73,41 @@ Once we have completely resolved the prior `redirect()` hook then we can begin t
 The purpose of this phase is to finally exit all of the previous routes and enter all of the new routes.
 
 #### 6. exit (private method)
-The `exit()` hook is actually a private method but I have found it useful to help me visualize when creating a mental model about how all of these pieces fit together. The only internal work done here would be to immediately trigger the next `deactivate()` event as well as do some work to teardown views.
+The `exit()` hook is actually a private method but I still find it useful when constructing a mental model about how each of these lifecycle pieces connect together. Ember does some internal work here to immediately trigger the next `deactivate()` event as well as do some work to teardown views.
 
 #### 7. deactivate
 The [`deactivate()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_deactivate) event is called with no arguments and it is executed when the router completely exits a route. Note that this hook will _not_ execute when the model for the current route changes (e.g. going from `post/1` to `post/2`). `deactivate()` is best used as place do any work immediately before leaving a certain route (e.g. tracking page leave analytics).
 
 #### 8. enter (private method)
-The `enter()` hook is a private method as well; however, it's still useful to help gain a better understaning for the big picture. The only thing this hook does is immediately trigger the next `activate()` event.
+The `enter()` hook is a private method as well; however, it's still useful to help gain a better understaning for the big picture. This hook's only internal responsibility is to trigger the next event, `activate()`.
 
 #### 9. activate
 The [`activate()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_activate) event is called with no arguments and it is executed when the router enters the new route. In the past, similar to `deactivate()`, I have found this to be a great place to trigger various analytics handlers.
 
 #### 10. setupController
-The [`setupController()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_setupController) hook is called with the `controller` (controller for the current route) and `model` arguments. This sole job of this hook internally within Ember is to set the `model` property of the controller to the Handlebars property named `model`.
+The [`setupController()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_setupController) hook is called with the `controller` (controller for the current route) and `model` arguments. This sole job of this hook is to set the `model` property of the controller to the corresponding template property named `model`.
 
-I strongly avoid using this hook whenever possible because it has personally come back to bite me with some [nightmare debugging scenarios](https://www.mutuallyhuman.com/blog/2017/02/17/debugging-your-assumptions-ember-edition). If I want to do something like [alias my model name](https://github.com/DockYard/styleguides/blob/master/engineering/ember.md#alias-your-model), then I will do this inside of the Controller instead.
+I strongly avoid using this hook whenever possible because it has personally come back to bite me with some [nightmare debugging scenarios](https://www.mutuallyhuman.com/blog/2017/02/17/debugging-your-assumptions-ember-edition). If I want to do something like [alias my model name](https://github.com/DockYard/styleguides/blob/master/engineering/ember.md#alias-your-model), then I will do this inside of the actual Controller instead.
 
-_WARNING:_ As with all Ember hooks, if you decide to implement the `setupController()` hook inside your route, it will prevent the default behavior. To save yourself some headaches, remember to preserve that behavior you must make sure to always call `this._super(...arguments)`.
+_WARNING:_ As with all Ember hooks, if you decide to implement the `setupController()` hook inside your route, it will prevent the default behavior. To save yourself some headaches, remember to preserve that behavior and make sure to always call `this._super(...arguments)`.
+
+```js
+// app/route/application
+import Ember from 'ember';
+
+const { Route, set } = Ember;
+
+export default Route.extend({
+  setupController(controller/*, model*/) {
+    // Hey Ember! Don't forget to do your stuff!
+    this._super(...arguments)
+    
+    // OK good, Ember is done with it's internal work
+    // Now I'm going to ignore Alex's advice and do some stuff here anyway :)
+    set(controller, 'foo', 123);
+  }
+});
+```
 
 #### 11. renderTemplate
 The [`renderTemplate()`](https://www.emberjs.com/api/classes/Ember.Route.html#method_renderTemplate) hook gets called with the same `controller` and `model` arguments from the above `setupController()`. Internally, this hook is used to render the template for your current route. By default, it renders your route's template, configured with the current controller for the route.
