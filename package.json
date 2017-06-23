@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "alexdiliberto.github.io",
+  "version": "0.0.0",
+  "description": "Alex DiLiberto's personal website and blog",
+  "license": "MIT",
+  "author": "Alex DiLiberto <npm@alexdiliberto.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexdiliberto/alexdiliberto.github.io"
+  },
+  "bugs": {
+    "url": "https://github.com/alexdiliberto/alexdiliberto.github.io/issues"
+  },
+  "scripts": {
+    "serve": "bundle exec jekyll serve",
+    "serve:mobile": "bundle exec jekyll serve --host=0.0.0.0"
+  },
+  "dependencies": {
+    "fastclick": "~1.0.6",
+    "fontfaceobserver": "~2.0.13",
+    "fg-loadcss": "~1.3.1",
+    "svg4everybody": "~2.1.8"
+  }
+}
