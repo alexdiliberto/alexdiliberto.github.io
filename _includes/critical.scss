@@ -814,8 +814,9 @@ main {
   }
 }
 
-.header-triangles {
-  display: block;
+.header-triangles-wrapper {
+  width: 2000px;
+  height: 100px;
   margin: 0 auto;
 }
 
@@ -830,7 +831,6 @@ main {
   text-align: center;
   margin: 0 auto;
   min-width: 18.75rem; /* 300px */
-  max-width: 2000px; /* Header banner size */
   a {
     color: $default-color;
     &:hover, &:focus {
