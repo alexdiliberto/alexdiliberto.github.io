@@ -258,7 +258,6 @@ var Delaunay;
     module.exports = Delaunay;
 })();
 
-
 /**
  * Defines the Flat Surface Shader namespace for all the awesomeness to exist upon.
  * @author Matthew Wagerfield
@@ -299,20 +298,21 @@ FSS.Utils = {
                                || window[vendors[x]+'CancelRequestAnimationFrame'];
   }
 
-  if (!window.requestAnimationFrame)
+  if (!window.requestAnimationFrame) {
     window.requestAnimationFrame = function(callback, element) {
       var currTime = new Date().getTime();
       var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-      var id = window.setTimeout(function() { callback(currTime + timeToCall); },
-        timeToCall);
+      var id = window.setTimeout(function() { callback(currTime + timeToCall); }, timeToCall);
       lastTime = currTime + timeToCall;
       return id;
     };
+  }
 
-  if (!window.cancelAnimationFrame)
+  if (!window.cancelAnimationFrame) {
     window.cancelAnimationFrame = function(id) {
       clearTimeout(id);
     };
+  }
 }());
 
 /**
@@ -927,38 +927,43 @@ FSS.Renderer.prototype = {
 };
 
 /**
- * @class SVG Renderer
+ * @class Canvas Renderer
  * @author Matthew Wagerfield
  */
-FSS.SVGRenderer = function() {
+FSS.CanvasRenderer = function() {
   FSS.Renderer.call(this);
-  this.element = document.createElementNS(FSS.SVGNS, 'svg');
-  this.element.setAttribute('xmlns', FSS.SVGNS);
-  this.element.setAttribute('version', '1.1');
+  this.element = document.createElement('canvas');
   this.element.style.display = 'block';
-  this.setSize(300, 150);
+  this.context = this.element.getContext('2d');
+  this.setSize(this.element.width, this.element.height);
 };
 
-FSS.SVGRenderer.prototype = Object.create(FSS.Renderer.prototype);
+FSS.CanvasRenderer.prototype = Object.create(FSS.Renderer.prototype);
 
-FSS.SVGRenderer.prototype.setSize = function(width, height) {
+FSS.CanvasRenderer.prototype.setSize = function(width, height) {
   FSS.Renderer.prototype.setSize.call(this, width, height);
-  this.element.setAttribute('width', width);
-  this.element.setAttribute('height', height);
+  this.element.width = width;
+  this.element.height = height;
+  this.context.setTransform(1, 0, 0, -1, this.halfWidth, this.halfHeight);
   return this;
 };
 
-FSS.SVGRenderer.prototype.clear = function() {
+FSS.CanvasRenderer.prototype.clear = function() {
   FSS.Renderer.prototype.clear.call(this);
-  for (var i = this.element.childNodes.length - 1; i >= 0; i--) {
-    this.element.removeChild(this.element.childNodes[i]);
-  }
+  this.context.clearRect(-this.halfWidth, -this.halfHeight, this.width, this.height);
   return this;
 };
 
-FSS.SVGRenderer.prototype.render = function(scene) {
+FSS.CanvasRenderer.prototype.render = function(scene) {
   FSS.Renderer.prototype.render.call(this, scene);
-  var m,mesh, t,triangle, points, style;
+  var m,mesh, t,triangle, color;
+
+  // Clear Context
+  this.clear();
+
+  // Configure Context
+  this.context.lineJoin = 'round';
+  this.context.lineWidth = 1;
 
   // Update Meshes
   for (m = scene.meshes.length - 1; m >= 0; m--) {
@@ -969,32 +974,23 @@ FSS.SVGRenderer.prototype.render = function(scene) {
       // Render Triangles
       for (t = mesh.geometry.triangles.length - 1; t >= 0; t--) {
         triangle = mesh.geometry.triangles[t];
-        if (triangle.polygon.parentNode !== this.element) {
-          this.element.appendChild(triangle.polygon);
-        }
-        points  = this.formatPoint(triangle.a)+' ';
-        points += this.formatPoint(triangle.b)+' ';
-        points += this.formatPoint(triangle.c);
-        style = this.formatStyle(triangle.color.format());
-        triangle.polygon.setAttributeNS(null, 'points', points);
-        triangle.polygon.setAttributeNS(null, 'style', style);
+        color = triangle.color.format();
+        this.context.beginPath();
+        this.context.moveTo(triangle.a.position[0], triangle.a.position[1]);
+        this.context.lineTo(triangle.b.position[0], triangle.b.position[1]);
+        this.context.lineTo(triangle.c.position[0], triangle.c.position[1]);
+        this.context.closePath();
+        this.context.strokeStyle = color;
+        this.context.fillStyle = color;
+        this.context.stroke();
+        this.context.fill();
       }
     }
   }
   return this;
 };
 
-FSS.SVGRenderer.prototype.formatPoint = function(vertex) {
-  return (this.halfWidth+vertex.position[0])+','+(this.halfHeight-vertex.position[1]);
-};
-
-FSS.SVGRenderer.prototype.formatStyle = function(color) {
-  var style = 'fill:'+color+';';
-  style += 'stroke:'+color+';';
-  return style;
-};
-
-(function() {
+(function(){
   //------------------------------
   // Mesh Properties
   //------------------------------
@@ -1002,7 +998,7 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
     width: 1.2,
     height: 1.2,
     slices: 250,
-    depth: 0,
+    depth: 100,
     maxdepth: 200,
     ambient: '#555555',
     diffuse: '#FFFFFF'
@@ -1012,46 +1008,28 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
   // Light Properties
   //------------------------------
   var LIGHT = {
-    count: 0,
     xPos : 0,
-    yPos : 200,
+    yPos : -166,
     zOffset: 100,
     ambient: '#FFFFFF',
     diffuse: '#5dc76f', // $color3
-    pickedup: true,
     proxy: false,
-    currIndex: 0,
     randomize: function() {
-      var x,y,z;
-      var decider = Math.floor(Math.random() * 3) + 1;
-
-      if (decider == 1) MESH.depth = Math.randomInRange(100, 133);
-      if (decider == 2) MESH.depth = Math.randomInRange(133, 166);
-      if (decider == 3) MESH.depth = Math.randomInRange(166, 200);
+      var x, y, z;
 
       for (l = scene.lights.length - 1; l >= 0; l--) {
-        x = Math.randomInRange(-mesh.geometry.width/2, mesh.geometry.width/2);
-        y = Math.randomInRange(-mesh.geometry.height/2, mesh.geometry.height/2);
-        if (scene.lights.length > 2) z = Math.randomInRange(10, 80);
-        else z = Math.randomInRange(10, 100);
+        x = Math.randomInRange(-200, 200);
+        y = LIGHT.yPos;
+        z = LIGHT.zOffset;
 
         light = scene.lights[l];
         FSS.Vector3.set(light.position, x, y, z);
 
-        var diffuse = LIGHT.diffuse;
-        var ambient = LIGHT.ambient;
-
-        light.diffuse.set(diffuse);
+        light.diffuse.set(LIGHT.diffuse);
         light.diffuseHex = light.diffuse.format();
 
-        light.ambient.set(ambient);
+        light.ambient.set(LIGHT.ambient);
         light.ambientHex = light.ambient.format();
-
-        LIGHT.xPos    = x;
-        LIGHT.yPos    = y;
-        LIGHT.zOffset = z;
-        LIGHT.diffuse = diffuse;
-        LIGHT.ambient = ambient;
       }
     }
   };
@@ -1063,9 +1041,7 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
   var container = document.getElementById('header-triangles-wrapper');
   var output = document.getElementById('output');
   var renderer, scene, mesh, geometry, material;
-  var svgRenderer;
-  var numLights = 1;
-  var gui;
+  var canvasRenderer;
 
   //------------------------------
   // Methods
@@ -1074,15 +1050,15 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
     createRenderer();
     createScene();
     createMesh();
-    addLights(numLights);
+    addLight();
     addEventListeners();
     LIGHT.randomize();
-    resize(container.offsetWidth, container.offsetHeight);
+    resize(container.offsetWidth, container.offsetHeight, true);
     animate();
   }
 
   function createRenderer() {
-    svgRenderer = new FSS.SVGRenderer();
+    canvasRenderer = new FSS.CanvasRenderer();
     setRenderer();
   }
 
@@ -1090,7 +1066,7 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
     if (renderer) {
       output.removeChild(renderer.element);
     }
-    renderer = svgRenderer;
+    renderer = canvasRenderer;
     renderer.setSize(container.offsetWidth, container.offsetHeight);
     output.appendChild(renderer.element);
   }
@@ -1117,52 +1093,23 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
   }
 
   // Add a single light
-  function addLight(ambient, diffuse, x, y, z) {
-    ambient = typeof ambient !== 'undefined' ? ambient : LIGHT.ambient;
-    diffuse = typeof diffuse !== 'undefined' ? diffuse : LIGHT.diffuse;
-    x = typeof x !== 'undefined' ? x : LIGHT.xPos;
-    y = typeof y !== 'undefined' ? y : LIGHT.yPos;
-    z = typeof z !== 'undefined' ? z : LIGHT.zOffset;
-
+  function addLight() {
     renderer.clear();
-    light = new FSS.Light(ambient, diffuse);
+    light = new FSS.Light(LIGHT.ambient, LIGHT.diffuse);
     light.ambientHex = light.ambient.format();
     light.diffuseHex = light.diffuse.format();
-    light.setPosition(x, y, z);
+    light.setPosition(LIGHT.xPos, LIGHT.yPos, LIGHT.zOffset);
     scene.add(light);
-    LIGHT.diffuse = diffuse;
     LIGHT.proxy = light;
-    LIGHT.pickedup = true;
-    LIGHT.currIndex++;
-  }
-
-  function addLights(lights) {
-    var num = lights || Math.floor(Math.random() * 4) + 1;
-
-    for (var i = num - 1; i >= 0; i--) {
-      addLight();
-      LIGHT.count++;
-    };
-  }
-
-  // Remove lights
-  function trimLights(value) {
-    for (l = value; l <= scene.lights.length; l++) {
-      light = scene.lights[l];
-      scene.remove(light);
-      LIGHT.currIndex--;
-    }
-    LIGHT.proxy = scene.lights[LIGHT.currIndex-1];
-    LIGHT.pickedup = false;
-
-    renderer.clear();
   }
 
   // Resize canvas
-  function resize(width, height) {
+  function resize(width, height, init) {
     renderer.setSize(width, height);
     FSS.Vector3.set(center, renderer.halfWidth, renderer.halfHeight);
-    createMesh();
+    if (!init) {
+      createMesh();
+    }
   }
 
   function animate() {
@@ -1190,6 +1137,7 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
   }
 
   function addEventListeners() {
+    window.addEventListener('resize', onWindowResize);
     container.addEventListener('mousemove', onMouseMove);
   }
 
@@ -1197,12 +1145,17 @@ FSS.SVGRenderer.prototype.formatStyle = function(color) {
   // Callbacks
   //------------------------------
 
-  function onMouseMove(event) {
-    if (LIGHT.pickedup) {
-      LIGHT.xPos = (event.x || event.clientX) - renderer.width/2;
-      LIGHT.yPos = renderer.height/2 - (event.y || event.clientY);
-      LIGHT.proxy.setPosition(LIGHT.xPos, LIGHT.yPos, LIGHT.proxy.position[2]);
+  function onWindowResize(event) {
+    if ((renderer.width !== container.offsetWidth) || (renderer.height !== container.offsetHeight)) {
+      resize(container.offsetWidth, container.offsetHeight, false);
+      render();
     }
+  }
+
+  function onMouseMove(event) {
+    LIGHT.xPos = (event.x || event.clientX) - renderer.width/2;
+    LIGHT.yPos = renderer.height/2 - (event.y || event.clientY);
+    LIGHT.proxy.setPosition(LIGHT.xPos, LIGHT.yPos, LIGHT.proxy.position[2]);
   }
 
   // Let there be light!
