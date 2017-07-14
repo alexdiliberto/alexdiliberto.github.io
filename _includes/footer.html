@@ -1,8 +1,8 @@
-<footer role="contentinfo" class="main-footer">
+<footer role="contentinfo" class="main-footer" itemscope itemtype="http://schema.org/WPFooter">
 
   {% include footer-social.html %}
 
   <div class="copyright">
-    <p>&copy; {{ site.time | date: "%Y" }} {{ site.author }}</p>
+    <p>&copy; <span itemprop="copyrightYear">{{ site.time | date: "%Y" }}</span> <span itemprop="copyrightHolder">{{ site.author }}</span></p>
   </div>
 </footer>
