@@ -12,7 +12,7 @@
 
   {% include header.html %}
 
-  <main role="main">
+  <main role="main" {% if page.url contains "posts" %}itemscope itemtype="http://schema.org/Article"{% endif %}>
     {{ content }}
   </main>
 
