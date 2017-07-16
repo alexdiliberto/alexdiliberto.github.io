@@ -2,6 +2,9 @@
 layout: post
 title: "Improved Web Font Loading with Font Events API"
 date: 2015-04-26
+assets:
+  - /img/posts/2015-04-26-filmstrip-old.png
+  - /img/posts/2015-04-26-filmstrip-new.png
 categories: webfonts performance
 description: Using the Font Load Events API to improve web font loading and eliminiate the dreaded Flash of Invisible Text
 ---
