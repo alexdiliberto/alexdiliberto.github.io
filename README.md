@@ -9,11 +9,14 @@
   <a href="http://en.wikipedia.org/wiki/MIT_License"><img src="http://img.shields.io/badge/license-MIT-blue.svg" alt="License MIT"></a>
 </p>
 
-### Information
+<p align="center">
+  <a href="https://alexdiliberto.com">Homepage</a>&nbsp;|&nbsp;
+  <a href="https://twitter.com/alex_diliberto">Twitter</a>
+</p>
 
-* Source: [https://github.com/alexdiliberto/alexdiliberto.github.io](https://github.com/alexdiliberto/alexdiliberto.github.io)
-* Homepage: [https://alexdiliberto.com](https://alexdiliberto.com)
-* Twitter: [@alex_diliberto](http://twitter.com/alex_diliberto)
+### Lighthouse Score
+
+![alexdiliberto.com lighthouse score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/lighthouse-score.png)
 
 ### Instructions to begin local development:
 
