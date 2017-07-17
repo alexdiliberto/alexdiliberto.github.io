@@ -38,25 +38,23 @@ $ bundle install
 # => Now on the mobile device, browse to http://192.168.#.#:4000
 ```
 
-### HTTPS and Email Forwarding
+### Configuration
 
-HTTPS is now configured with Cloudflare
+#### HTTPS
 
-https://www.cloudflare.com/a/overview/alexdiliberto.com
+HTTPS is now configured with [Cloudflare](https://www.cloudflare.com/a/overview/alexdiliberto.com)
 
-Email Forwarding through MailGun
+#### Email
 
-https://app.mailgun.com
+Email Forwarding is handled using [MailGun](https://app.mailgun.com)
 
-### Purge Cache
+#### Caching
 
-"Purge Everything" After successfully deploying a post
+CDN caching is currently enabled. Don't forget to ["Purge Everything"](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings) after successfully deploying a new post.
 
-https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings
+#### Facebook Open Graph
 
-### Fetch new Facebook Scrape Information
-
-https://developers.facebook.com/tools/debug/og/object/
+Fetch new [Facebook Scrape Information](https://developers.facebook.com/tools/debug/og/object/)
 
 ### Help
 
