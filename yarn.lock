@@ -14,6 +14,10 @@ fontfaceobserver@~2.0.13:
   version "2.0.13"
   resolved "https://registry.yarnpkg.com/fontfaceobserver/-/fontfaceobserver-2.0.13.tgz#47adbb343261eda98cb44db2152196ff124d3221"
 
+normalize.css@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-7.0.0.tgz#abfb1dd82470674e0322b53ceb1aaf412938e4bf"
+
 outdatedbrowser@~1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/outdatedbrowser/-/outdatedbrowser-1.1.5.tgz#88c71f02d1e972e48df5d8d896ea56d7b0c2942b"
