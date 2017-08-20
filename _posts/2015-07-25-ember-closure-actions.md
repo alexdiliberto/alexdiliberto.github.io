@@ -19,7 +19,8 @@ Here is a quick example highlighting the change:
 
 {% raw %}
 ```hbs
-{{! old action handling approach }}
+{{! NOTE: old action handling approach }}
+
 <button {{action "announce" on="click"}}>Winter is Coming</button>
 ```
 {% endraw %}
@@ -28,7 +29,8 @@ This would be rewritten using a closure action, utilizing the native `onclick` [
 
 {% raw %}
 ```hbs
-{{! now we have a closure action }}
+{{! NOTE: now we have a closure action }}
+
 <button onclick={{action "announce"}}>Winter is Coming</button>
 ```
 {% endraw %}
@@ -51,7 +53,8 @@ Closure actions may also be invoked via *Handlebars value* context:
 
 {% raw %}
 ```hbs
-{{! two invocations using Handlebars value context}}
+{{! NOTE: two invocations using Handlebars value context }}
+
 {{got-input focus-out=(action "sendRaven")}}
 {{yield (action "gatherBannermen")}}
 ```
@@ -61,12 +64,12 @@ Consider the old approach of passing down the action name as a "string" from a h
 
 {% raw %}
 ```hbs
-{{! old approach }}
+{{! NOTE: old approach }}
 {{! app/templates/index.hbs }}
+
 {{jon-snow action="swingSword"}}
 ```
 {% endraw %}
-
 
 ```js
 // app/components/jon-snow.js
@@ -95,6 +98,7 @@ export default Ember.Controller.extend({
 {% raw %}
 ```hbs
 {{! app/templates/index.hbs }}
+
 {{jon-snow swing=(action "swingSword")}}
 ```
 {% endraw %}
@@ -102,7 +106,11 @@ export default Ember.Controller.extend({
 {% raw %}
 ```hbs
 {{! app/templates/components/jon-snow.hbs }}
-{{longclaw-sword attack=attrs.swing}}
+{{! NOTE: The `(action)` keyword is optional here. }}
+{{! I'm using it to be more explicit as a visual marker when scanning templates. }}
+{{! It also allows me to pass additional parameters if needed. }}
+
+{{longclaw-sword attack=(action swing)}}
 ```
 {% endraw %}
 
@@ -110,7 +118,7 @@ export default Ember.Controller.extend({
 // app/components/longclaw-sword.js
 export default Ember.Component.extend({
   click() {
-    this.attrs.attack();
+    this.attack();
   }
 });
 ```
@@ -122,6 +130,7 @@ Additionally, the closure actions approach allows you to `{% raw %}{{yield}}{% e
 {% raw %}
 ```hbs
 {{! app/templates/index.hbs }}
+
 {{#tyrion-lannister drink=(action "haveGlass") as |drinkWine snark|}}
   {{! calls the tyrion-lannister component `drinkWine` yielded attr }}
   {{!   --> calls the "haveGlass" action on the outer scope }}
@@ -139,7 +148,8 @@ Additionally, the closure actions approach allows you to `{% raw %}{{yield}}{% e
 {% raw %}
 ```hbs
 {{! app/templates/components/tyrion-lannister.hbs }}
-{{yield attrs.drink (action "snark")}}
+
+{{yield drink (action "snark")}}
 ```
 {% endraw %}
 
