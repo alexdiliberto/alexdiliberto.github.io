@@ -6,7 +6,9 @@ layout: default
   <header class="title">
     <h1 itemprop="name" itemprop="headline">{{ page.title }}</h1>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" role="presentation">
-      <use href="{{ "/img/sprite.svg#icon-time" | prepend: site.baseurl }}"></use>
+      <g id="icon-time">
+        <path d="M367 295.5H227.5V142h45v108.5H367v45zM256 95c-88.992 0-161 72.022-161 161 0 88.992 72.023 161 161 161 88.992 0 161-72.023 161-161 0-88.993-72.023-161-161-161m0-45c113.77 0 206 92.23 206 206s-92.23 206-206 206S50 369.77 50 256 142.23 50 256 50z"/>
+      </g>
     </svg>
     <time datetime="{{ page.date | date: '%Y-%m-%d' }}" class="meta"><small class="meta" itemprop="datePublished" content="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</small></time>
   </header>
@@ -18,13 +20,17 @@ layout: default
 
     <a href="{{ site.baseurl }}/" class="back-link">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" enable-background="new 0 0 512 512" role="presentation">
-        <use href="{{ "/img/sprite.svg#icon-chevron" | prepend: site.baseurl }}"></use>
+        <g id="icon-chevron">
+          <path d="M142.332 104.886L197.48 50 402.5 256 197.48 462l-55.148-54.887L292.727 256z"/>
+        </g>
       </svg>
       Back
     </a>
     <a href="#" onclick="return false;" class="top-link">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" enable-background="new 0 0 512 512" role="presentation">
-        <use href="{{ "/img/sprite.svg#icon-chevron" | prepend: site.baseurl }}"></use>
+        <g id="icon-chevron">
+          <path d="M142.332 104.886L197.48 50 402.5 256 197.48 462l-55.148-54.887L292.727 256z"/>
+        </g>
       </svg>
       Top
     </a>
