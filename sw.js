@@ -2,7 +2,7 @@
 layout: null
 ---
 
-var CACHE_NAME = 'alexdiliberto-cache-v1';
+var CACHE_NAME = 'alexdiliberto-cache-v2';
 var urlsToCache = [];
 
 // Cache posts
@@ -18,6 +18,7 @@ var urlsToCache = [];
 //     {% endfor %}
 //   {% endfor %}
 // {% endfor %}
+
 {% for post in site.posts limit:3 %}
   urlsToCache.push("{{ post.url }}");
 {% endfor %}
