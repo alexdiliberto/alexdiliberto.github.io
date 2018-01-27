@@ -45,4 +45,13 @@ https://github.com/hakimel/reveal.js#installation
   </style>
 ```
 
-6. Serve the presentation and monitor source files for changes `yarn start`
+6. In the `index.html` file update the [`Reveal.initialize`](https://github.com/hakimel/reveal.js#configuration) hook's `history` config variable to push each slide change to the browser history.
+
+```js
+Reveal.initialize({
+	// Display presentation control arrows
+	history: true
+});
+```
+
+7. Serve the presentation and monitor source files for changes `yarn start`
