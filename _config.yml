@@ -33,6 +33,9 @@ gems:
   - jekyll-sitemap
   - jemoji
 
+# Exclude files and directories
+exclude:
+  - talks/*/node_modules
 
 # Defaults
 defaults:
