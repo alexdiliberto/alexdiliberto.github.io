@@ -12,6 +12,7 @@
     "url": "https://github.com/alexdiliberto/alexdiliberto.github.io"
   },
   "scripts": {
+    "clean": "bundle exec jekyll clean",
     "serve": "bundle exec jekyll serve",
     "serve:mobile": "bundle exec jekyll serve --host=0.0.0.0"
   },
