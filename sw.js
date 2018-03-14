@@ -2,7 +2,7 @@
 layout: null
 ---
 
-var CACHE_NAME = 'alexdiliberto-cache-v10';
+var CACHE_NAME = 'alexdiliberto-cache-v11';
 var urlsToCache = [];
 
 // Cache posts

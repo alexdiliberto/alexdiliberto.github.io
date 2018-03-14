@@ -397,12 +397,90 @@ DAY 2
 The Future of Data in Ember <small>- Dan Gebhardt</small>
 --------
 
-  + Coming tomorrow...
+  + The future of data in Ember is __________? :confused:
+    + Web standards?
+    + Ahead of standards?
+    + Realtime?
+    + RESTful?
+    + Graph-based?
+    + Operational?
+    + Offline?
+    + Ember needs to meet you where you are and get you where you need to be :star2:
+    {% raw %}
+    ```md
+    GET /api/v1/contacts
+    GET /api/v1/contacts/:contact:id
+    ```
+    {% endraw %}
+  + Lets build an app...Original plan: `fetch` + JSON
+    + `return this.fetch('api/v1/contacts')`
+  + A new requirement comes in... work offline
+    + Service workers
+    + [ember-service-worker](https://github.com/DockYard/ember-service-worker)
+    {% raw %}
+    ```bash
+    ember install ember-service-worker
+    ember install ember-service-worker-index
+    ember install ember-service-worker-asset-cache
+    ember install ember-service-worker-cache-fallback
+    ```
+    {% endraw %}
+    + Offline works now
+  + Next Step: A new requirement comes in... add admin pages to edit
+    + Now update data layer to use Ember data
+      + `return this.get('store').findAll('contact')`
+      {% raw %}
+      ```bash
+      GET /api/v2/contacts/
+      GET /api/v2/contacts/:contact_id
+      POST /api/v2/contacts/
+      PATCH /api/v2/contacts/:contact_id
+      DELETE /api/v2/contacts/:contact_id
+      ```
+      {% endraw %}
+  + Final Step: A new requirement comes in... everything needs to work offline
+    + [ember-orbit](https://github.com/orbitjs/ember-orbit)
+  + How do we allow apps to evolve with less friction?
+    + Augment capabilities incrementally
+    + Only increase complexity with an increased need for capabilities
+  + [JSON API](http://jsonapi.org/)
+    + 50+ client libraries
+    + 14 languages
+    + HTTP compliant basic CRUD &rarr; compound documents, sparse data sets &rarr; operations, local identities, profiles (v1.1)
+  + Composable, well-defined interfaces
+  + Monolithic full stack solution &rarr; interchangeable components
+  + Ember Data: Serve the needs of 80% of all Ember apps
+    + Evergreen behavior
+    + composability + interchangeability
+  + Currently &mdash; Tight coupling: Store &harr; Model
+  + [Ember Data Record RFC](https://github.com/emberjs/rfcs/pull/293)
+    + Formalize interface between Store and Model
+  + Store, models, basic CRUD &rarr; partial records, embedded records, changesets &rarr; offline, store forking, optimistic UIs
+  + [Orbit](http://orbitjs.com/) - Data access and synchronization library
+    + Offline (Optimistic UI)
+    + Pluggable sources :electric_plug:
+    + Data synchronization :arrows_counterclockwise:
+    + Editing contexts
+    + Undo/Redo
+  + How does Orbit fit with Ember Data? :worried:
+    + `Orbit : Ember Data :: Glimmer : Ember`
+    + Ember Data can provide Orbit's capabilities in a convention-driven package
+    + Orbit and it's ecosystem can provide a laboratory for experimentation
+  + Future? :alien:
+    + GraphQL usage will continue to grow... Apollo will continue to innovate
+    + REST+ solutions, like JSON API v1.1 will also grow
+    + Static analysis will improve runtime efficiency
+    + Immutable data structures will see increased *internal* usage (under the hood)
+    + Demand for offline PWAs will grow in order to compete with native apps
+    + Orbit will see continued growth across the frontend and in Node
+
 
 Smartphone Symphony <small>- Gavin Joyce</small>
 --------
 
-  + Coming tomorrow...
+  + [ember-present](https://github.com/GavinJoyce/ember-present) - addon for creating presentations where the slides are ember components
+  + [bit.ly/emberconf](bit.ly/emberconf) :iphone: :notes: :musical_note: :notes:
+
 
 Reuse, Recycle: One Team’s Journey from Projects to Products <small>- Sarah Bostwick</small>
 --------
