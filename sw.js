@@ -2,7 +2,9 @@
 layout: null
 ---
 
-var CACHE_NAME = 'alexdiliberto-cache-v11';
+var APP_PREFIX = 'alexdiliberto-cache-';
+var VESION = 'v12';
+var CACHE_NAME = APP_PREFIX + VESION
 var urlsToCache = [];
 
 // Cache posts

@@ -482,32 +482,152 @@ Smartphone Symphony <small>- Gavin Joyce</small>
   + [bit.ly/emberconf](bit.ly/emberconf) :iphone: :notes: :musical_note: :notes:
 
 
-Reuse, Recycle: One Team’s Journey from Projects to Products <small>- Sarah Bostwick</small>
---------
-
-  + Coming tomorrow...
-
 Deep Dive on Ember Events <small>- Marie Chatfield</small>
 --------
 
-  + Coming tomorrow...
+  - Once works breaks the app :cold_sweat:
+    - Only listening for events with Ember
+    {% raw %}
+    ```hbs
+    <div {{action "toggle"}}>
+      <div {{action "advanceTour" bubbles=false}}>Toggle Button</div>
+    </div>
+    ```
+    {% endraw %}
+    - If I add 1 word `onclick`: Now we have a combination of listening for events with Ember and the Native DOM
+    {% raw %}
+    ```hbs
+    <div onclick={{action "toggle"}}>
+      <div {{action "advanceTour" bubbles=false}}>Toggle Button</div>
+    </div>
+    ```
+    {% endraw %}
+  - Event propagation
+    - Every node's parent has a chance to handle the bubbled event
+    - [`event.stopPropagation()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation) on the child node will stop the default bubbling
+  - Ember Event listeners `{% raw %}{{action "clickMe"}}{% endraw %}`
+    - Abstraction on top of the native DOM event listeners
+    - Ember: `bubbles=false` === DOM: `event.stopPropagation()`
+  - The parent-most element `<div class="ember-application">` is where Ember hooks into its event handlers
+  - :warning: **Deep Dive!!!** :warning:
+    - Ember's [event_dispatcher.js has the complete list of it's default events](https://github.com/emberjs/ember.js/blob/v3.0.0/packages/ember-views/lib/system/event_dispatcher.js#L63-L91)
+    - Ember's `setupHandler(rootElement, event, eventName, viewRegistry)` function call
+    {% raw %}
+    ```javascript
+    for (event in events) {
+      if (events.hasOwnProperty(event)) {
+        this.setupHandler(rootElement, event, events[event], viewRegistry);
+      }
+    }
+    ```
+    {% endraw %}
+    - `rootElement.on('${event}.ember', '.ember-view', function(event) { })`
+    - So for example: `rootElement.on('click', '.ember-view', function() {})` will setup delegated event listeners on each `.ember-view` in the DOM tree
+    - Delegated event listener
+      - When an event happens on any children for the parent node, then the event will propograte up through the DOM tree to the delegated parent
+      - Allows us to reuse the same event handler throughout the lifecycle of our app
+    - Ember event listeners cannot `event.stopPropagation()` to DOM event listeners because the DOM event listeners have already been triggered by the time Ember has a chance to fire it's handlers
+    - Quick examples:
+    {% raw %}
+    ```hbs
+    {{! DOM event listener (closure action) }}
+    <div onclick={{action "handleClick"}}></div>
 
-Building a Memex in Ember <small>- Andrew Louis</small>
---------
+    {{! Ember event listener }}
+    <div {{action "handleclick"}}></div>
 
-  + Coming tomorrow...
+    {{! Ember event listener }}
+    {{some-component click=(action "handleClick")}}
+    ```
+    {% endraw %}
+  - Pick one event listener strategy API and stick with it :exclamation:
+  - Ember events use more memory but have less overall DOM event listeners because of delegation
+  - DOM events use less memory but have more overall DOM event listeners due to no delegation
+  - Overall, speed is about the same for both
+  - Optionally add a listener? :confused:
+    - Does not work: `{% raw %}<div {{if isActive (action "handleClick")}}>{% endraw %}` :x:
+    - Just use semantic HTML: `{% raw %}<button {{action "handleClick"}} disabled={{isInactive}}>{% endraw %}` :white_check_mark:
+    - Could also just use a DOM event listener `{% raw %}<div onclick={{if isActive (action "handleClick")}}>{% endraw %}`:white_check_mark:
+  - **DOM Event listeners always fire before Ember event listeners!** :exclamation:
+  - **Consistency** and **predictability** are **the most important things** when handling events in Ember :exclamation:
+
 
 Prying Open the Black Box <small>- Godfrey Chan</small>
 --------
 
-  + Coming tomorrow...
+  + Stack Trace: `TypeError: Cannot read property 'get' of undefined` :rotating_light:
+  + Should be read top &rarr; bottom :arrow_double_down:
+  + Clicking to the file in the stack trace, the browser will take you directly to the line where the error occurred
+  + "Pause on Exceptions" button will freeze the stack at a moment in time
+    + Allows us to use the console and sources tab to inspect at the exact moment an issue occurred
+  + `debugger;` snippet allows you to pause execution and inspect the state of your app
+    + **"Step Over"** button allows you to go forward in time within the current stack frame :leftwards_arrow_with_hook:
+    + **"Step Into"** button allows you to drill down into the implementation of the currently highlighted function :arrow_heading_down:
+    + **"Step Out"** button allows you to pop back up into the previous stack frame :arrow_heading_up:
+    + **"Resume"** button advances time until the next breakpoint :arrow_forward:
+  + Ember will often have a lot of items in the stack because it's handling lots of things behind the scenes (like managing the run loop)
+  + **"Blackbox Script"** Right click on any frame you don't want to see, you will end up directly inside the super class implementation :no_entry:
+    + Great for bypassing specific internal Ember code within the stack trace
+  + Breakpoints
+    + Conditional breakpoints
+    + XHR/fetch breakpoints
+      + URL contains `foo.json`
+    + Right click: "Continue to here"
+    + Right click: "Never pause here"
+  + `import { assert debug } from '@ember/debug';`
+    + Stripped from production builds
+  + `{% raw %}{{debugger}}{% endraw %}` in your templates
+  + Ember inspector: `$E` sends the object to your console
+  + Right click: "Show function definition"
+  + `$0` shows the currently highlighted element inside the console
+  + Right click element: Break on > subtree modifications
+
 
 EmberConf MiniTalks
 --------
 
-  + Coming tomorrow...
+  + Thanks to all of the community contributors! :heart_eyes:
+  + Lightning deploy strategy with [ember-cli-deploy](http://ember-cli-deploy.com/) :zap:
+    + [ember-cli-deploy-lightning-pack](https://github.com/ember-cli-deploy/ember-cli-deploy-lightning-pack)
+    + Build &rarr; Deploy (Assets to [S3](https://aws.amazon.com/s3/)/`index.html` blob to [Redis](https://redis.io/)) &rarr; Activate
+  + How can we share our documentation? :confused:
+    + [ember-cli-addon-docs](https://github.com/ember-learn/ember-cli-addon-docs)
+    + Goal: No-brainer for every addon author to use
+  + [broccoli-static-site-json](https://github.com/stonecircle/broccoli-static-site-json)
+    + Parse markdown and output JSON files
+  + [ember-learn/deprecation-app](https://github.com/ember-learn/deprecation-app) :hamster:
+
 
 Creating fluid app-like experiences with Ember <small>- Nick Schot</small>
 --------
 
-  + Coming tomorrow...
+  + Goal: Create an Ember app in the browser that performs as close to Native as possible :boom:
+  + `{% raw %}{{mobile-bar isLocked=false}}{% endraw %}`
+    + follows downward touch scroll
+    + collapses the top header on scroll down, reappears on scroll up
+  + Transitions with ember-animated
+    + Enhance perceived performance
+    + User experience
+  + `{% raw %}{{mobile-page}}{% endraw %}`
+  + `{% raw %}{{top-toolbar}}{% endraw %}`
+  + Managing scroll state
+    + Get restored when navigating up the route hierarchy
+    + Get reset when navigating back down the route hierarchy
+  + Responsiveness
+    + [ember-responsive](https://github.com/freshbooks/ember-responsive)
+      + `{% raw %}{{#if media.isMobile}}{% endraw %}`
+    + [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+    + Use ember-responsive to disable or modify mobile transitions on Desktop
+  + Progressive Web App enhancements
+  + Hybrid apps
+  + Keeping (perceived) performance up :dash:
+    + Async model hooks
+      + Use ember-concurrency to make model hook async
+      + Use loader component
+  + Svelte list rendering
+    + [vertical-collection](https://github.com/html-next/vertical-collection)
+  + [Demo App](https://nickschot.github.io/emberconf2018/)
+  + [ember-mobile-bar](https://github.com/nickschot/ember-mobile-bar)
+  + [ember-mobile-pane](https://github.com/nickschot/ember-mobile-pane)
+  + [ember-mobile-menu](https://github.com/nickschot/ember-mobile-menu)
+  + [ember-mobile-core](https://github.com/nickschot/ember-mobile-core)
