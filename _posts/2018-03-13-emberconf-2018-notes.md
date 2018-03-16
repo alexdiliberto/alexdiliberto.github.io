@@ -6,7 +6,7 @@ categories: ember emberconf
 description: EmberConf 2018 list of highlights from my favorite talks
 ---
 
-Here is a highlighted overview of the major points from some of my favorite EmberConf 2018 talks:
+Here is a highlighted overview of the major points from some of my favorite EmberConf 2018 talks::
 
 
 DAY 1
