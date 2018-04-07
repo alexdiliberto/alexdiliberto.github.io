@@ -50,7 +50,13 @@ Email Forwarding is handled using [MailGun](https://app.mailgun.com)
 
 #### Caching
 
+##### Cloudflare Cache
 CDN caching is currently enabled. Don't forget to ["Purge Everything"](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings) after successfully deploying a new post.
+
+Alternatively, simply [configure a `post-receive` githook](https://gist.github.com/alexdiliberto/4dd6572197d09dc2e664fe7c958c8982) to automatically purge
+
+#### Service Worker Cache
+Don't forget to increment the `sw.js` Service Worker cache value after publishing new content
 
 #### Facebook Open Graph
 
