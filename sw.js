@@ -3,7 +3,7 @@ layout: null
 ---
 
 var APP_PREFIX = 'alexdiliberto-cache-';
-var VESION = 'v13';
+var VESION = 'v14';
 var CACHE_NAME = APP_PREFIX + VESION
 var urlsToCache = [];
 
