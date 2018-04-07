@@ -630,7 +630,7 @@ main {
     > svg {
       fill: $color2;
     }
-    &.video {
+    &.inline-icon {
       color: $default-color;
       margin-left: .3rem;
       > svg {
@@ -930,7 +930,7 @@ small.date {
     float: right;
     display: inherit;
   }
-  main a.video {
+  main a.inline-icon {
     margin-left: .5rem;
   }
   .main-footer > .copyright {
