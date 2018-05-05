@@ -14,7 +14,8 @@
   "scripts": {
     "clean": "bundle exec jekyll clean",
     "serve": "bundle exec jekyll serve",
-    "serve:mobile": "bundle exec jekyll serve --host=0.0.0.0"
+    "serve:mobile": "bundle exec jekyll serve --host=0.0.0.0",
+    "update": "bundle update github-pages"
   },
   "dependencies": {
     "fastclick": "^1.0.6",
