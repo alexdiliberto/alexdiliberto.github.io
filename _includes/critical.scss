@@ -742,17 +742,6 @@ main {
           fill: #3b5998;
         }
       }
-      .post-share-menu-link--google {
-        &:hover {
-          background-color: #dd4b39;
-          .svg-icon {
-            fill: #fff;
-          }
-        }
-        .svg-icon {
-          fill: #dd4b39;
-        }
-      }
       a .svg-icon path {
         -webkit-transition: fill .15s linear;
         transition: fill .15s linear;
