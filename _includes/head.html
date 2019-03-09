@@ -229,7 +229,9 @@
   {% else %}
     <meta name="twitter:image:src" content="{{ "/tile.png" | prepend: site.baseurl | prepend: site.url }}">
   {% endif %}
-
+  <!-- disallow Twitter from using your site's info for personalization purposes -->
+  <meta name="twitter:dnt" content="on">
+  
   <!-- Open Graph data -->
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="{{ site.title }}">
