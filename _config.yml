@@ -28,8 +28,8 @@ sass:
   style: :compressed
 
 
-# Ruby Gems
-gems:
+# Jekyll Plugins
+plugins:
   - jekyll-sitemap
   - jemoji
 
