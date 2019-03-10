@@ -3,7 +3,7 @@ layout: null
 ---
 
 var APP_PREFIX = 'alexdiliberto-cache-';
-var VERSION = 'v21';
+var VERSION = 'v22';
 var CACHE_NAME = APP_PREFIX + VERSION;
 var urlsToCache = [];
 
@@ -28,16 +28,20 @@ var urlsToCache = [];
 // Cache pages
 {% for page in site.html_pages %}
   {% unless page.url contains '/talks' %}
-    urlsToCache.push("{{ page.url }}");
+    {% unless page.url contains '/node_modules' %}
+      urlsToCache.push("{{ page.url }}");
+    {% endunless %}
   {% endunless %}
 {% endfor %}
 
 // Cache assets
 {% for file in site.static_files %}
   {% unless file.path contains '/talks' %}
-    {% if file.path contains '/img' or file.extname == '.js' or file.extname == '.png' %}
-      urlsToCache.push("{{ file.path }}")
-    {% endif %}
+    {% unless file.path contains '/node_modules' %}
+      {% if file.path contains '/img' or file.extname == '.js' or file.extname == '.png' %}
+        urlsToCache.push("{{ file.path }}")
+      {% endif %}
+    {% endunless %}
   {% endunless %}
 {% endfor %}
 
