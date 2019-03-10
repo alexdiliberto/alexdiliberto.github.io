@@ -699,6 +699,24 @@ main {
   height: 100px;
 }
 
+.toast-notification.bottom-left {
+  display: none;
+  .toast-notification-refresh-link {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .toast-notification-close-btn {
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+  }
+}
+
 .main-footer {
   position: absolute;
   left: 0;

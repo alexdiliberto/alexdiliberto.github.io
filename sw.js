@@ -3,7 +3,7 @@ layout: null
 ---
 
 var APP_PREFIX = 'alexdiliberto-cache-';
-var VERSION = 'v26';
+var VERSION = 'v27';
 var CACHE_NAME = APP_PREFIX + VERSION;
 var urlsToCache = [];
 
@@ -89,4 +89,12 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
+});
+
+self.addEventListener('message', function(event) {
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting().then(function() {
+      window.location.reload();
+    });
+  }
 });
