@@ -38,6 +38,14 @@ $ bundle install
 # => Now on the mobile device, browse to http://192.168.#.#:4000
 ```
 
+### Update `github-pages` gem dependencies
+
+https://github.com/github/pages-gem#updating
+
+```sh
+bundle update github-pages
+```
+
 ### Configuration
 
 #### HTTPS
