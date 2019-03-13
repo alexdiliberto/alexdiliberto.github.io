@@ -14,49 +14,31 @@
   <a href="https://twitter.com/alex_diliberto">Twitter</a>
 </p>
 
-### Lighthouse Score
+## Performance
 
-![alexdiliberto.com lighthouse score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/lighthouse-score.png)
+### Lighthouse
 
-### Instructions to begin local development:
+![alexdiliberto.com lighthouse score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/img/lighthouse-score.png)
 
-```sh
-$ gem install jekyll jekyll-sitemap jemoji
-$ jekyll new myblog
-$ cd myblog
-$ bundle install
-~/myblog $ bundle exec jekyll serve -w -D -I
+### PageSpeed Insights
 
-# => Now browse to http://localhost:4000
-```
+![alexdiliberto.com google pagespeed insights score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/img/pagespeed-insights-score.png)
 
-### Instructions to test local environment on a mobile device:
+## Contributing
 
-```sh
-~/myblog $ bundle exec jekyll serve --host=0.0.0.0
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
-# => Now on the mobile device, browse to http://192.168.#.#:4000
-```
+## Configuration
 
-### Update `github-pages` gem dependencies
-
-https://github.com/github/pages-gem#updating
-
-```sh
-bundle update github-pages
-```
-
-### Configuration
-
-#### HTTPS
+### HTTPS
 
 HTTPS is now configured with [Cloudflare](https://www.cloudflare.com/a/overview/alexdiliberto.com)
 
-#### Email
+### Email
 
 Email Forwarding is handled using [MailGun](https://app.mailgun.com)
 
-#### Caching
+### Caching
 
 ##### Cloudflare Cache
 CDN caching is currently enabled. Don't forget to ["Purge Everything"](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings) after successfully deploying a new post.
@@ -69,7 +51,3 @@ Don't forget to increment the `sw.js` Service Worker cache value after publishin
 #### Facebook Open Graph
 
 Fetch new [Facebook Scrape Information](https://developers.facebook.com/tools/debug/og/object/)
-
-### Help
-
-https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
