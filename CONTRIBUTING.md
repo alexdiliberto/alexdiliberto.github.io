@@ -2,10 +2,6 @@
 
 ## Instal and serve locally
 
-* `git clone <repository-url>`
-* `cd my-addon`
-* `npm install`
-
 ```sh
 $ gem install jekyll jekyll-sitemap jemoji
 $ git clone git@github.com:alexdiliberto/alexdiliberto.github.io.git
