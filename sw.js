@@ -3,7 +3,7 @@ layout: null
 ---
 
 var APP_PREFIX = 'alexdiliberto-cache-';
-var VERSION = 'v25';
+var VERSION = 'v26';
 var CACHE_NAME = APP_PREFIX + VERSION;
 var urlsToCache = [];
 
