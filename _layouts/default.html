@@ -10,6 +10,11 @@
 
   {% include header.html %}
 
+  <div id="refresh-notification" class="toast-notification bottom-left" data-notification-status="notice">
+    A new update is available! <a id="refresh-notification-link" href="#" onclick="return false;" class="toast-notification-refresh-link">Refresh</a> the page to see the most up-to-date content.
+    <span id="refresh-notification-close-btn" href="#" onclick="return false;" class="toast-notification-close-btn">&times;</span>
+  </div>
+
   <main id="main-content" role="main" {% if page.url contains "posts" %}itemscope itemtype="http://schema.org/Article"{% endif %}>
     {{ content }}
   </main>
