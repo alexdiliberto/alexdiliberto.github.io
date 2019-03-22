@@ -436,7 +436,7 @@ Dealing with Data in 2019 <small>- Igor Terzic</small>
     ```
     {% endraw %}
     - [ember-cli-mirage](https://www.ember-cli-mirage.com/) - Now because you have a schema, mirage automatically knows how to configure your backend
-    - Isolated Serializer Layer
+    - Isolated Serializer layer
     - [Fastboot](https://ember-fastboot.com/) - Easy inter-op
   - Embracing the consistency
   - [JSON API](https://jsonapi.org/) - Minimal amount of configuration necessary to play nicely with Ember
