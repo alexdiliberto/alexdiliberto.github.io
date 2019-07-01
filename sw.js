@@ -3,7 +3,7 @@ layout: null
 ---
 
 var APP_PREFIX = 'alexdiliberto-cache-';
-var VERSION = 'v26';
+var VERSION = 'v28';
 var CACHE_NAME = APP_PREFIX + VERSION;
 var urlsToCache = [];
 
@@ -48,6 +48,8 @@ var urlsToCache = [];
 //console.log('urlsToCache', urlsToCache);
 
 self.addEventListener('install', function(event) {
+  self.skipWaiting();
+
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
       return cache.addAll(urlsToCache);
@@ -87,4 +89,12 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
+});
+
+self.addEventListener('message', function(event) {
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting().then(function() {
+      window.location.reload();
+    });
+  }
 });

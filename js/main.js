@@ -1,8 +1,29 @@
+var newWorker;
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/sw.js').then(function(reg) {
       // registration worked
       console.log('Registration succeeded. Scope is ' + reg.scope);
+
+      // listen for changes to the service worker's state
+      reg.addEventListener('updatefound', function() {
+        // an updated service worker has appeared in reg.installing
+        newWorker = reg.installing;
+
+        newWorker.addEventListener('statechange', function() {
+          // has the service worker state changed?
+          switch (newWorker.state) {
+            case 'installed':
+              // only show the toast notification if there is currently a controller so it is not
+              // shown on first load
+              if (navigator.serviceWorker.controller) {
+                document.getElementById('refresh-notification').classList.add("do-show");
+              }
+              break;
+          }
+        });
+      });
     }).catch(function(error) {
       // registration failed
       console.log('Registration failed with ' + error);
@@ -66,6 +87,13 @@ function ready(fn) {
 ready(function() {
   var socialLinks = document.querySelectorAll(".post-share-menu-link");
   var goToTopLinks = document.querySelectorAll("a.top-link");
+
+  document.getElementById('refresh-notification-link').addEventListener('click', function() {
+    newWorker.postMessage({ action: 'skipWaiting' });
+  });
+  document.getElementById('refresh-notification-close-btn').addEventListener('click', function() {
+    document.getElementById('refresh-notification').classList.remove('do-show');
+  });
 
   outdatedBrowser({
     bgColor: '#f25648',
