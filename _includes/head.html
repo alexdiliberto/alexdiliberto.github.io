@@ -5,12 +5,14 @@
 
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 
+  <!-- Preconnect DNS, TLS, and TCP for external assets -->
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  
   <!-- Prefetch DNS for external assets -->
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="//ajax.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link rel="dns-prefetch" href="//www.google-analytics.com">
   <link rel="dns-prefetch" href="//ember-twiddle.com">
   <link rel="dns-prefetch" href="//assets.ember-twiddle.com">
@@ -120,7 +122,7 @@
     	}
     }( typeof global !== "undefined" ? global : this ));
 
-    loadCSS( 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' );
+    loadCSS( 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap' );
     loadCSS( '{{ "/css/main.css" | prepend: site.baseurl }}' );
   </script>
   <script>
