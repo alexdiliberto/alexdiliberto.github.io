@@ -35,7 +35,8 @@ plugins:
 
 # Exclude files and directories
 exclude:
-  - talks/*/node_modules
+  - talks/**/node_modules
+  - node_modules
 
 # Defaults
 defaults:
