@@ -44,4 +44,4 @@ defaults:
     scope:
       path: "" # empty string represents all files
     values:
-      description: "Hi! I'm Alex DiLiberto. I'm a web developer living in Charlotte, NC and this is my personal site."
+      description: "Hi! I'm Alex DiLiberto, software engineer and web developer living in Charlotte, NC and this is my personal site."
