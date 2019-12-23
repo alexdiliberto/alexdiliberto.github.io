@@ -11,4 +11,5 @@ exclude_patterns:
 - "talks/**"
 - "node_modules/**"
 - "_site/**"
+- "js/triangles**.js"
 - "*.lock"
