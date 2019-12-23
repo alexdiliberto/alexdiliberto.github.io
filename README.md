@@ -7,6 +7,7 @@
 <p align="center">
   <a href="https://jekyllrb.com/"><img src="http://img.shields.io/badge/Built%20with-Jekyll-blue.svg" alt="Built with Jekyll"></a>
   <a href="http://en.wikipedia.org/wiki/MIT_License"><img src="http://img.shields.io/badge/license-MIT-blue.svg" alt="License MIT"></a>
+  <a href="https://codeclimate.com/github/alexdiliberto/alexdiliberto.github.io/maintainability"><img src="https://api.codeclimate.com/v1/badges/d147708b9d28d4c2658b/maintainability" /></a>
 </p>
 
 <p align="center">
