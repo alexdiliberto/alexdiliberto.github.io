@@ -20,6 +20,10 @@
 
 ![alexdiliberto.com lighthouse score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/img/lighthouse-score.png)
 
+![alexdiliberto.com lighthouse runtime settings](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/img/lighthouse-runtime-settings.png)
+
+https://gist.github.com/alexdiliberto/560b4fce0b9884852740ad2f6590b438
+
 ### PageSpeed Insights
 
 ![alexdiliberto.com google pagespeed insights score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/img/pagespeed-insights-score.png)
