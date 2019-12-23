@@ -1,6 +1,6 @@
 # How To Contribute
 
-## Instal and serve locally
+## Install and serve locally
 
 ```sh
 $ gem install jekyll jekyll-sitemap jemoji
@@ -11,6 +11,8 @@ $ bundle exec jekyll serve -w -D -I
 
 # => Open [http://localhost:4000](http://localhost:4000)
 ```
+
+Basic rbenv troubleshooting: https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
 
 ### Test locally on a mobile device
 
