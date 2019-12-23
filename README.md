@@ -41,9 +41,10 @@ Email Forwarding is handled using [MailGun](https://app.mailgun.com)
 ### Caching
 
 ##### Cloudflare Cache
-CDN caching is currently enabled. Don't forget to ["Purge Everything"](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings) after successfully deploying a new post.
 
-Alternatively, simply [configure a `post-receive` githook](https://gist.github.com/alexdiliberto/4dd6572197d09dc2e664fe7c958c8982) to automatically purge
+CDN caching is currently enabled. Cache is purged after each commit to master using the [Cloudflare Purge Cache](https://github.com/marketplace/actions/cloudflare-purge-cache) GitHub Action.
+
+If, for some reason, you need to manually purge the cache, Login to Cloudflare and click ["Purge Everything"](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings) after successfully deploying a new post or as needed.
 
 #### Service Worker Cache
 Don't forget to increment the `sw.js` Service Worker cache value after publishing new content
