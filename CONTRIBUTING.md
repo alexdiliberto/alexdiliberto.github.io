@@ -12,8 +12,6 @@ $ bundle exec jekyll serve -w -D -I
 # => Open [http://localhost:4000](http://localhost:4000)
 ```
 
-Basic rbenv troubleshooting: https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
-
 ### Test locally on a mobile device
 
 ```sh
@@ -32,6 +30,8 @@ $ bundle update github-pages
 
 ### Help
 
-For more information about how to setup you local development environment, visit:
+Basic `rbenv` troubleshooting:
+https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
 
+For more information about how to setup you local development environment, visit:
 https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/
