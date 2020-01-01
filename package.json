@@ -25,5 +25,9 @@
     "outdatedbrowser": "^1.1.5",
     "svg4everybody": "^2.1.9"
   },
-  "private": true
+  "private": true,
+  "volta": {
+    "node": "12.14.0",
+    "yarn": "1.21.1"
+  }
 }
