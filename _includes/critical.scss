@@ -365,8 +365,9 @@ $color5: #6cd37d;
 $default-font-size: 16px;
 $default-font-size-large: 18px;
 
-/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+/*! HTML5 Boilerplate v7.3.0 | MIT License | https://html5boilerplate.com/ */
 
+/* main.css 2.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
@@ -387,7 +388,9 @@ html {
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
  *
- * These selection rule sets have to be separate.
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
  * Customize the background color to match your design.
  */
 
@@ -513,7 +516,7 @@ abbr[title] {
 
 /*****************************************************************************/
 /*
-/* Global (ALL UNIQUE GLOBAL SYTLES)
+/* Global (ALL UNIQUE GLOBAL STYLES)
 /*
 /*****************************************************************************/
 
