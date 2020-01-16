@@ -23,21 +23,31 @@ permalink: /posts/:title/
 
 
 # Sass
-sass:
-  sass_dir: _sass
-  style: :compressed
+# sass:
+#   sass_dir: _sass
+#   style: :compressed
 
 
 # Jekyll Plugins
 plugins:
+  - jekyll-postcss
+  - jekyll-purgecss
   - jekyll-sitemap
   - jemoji
 
 
-# Exclude files and directories
+# Exclude files and directories from processing
 exclude:
   - talks/**/node_modules
   - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - yarn.lock
+  - README.md
+  - postcss.config.js
+  - purgecss.config.js
+  - bin
+  - .gitignore
 
 
 # Defaults

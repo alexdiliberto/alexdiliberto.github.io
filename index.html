@@ -3,39 +3,39 @@ layout: default
 ---
 
 <h2>Posts</h2>
-<ul class="posts">
+<ul class="flex flex-col content-center justify-between mb-4">
 {% for post in site.posts %}
-  <li><a href="{{ post.url }}" class="title">{{ post.title }}</a>
-  <time datetime="{{ post.date | date: '%Y-%m-%d' }}"><small class="date">{{ post.date | date: '%B %-d, %Y' }}</small></time></li>
+  <li class="flex flex-row justify-between"><a href="{{ post.url }}">{{ post.title }}</a>
+  <time datetime="{{ post.date | date: '%Y-%m-%d' }}"><small class="text-gray-600">{{ post.date | date: '%B %-d, %Y' }}</small></time></li>
 {% endfor %}
 </ul>
 
 <h2>Talks</h2>
-<ul class="talks">
-  <li>
-    <a href="{{ "/talks/extending-ember-with-analytics/#/" | prepend: site.baseurl }}">Extending Ember with Analytics</a>
+<ul class="flex flex-col content-center justify-between mb-4">
+  <li class="flex flex-row justify-between">
+    <a href="{{ "/talks/extending-ember-with-analytics/#/" | prepend: site.baseurl }}" class="text-red-700hover:text-red-800  underline">Extending Ember with Analytics</a>
     {% include svg/book.html name="ember-with-analytics" url="http://confreaks.com/videos/3456-emberconf2014-extending-ember-with-analytics" %}
   </li>
-  <li>
+  <li class="flex flex-row justify-between">
     <a href="{{ "/talks/all-things-git/#/" | prepend: site.baseurl }}">All Things Git</a>
   </li>
 </ul>
 
 <h2>Ember Addons</h2>
-<ul class="ember-addons">
-  <li>
-    <a href="https://github.com/alexdiliberto/ember-transformicons">ember-transformicons</a>
+<ul class="flex flex-col content-center justify-between mb-4">
+  <li class="flex flex-row justify-between">
+    <a href="https://github.com/alexdiliberto/ember-transformicons" class="text-red-700hover:text-red-800  underline">ember-transformicons</a>
     {% include svg/book.html name="ember-transformicons" %}
   </li>
-  <li>
+  <li class="flex flex-row justify-between">
     <a href="https://github.com/alexdiliberto/ember-filepond">ember-filepond</a>
     {% include svg/book.html name="ember-filepond" %}
   </li>
-  <li>
+  <li class="flex flex-row justify-between">
     <a href="https://github.com/alexdiliberto/ember-milligram">ember-milligram</a>
     {% include svg/book.html name="ember-milligram" %}
   </li>
-  <li>
+  <li class="flex flex-row justify-between">
     <a href="https://github.com/alexdiliberto/ember-cowsay">ember-cowsay</a>
   </li>
 </ul>

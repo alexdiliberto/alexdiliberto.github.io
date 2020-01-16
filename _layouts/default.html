@@ -2,11 +2,11 @@
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="relative min-h-full antialiased">
 
   {% include head.html %}
 
-  <body itemscope itemtype="http://schema.org/WebPage">
+  <body itemscope itemtype="http://schema.org/WebPage" class="font-sans bg-gray-100">
 
   {% include header.html %}
 
@@ -15,7 +15,7 @@
     <span id="refresh-notification-close-btn" href="#" onclick="return false;" class="toast-notification-close-btn">&times;</span>
   </div>
 
-  <main id="main-content" role="main" {% if page.url contains "posts" %}itemscope itemtype="http://schema.org/Article"{% endif %}>
+  <main id="main-content" role="main" {% if page.url contains "posts" %}itemscope itemtype="http://schema.org/Article"{% endif %} class="container max-w-2xl mx-auto m-0 px-8 pb-8">
     {{ content }}
   </main>
 
