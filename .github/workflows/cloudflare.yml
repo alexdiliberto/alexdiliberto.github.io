@@ -3,7 +3,7 @@ name: Cloudflare
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   purge-cache:

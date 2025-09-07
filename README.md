@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://alexdiliberto.com"><img src="https://github.com/alexdiliberto/alexdiliberto.github.io/raw/master/favicon-192x192.png" alt="alexdiliberto.com website favicon"></a>
+  <a href="https://alexdiliberto.com"><img src="https://github.com/alexdiliberto/alexdiliberto.github.io/raw/main/favicon-192x192.png" alt="alexdiliberto.com website favicon"></a>
 </p>
 
 <h1 align="center">Alex's Personal Website &amp; Blog</h1>
@@ -19,15 +19,15 @@
 
 ### Lighthouse
 
-![alexdiliberto.com lighthouse score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/img/lighthouse-score.png)
+![alexdiliberto.com lighthouse score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/main/img/lighthouse-score.png)
 
-![alexdiliberto.com lighthouse runtime settings](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/img/lighthouse-runtime-settings.png)
+![alexdiliberto.com lighthouse runtime settings](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/main/img/lighthouse-runtime-settings.png)
 
 https://gist.github.com/alexdiliberto/560b4fce0b9884852740ad2f6590b438
 
 ### PageSpeed Insights
 
-![alexdiliberto.com google pagespeed insights score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/master/img/pagespeed-insights-score.png)
+![alexdiliberto.com google pagespeed insights score](https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/main/img/pagespeed-insights-score.png)
 
 ## Contributing
 
@@ -47,7 +47,7 @@ Email Forwarding is handled using [MailGun](https://app.mailgun.com)
 
 ##### Cloudflare Cache
 
-CDN caching is currently enabled. Cache is purged after each commit to master using the [Cloudflare Purge Cache](https://github.com/marketplace/actions/cloudflare-purge-cache) GitHub Action.
+CDN caching is currently enabled. Cache is purged after each commit to main using the [Cloudflare Purge Cache](https://github.com/marketplace/actions/cloudflare-purge-cache) GitHub Action.
 
 If, for some reason, you need to manually purge the cache, Login to Cloudflare and click ["Purge Everything"](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings) after successfully deploying a new post or as needed.
 
