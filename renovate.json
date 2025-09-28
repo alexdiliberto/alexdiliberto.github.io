@@ -27,7 +27,7 @@
       "groupName": "hugo-theme",
       "automerge": false,
       "minimumReleaseAge": "3 days"
-    }
+    },
     {
       "matchManagers": ["npm"],
       "matchPaths": ["static/talks/**"],
@@ -39,7 +39,7 @@
       "automerge": true,
       "automergeType": "pr",
       "ignoreTests": true
-    },
+    }
   ],
 
   "labels": ["dependencies"]
