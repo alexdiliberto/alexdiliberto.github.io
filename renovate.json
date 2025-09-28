@@ -23,9 +23,11 @@
   "packageRules": [
     {
       "matchManagers": ["gomod"],
-      "matchPaths": ["themes/PaperMod/**"],
-      "enabled": false
-    },
+      "matchPackageNames": ["github.com/adityatelange/hugo-PaperMod"],
+      "groupName": "hugo-theme",
+      "automerge": false,
+      "minimumReleaseAge": "3 days"
+    }
     {
       "matchManagers": ["npm"],
       "matchPaths": ["static/talks/**"],
