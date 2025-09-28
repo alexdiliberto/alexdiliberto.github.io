@@ -6,15 +6,39 @@
     ":dependencyDashboard",
     "group:allNonMajor"
   ],
+
+  "timezone": "America/New_York",
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "rangeStrategy": "bump",
+  "rebaseWhen": "behind-base-branch",
+  "minimumReleaseAge": "3 days",
+
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["monthly"]
+  },
+
   "packageRules": [
+    {
+      "matchManagers": ["gomod"],
+      "matchPaths": ["themes/PaperMod/**"],
+      "enabled": false
+    },
     {
       "matchManagers": ["npm"],
       "matchPaths": ["static/talks/**"],
       "enabled": false
-    }
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "automerge": true,
+      "automergeType": "pr",
+      "ignoreTests": true
+    },
   ],
-  "prConcurrentLimit": 5,
-  "rangeStrategy": "bump",
-  "schedule": ["before 6am on monday"],
+
   "labels": ["dependencies"]
 }
