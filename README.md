@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://alexdiliberto.com"><img src="https://github.com/alexdiliberto/alexdiliberto.github.io/raw/main/favicon-192x192.png" alt="alexdiliberto.com website favicon"></a>
+  <a href="https://alexdiliberto.com"><img src="https://raw.githubusercontent.com/alexdiliberto/alexdiliberto.github.io/main/static/android-chrome-192x192.png" alt="alexdiliberto.com website favicon"></a>
 </p>
 
 <h1 align="center">Alex's Personal Website &amp; Blog</h1>
