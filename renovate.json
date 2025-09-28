@@ -6,41 +6,53 @@
     ":dependencyDashboard",
     "group:allNonMajor"
   ],
-
   "timezone": "America/New_York",
-  "schedule": ["before 6am on monday"],
+  "schedule": [
+    "before 6am on monday"
+  ],
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "rangeStrategy": "bump",
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
-
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["monthly"]
+    "schedule": [
+      "monthly"
+    ]
   },
-
   "packageRules": [
     {
-      "matchManagers": ["gomod"],
-      "matchPackageNames": ["github.com/adityatelange/hugo-PaperMod"],
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchPackageNames": [
+        "github.com/adityatelange/hugo-PaperMod"
+      ],
       "groupName": "hugo-theme",
       "automerge": false,
       "minimumReleaseAge": "3 days"
     },
     {
-      "matchManagers": ["npm"],
-      "matchPaths": ["static/talks/**"],
+      "matchManagers": [
+        "npm"
+      ],
+      "matchFileNames": [
+        "static/talks/**"
+      ],
       "enabled": false
     },
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions"
+      ],
       "groupName": "github-actions",
       "automerge": true,
       "automergeType": "pr",
       "ignoreTests": true
     }
   ],
-
-  "labels": ["dependencies"]
+  "labels": [
+    "dependencies"
+  ]
 }
