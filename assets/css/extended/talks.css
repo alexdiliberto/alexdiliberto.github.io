@@ -1,0 +1,19 @@
+/* assets/css/extended/talks.css */
+
+.post-content .talks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* External link indicator (matches PaperMod docs style) */
+/* a.external::after {
+  content: "↗";
+  font-size: .75em;
+  margin-left: .25rem;
+  opacity: 0.75;
+}
+
+a.external:hover::after {
+  opacity: 1;
+} */

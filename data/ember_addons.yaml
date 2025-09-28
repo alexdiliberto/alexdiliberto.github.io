@@ -1,0 +1,18 @@
+- name: ember-transformicons
+  repo: https://github.com/alexdiliberto/ember-transformicons
+  docs: https://alexdiliberto.com/ember-transformicons
+  weight: 10
+
+- name: ember-filepond
+  repo: https://github.com/alexdiliberto/ember-filepond
+  docs: https://alexdiliberto.com/ember-filepond
+  weight: 20
+
+- name: ember-milligram
+  repo: https://github.com/alexdiliberto/ember-milligram
+  docs: https://alexdiliberto.com/ember-milligram
+  weight: 30
+
+- name: ember-cowsay
+  repo: https://github.com/alexdiliberto/ember-cowsay
+  weight: 40

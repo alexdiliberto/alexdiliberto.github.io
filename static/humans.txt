@@ -1,0 +1,10 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+  Alex DiLiberto | Software Engineer | @alex_diliberto | Charlotte, NC, USA
+
+
+# LICENSE
+  Code: MIT — https://github.com/alexdiliberto/alexdiliberto.com/blob/main/LICENSE
+  Content: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/

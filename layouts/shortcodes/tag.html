@@ -1,0 +1,14 @@
+{{- $name := lower (.Get "name" | default "span") -}}
+{{- $inlineTags := slice "abbr" "small" "span" "mark" "kbd" "sup" "sub" "code" "s" "u" "i" "b" -}}
+{{- if not (in $inlineTags $name) -}}
+  {{ errorf "tag shortcode: '%s' is not in allowlist (%v)" $name $inlineTags }}
+{{- end -}}
+
+<{{ $name }}
+{{- range $k, $v := .Params -}}
+  {{- if and (ne $k "name") (ne $k "selfclose") -}} {{ $k }}="{{ $v | htmlEscape }}"{{- end -}}
+{{- end -}}>
+  {{- $html := .Inner | emojify | markdownify -}}
+  {{- $inline := replace (replace $html "<p>" "") "</p>" "" -}}
+  {{- $inline | safeHTML -}}
+</{{ $name }}>

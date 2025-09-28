@@ -1,0 +1,11 @@
+<iframe
+  src="{{ .Get "src" }}"
+  width="{{ .Get "width" }}"
+  height="{{ .Get "height" }}"
+  {{ with .Get "style" }}style="{{ . }}"{{ end }}
+  loading="lazy"
+  referrerpolicy="no-referrer"
+  sandbox="allow-scripts allow-same-origin allow-popups"
+  frameborder="0"
+  allowfullscreen
+></iframe>

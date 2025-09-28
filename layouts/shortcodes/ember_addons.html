@@ -1,0 +1,26 @@
+{{- $class := .Get "class" | default "ember-addons-ul" -}}
+{{- $title := .Get "title" -}}
+{{- $items := site.Data.ember_addons | default (slice) -}}
+
+<section class="ember-addons-section">
+  {{ with $title }}<h2>{{ . }}</h2>{{ end }}
+
+  {{ if gt (len $items) 0 }}
+    <ul class="{{ $class }}">
+      {{- range sort $items "weight" "asc" -}}
+        {{- $it := . -}}
+        <li>
+          <a href="{{ $it.repo }}" target="_blank" rel="noopener">{{ $it.name }}</a>
+          {{- with $it.docs }}
+            <a href="{{ . }}" class="inline-icon" target="_blank" rel="noopener"
+               aria-label="{{ printf "%s docs" $it.name }}">
+              {{ partial "icons/docs.html" $it.name }}
+            </a>
+          {{- end }}
+        </li>
+      {{- end }}
+    </ul>
+  {{ else }}
+    <p>No addons found. Add items to <code>data/ember_addons.yaml</code>.</p>
+  {{ end }}
+</section>

@@ -1,0 +1,112 @@
+baseURL: https://alexdiliberto.com
+title: Alex DiLiberto
+languageCode: en-us
+enableRobotsTXT: true
+enableEmoji: true
+theme: PaperMod
+
+googleAnalytics: G-XGFV27HPQN
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+pagination:
+  pagerSize: 10
+
+# Content URLs
+permalinks:
+  posts: /posts/:slug/
+
+# Feeds / sitemap / outputs
+outputs:
+  home: ["HTML", "RSS", "JSON"]
+sitemap:
+  changefreq: "weekly"
+  priority: 0.6
+  filename: "sitemap.xml"
+
+# Taxonomies
+taxonomies:
+  category: categories
+  tag: tags
+
+# Markdown & code highlighting
+markup:
+  highlight:
+    # Use CSS classes so you can theme code with your own stylesheet(s).
+    noClasses: false
+    codeFences: true
+    lineNos: false
+    guessSyntax: false
+    anchorLineNos: false
+    tabWidth: 2
+    # Note: 'style' is ignored when noClasses=false, but keeping it is harmless.
+    style: github
+  goldmark:
+    parser:
+      # Allows attributes on headings/images/links, e.g. `## Title {.class}`
+      attribute: true
+
+# Theme params
+params:
+  env: production
+  defaultTheme: auto # to switch between dark or light according to browser theme
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  comments: false
+  showToc: true
+  TocOpen: false
+  homeInfoParams:
+    Title: "Hey, I'm Alex"
+    Content: "Software engineer. This is my blog."
+  socialIcons:
+    - name: x
+      url: "https://x.com/alex_diliberto"
+    - name: github
+      url: "https://github.com/alexdiliberto"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/alexdiliberto"
+    - name: email
+      url: "mailto:hello@alexdiliberto.com"
+  assets:
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+    safari_pinned_tab: "/mask-icon.svg"
+    theme_color: "#2E2E2E"
+    msapplication_TileColor: "#2E2E2E"
+  hideFooter: false
+  footer:
+    text: "[License](/license/)"
+
+menu:
+  main:
+    - identifier: home
+      name: home
+      url: /
+      weight: 1
+    - identifier: posts
+      name: posts
+      url: /posts/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: talks
+      name: talks
+      url: /talks/
+      weight: 30
+    - identifier: addons
+      name: addons
+      url: /addons/
+      weight: 40
+    - identifier: archives
+      name: archives
+      url: /archives/
+      weight: 50

@@ -1,0 +1,4 @@
+{{- $cls := .Get "class" -}}
+{{- $html := .Inner | markdownify -}}
+{{- $inline := replace (replace $html "<p>" "") "</p>" "" -}}
+<span{{ with $cls }} class="{{ . }}"{{ end }}>{{- $inline | safeHTML -}}</span>

@@ -1,0 +1,750 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>All Things Git | Alex DiLiberto</title>
+
+    <meta name="description" content="Discuss why Git the best choice for version control on your next project.">
+    <meta name="author" content="Alex DiLiberto">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Alex's Global CSS -->
+    <style>
+      .slides { font-size: 75% !important; }
+      blockquote > footer { text-align: right }
+      .bg-white { background-color: white !important; }
+      .img-smaller { width: 90%; height: auto; }
+      .cf:before, .cf:after { content: " "; display: table; }
+      .cf:after { clear: both; }
+      .emphasis { color: #e7ad52; }
+      ul ul { font-size: .8em !important; }
+      .references { font-size: .6em !important; }
+    </style>
+
+    <!-- Presentation Specific CSS -->
+    <style>
+      .slide-2 ul { margin-bottom: 2em; }
+      .slide-2 .img-tux { position: absolute; right: 20px; top: 20px; }
+      .slide-4-1 .svn-tag, .slide-4-1 .git-tag { font-size: 2em; }
+      .slide-4-1 .svn-tag { position: absolute; left: 15px; top: 168px; }
+      .slide-4-1 .git-tag { position: absolute; left: 0; bottom: 168px; }
+      .slide-6-2 .master-ptr, .slide-6-3 .master-ptr { position: absolute; right: -10px; top: 70px; border: none; background-color: transparent; box-shadow: none; }
+      .slide-6-2 .head-ptr, .slide-6-3 .head-ptr { position: absolute; right: -10px; top: -50px; border: none; background-color: transparent; box-shadow: none; }
+      .slide-6-3 .testing-ptr { position: absolute; right: -10px; bottom: 130px; border: none; background-color: transparent; box-shadow: none; }
+      .slide-7-2 .merge { position: absolute; left: 0; top: 138px; }
+      .slide-7-2 .vs { position: absolute; left: 32px; top: 290px; }
+      .slide-7-2 .rebase { position: absolute; left: 0; bottom: 136px; }
+      .slide-8 .callout { position: absolute; top: 240px; right: -35px; }
+      .slide-8 .git-on-the-server { position: absolute; top: 35px; right: 0; }
+    </style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+        <section class="slide-intro">
+          <h1>All Things Git</h1>
+          <h3>Git, GitHub, Git Hooks &amp; More</h3>
+          <p>Alex DiLiberto</p>
+          <p><a href="https://twitter.com/alex_diliberto">@alex_diliberto</a></p>
+          <p><a href="https://alexdiliberto.com">alexdiliberto.com</a></p>
+        </section>
+
+        <section class="slide-1">
+          <h2>Version Control?</h2>
+
+          <aside class="notes">
+            <p>Version control, revision control, source control??? Management of some collection of information</p>
+            <p>Note - not solely speaking in terms of software development. Any file could be version controlled.</p>
+            <p><i>EX: graphic designer who wants to keep a history of all changes to an image or page layout.</i></p>
+            <p>Allows you to revert to a previous state, see change history<p>
+            <p><i>EX: jQuery Plugin - Working on some awesome jQuery plugin, realize something you did wasn't working?</i>
+            <i> - Before: Press CMD-Z 100 Times, or if go through a bunch of timestamped file names.</i></p>
+            <p>Origins of client/server version control date back as far as the mid 80’s (CVS) but things really didn’t start getting too sophisticated until the late 90’s and into the early 21st century (BitKeeper – 1998, SVN – 2000, Monotone – 2003)</p>
+            <p>Three major phases since the beginning of Version control.</p>
+            <ul>
+              <li>1st Gen – File Locking system –Only one person could be working on a file at a time.</li>
+              <li>2nd Gen – Centralized - bit more permissive about simultaneous modifications. (serious downsides: single point of failure)</li>
+              <li>3rd Gen – Distributed - clients don’t just check out the latest file snapshots - they fully mirror the repository</li>
+            </ul>
+            <p>Every checkout is a complete backup of the data</p>
+            <p><i>EX: now what happens when that server goes down (corrupted HDD)</i></p>
+            <p>-> Fast forward to 2005 and the birth of Git...</p>
+          </aside>
+        </section>
+
+        <section class="slide-2">
+          <h2>git</h2>
+          <ul>
+            <li>2005</li>
+            <li>Linus Torvalds</li>
+            <li >Open source</li>
+            <li>Distributed version control</li>
+          </ul>
+          <img src="img/tux.png" alt="tux" width="200" height="237" class="img-tux bg-white">
+          <blockquote>
+            <p>&ldquo;Open source is the only right way to do software.&rdquo;</p>
+            <footer>Linus<footer>
+          </blockquote>
+
+          <aside class="notes">
+            <p>Created by Linus Torvalds (Finland)</p>
+            <ul>
+              <li>Chief architect and brains behind the Linux kernel</li>
+              <li>With that probably drove what I’d call one of the the most important/impactful technological advancements of the latter 20th century</li>
+            </ul>
+            <ul>
+              <li>Open source – The software for which the source code is freely available.</li>
+              <li>Distributed – Every Git working directory is a full repository with complete project history</li>
+            </ul>
+            <p>Quick Git history</p>
+            <ul>
+              <li>For most of the lifetime of the Linux kernel dev and maintenance (1991–2002), file updates were simply passed around as patches and archived files. (changesets)</li>
+              <li>2002, the Linux kernel project began using a proprietary DVCS system called BitKeeper.</li>
+              <li>2005, BitKeeper’s free-of-charge status was revoked and this prompted Linus Torvalds to develop his own tool</li>
+              <li>Based on on his experience working and needing something to support such a large project like the kernel, he wanted something with: Speed, Simple design, Ability to have hundreds of parallel branches, fully distributed</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="slide-3">
+          <h2>Why should I care?</h2>
+          <ol>
+            <li class="fragment" data-fragment-index="1">Community adoption</li>
+            <li class="fragment" data-fragment-index="2">Decentralized</li>
+            <li class="fragment" data-fragment-index="3">Performance</li>
+            <li class="fragment" data-fragment-index="4">Data assurance</li>
+            <li class="fragment" data-fragment-index="5">Free/open source</li>
+            <img class="fragment bg-white" data-fragment-index="1" src="img/octocat.png" alt="octocat" width="303" height="303">
+            <img class="fragment" data-fragment-index="5" src="img/osi_standard_logo.png" alt="open source initiative" width="265" height="303">
+          </ol>
+
+          <aside class="notes">
+            <small>Why is it better? Why should you be interested?</small>
+
+            <p>#1. Community adoption:</p>
+            <p>If you’ve been keeping an eye on the web dev world – you’ve probably at least heard of Git</p>
+            <p>GitHub has really helped this emergence</p>
+            <ul>
+              <li>-Hosted git server with solid UI</li>
+              <li>-It has really helped to introduce a Social aspect to coding</li>
+              <li>-Think of it kind of like wikipedia for code, it’s very interactive and collaborative</li>
+            </ul>
+
+            <p>#2. Decentralized:</p>
+            <p><i>Ex: You're on a plane taking a trip to Hawaii. Developing software (geek), something happened and you need an older version of the file you're working on but its on your SVN repo back at the office.</i></p>
+            <ul>
+              <li>-Backups</li>
+              <li>-Many different workflow possibilities with this setup (we’ll talk about later)</li>
+            </ul>
+
+            <p>#3. Performance: (Small + Fast)</p>
+            <ul>
+              <li>-Git's repo and working directory sizes are extremely small compared to SVN</li>
+              <li>-(Java Dev's) .SVN folder in each and every single directory.</li>
+              <li>-Git is generally orders of magnitude faster (Compared to most Centralized Version Control Systems)</li>
+              <li>-Nearly all operations are local which means ZERO network latency for almost everything you'll be doing.</li>
+            </ul>
+            <p>For some context I’ll give Examples:</p>
+            <ul>
+              <li>Commit Images (B) Add, commit and push 1000 1k images -1.53s vs. 24.70s - <b>16x</b> faster than SVN</li>
+              <li>Log (50) Log of the last 50 commits (19k of output) - 0.01s vs 0.38s - <b>31x</b></li>
+              <li>Log (All) Log of all commits (26k commits - 9.4M of output) - 0.52s vs. 169.20s - <b>325x</b></li>
+            </ul>
+
+            <p>#4. Data Assurance:</p>
+            <ul>
+              <li>-Git insures the cryptographic integrity of every bit in your project. Meaning...It's not possible to get anything out of Git other than the exact bits you put in because every file and commit is hashed and retrieved by its hash when checked out.</li>
+              <li>-Content-addressable filesystem – data is stored by a hash of its content rather than its filename on disk.</li>
+              <li>-Pic is a diagram of the SHA-1 compression function (Secure Hashing Algorithm)</li>
+              <li>-SHA-1 hash is 160bits, meaning 20 bytes and its expressed in hexadecimal. Quick math (each hex char 4 bits), that’s 40 Hex characters per a single SHA-1 hash.</li>
+            </ul>
+            <small>Fun Fact: The number of randomly hashed objects needed to ensure a 50% probability of a single collision is about 2^80 or 1 million billion billion. That’s 1,200 times the number of grains of sand on the earth. There’s a higher probability that every member of your programming team will be attacked and killed by wolves in unrelated incidents on the same night.</small>
+
+            <p>#5. Finally, its Free and Open Source</p>
+            <ul>
+              <li>-And who doesn’t love that?</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-4">
+            <h2>Time to shift our thinking</h2>
+
+            <aside class="notes">
+              <p>These next couple of slides are really important just to frame your mind around the actual basics of Git. Really try to clear your mind of the things you may know about other centralized VCSs, such as Subversion.</p>
+            </aside>
+          </section>
+          <section class="slide-4-1">
+            <h3 class="svn-tag">SVN</h3>
+            <img src="img/svn_repo.png" alt="SVN repository" width="635" height="283">
+            <h3 class="git-tag">Git</h3>
+            <img src="img/git_repo.png" alt="Git repository" width="635" height="283">
+
+            <aside class="notes">
+              <p><b>Top: SVN</b> - Other systems tend to store data as changes to a base version of each file.</p>
+              <p><b>Bottom: Git</b> - Git thinks of its data more as a set of snapshots.</p>
+              <p>This makes Git much much more like a mini filesystem. This filesystem concept is very pervasive and far-reaching in git <small>-We’ll talk about it a lot when we see branching coming up here shortly</small></p>
+            </aside>
+          </section>
+          <section class="slide-4-2">
+            <img src="img/diffs_vs_snapshots.png" alt="SVN repository" width="829" height="199" class="bg-white">
+
+            <aside class="notes">
+              <p>This is just another representation of the last slide, which may make more sense.</p>
+              <p>The SVN example as having each version basically “assembled” from its previous diffs</p>
+            </aside>
+          </section>
+          <section class="slide-4-3">
+            <img src="img/git_local_to_remote.png" alt="Git repository" width="1273" height="1043" class="bg-white img-smaller">
+
+            <aside class="notes">
+              <p>Git has three main states that your files can reside in:</p>
+              <ul>
+                <li>committed</li>
+                <li>modified</li>
+                <li>staged</li>
+              </ul>
+              <p><b>Committed</b> means that the data is safely stored in your local database.</p>
+              <p><b>Modified</b> means that you have created or changed the file but have not committed it to your database yet.</p>
+              <p><b>Staged</b> means that you have marked a modified file in its current version to go into your next commit snapshot.</p>
+              <p>Staging region can be a little strange to understand (especially coming from SVN). The staging area: simply an additional <b>file</b> that just stores information. Allows you to easily pick and choose what you want to commit from your working dir.</p>
+              <p>***QUICKLY TALK ABOUT  THE  LISTED COMMANDS*** <small>Note: we’ll discus them in more detail in the upcoming slides</small></p>
+              <p><i>Remember back to the Hawaii Example. All of this until the remote repo is local.</i></p>
+            </aside>
+          </section>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-5">
+            <h2>Basic Commands</h2>
+            <p>init, clone, add, commit, log, status</p>
+
+            <aside class="notes">
+              <p>There are 2 ways to get a Git project onto your local workspace:</p>
+              <ol>
+                <li>Init: takes an existing (or empty) project or directory and creates a git repo.</li>
+                <li>Clone: replicates an existing Git repository from another server.</li>
+              </ol>
+              <p>On the next two slides I'll show you both</p>
+            </aside>
+          </section>
+          <section class="slide-5-1">
+            <img src="img/init_clone_add_commit_log.png" alt="Show init, add, commit and log" width="1137" height="585">
+
+            <aside class="notes">
+              <p>***For logging, I also recommend using a GUI (shows in-depth state of the complex project you’re working on).</p>
+              <p><b>Gitk</b> is built into git, there are also other 3rd party ones which I’ve used and work great.</p>
+              <p><b>Gitx</b> on Mac and <b>SourceTree</b> which is cross platform.</p>
+            </aside>
+          </section>
+          <section class="slide-5-2">
+            <img src="img/clone_status.png" alt="Show clone and status" width="936" height="630">
+
+            <aside class="notes">
+              <p>Tweaking the previous example slightly</p>
+              <p>Note: Remember from earlier, Clone: replicates an existing Git repository from another server. <small>(In my Example you'll notice the <b>git:</b> protocol, you can also use <b>https</b> or <b>ssh</b> or even <b>file</b> for local stuff)</small></p>
+            </aside>
+          </section>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-6">
+            <h2>Branching</h2>
+
+            <aside class="notes">
+              <p>Give Branching intro (versatile, lightweight, very idiomatic for git)</p>
+              <p><i>Ex: You're working on a project with a few commits, you want to start working on a new feature which may or may not end up being used. Maybe you want to test some stuff you, you want to have a nice isolated environment. <b>BRANCHING</b></i></p>
+              <p>Going to go through a flow here showing what actually happens behind the scenes for branching in git</p>
+            </aside>
+          </section>
+          <section class="slide-6-1">
+            <img src="img/commit_snapshots.png" alt="Show an example of a snapshot of commits" width="1108" height="495" class="img-smaller">
+
+            <p><code>$ git commit -m 'initial commit of my project';</code></p>
+            <p><code>$ git commit -m 'fixed bug #1328...';</code></p>
+            <p><code>$ git commit -m 'add feature #32...';</code></p>
+
+            <aside class="notes">
+              <p>
+                Remember, earlier I spoke about how git actually stores data as a series of snapshots.
+                <i>**EX: Talk about “When you commit some code...”, the commit object (pointer to state tree and parent, name, email, comment)</i>
+              </p>
+            </aside>
+          </section>
+          <section class="slide-6-2">
+            <img src="img/commit_snapshots.png" alt="Show an example of a snapshot of commits" width="1108" height="495">
+            <img src="img/master_ptr.png" alt="Master branch pointer" width="149" height="127" class="fragment master-ptr" data-fragment-index="1">
+            <img src="img/head_ptr.png" alt="HEAD pointer" width="150" height="127" class="fragment head-ptr" data-fragment-index="1">
+
+            <p><b>Branch - simply a lightweight movable pointer to a single commit.</b></p>
+
+            <aside class="notes">
+              <p>It is a lightweight movable pointer to a commit – nothing more.</p>
+              <p><b>Master Branch:</b> Talk about this (defacto - default by convention)</p>
+              <p><b>HEAD</b> - a special pointer that Git uses to know which branch you’re currently on. It does a little more than that for now we’ll keep it simple. <small>Note: HEAD in Git is different from SVN and other VCSs where HEAD usually refers to the latest revision</small></p>
+            </aside>
+          </section>
+          <section class="slide-6-3">
+            <img src="img/commit_snapshots.png" alt="Show an example of a snapshot of commits" width="1108" height="495">
+            <img src="img/master_ptr.png" alt="master branch pointer" width="149" height="127" class="master-ptr">
+            <img src="img/head_ptr.png" alt="HEAD pointer" width="150" height="127" class="head-ptr">
+            <img src="img/testing_ptr.png" alt="testing branch pointer" width="149" height="127" class="fragment testing-ptr" data-fragment-index="1">
+
+            <p><code>$ git branch testing;</code></p>
+
+            <aside class="notes">
+              <p>Now say you want to create your own branch for some feature you’re testing...You do this with the git branch command (as shown)</p>
+              <p>(GIT CHECKOUT) Notice the git branch command only created a new branch — it didn’t switch to that branch</p>
+
+              <p><b>QUESTION</b>: What do you think will happen if I do another commit on this repository while I’m checked out onto the testing branch?</p>
+              <p><b>QUESTION</b>: Now Say I want to move back to the master branch? What happens (HEAD moves, local working directory is updated with new snapshot)</p>
+
+              <p><u>Branches Summary</u></p>
+              <ul>
+                <li>Lightweight/flexible/fast</li>
+                <li>"Branch early, and branch often"</li>
+                <li>So much power and control with simple 2 commands.</li>
+              </ul>
+              <p>REMEMBER: how quick and easy this is. A branch is ONLY a pointer. In SVN it would involve copying all of the projects files into a another directory.</p>
+            </aside>
+          </section>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-7">
+            <h2>Merge vs Rebase</h2>
+
+            <aside class="notes">
+              <p>Now we’ll talk about two more very important concepts</p>
+            </aside>
+          </section>
+          <section class="slide-7-1">
+            <img src="img/merge_v_rebase3.png" width="546" height="310" class="merge-v-rebase-one">
+            <img src="img/merge_v_rebase4.png" width="610" height="310" class="merge-v-rebase-two">
+
+            <aside class="notes">
+              <p>Lets look at this scenario. Top Two: Final state of the same log file shown 3 different ways</p>
+              <p>What I really want to talk about is on the next slide...</p>
+            </aside>
+          </section>
+          <section class="slide-7-2">
+            <img src="img/merge_v_rebase1.png" width="727" height="227" class="merge-v-rebase-three">
+            <p>What happened here?</p>
+            <img src="img/merge_v_rebase2.png" width="727" height="210" class="merge-v-rebase-four">
+
+            <span class="merge"><b>Merge</b></span>
+            <span class="vs">vs</span>
+            <span class="rebase"><b>Rebase</b></span>
+
+            <aside class="notes">
+              <p>This is looking at a new repository history. What happened here?</p>
+
+              <p><b>Merge:</b> Two Types: Fast Forward, and 3-Way Merge. 3-Way Merging in Git creates a special commit that has two unique parents. (Merge commit)</p>
+              <p><b>Rebase:</b> Takes all the changes that were committed on one branch and replay them on another one. Helps to produce a cleaner looking history.</p>
+
+              <p>Treat rebasing as a way to clean up and work with commits before you push them. <b>NEVER</b> rebase your commits that have already been pushed to a Remote branch. Git rebase is a re-write of history. You should never do this on branches that are "public" (i.e., branches that you share with others). If someone clones your branch and then you rebase that branch -- then they can no longer pull/merge changes from your branch -- they'll have to throw their old one away and re-pull.</p>
+            </aside>
+          </section>
+          <section class="slide-7-3">
+            <h2>Also...</h2>
+            <p>git pull --rebase</p>
+          </section>
+        </section>
+
+        <section class="slide-8">
+          <h2>Git on the Server</h2>
+
+          <img src="img/git_on_the_server.png" alt="Git on the server" width="197" height="152" class="git-on-the-server">
+
+          <ul>
+            <li>Simple Bare Repository
+              <ul>
+                <li>Quick</li>
+              </ul>
+            </li>
+            <li>Github
+              <ul>
+                <li>User centric hosted solution</li>
+              </ul>
+            </li>
+            <li>GitLab/Phabricator
+              <ul>
+                <li>Self hosted</li>
+              </ul>
+            </li>
+            <li>Gitolite
+              <ul>
+                <li>Access control layer sits on top of git</li>
+                <li>Single UNIX hosting user / Many “virtual” users</li>
+                <li>Simple yet powerful</li>
+                <li>Security with SSH based authentication</li>
+              </ul>
+            </li>
+          </ul>
+
+          <p class="callout emphasis">Lightweight<br><br>Transparent<br><br>Scalable</p>
+
+          <aside class="notes">
+            <p>
+              Bare Repo:
+              If you're a minimalist or just need something quick and dirty. Then all you really need for your own Git server is a bare repository
+               -Git repo without a working directory
+               -To Do This: Create the repo directly on the server or just secure copy from your local machine. Either way achieves the same result.
+
+              Gitolite:
+              Very similar to the bare repo option, but with a lot more options and convenience.
+
+              One of the most complicated aspects of setting up a Git server is user management.
+              Gitolite handles this extremely well.
+              Say you want some repositories to be read-only to certain users and read/write to others, access and permissions can be very bit difficult to manage.
+
+              At its core, Gitolite is an access control layer on top of git
+               -Single unix user and Many "virtual” users (alex, sai, nathan, rajeev, etc)
+               -Control Read and Write access from the greater repository level all the way down to the branch / directory level
+               -Simple yet powerful, written in about 3000 lines of perl and it has tons of solid documentation.
+               -SSH based authentication (Pub/Priv keys). Server tracks this information in an authorized_keys file.
+
+              TO ADD A NEW USER:
+              Simple - To add a new user Johnny, An admin just obtains a copy of Johnny’s public key, commit the change, push it to the server and everything else is taken care of.
+
+              Why Gitolite?
+               -Lightweight
+               -Transparent - The developer interacting with the gitolite server doesn't need to change around their workflow.
+               -Scalable
+
+              There are other solutions quite similar (Gitosis, Gitorious)
+               -But Gitolite is in full active development and has strong community support behind it
+
+              Finally GITHUB, which we discussed earlier.
+              - User centric and public repositories for all users are completely free.
+              - Rather than just pulling someone else’s code down you fork their project to create a copy of it under your user name
+            </p>
+          </aside>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-9">
+            <h2>Workflows</h2>
+
+            <aside class="notes">
+              <p>Now we’ll talk about two more very important concepts</p>
+            </aside>
+          </section>
+          <section class="slide-9-1">
+            <h3>Gitflow</h3>
+
+            <img src="img/gitflow_workflow.png" alt="Gitflow" width="614" height="348" class="bg-white">
+
+            <p><code>gem install gitflow</code></p>
+
+            <aside class="notes">
+              <p><b>Git Flow:</b> A branching workflow model which was created by a guy named Vincent Driessen</p>
+              <p>Documented, well tested, flexible</p>
+              <p>Git-flow plugin created to make this workflow extremely quick and easy to use.</p>
+            </aside>
+          </section>
+          <section class="slide-9-2">
+            <h3>Forking</h3>
+
+            <img src="img/forking_workflow.png" alt="Forking" width="400" height="344" class="bg-white">
+
+            <aside class="notes">
+              <p>GitHub style workflow</p>
+              <ul>
+                <li>Every developer gets a server-side repository</li>
+                <li>Developers push to their own server-side repositories</li>
+                <li>Only the project maintainer can push to the official repository</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section class="slide-10">
+          <h2>.git/hooks</h2>
+
+          <p class="emphasis"><code>pre-commit</code></p>
+          <p><code>post-commit</code></p>
+          <p class="emphasis"><code>pre-rebase</code></p>
+          <p><code>post-checkout</code></p>
+          <p><code>post-merge</code></p>
+          <p><code>pre-receive</code></p>
+          <p class="emphasis"><code>post-receive</code></p>
+          <p class="emphasis"><code>update</code></p>
+
+          <aside class="notes">
+            <p>
+              HOOKS:
+              - A hook is a shell script that Git will run at a specific time
+              EX: Before a commit, before you rebase, maybe on server after you push code to it, etc.
+
+              QUESTION: WHY USEFUL? WHAT ARE SOME USES FOR THIS?
+              Well for example, you could leverage a Git hook to run a complete test suite before you make a commit…and only commit if you have passing tests
+              You could have a hook to deploy your code to a webserver whenever you make a change
+
+              CLIENT: ***All the names are pretty self explanatory
+              PRE-COMMIT: Very useful to run certain tests so that you can abort the commit if tests fail
+              post-commit: Useful perhaps for any notification purposes
+              PRE-REBASE: remember what we talked about earlier, could be very useful to not allowing a rebase on any commits that have already been pushed.
+              post-checkout and post-merge: Not used a lot
+
+              SERVER:
+              pre-receive: can be used to check and interrupt the acceptance of the new commits.
+              POST-RECEIVE: notifies that commits have been published on this repository. Examples include e-mailing a list of people, notifying a CI server, deploying to a mirror branch for Git-SVN
+              UPDATE: is a version of pre-receive that is run once per each different branch. Could be very useful to trigger a wider set of testing server side, like functional or visual tests above and beyond just the unit tests of a pre-commit hook.
+            </p>
+          </aside>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-11">
+            <h2>Things we didn't cover in detail</h2>
+          </section>
+          <section class="slide-11-1">
+            <h3><code>$ git diff</code></h3>
+            <img src="img/git_diff.png" alt="Forking" width="431" height="404" class="bg-white">
+          </section>
+          <section class="slide-11-2">
+            <h3><code>$ git (revert|reset)</code></h3>
+            <img src="img/revert_reset.png" alt="Forking" width="378" height="382" class="bg-white">
+
+            <aside class="notes">
+              <p>
+                Undoing Changes
+                Revert – Undoes a single commit. “Safe” for commits that have already been made public.
+                Use when you want to remove a commit from your project history
+                *** NOTE: that 2nd commit in the Revert pic is still in the project history
+                Reset – DOES rewrite commit history. (unsafe for public commits). Can only work backwards from the current commit.
+                This of this more as a permanent undo.
+                Much more of a useful tool for cleaning up your staging region and local repository, before you make commits and publish them
+              </p>
+            </aside>
+          </section>
+          <section class="slide-11-3">
+            <ul>
+              <li>Tagging</li>
+              <li>Git Config
+                <ul>
+                  <li>user.name / user.email</li>
+                </ul>
+              </li>
+              <li>Branch traversal and detached HEAD state</li>
+              <li>Ancestors and Commit Ranges
+                <ul>
+                  <li><code>$ git show HEAD^</code></li>
+                  <li><code>$ git show feature~3</code></li>
+                  <li><code>$ git log origin/master..HEAD</code></li>
+                </ul>
+              </li>
+              <li>Undoing Changes
+                <ul>
+                  <li><code>$ git revert HEAD~2</code></li>
+                  <li><code>$ git reset HEAD^</code></li>
+                </ul>
+              </li>
+              <li><code>$ git stash</code></li>
+              <li>Remote branches</li>
+              <li>ReFlog</li>
+            </ul>
+
+            <aside class="notes">
+              <p>
+                Tagging – Flag for a specific point in your git history. (Generally used to mark releases)
+                1. Lightweight – just a pointer to a commit (think branch)
+                2. Annotated – Actually stored as an object in the Git repo. They are checksummed and contain the tagger name, email, date and message.
+
+                Git Config – self explanatory. Lets you configure your Git install. Lets you define everything from user info to preferences.
+                 -Set aliases. Set favorite text editor to show when writing commit messages.
+
+                Traversal/Detached Head/Ancestors
+                 .. syntax example = range of commits reachable by the HEAD reference but not the origin/master reference
+                 Allows you to see what you’re about to push to a remote branch
+
+
+                Diff
+                1. git diff –cached – Show differences between HEAD and staging region
+                2. git diff – Show differences between staging region and local working directory
+                3. git diff HEAD – Show differences between HEAD and your working directory
+
+                Stash – Takes a dirty state of your working directory and saves it on a stack
+                EX: working, need to switch for an urgent fix but don’t want to commit half-done work
+
+                Remote Branch – Read only reference (bookmark) to the state of a branch on your public repository. They only move locally when you do any type of network communication with that branch.
+                3 ways to interact.
+                1. Git fetch – downloads a branch from a remote repo; doesn’t integrate changes into local repo. (lets you inspect)
+                2. Git pull – *Same as SVN Update*. Automated version of fetch (same as git fetch + git merge)
+                3. Git push – Publish changes to the remote repo
+                *4th* Git remote – needed to setup a remote repository
+
+                RefLog – Used as a safety measure. It’s a log that keeps track of any updates made to branch tips.
+                Very useful if you accidentally blow away a commit you didn’t mean to.
+              </p>
+            </aside>
+          </section>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-12">
+            <h2>Do's, Don'ts, &amp; Best Practices</h2>
+
+            <aside class="notes">
+              <p>Gonna talk about some Do's and Don'ts including a list of best practices you should definitely follow when using git on a project.</p>
+            </aside>
+          </section>
+          <section class="slide-12-1">
+            <h3>Commit often, Perfect later, Publish once</h3>
+            <h3 class="fragment" data-fragment-index="1">Branch early, branch often</h3>
+            <h3 class="fragment" data-fragment-index="2">Use your scratch pads</h3>
+
+            <aside class="notes">
+              <p>
+                Commit Early/Commit Often:
+                1 commit should represent 1 idea or change. makes it easy to much easier revert unwanted changes later.
+                When you’re done with all your commits, Then you can hide the sausage making. (Optional)
+                Sausages taste good, but no one wants to see how they were made.
+                You can do the same thing by squashing commits and prettifying your commit history on push.
+
+                Scratch Pads – working directory, staging region, local repository
+                Don’t be afraid to use and abuse your scratch pads. Everything is still local. Perfect later!
+              </p>
+            </aside>
+          </section>
+          <section class="slide-12-2">
+            <h3>Don't panic</h3>
+            <p>
+              <code>git reflog</code>,&nbsp;&nbsp;<code>git fsck</code>,&nbsp;&nbsp;<code>git stash</code>
+            </p>
+            <h3 class="fragment" data-fragment-index="1">Do follow a workflow</h3>
+            <h3 class="fragment" data-fragment-index="2">Do write useful commit messages</h3>
+
+            <aside class="notes">
+              <p>
+                Don’t Panic:
+                If you mess up, there is generally 3 places "lost" work could be hiding.
+                 -git reflog - shows each commit that modified the git repo
+                 -git fsck - "file system check”. check for dangling commits (no longer reachable by reference name – branch/tag)
+                 -git stash – you may have stashed instead of committing and forgot about it.
+
+                Do follow a workflow - a guideline for how to use git within your project team
+
+                Useful commit message:
+                Lots of different guidelines out there.
+                The normal rule of thumb is to use first line to provide a short 50 char summary, followed by a new paragraph is a more detailed explanation.
+                git log --oneline will help you understand why
+              </p>
+            </aside>
+          </section>
+          <section class="slide-12-3">
+            <h3>Don't rewrite <em class="emphasis">(public)</em> history</h3>
+            <img src="img/bttf.png" alt="BTTF" width="371" height="227">
+
+            <aside class="notes">
+              <p>
+                Don't rewrite public history
+                Once you git push your changes to the upstream repository or otherwise make the commits, you should consider those commits etched in stone forever.
+                <b>***IMPORTANT***</b> if for any reason you later find out that you messed up. Just make new commits, rather than rewriting the old ones.
+              </p>
+            </aside>
+          </section>
+          <section class="slide-12-4">
+            <h3>All Your Rebase</h3>
+            <img src="img/all_your_base.png" alt="BTTF" width="369" height="271">
+            <p><code>git pull –rebase</code></p>
+            <p><code>git rebase –i</code></p>
+
+            <aside class="notes">
+              <p>
+                Rebase!
+                 -Use these 2 commands when you can.
+                  git pull –rebase instead of git pull - (git fetch; git rebase)
+                  git rebase –i before git push (perform basic maintenance before sharing – squash commits, reword commit msg’s)
+                 -Avoids unnecessary merge commits (can litter a projects history after some time), helps created a cleaner visual history.
+                git rebase -p *preserve merge commits*
+              </p>
+              <p>
+                *Rebase with a 2 caveats
+                If you've merged since last push, don't use pull –rebase
+                  - git fetch; git rebase –p;
+                When merging in a new feature
+              </p>
+            </aside>
+          </section>
+          <section class="slide-12-5">
+            <h3>Do enforce standards</h3>
+            <p>
+              <small>hooks, testing, proper commit messages, workflows, merging vs rebasing, and more</small>
+            </p>
+            <h3 class="fragment" data-fragment-index="1">Do Backup</h3>
+            <p class="fragment" data-fragment-index="1">
+              <code>$ git bundle create /tmp/my-project.backup --all</code>
+            </p>
+          </section>
+        </section>
+
+        <section class="slide-13">
+          <h2>References</h2>
+          <div class="references">
+            <p><a href="http://en.wikipedia.org/wiki/Git_(software)">http://en.wikipedia.org/wiki/Git_(software)</a></p>
+            <p><a href="http://git-scm.com/book">http://git-scm.com/book</a></p>
+            <p><a href="http://www.vogella.com/articles/Git/article.html">http://www.vogella.com/articles/Git/article.html</a></p>
+            <p><a href="http://vimeo.com/33631836">http://vimeo.com/33631836</a></p>
+            <p><a href="http://whygitisbetterthanx.com">http://whygitisbetterthanx.com</a></p>
+            <p><a href="http://nvie.com/posts/a-successful-git-branching-model/">http://nvie.com/posts/a-successful-git-branching-model/</a></p>
+            <p><a href="http://css.dzone.com/articles/all-git-hooks-you-need">http://css.dzone.com/articles/all-git-hooks-you-need</a></p>
+            <p><a href="http://net.tutsplus.com/tutorials/tools-and-tips/quick-tip-automation-with-git-hooks/">http://net.tutsplus.com/tutorials/tools-and-tips/quick-tip-automation-with-git-hooks/</a></p>
+            <p><a href="http://lwn.net/Articles/328436/">http://lwn.net/Articles/328436/</a></p>
+            <p><a href="http://www.gitguys.com/topics">http://www.gitguys.com/topics</a></p>
+            <p><a href="http://danielkummer.github.io/git-flow-cheatsheet/">http://danielkummer.github.io/git-flow-cheatsheet/</a></p>
+            <p><a href="http://www.slideshare.net/saharabeara/advanced-git-tutorial">http://www.slideshare.net/saharabeara/advanced-git-tutorial</a></p>
+            <p><a href="http://sethrobertson.github.io/GitBestPractices/">http://sethrobertson.github.io/GitBestPractices/</a></p>
+            <p><a href="http://mislav.uniqpath.com/2013/02/merge-vs-rebase/">http://mislav.uniqpath.com/2013/02/merge-vs-rebase/</a></p>
+          </div>
+        </section>
+
+        <section class="slide-14">
+          <h2>Thanks!</h2>
+          <p>Alex DiLiberto</p>
+          <p><a href="https://twitter.com/alex_diliberto">@alex_diliberto</a></p>
+          <p><a href="https://alexdiliberto.com">alexdiliberto.com</a></p>
+        </section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

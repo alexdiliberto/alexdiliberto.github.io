@@ -1,0 +1,24 @@
+/* assets/css/extended/addons.css */
+
+.post-content .ember-addons-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.inline-icon {
+  display: inline-flex;
+  margin-left: .35rem;
+  line-height: 1;
+}
+.inline-icon svg {
+  fill: currentColor;
+  opacity: .8;
+  width: 0.95em;
+  height: 0.95em;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.inline-icon:hover svg {
+  opacity: 1;
+  transform: translateY(-1px);
+}

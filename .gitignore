@@ -1,0 +1,35 @@
+# Hugo build output
+/public/
+/resources/_gen/
+/hugo_stats.json
+
+# Logs & debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# Node dependencies
+node_modules/
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Environment & build artifacts
+.env
+*.env.local
+*.env.*

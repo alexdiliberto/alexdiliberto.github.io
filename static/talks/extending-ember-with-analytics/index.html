@@ -1,0 +1,502 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Extending Ember with Analytics | Alex DiLiberto</title>
+
+    <meta name="description" content="EmberConf 2014 talk by Alex Diliberto explaining how to integrate web analytics tools into your Ember project.">
+    <meta name="author" content="Alex DiLiberto">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Alex's Global CSS -->
+    <style>
+      .slides { font-size: 75% !important; }
+      blockquote > footer { text-align: right }
+      .bg-white { background-color: white !important; }
+      .img-smaller { width: 90%; height: auto; }
+      .cf:before, .cf:after { content: " "; display: table; }
+      .cf:after { clear: both; }
+      .emphasis { color: #e7ad52; }
+      ul ul { font-size: .8em !important; }
+      .references { font-size: .6em !important; }
+      .embed-svg { display: inline-block; background-color: white; }
+      .reveal section img .h-center { display: block; margin: auto; }
+    </style>
+
+    <!-- Presentation Specific CSS -->
+    <style>
+      .reveal section img { border: none; background-color: transparent; box-shadow: none; }
+    </style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+        <section class="slide-intro">
+          <h1>Extending Ember with Analytics</h1>
+          <p>Alex DiLiberto</p>
+          <p><a href="https://twitter.com/alex_diliberto">@alex_diliberto</a></p>
+          <p><a href="https://alexdiliberto.com">alexdiliberto.com</a></p>
+
+          <aside class="notes">
+            <p>Hey I'm Alex DiLiberto, today we'll be talking about <strong>techniques</strong> you can <strong>use in your Ember projects right now</strong>, to help <strong>integrate with different web analytics tools</strong>.</p>
+          </aside>
+        </section>
+
+        <section class="slide-1">
+          <h2>Web Analytics?</h2>
+
+          <aside class="notes">
+            <p><strong><u>Web analytics give you the power to know how your visitors use your web application.</u></strong> It allows you to <strong>identify trends</strong> and make <strong>adjustments based on real data</strong>. Data like...</p>
+            <ul>
+              <li><strong>how many</strong> people visited your webapp</li>
+              <li><strong>where</strong> they were from</li>
+              <li><strong>which</strong> pages they visited</li>
+              <li><strong>how long</strong> they stayed on those pages</li>
+              <li>if they are a <strong>returning visitor</strong></li>
+              <li>which <strong>search keywords</strong> they used to get them to your webapp</li>
+              <li>user <strong>browser info</strong></li>
+            </ul>
+            <small>Even <strong>higher level</strong> things like - Do they like your recent changes and updates? <strong>Help you to determine how effective your marketing campaigns are.</strong></small>
+            <p><strong>Utilize A/B tests</strong> to tweak design and improve conversion rate in key areas of your webapp</p>
+            <p>These are just some of the many reasons why we want to move forward and integrate these analytics libraries with our single page ember apps</p>
+          </aside>
+        </section>
+
+        <section class="slide-2">
+          <img src="img/ember-logo.png" alt="Ember logo" width="596" height="227" class="ember-logo">
+          <img src="img/google-analytics-logo.png" alt="Google Analytics logo" width="384" height="384" class="google-analytics-logo">
+          <aside class="notes">
+            <p>GA logo - Talk will genrally be <strong>library agnostic</strong>. Simply because of its popularity, I have a few GA example snippets here an there embedded in the code examples but that's it. Theres so <strong>many different</strong> web analytics tools out there</p>
+            <p><strong>Integration</strong>: Easy right? <strong>Sign up</strong> online with your favorite analytics software, <strong>copy/paste</strong> the tracking javascript with your <strong>unique identifier</strong> and you're all set.</p>
+            <p><strong>SPWebApps</strong>, that easy integration becomes <strong>far less trivial</strong>.</p>
+            <p>The whole application lives on a <strong>one HTML page</strong> so all Analytics would report back to you is <strong>how many people loaded your application</strong>. <small>No visibility into what they are doing after that.</small></p>
+            <p>Lets <strong>Fix This</strong>! Just have to <strong>recreate</strong> some of the things we get for free with classic fullpage reloads.</p>
+          </aside>
+        </section>
+
+        <section class="slide-3">
+          <h2>Things to track:</h2>
+
+          <ol>
+            <li class="fragment" data-fragment-index="1">Page Views
+              <ul>
+                <li class="fragment" data-fragment-index="1"><code>{{link-to}}</code></li>
+                <li class="fragment" data-fragment-index="1"><code>this.transitionTo()</code></li>
+                <li class="fragment" data-fragment-index="1"><code>this.replaceWith()</code></li>
+                <li class="fragment" data-fragment-index="1"><code>/post/1</code>&nbsp;&#8594;&nbsp;<code>/post/2</code></li>
+                <li class="fragment" data-fragment-index="1">URL</li>
+              </ul>
+            </li>
+            <li class="fragment" data-fragment-index="2">Actions
+              <ul>
+                <li class="fragment" data-fragment-index="2"><code>{{action}}</code></li>
+                <li class="fragment" data-fragment-index="2"><code>this.send()</code></li>
+                <li class="fragment" data-fragment-index="2"><code>this.triggerAction()</code></li>
+                <li class="fragment" data-fragment-index="2"><code>this.sendAction()</code></li>
+                <li class="fragment" data-fragment-index="2">Simple actions</li>
+              </ul>
+            </li>
+          </ol>
+
+          <aside class="notes">
+            <p><strong>Page view tracking</strong> basically just translates to <strong>route changes</strong>.</p>
+            <p>Internally <strong>sendAction() calls triggerAction() which calls send()</strong>. So we see that <strong>send is one of the lower level api calls</strong>. We'll <strong>leverage this later</strong> as a hook, if you will, for our action implementation.</p>
+            <p><strong>Simple actions</strong>: User actions that you want to track which <strong>don't need to execuete any default event handling</strong>.</p>
+            <small>
+              <ul>
+                <li>Typing in a <strong>username</strong> then pressing tab</li>
+                <li>Tracking a successful <strong>login promise</strong> resolution and <strong>how long that took</strong></li>
+                <li>Tracking a <strong>user timeout</strong> warning</li>
+              </ul>
+            </small>
+          </aside>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-4">
+            <h2>Page View Tracking</h2>
+
+            <div class="embed-svg">
+              <?xml version="1.0" encoding="utf-8"?>
+              <!-- License Agreement at http://iconmonstr.com/license/ -->
+              <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+              <path id="bookmark-17-icon" d="M158.245,230.45V50h90.088v180.45l-45.045-39.832L158.245,230.45z M278.333,50v40h105.35v246.25
+                h-85.865V422h-169.5l-0.072-372H88.317v412h234.5l100.865-100.75V50H278.333z"/>
+              </svg>
+            </div>
+
+            <aside class="notes">
+              <p>Next two sections I'll cover <strong>different implementations</strong> for page view tracking and action tracking within Ember, discussing both <strong>good and bad techniques</strong>.</p>
+            </aside>
+          </section>
+
+          <section class="slide-4-1">
+            <h2>Naïve approach</h2>
+            <pre>
+              <code class="javascript">
+    Ember.Analytics = Ember.Mixin.create({
+      trackPageView: function() {
+        Ember.run.next(function() {
+          var loc = window.location,
+              page = loc.hash ? loc.hash.substring(1) : loc.pathname + loc.search;
+          ga('send', 'pageview', page);
+        });
+      }.observes('currentPath')
+    });
+              </code>
+            </pre>
+
+            <a href="http://emberjs.jsbin.com/puzax/12/edit">http://emberjs.jsbin.com/puzax/12/edit</a>
+
+            <aside class="notes">
+              <p>Start by noting the <strong>EmberJS Bins</strong> to follow along with</p>
+              <p><strong>Mixin</strong></p>
+              <p><strong>Ember.run.next()</strong>- Perhaps <strong>unfamiliar</strong> with the run loop. Because of the <strong>router and asyncronous behavior</strong>, Without it there you it will only <strong>log the currentPath before you clicked</strong> on the new link.</p>
+              <p><strong>Manually grab URL </strong>in this fashion - should <strong>set off a few alarms</strong> with many of you.</p>
+              <p><strong>Observer on currentPath</strong> property which is built in to the application controller</p>
+            </aside>
+          </section>
+
+          <section class="slide-4-2">
+            <h2>Bad Idea...</h2>
+            <ul>
+              <li>Must create previously auto-generated <code class="emphasis">controller:application</code></li>
+              <li>Even worse, inject this Mixin onto each specifc controller you want to track. <strong class="emphasis">#UGHHH!</strong></li>
+              <li>Does not scale well</li>
+              <li>Manually grabbing the URL via <code class="emphasis">window.location</code></li>
+              <li>Do not have access to the internal router object within the scope of this Mixin</li>
+              <li>Does <strong class="emphasis">NOT</strong> work for dynamic routes with model changes</li>
+              <li>Does <strong class="emphasis">NOT</strong> work for loading state or error state</li>
+            </ul>
+            <img src="img/tomster-bug.png" alt="Tomster smelly fish" class="h-center">
+
+            <aside class="notes">
+              <p>A beginning <strong>naive approach</strong> would be to <strong>create a Mixin/currentPath observer</strong>.</p>
+              <p>Grabbing URL via <strong>window.location - not Ember friendly </strong>if you ask me!</li>
+              <p>currentPath observer <strong>won't fire on model change</strong></p>
+              <b>Not a good solution!</b>
+            </aside>
+          </section>
+
+          <section class="slide-4-3">
+            <h2>Winning approach</h2>
+            <pre>
+              <code class="javascript">
+    App.ApplicationRoute = Ember.Route.extend({
+      actions: {
+        didTransition: function() {
+          Ember.run.once(this, function() {
+            ga('send', 'pageview', this.router.get('url'));
+          });
+        }
+      }
+    });
+              </code>
+            </pre>
+
+            <a href="http://emberjs.jsbin.com/puzax/14/edit">http://emberjs.jsbin.com/puzax/14/edit</a>
+
+            <aside class="notes">
+              <p>No Mixin, simply a <strong>hook on the application route</strong></p>
+              <p><strong>Ember.run.once()</strong> - More <strong>efficient</strong> in the same run loop iteration</p>
+              <p><strong>Use router to Grab URL</strong> in true Ember fashion</p>
+            </aside>
+          </section>
+
+          <section class="slide-4-4">
+            <h2>Much Better!</h2>
+            <ul>
+              <li>Clean</li>
+              <li>Simply use the auto-generated <code class="emphasis">controller:application</code></li>
+              <li>Scales well</li>
+              <li>Grabbing the URL via the internal <strong class="emphasis">router object</strong></li>
+              <li>Works great in all conditions
+                <ul>
+                  <li>Route changes</li>
+                  <li>Dynamic model changes</li>
+                  <li>Loading state</li>
+                  <li>Error state</li>
+                </ul>
+              </li>
+            </ul>
+
+            <aside class="notes">
+              <p>A winning solution would be to add a <strong>`didTransition` hook</strong> to the Application Route.</p>
+              <p><strong>No observers floating</strong> around no more <strong>window.whatever</strong></p>
+              <p>Use <strong>auto-generated application controller</strong> if you wish</p>
+              <p>Scales well - <strong>logic centralized</strong> in single location</p>
+              <p><strong>Ember friendly</strong> now - router.get('url')</p>
+              <small><strong>Shoutout to Matthew Beale</strong> who did some great work on <strong>integrating the didTransition hook into the router</strong> - which really helps to make this implementation so much cleaner.</small>
+            </aside>
+          </section>
+        </section>
+
+        <section class="multi-slide">
+          <section class="slide-5">
+            <h2>Action Tracking</h2>
+
+            <div class="embed-svg">
+              <?xml version="1.0" encoding="utf-8"?>
+              <!-- License Agreement at http://iconmonstr.com/license/ -->
+              <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+              <path id="cursor-pointer-2-icon" d="M230.609,80c13.906,0,18.68,9.272,18.68,23.18v102.844c0,19.223,7.324,25.894,13.175,25.894
+                c4.662,0,8.389-4.237,6.725-9.734l-4.012-13.374c17.926,2.729,28.811,4.045,32.482,16.167l3.062,9.632
+                c3.283,10.855,19.629,5.886,16.336-4.948l-4.23-12.449c16.18,2.152,28.082,3.705,31.633,15.437l3.391,9.38
+                c3.264,10.805,19.646,5.95,16.332-4.943l-3.557-10.072c25.791,3.669,35.357,28.594,31.768,60.46
+                c-4.797,42.594-34.166,62.935-34.166,144.529c-32.824,0-143.308,0-143.308,0c-15.432-61.973-46.52-105.326-81.875-138.431
+                c-20.861-19.533-17.609-40.151,3.494-40.15c25.078,0,60.752,28.374,76.393,45.396V103.18C212.931,89.272,216.705,80,230.609,80z
+                 M230.609,50c-27.051,0-47.678,18.098-47.678,53.18v134.274c-48.529-27.005-81.059-10.855-90.873,13.979
+                c-9.09,23.007,2.395,47.098,20.482,64.034c59.836,56.027,70.264,111.718,78.934,146.532h196.753v-30
+                c0-76.095,28.285-90.625,33.977-141.173c5.215-46.294-11.445-84.631-57.354-93.518c-15.742-3.048-85.562-16.652-85.562-16.652
+                V103.18C279.288,68.699,257.843,50,230.609,50z"/>
+              </svg>
+            </div>
+
+            <aside class="notes">
+            </aside>
+          </section>
+
+          <section class="slide-5-1">
+            <h2>Naïve approach</h2>
+            <pre>
+              <code class="xml">
+    <script type="text/x-handlebars" data-template-name="about/him">
+      <h2>about/him</h2>
+      <button {{action 'track' 'like-him'}}>Like Him</button>
+    </script>
+    <script type="text/x-handlebars" data-template-name="about/her">
+      <h2>about/her</h2>
+      <button {{action 'track' 'like-her'}}>Like Her</button>
+    </script>
+              </code>
+              <code class="javascript">
+    App.ApplicationRoute = Ember.Route.extend({
+      actions: {
+        track: function(data) {
+          ga('send', 'event', event.target.nodeName, event.type,
+             event.target.className, data);
+        }
+      }
+    });
+              </code>
+            </pre>
+
+            <a href="http://emberjs.jsbin.com/puzax/18/edit">http://emberjs.jsbin.com/puzax/18/edit</a>
+
+            <aside class="notes">
+              <p>A <strong>single 'tracking' action</strong> on the application route which is <strong>fed by template {{actions}}</strong></p>
+            </aside>
+          </section>
+
+          <section class="slide-5-2">
+            <h2>Bad Idea...</h2>
+            <ul>
+              <li><strong class="emphasis">Litters</strong> templates with analytics-only actions</li>
+              <li>No encapsulation</li>
+              <li>Code begins to fragment extremely quickly</li>
+              <li>Not a robust solution</li>
+              <li>Does not scale well</li>
+              <li>Does <strong class="emphasis">NOT</strong> allow easy-to-use/integrated programmatic action handling</li>
+            </ul>
+            <img src="img/tomster-bug.png" alt="Tomster smelly fish" class="h-center">
+
+            <aside class="notes">
+              <p>A naive solution would be to <strong>add {{action}} handlers</strong> on the specific elements <strong>within each template</strong> then <strong>bubble up to ApplicationRoute</strong> and track.</p>
+              <p><strong>Bloated</strong> templates</p>
+              <p>For <strong>every normal this.send()</strong> action, you would need an <strong>additional this.send('track')</strong> action.</p>
+              <b>Not a good solution!</b>
+            </aside>
+          </section>
+
+          <section class="slide-5-3">
+            <h2>Winning approach - Part 1</h2>
+            <pre>
+              <code class="javascript">
+    var analyticsObject = Ember.Object.create({
+      // Default data to be passed on every request
+      _: { site: "My Webapp Name" },
+      // Non route-based/global or fallback actions
+      _global: { _trackPromise: function(r, s) { return { route: r, status: s }; },
+      },
+      // Route-specific - e.g. {{action "baz"}} in foo.bar
+      //     foo: { //Route name
+      //       bar: {  //Leaf-most route name
+      //         baz: { var: 'borf' } //Action name
+      //       }
+      //     }
+      products: {
+        product: {
+          vote: function(v, c, p) { return { vote: v, color: c, product: p }; },
+          otherStuff: { var1: 'other-stuff' }
+        }
+      }
+    });
+              </code>
+            </pre>
+
+            <a href="http://emberjs.jsbin.com/puzax/47/edit">http://emberjs.jsbin.com/puzax/47/edit</a>
+
+            <aside class="notes">
+              <p>You may set the processor to be either a <strong>function</strong> or return a <strong>POJO</strong>.</p>
+              <p>If function, I can <strong>either pass in named parameters</strong> or, even better, since I have <strong>access to the current route scope</strong> so I can grab any route-specific data for even more dynamic analytics tracking.</p>
+              <p>Not listed, No tracking</p>
+            </aside>
+          </section>
+
+          <section class="slide-5-4">
+            <h2>Winning approach - Part 2</h2>
+            <pre>
+              <code class="javascript">
+    // Handles existing template {{action}}'s as well as programattic send()'s
+    //  {{action 'transferFunds'}}
+    //  this.send('_trackAppEvent', '_trackPromise', 'accounts#model', 'reject');
+    Ember.ActionHandler.reopen({
+      send: function(actionName) {
+        analyticsHandler.apply(this, arguments);
+      }
+    });
+              </code>
+            </pre>
+
+            <a href="http://emberjs.jsbin.com/puzax/47/edit">http://emberjs.jsbin.com/puzax/47/edit</a>
+
+            <aside class="notes">
+              <p><strong>ActionHandler is a Mixin</strong> under the hood which <strong>implementes the send</strong> function. With <strong>inheritance</strong> it's available to all <strong>Routes, Controllers, Components and Views</strong></p>
+              <p><strong>`reopen` augments ActionHandlers's Prototype</strong> with an <strong>updated `send()`</strong> function</p>
+            </aside>
+          </section>
+
+          <section class="slide-5-5">
+            <h2>Winning approach - Part 3</h2>
+            <pre>
+              <code class="javascript">
+  // Condensed analyticsHandler
+  var analyticsHandler = function(actionName) {
+    var router = this.target ? this.target.router : this.router.router,
+      activeTrans = router.activeTransition &amp;&amp; router.activeTransition.targetName,
+      curHandlerInfos = router.currentHandlerInfos,
+      activeLeafMostRoute = curHandlerInfos[curHandlerInfos.length - 1].name,
+      routeName = activeTrans || activeLeafMostRoute,
+      trackObj = aObj.get(routeName+'.'+actionName) || aObj.get('_global.'+actionName);
+
+    if (typeof trackObj == 'function') {
+      trackObj = trackObj.apply(this, [].slice.call(arguments, 1));
+    }
+    if (trackObj) {
+      analyticsSendHandlers.action(Em.Object.create(aObj.get('_'), trackObj));
+    }
+    if (actionName.indexOf('_track') !== 0) {
+      this._super.apply(this, arguments);
+    }
+  };
+              </code>
+            </pre>
+
+            <a href="http://emberjs.jsbin.com/puzax/47/edit">http://emberjs.jsbin.com/puzax/47/edit</a>
+
+            <aside class="notes">
+              <p>Thinking back, <strong>we have our analytics object</strong>. We have our <strong>hook into the ActionHandler</strong>. So Now we need an <strong>analytics handler to integrate </strong>these two.</p>
+              <p>Get the <strong>correctly scoped router object</strong> (diff for {{action}} vs send)</p>
+              <p>If currently <strong>active transition</strong>, grab the destination target name</p>
+              <p>currentHandlerInfos: <strong>array of currently resolved routes</strong> in nested order</p>
+              <p><strong>routeName/trackobject:</strong> Used to<strong> determine the final data</strong> which is <strong>sent to our analytics library</strong>.
+              <ol>
+                <li><strong>Currently transitioning</strong> (this.send()), get that <strong>new route's handler</strong></li>
+                <li><strong>Otherwise</strong>, get the <strong>active leaf-most</strong> route handler</li>
+                <li>If <strong>neither</strong> of these resolve, look in <strong>_global</strong>
+                <li>Finally, if <strong>nothing resolves</strong>, then <strong>no tracking</strong></li>
+              </ol>
+              <p>If <strong>handler is a function</strong>, then apply the supplied arguments. Now you have the <strong>returned Object from the function</strong>.</p>
+              <p><strong>Merge</strong> the route handler with the variables sent on every route, <strong>then call analytics</strong> library</p>
+              <p><strong>Skip</strong> the default action handling on simple tracking <small>e.g. (Typing in a username then pressing tab - Tracking a successful login - Tracking a user timeout warning)</small></p>
+            </aside>
+          </section>
+
+          <section class="slide-5-6">
+            <h2>Much Better!</h2>
+            <ul>
+              <li>Fully <strong class="emphasis">declarative</strong> analytics pattern</li>
+              <li>No more littered templates with analytics-specific actions</li>
+              <li>Works for template <strong class="emphasis">as well as</strong> programmatic based actions
+                <ul>
+                  <li><code>{{action}}</code></li>
+                  <li><code>this.send()</code></li>
+                  <li><code>this.triggerAction()</code></li>
+                  <li><code>this.sendAction()</code></li>
+                </ul>
+              <li>Flexibility / Encapsulation</li>
+              <li><strong class="emphasis">Decouples</strong> templates from analytics handling</li>
+              <li>Scales extremely well</li>
+              <li>Centralized processing</li>
+              <li>Leverages existing lower level API</li>
+            </ul>
+
+            <aside class="notes">
+              <p>A winning solution would be to <strong>integrating with the framework's existing lower level API's</strong> and <strong>leverage Ember.ActionHandler</strong> internals to do your actions processing.</p>
+            </aside>
+          </section>
+        </section>
+
+        <section class="slide-6">
+          <img src="img/tomster-under-construction.png" alt="Tomster mascot with a hardhat" width="472" height="529" class="ember-hardhat">
+        </section>
+
+        <section class="slide-7">
+          <h2>References</h2>
+          <div class="references">
+            <p><a href="https://alexdiliberto.com/talks/extending-ember-with-analytics">https://alexdiliberto.com/talks/extending-ember-with-analytics</a></p>
+            <p><a href="https://github.com/alexdiliberto/emberconf-2014-demo">alexdiliberto/emberconf-2014-demo</a></p>
+          </div>
+        </section>
+
+        <section class="slide-8">
+          <h2>Thanks!</h2>
+          <p>Alex DiLiberto</p>
+          <p><a href="https://twitter.com/alex_diliberto">@alex_diliberto</a></p>
+          <p><a href="https://alexdiliberto.com">alexdiliberto.com</a></p>
+        </section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

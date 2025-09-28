@@ -1,0 +1,14 @@
+- title: "Extending Ember with Analytics"
+  slug: "extending-ember-with-analytics"
+  external: true
+  weight: 10
+
+- title: "All Things Git"
+  slug: "all-things-git"
+  external: true
+  weight: 20
+
+# You can also link to an absolute URL instead of slug:
+# - title: "My Remote Talk"
+#   url: "https://example.com/slides/index.html"
+#   weight: 30
