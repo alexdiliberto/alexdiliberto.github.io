@@ -77,12 +77,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload Lychee report
+      - name: Upload Lychee Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lychee-report
-          path: lychee.md
+          path: lychee/out.md
           if-no-files-found: ignore
 
   deploy:
