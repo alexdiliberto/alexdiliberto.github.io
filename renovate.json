@@ -15,6 +15,10 @@
   "rangeStrategy": "bump",
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
+  "requiredStatusChecks": [
+    "Deploy Hugo to GitHub Pages / Build",
+    "Deploy Hugo to GitHub Pages / Deploy"
+  ],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": [
@@ -50,6 +54,20 @@
       "automerge": true,
       "automergeType": "pr",
       "ignoreTests": true
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^\\.github/workflows/.*\\.ya?ml$"],
+      "matchStrings": [
+        "hugo-version:\\s*['\"]?(?<currentValue>\\d+\\.\\d+\\.\\d+)['\"]?"
+      ],
+      "depNameTemplate": "gohugoio/hugo",
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "semver",
+      "extractVersionTemplate": "^v?(?<version>\\d+\\.\\d+\\.\\d+)$",
+      "autoReplaceStringTemplate": "hugo-version: \"{{newValue}}\""
     }
   ],
   "labels": [

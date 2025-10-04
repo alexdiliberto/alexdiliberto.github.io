@@ -1,0 +1,152 @@
+name: Deploy Hugo to GitHub Pages
+
+on:
+  pull_request:
+  push:
+    # filtering branches here prevents duplicate builds from pull_request and push
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# separate concurrency for branches/PRs so previews don't block each other
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: true
+  HUGO_ENVIRONMENT: production
+  HUGO_ENV: production
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+        # using Hugo Modules, not submodules
+        with:
+          submodules: false
+          fetch-depth: 0 # needed for --enableGitInfo
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.151.0'
+          extended: true
+
+      - name: Configure Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v5
+
+      - name: Build /public
+        run: |
+          hugo --minify --gc --enableGitInfo
+
+      # Always upload a normal artifact for downstream jobs
+      - name: Upload Site Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: ./public
+          if-no-files-found: error
+          retention-days: 7
+
+      # Only upload the special Pages artifact when deploying from main
+      - name: Upload Pages Artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./public
+
+  linkcheck:
+    name: Link Check
+    needs: build
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      # Needed so .lychee.toml exists and hashFiles() can hash it
+      - name: Checkout Code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Download Site Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: ./public
+
+      # Restore Lychee cache (disk cache file)
+      - name: Restore lychee cache
+        # Use restore/save split so we can save even if the check fails
+        id: lychee-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .lycheecache
+          # Branch-scoped cache; invalidate on .lychee.toml changes
+          key: ${{ runner.os }}-lychee-${{ github.ref_name }}-${{ hashFiles('.lychee.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-lychee-${{ github.ref_name }}-
+
+      - name: Lychee Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --cache
+            --max-cache-age 7d
+            --config .lychee.toml
+            --format markdown
+            --no-progress
+            ./public
+          output: lychee/out.md
+          jobSummary: true # already true by default, but keep for clarity
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Save Lychee cache even when the job fails
+      - name: Save Lychee Cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .lycheecache
+          # reuse the primary key from the restore step
+          key: ${{ steps.lychee-cache.outputs.cache-primary-key }}
+
+  deploy:
+    name: Deploy
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  purge-cloudflare:
+    name: Purge Cloudflare Cache
+    needs: deploy
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.deploy.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: none
+    steps:
+      - name: Purge Cache
+        uses: jakejarvis/cloudflare-purge-action@v0.3.0
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}

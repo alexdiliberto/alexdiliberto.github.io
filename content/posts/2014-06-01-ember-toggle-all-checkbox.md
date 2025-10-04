@@ -14,7 +14,7 @@ tags:
   style="border:0px"
 >}}
 
-I recently read an interesting article by Mark Przepiora titled [Ember.js Recipes: Checkboxable Index Pages Using itemController](http://codeflip.przepiora.ca/blog/2014/05/22/ember-js-recipes-checkboxable-index-pages-using-itemcontroller/). Mark makes several good points regarding the logical separation between controllers and models in Ember. He shows how to identify use cases when it's appropriate to leverage an `itemController` to wrap each item in a collection. Here is [his demo](https://ember-twiddle.com/98db39c9da13f2d48060a96c3be04493) which shows a simple implementation for a UI structure with a list of checkbox items and a delete button.
+I recently read an interesting article by Mark Przepiora titled [Ember.js Recipes: Checkboxable Index Pages Using itemController](https://codeflip.przepiora.ca/blog/2014/05/22/ember-js-recipes-checkboxable-index-pages-using-itemcontroller/). Mark makes several good points regarding the logical separation between controllers and models in Ember. He shows how to identify use cases when it's appropriate to leverage an `itemController` to wrap each item in a collection. Here is [his demo](https://ember-twiddle.com/98db39c9da13f2d48060a96c3be04493) which shows a simple implementation for a UI structure with a list of checkbox items and a delete button.
 
 I thought this would be a fun starting point for a quick post of my own, so I took Mark's idea and slightly expanded upon it by adding a *"Toggle Select All"* checkbox. I'll show [my demo](https://ember-twiddle.com/3de32b1404d8852665ef7d7af2c44950) and highlight some of the more interesting bits of code. Check it out.
 
@@ -45,8 +45,7 @@ App.IndexController = Ember.ObjectController.extend({
   /**
    This computed property acts as both a setter and a getter. Check
    out the docs for more information on this type of computed property:
-     http://emberjs.com/guides/object-model/computed-properties/#toc_setting-computed-properties
-     http://emberjs.com/guides/getting-started/toggle-all-todos/
+     https://guides.emberjs.com/v3.0.0/object-model/computed-properties/#toc_setting-computed-properties
   */
   allChecked: function(key, value){
     if (arguments.length === 1) /* get */ {

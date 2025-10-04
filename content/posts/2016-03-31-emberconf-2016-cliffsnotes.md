@@ -63,7 +63,7 @@ Opening Keynote {{< span class="u-small" >}}&ndash; Yehuda Katz, Tom Dale{{< /sp
     + Written in Typescript
   + The way we build web applications is changing
     + Ember - an SDK for the web
-    + [ember-appcache-demo by Erik Bryn](https://bit.ly/emberconfapp)
+    + [ember-appcache-demo by Erik Bryn](https://ebryn.github.io/ember-appcache-demo/#/day/1)
 
 
 Using Service Workers in Ember {{< span class="u-small" >}}&ndash; John Kleinschmidt{{< /span >}}
@@ -93,7 +93,7 @@ Selecting Good Ember Patterns {{< span class="u-small" >}}&ndash; Brenna O'Brien
   + Closure actions for better nested component action handling
   + Dynamic key lookup, use `{{get}}` helper
   + `{{mut}}` helper for 2 way binding. `onchange=(action (mut selectedFruit))`
-  + `{{ted-select}}` [http://tedconf.github.io/ember-ted-select](http://tedconf.github.io/ember-ted-select)
+  + `{{ted-select}}` [https://tedconf.github.io/ember-ted-select](https://tedconf.github.io/ember-ted-select/)
 
 
 Building Desktop Apps with Ember and Electron {{< span class="u-small" >}}&ndash; Felix Rieseberg{{< /span >}}
