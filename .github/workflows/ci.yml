@@ -12,7 +12,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  deployments: write
 
 # separate concurrency for branches/PRs so previews don't block each other
 concurrency:
@@ -119,22 +118,6 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          # PRs get a preview URL and pushes to `main` go straight to production
-          preview: ${{ github.event_name == 'pull_request' }}
-
-      - name: Show Preview URL
-        if: always()
-        run: |
-          echo "Preview URL: ${{ steps.deployment.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Comment Preview URL on PR
-        if: github.event_name == 'pull_request'
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          recreate: true
-          message: |
-            🚀 **Preview:** ${{ steps.deployment.outputs.page_url }}
 
   purge-cloudflare:
     name: Purge Cloudflare Cache
