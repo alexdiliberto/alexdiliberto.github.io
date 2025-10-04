@@ -66,12 +66,30 @@ jobs:
         run: |
           hugo --minify
 
+      # Restore Lychee cache (disk cache file)
+      - name: Restore lychee cache
+        # Use restore/save split so we can save even if the check fails
+        id: lychee-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .lycheecache
+          # Branch-scoped cache; invalidate on .lychee.toml changes
+          key: ${{ runner.os }}-lychee-${{ github.ref_name }}-${{ hashFiles('.lychee.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-lychee-${{ github.ref_name }}-
+
       - name: Lychee Link Checker
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --config .lychee.toml --format markdown --no-progress ./public
+          args: >
+            --cache
+            --max-cache-age 7d
+            --config .lychee.toml
+            --format markdown
+            --no-progress
+            ./public
           output: lychee/out.md
-          jobSummary: true   # already true by default, but keep for clarity
+          jobSummary: true # already true by default, but keep for clarity
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -79,6 +97,15 @@ jobs:
       - name: Add Report to Job Summary
         if: always()
         run: cat lychee/out.md >> "$GITHUB_STEP_SUMMARY"
+
+      # Save Lychee cache even when the job fails
+      - name: Save Lychee Cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .lycheecache
+          # reuse the primary key from the restore step
+          key: ${{ steps.lychee-cache.outputs.cache-primary-key }}
 
   deploy:
     name: Deploy
