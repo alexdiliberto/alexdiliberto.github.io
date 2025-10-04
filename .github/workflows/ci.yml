@@ -112,11 +112,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # This publishes the full report in the "Summary" tab of the job
-      - name: Add Report to Job Summary
-        if: always()
-        run: cat lychee/out.md >> "$GITHUB_STEP_SUMMARY"
-
       # Save Lychee cache even when the job fails
       - name: Save Lychee Cache
         if: always()
