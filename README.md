@@ -5,8 +5,8 @@
 <h1 align="center">Alex's Personal Website &amp; Blog</h1>
 
 <p align="center">
-  <a href="https://gohugo.io/"><img src="http://img.shields.io/badge/Built%20with-Hugo-blue.svg" alt="Built with Jekyll"></a>
-  <a href="http://en.wikipedia.org/wiki/MIT_License"><img src="http://img.shields.io/badge/license-MIT-blue.svg" alt="License MIT"></a>
+  <a href="https://gohugo.io/"><img src="https://img.shields.io/badge/Built%20with-Hugo-blue.svg" alt="Built with Jekyll"></a>
+  <a href="https://en.wikipedia.org/wiki/MIT_License"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License MIT"></a>
 </p>
 
 <p align="center">

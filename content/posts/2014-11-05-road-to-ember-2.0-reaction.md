@@ -18,7 +18,7 @@ So I just finished reading the [Road to Ember 2.0 RFC](https://github.com/emberj
 
 It is extremely refreshing to have a clear direction on the future of the framework with detailed transition instructions. The overarching theme here is *"Simplicity"* and *"Stability without Stagnation"* as opposed to *"Gigantic Sweeping Changes"*. The goal is to have development teams be able to easily port their applications over to 2.0 incrementally and without much fuss.
 
-I am really excited about so many of the upcoming changes. On the surface, this brings a higher-level polish to the API. The HTMLBars updates *(not really breaking news)* are fantastic. [Ember CLI](http://www.ember-cli.com/) and [ES6 modules](http://jsmodules.io/) are promoted to first class citizens for the framework. I like the move to HTML-based component syntax to align with web standards. The "Block Parameters" feature give the templates a extra splash of Ruby flavor.
+I am really excited about so many of the upcoming changes. On the surface, this brings a higher-level polish to the API. The HTMLBars updates *(not really breaking news)* are fantastic. [Ember CLI](https://cli.emberjs.com/release/) and [ES6 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) are promoted to first class citizens for the framework. I like the move to HTML-based component syntax to align with web standards. The "Block Parameters" feature give the templates a extra splash of Ruby flavor.
 
 There are a couple of items noted that do concern me:
 

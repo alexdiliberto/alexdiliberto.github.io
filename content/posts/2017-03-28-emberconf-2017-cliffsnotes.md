@@ -236,7 +236,7 @@ Counter-spells and the Art of Keeping Your Application Safe {{< span class="u-sm
 Animate the Web with Ember.js {{< span class="u-small" >}}&ndash; Jessica Jordan{{< /span >}}
 --------
 
-  + [Frame-by-Frame Animations](http://100photos.time.com/photos/eadweard-muybridge-horse-in-motion)
+  + [Frame-by-Frame Animations](https://100photos.time.com/photos/eadweard-muybridge-horse-in-motion)
   + Image Sequence + Display Frequency
   + [Phi phenomenon](https://en.wikipedia.org/wiki/Phi_phenomenon)
   + Flash animations &rarr; HTML 5 animations

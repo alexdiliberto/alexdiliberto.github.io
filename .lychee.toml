@@ -1,0 +1,32 @@
+# --- What to scan ---
+# Only scan the built site folder
+include = ["./public"]
+
+# --- Timeouts & retries ---
+max_concurrency = 8
+max_retries = 2
+retry_wait_time = "2s"
+timeout = "20s"
+# A browsery UA avoids some “bot blocked” sites
+user_agent = "Mozilla/5.0 (compatible; Lychee/2.0; +https://github.com/lycheeverse/lychee)"
+
+# --- Skip specific files/folders in the built site (old talks, etc.) ---
+exclude_path = [
+  "./public/talks/**"
+]
+
+# --- Ignore known bot-hostile or irrelevant links ---
+# (Regexes; adjust as needed)
+exclude = [
+  "^https?://(www\\.)?reddit\\.com/submit.*",
+  "^https?://news\\.ycombinator\\.com/submitlink.*",
+  "^http://localhost(:\\d+)?/.*",
+  "^file://.*",
+  # Optional: add particularly flaky domains here:
+  "^https?://ember-fastboot\\.com/.*",
+  "^https?://phaser\\.io/.*",
+  "^https?://(www\\.)?webpagetest\\.org/.*"
+]
+
+# --- Treat only 200-range as success (default). Keep 403/404 failing so you notice real issues. ---
+# accept = [200]

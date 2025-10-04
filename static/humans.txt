@@ -6,5 +6,5 @@
 
 
 # LICENSE
-  Code: MIT — https://github.com/alexdiliberto/alexdiliberto.com/blob/main/LICENSE
+  Code: MIT — https://github.com/alexdiliberto/alexdiliberto.github.io/blob/main/LICENSE
   Content: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
