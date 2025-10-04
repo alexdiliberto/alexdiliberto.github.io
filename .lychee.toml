@@ -15,13 +15,42 @@ exclude_path = [
   "./public/talks/**"
 ]
 
-# --- Ignore known bot-hostile or irrelevant links (regex) ---
+# --- Ignore list ---
 exclude = [
+  # Common schemes that aren’t HTTP(S)
+  "^mailto:",
+  "^tel:",
+  "^data:",
+
+  # Known bot-hostile sites
   "^https?://(www\\.)?reddit\\.com/submit.*",
   "^https?://news\\.ycombinator\\.com/submitlink.*",
   "^http://localhost(:\\d+)?/.*",
   "^file://.*",
   "^https?://ember-fastboot\\.com/.*",
   "^https?://phaser\\.io/.*",
-  "^https?://(www\\.)?webpagetest\\.org/.*"
+  "^https?://(www\\.)?webpagetest\\.org/.*",
+
+    # Old blog posts / dead references
+  "https://github.com/DockYard/styleguides/blob/master/engineering/ember.md#alias-your-model",
+  "https://www.mutuallyhuman.com/blog/2017/02/17/debugging-your-assumptions-ember-edition",
+  "http://cardstack.io/",
+  "http://shaffner.us/cs/papers/tarpit.pdf",
+  "https://100photos.time.com/photos/eadweard-muybridge-horse-in-motion",
+  "https://offirgolan.github.io/ember-burger-menu/",
+  "https://www.mheducation.ca/blog/series-classic-learning-science-expertise-and-expert-performance-in-chess/",
+  "https://alexdiliberto.com/bit.ly/emberconf",
+  "https://github.com/emberjs/rfcs/blob/AngleBracketInvocation/text/0000-angle-bracket-invocation.md",
+  "https://github.com/rwjblue/rfcs/blob/42/text/0000-grand-testing-unification.md",
+  "https://github.com/WebAssembly/binaryen/blob/master/src/wasm2asm.h",
+  "https://schedule-wasm.emberconf.com/",
+  "https://schedule.emberconf.com/",
+  "http://mcdowall.info/what-the-hell-is-ember-k/",
+  "https://broccoli.build/",
+  "https://codeafrique.com/",
+  "https://ember-styleguide.netlify.com/",
+  "https://videos.honeypot.io/emberjs-documentary-2019/",
+  "https://labs.planning.nyc.gov/",
+  "https://codepen.io/collection/AagvdL",
+  "https://www.w3.org/TR/core-aam-1.",
 ]
