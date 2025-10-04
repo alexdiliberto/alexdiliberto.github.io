@@ -1,7 +1,9 @@
 name: Deploy Hugo to GitHub Pages
 
 on:
+  pull_request:
   push:
+    # filtering branches here prevents duplicate builds from pull_request and push
     branches:
       - main
   workflow_dispatch:
@@ -11,36 +13,51 @@ permissions:
   pages: write
   id-token: write
 
+# separate concurrency for branches/PRs so previews don't block each other
 concurrency:
-  group: "pages"
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
+
+env:
+  CI: true
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout Code
+        uses: actions/checkout@v5
+        # using Hugo Modules, not submodules
+        with:
+          submodules: false
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "0.150.0"
+          hugo-version: '0.151.0'
           extended: true
 
-      - name: Build
-        run: hugo --minify
+      - name: Build /public
+        run: |
+          hugo --minify --gc --enableGitInfo
 
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./public
 
   deploy:
+    name: Deploy
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy
+        id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # PRs get a preview URL and pushes to `main` go straight to production
+          preview: ${{ github.event_name == 'pull_request' }}

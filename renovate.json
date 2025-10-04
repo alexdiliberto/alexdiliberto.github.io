@@ -15,6 +15,10 @@
   "rangeStrategy": "bump",
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
+  "requiredStatusChecks": [
+    "Deploy Hugo to GitHub Pages / Build",
+    "Deploy Hugo to GitHub Pages / Deploy"
+  ],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": [
