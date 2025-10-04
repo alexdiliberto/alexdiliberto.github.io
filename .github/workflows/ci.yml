@@ -69,21 +69,16 @@ jobs:
       - name: Lychee Link Checker
         uses: lycheeverse/lychee-action@v2
         with:
-          args: >
-            --config .lychee.toml
-            --format markdown
-            --no-progress
-            ./public
+          args: --config .lychee.toml --format markdown --no-progress ./public
+          output: lychee/out.md
+          jobSummary: true   # already true by default, but keep for clarity
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload Lychee Report
+      # This publishes the full report in the "Summary" tab of the job
+      - name: Add Report to Job Summary
         if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lychee-report
-          path: lychee/out.md
-          if-no-files-found: ignore
+        run: cat lychee/out.md >> "$GITHUB_STEP_SUMMARY"
 
   deploy:
     name: Deploy
