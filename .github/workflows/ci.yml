@@ -38,21 +38,6 @@ jobs:
           submodules: false
           fetch-depth: 0 # needed for --enableGitInfo
 
-      # Ensure CI uses the Go toolchain version from go.mod (for Hugo Modules)
-      # - name: Setup Go
-      #   uses: actions/setup-go@v5
-      #   with:
-      #     go-version-file: go.mod
-      #     cache: true
-      #     cache-dependency-path: |
-      #       **/go.sum
-
-      # - name: Setup Hugo
-      #   uses: peaceiris/actions-hugo@v3
-      #   with:
-      #     hugo-version: '0.151.0'
-      #     extended: true
-
       # Replace your Setup Go + Setup Hugo steps with this block
       - name: Setup Mise
         uses: jdx/mise-action@v3
@@ -67,7 +52,7 @@ jobs:
           path: |
             ~/.cache/hugo
             resources/_gen
-          key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.mod') }}-${{ hashFiles('**/go.sum') }}
+          key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.mod') }}-${{ hashFiles('**/go.sum') }}-${{ hashFiles('mise.toml') }}
           restore-keys: |
             ${{ runner.os }}-hugo-
 
@@ -183,7 +168,7 @@ jobs:
             --no-progress
             ./public
           output: lychee/out.md
-          jobSummary: true # already true by default, but keep for clarity
+          jobSummary: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
