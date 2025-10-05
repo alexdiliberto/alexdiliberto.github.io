@@ -161,6 +161,9 @@ jobs:
           name: site
           path: ./public
 
+      - name: Bust Lychee Cache (if needed)
+        run: rm -f .lycheecache
+
       # Restore Lychee cache (disk cache file)
       - name: Restore lychee cache
         # Use restore/save split so we can save even if the check fails
