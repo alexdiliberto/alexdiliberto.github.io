@@ -46,16 +46,6 @@ jobs:
           cache: true
           cache_key: "mise-{{platform}}-{{file_hash}}"
 
-      - name: Cache Hugo
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/hugo
-            resources/_gen
-          key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.mod') }}-${{ hashFiles('**/go.sum') }}-${{ hashFiles('mise.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-hugo-
-
       - name: Go Toolchain Info (DEBUG)
         if: github.event_name != 'push' || github.ref != 'refs/heads/main'
         env:
@@ -90,6 +80,16 @@ jobs:
           echo "-> hugo env output:"
           hugo env
           echo "=============================="
+
+      - name: Cache Hugo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/hugo
+            resources/_gen
+          key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.mod') }}-${{ hashFiles('**/go.sum') }}-${{ hashFiles('mise.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-hugo-
 
       # Surface module issues early (uses the Go toolchain above)
       - name: Hugo Modules Tidy
