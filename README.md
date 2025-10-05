@@ -39,9 +39,6 @@ CDN caching is currently enabled. Cache is purged after each commit to main usin
 
 If, for some reason, you need to manually purge the cache, Login to Cloudflare and click ["Purge Everything"](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/#step4cacheallthethings) after successfully deploying a new post or as needed.
 
-#### Service Worker Cache
-Don't forget to increment the `sw.js` Service Worker cache value after publishing new content
-
 #### Facebook Open Graph
 
 Fetch new [Facebook Scrape Information](https://developers.facebook.com/tools/debug/og/object/)

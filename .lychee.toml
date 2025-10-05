@@ -1,8 +1,8 @@
 # --- Concurrency & retries ---
 max_concurrency = 8
 max_retries = 2
-retry_wait_time = 2   # seconds
-timeout = 20          # seconds
+retry_wait_time = 2 # seconds
+timeout = 20        # seconds
 
 # --- Resolve root-relative links like "/favicon.svg" ---
 base_url = "https://alexdiliberto.com"
@@ -11,9 +11,7 @@ base_url = "https://alexdiliberto.com"
 user_agent = "Mozilla/5.0 (compatible; Lychee/2.0; +https://github.com/lycheeverse/lychee)"
 
 # --- Skip whole folders in the built site (optional) ---
-exclude_path = [
-  "./public/talks/**"
-]
+exclude_path = ["./public/talks/**"]
 
 # --- Ignore list ---
 exclude = [
@@ -31,7 +29,7 @@ exclude = [
   "^https?://phaser\\.io/.*",
   "^https?://(www\\.)?webpagetest\\.org/.*",
 
-    # Old blog posts / dead references
+  # Old blog posts / dead references
   "https://github.com/DockYard/styleguides/blob/master/engineering/ember.md#alias-your-model",
   "https://www.mutuallyhuman.com/blog/2017/02/17/debugging-your-assumptions-ember-edition",
   "http://cardstack.io/",

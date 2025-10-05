@@ -7,6 +7,7 @@ This site runs on **Hugo (Extended)** with the **PaperMod** theme.
 This project uses [Mise](https://mise.jdx.dev/) to manage development tool versions for consistency across environments.
 
 ### Setup
+
 ```bash
 # Install Mise (if not already installed)
 curl https://mise.run | sh
@@ -19,14 +20,15 @@ mise trust
 ```
 
 ### Tool Versions
+
 - **Go**: Version defined in `mise.toml`
 - **CI**: Automatically uses same versions via `jdx/mise-action`
 
 ### Why this is safer/cleaner
+
 - One source of truth (`mise.toml`) for **both** Go & Hugo.
 - No drift between CI and local dev.
 - Renovate’s **Mise manager** will bump versions in `mise.toml` for you.
-
 
 ---
 
@@ -37,7 +39,6 @@ mise trust
   hugo version
   ```
 - Git
-
 
 ---
 
@@ -125,6 +126,7 @@ Set `draft: false` when ready to publish.
 title: "Talks"
 showBreadCrumbs: false
 ---
+
 {{< talks >}}
 ```
 
@@ -144,6 +146,7 @@ showBreadCrumbs: false
 title: "Ember Addons"
 showBreadCrumbs: false
 ---
+
 {{< ember_addons >}}
 ```
 
