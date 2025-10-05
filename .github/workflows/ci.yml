@@ -81,6 +81,22 @@ jobs:
           hugo env
           echo "=============================="
 
+      - name: Compute Go Cache Paths
+        id: gopaths
+        run: |
+          echo "gomodcache=$(go env GOMODCACHE)" >> "$GITHUB_OUTPUT"
+          echo "gobuildcache=$(go env GOCACHE)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Go
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ steps.gopaths.outputs.gomodcache }}
+            ${{ steps.gopaths.outputs.gobuildcache }}
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}-${{ hashFiles('mise.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
       - name: Cache Hugo
         uses: actions/cache@v4
         with:
