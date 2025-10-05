@@ -46,7 +46,7 @@ jobs:
           cache-dependency-path: |
             **/go.sum
 
-      - name: Go Toolchain Info
+      - name: Go Toolchain Info (DEBUG)
         run: |
           go version
           go env GOPATH GOMODCACHE
@@ -67,7 +67,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-hugo-
 
-      - name: Hugo Env Info
+      - name: Hugo Env Info (DEBUG)
         run: hugo env
 
       # Surface module issues early (uses the Go toolchain above)
