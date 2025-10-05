@@ -54,11 +54,11 @@ jobs:
       #     extended: true
 
       # Replace your Setup Go + Setup Hugo steps with this block
-      - uses: jdx/mise-action@v3
+      - name: Setup Mise
+        uses: jdx/mise-action@v3
         with:
-          version: latest
-          install: true                 # runs `mise install` (reads mise.toml)
-          cache: true                   # enable built-in caching
+          install: true # runs `mise install` (reads mise.toml)
+          cache: true
           cache_key: "mise-{{platform}}-{{file_hash}}"
 
       - name: Cache Hugo
