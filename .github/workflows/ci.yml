@@ -46,11 +46,6 @@ jobs:
           cache-dependency-path: |
             **/go.sum
 
-      - name: Go Toolchain Info (DEBUG)
-        run: |
-          go version
-          go env GOPATH GOMODCACHE
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -67,8 +62,38 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-hugo-
 
+      - name: Go Toolchain Info (DEBUG)
+        env:
+          GOTOOLCHAIN: local # force Hugo to use the installed Go toolchain
+        run: |
+          echo "=============================="
+          echo " Go Toolchain Info"
+          echo "=============================="
+          echo "-> go on PATH:"
+          which go
+          echo
+          echo "-> go version:"
+          go version
+          echo
+          echo "-> go env (selected keys):"
+          go env GOPATH GOMODCACHE GOTOOLCHAIN
+          echo
+          echo "-> Triggering Hugo module operation (to ensure it shells out to go)..."
+          hugo mod graph >/dev/null
+          echo "[OK] Hugo successfully invoked go for module graph."
+          echo "=============================="
+
       - name: Hugo Env Info (DEBUG)
-        run: hugo env
+        run: |
+          echo "=============================="
+          echo " Hugo Environment Info"
+          echo "=============================="
+          which hugo
+          hugo version
+          echo
+          echo "-> hugo env output:"
+          hugo env
+          echo "=============================="
 
       # Surface module issues early (uses the Go toolchain above)
       - name: Hugo Modules Tidy
