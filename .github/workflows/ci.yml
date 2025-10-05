@@ -143,7 +143,9 @@ jobs:
   linkcheck:
     name: Link Check
     needs: build
-    if: github.event_name == 'pull_request'
+    if: >
+      github.event_name == 'pull_request' &&
+      !contains(github.event.pull_request.labels.*.name, 'dependencies')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -161,8 +163,7 @@ jobs:
           name: site
           path: ./public
 
-      # Restore Lychee cache (disk cache file)
-      - name: Restore lychee cache
+      - name: Restore Lychee Cache
         # Use restore/save split so we can save even if the check fails
         id: lychee-cache
         uses: actions/cache/restore@v4
@@ -172,6 +173,9 @@ jobs:
           key: ${{ runner.os }}-lychee-${{ github.ref_name }}-${{ hashFiles('.lychee.toml') }}
           restore-keys: |
             ${{ runner.os }}-lychee-${{ github.ref_name }}-
+
+      # - name: Bust Lychee Cache (if needed)
+      #   run: rm -f .lycheecache
 
       - name: Lychee Link Checker
         uses: lycheeverse/lychee-action@v2

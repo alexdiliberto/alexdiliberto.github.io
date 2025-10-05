@@ -1,13 +1,24 @@
-# Hugo build output
+# Hugo
 /public/
 /resources/_gen/
 /hugo_stats.json
+.hugo_build.lock
+
+# Lychee
+.lycheecache
 
 # Logs & debug
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Coverage
+coverage/
+coverage.*
+
+# Cache directories
+.cache/
 
 # Folder view configuration files
 .DS_Store
