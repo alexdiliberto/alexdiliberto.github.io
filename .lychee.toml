@@ -1,6 +1,6 @@
 # --- Concurrency & retries ---
-max_concurrency = 8
-max_retries = 2
+max_concurrency = 6
+max_retries = 3
 retry_wait_time = 2 # seconds
 timeout = 20        # seconds
 
@@ -28,6 +28,10 @@ exclude = [
   "^https?://ember-fastboot\\.com/.*",
   "^https?://phaser\\.io/.*",
   "^https?://(www\\.)?webpagetest\\.org/.*",
+  "^https?://(www\\.)?github\\.com/.*/blob/.*$",
+
+  # Known "non-content" URLs
+  "^https?://(www\\.)?facebook\\.com/sharer/sharer\\.php\\?.*$",
 
   # Old blog posts / dead references
   "https://github.com/DockYard/styleguides/blob/master/engineering/ember.md#alias-your-model",
