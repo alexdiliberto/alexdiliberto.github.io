@@ -21,7 +21,13 @@ mise trust
 ### Tool Versions
 - **Go**: Version defined in `mise.toml`
 - **CI**: Automatically uses same versions via `jdx/mise-action`
-- 
+
+### Why this is safer/cleaner
+- One source of truth (`mise.toml`) for **both** Go & Hugo.
+- No drift between CI and local dev.
+- Renovate’s **Mise manager** will bump versions in `mise.toml` for you.
+
+
 ---
 
 ## 1. Prerequisites
