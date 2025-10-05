@@ -2,16 +2,42 @@
 
 This site runs on **Hugo (Extended)** with the **PaperMod** theme.
 
+## Tool Version Management
+
+This project uses [Mise](https://mise.jdx.dev/) to manage development tool versions for consistency across environments.
+
+### Setup
+```bash
+# Install Mise (if not already installed)
+curl https://mise.run | sh
+
+# Install tools defined in mise.toml
+mise install
+
+# Trust the configuration (required once for security)
+mise trust
+```
+
+### Tool Versions
+- **Go**: Version defined in `mise.toml`
+- **CI**: Automatically uses same versions via `jdx/mise-action`
+
+### Why this is safer/cleaner
+- One source of truth (`mise.toml`) for **both** Go & Hugo.
+- No drift between CI and local dev.
+- Renovate’s **Mise manager** will bump versions in `mise.toml` for you.
+
+
 ---
 
 ## 1. Prerequisites
 
-- [Hugo Extended](https://gohugo.io/getting-started/installing/) v0.150.0+
+- [Hugo Extended](https://gohugo.io/getting-started/installing/) v0.151.0+
   ```sh
   hugo version
   ```
 - Git
-- Node.js (optional, only if you plan to work on frontend tooling)
+
 
 ---
 

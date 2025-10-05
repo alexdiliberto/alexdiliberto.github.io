@@ -6,6 +6,9 @@
     ":dependencyDashboard",
     "group:allNonMajor"
   ],
+  "mise": {
+    "enabled": true
+  },
   "timezone": "America/New_York",
   "schedule": [
     "before 6am on monday"
@@ -16,8 +19,7 @@
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
   "requiredStatusChecks": [
-    "Deploy Hugo to GitHub Pages / Build",
-    "Deploy Hugo to GitHub Pages / Deploy"
+    "Deploy Hugo to GitHub Pages / Build"
   ],
   "lockFileMaintenance": {
     "enabled": true,
@@ -54,20 +56,6 @@
       "automerge": true,
       "automergeType": "pr",
       "ignoreTests": true
-    }
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": ["^\\.github/workflows/.*\\.ya?ml$"],
-      "matchStrings": [
-        "hugo-version:\\s*['\"]?(?<currentValue>\\d+\\.\\d+\\.\\d+)['\"]?"
-      ],
-      "depNameTemplate": "gohugoio/hugo",
-      "datasourceTemplate": "github-tags",
-      "versioningTemplate": "semver",
-      "extractVersionTemplate": "^v?(?<version>\\d+\\.\\d+\\.\\d+)$",
-      "autoReplaceStringTemplate": "hugo-version: \"{{newValue}}\""
     }
   ],
   "labels": [
