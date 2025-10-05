@@ -172,8 +172,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-lychee-${{ github.ref_name }}-
 
-      - name: Bust Lychee Cache (if needed)
-        run: rm -f .lycheecache
+      # - name: Bust Lychee Cache (if needed)
+      #   run: rm -f .lycheecache
 
       - name: Lychee Link Checker
         uses: lycheeverse/lychee-action@v2
