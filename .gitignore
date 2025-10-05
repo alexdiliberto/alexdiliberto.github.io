@@ -1,7 +1,8 @@
-# Hugo build output
+# Hugo
 /public/
 /resources/_gen/
 /hugo_stats.json
+.hugo_build.lock
 
 # Logs & debug
 *.log
