@@ -1,0 +1,8 @@
+[tools]
+golang = "1.25.1"
+hugo = "0.151.0"
+
+[env]
+GOPROXY = "https://proxy.golang.org,direct"
+GOSUMDB = "sum.golang.org"
+GOTOOLCHAIN = "local"
