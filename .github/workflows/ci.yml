@@ -143,7 +143,9 @@ jobs:
   linkcheck:
     name: Link Check
     needs: build
-    if: github.event_name == 'pull_request'
+    if: >
+      github.event_name == 'pull_request' &&
+      !contains(github.event.pull_request.labels.*.name, 'dependencies')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
