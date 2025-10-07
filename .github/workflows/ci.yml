@@ -13,7 +13,7 @@ permissions:
 
 # separate concurrency for branches/PRs so previews don't block each other
 concurrency:
-  group: pages-${{ github.ref }}
+  group: hugo-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 env:
