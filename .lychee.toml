@@ -30,7 +30,9 @@ exclude = [
   "^https?://(www\\.)?webpagetest\\.org/.*",
   "^https?://(www\\.)?github\\.com/.*/blob/.*$",
   "^https?://azure\\.microsoft\\.com/en-us/services/cognitive-services/video-indexer/?$",
-
+  "^https://webpack\\.js\\.org/?$",
+  "^https://redux-saga\\.js\\.org/?$",
+  
   # Known "non-content" URLs
   "^https?://(www\\.)?facebook\\.com/sharer/sharer\\.php\\?.*$",
 
