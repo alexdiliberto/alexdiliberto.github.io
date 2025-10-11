@@ -2,3 +2,54 @@
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="msapplication-config" content="/browserconfig.xml">
+
+<!--
+🔥 Service Worker Cleanup Helper
+This script exists because the old blog at alexdiliberto.com registered a service worker at /sw.js
+that cached pages aggressively. To prevent visitors from being stuck with stale offline content,
+this snippet:
+  • Unregisters the legacy root /sw.js service worker (scope = /)
+  • Listens for a "SW_CLEAR_AND_RELOAD" message from the deployed "kill" sw.js file
+  • Reloads the page once so the browser fetches fresh content
+It’s safe to leave in place indefinitely — negligible performance cost — but note:
+  • If you ever want to add a NEW service worker in the future, adjust/remove this script first,
+    otherwise it will keep unregistering it.
+-->
+<script>
+if ('serviceWorker' in navigator) {
+  // change this if you ever want to re-run the cleanup
+  const KILL_SENTINEL = 'sw_killed_v1';
+
+  // Reload once if the "killer" SW tells us it has cleared caches
+  navigator.serviceWorker.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'SW_CLEAR_AND_RELOAD') {
+      try { location.reload(true); } catch (_) { location.reload(); }
+    }
+  });
+
+  // Only run the unregister pass once per browser
+  if (!localStorage.getItem(KILL_SENTINEL)) {
+    navigator.serviceWorker.getRegistrations()
+      .then((regs) => {
+        for (const r of regs) {
+          // Only unregister the legacy root worker at /sw.js (full-origin scope)
+          const isRootScope = r.scope === (location.origin + '/');
+          const scriptURL =
+            (r.active && r.active.scriptURL) ||
+            (r.waiting && r.waiting.scriptURL) ||
+            (r.installing && r.installing.scriptURL) ||
+            '';
+          const isLegacyScript = /\/sw\.js(\?.*)?$/.test(scriptURL);
+
+          if (isRootScope && isLegacyScript) {
+            r.unregister().catch(() => {});
+          }
+        }
+      })
+      .finally(() => {
+        // mark as done so we don't do this work again
+        try { localStorage.setItem(KILL_SENTINEL, '1'); } catch (_) {}
+      });
+  }
+}
+</script>
