@@ -125,7 +125,7 @@ jobs:
 
       # Always upload a normal artifact for downstream jobs
       - name: Upload Site Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: site
           path: ./public
@@ -158,7 +158,7 @@ jobs:
           fetch-depth: 0
 
       - name: Download Site Artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: site
           path: ./public
