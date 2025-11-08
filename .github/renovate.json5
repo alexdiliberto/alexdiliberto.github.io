@@ -6,59 +6,35 @@
     ":dependencyDashboard",
     "group:allNonMajor"
   ],
-  "mise": {
-    "enabled": true
-  },
+  "mise": {"enabled": true},
   "timezone": "America/New_York",
-  "schedule": [
-    "before 6am on monday"
-  ],
+  "schedule": ["before 6am on monday"],
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "rangeStrategy": "bump",
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
-  "requiredStatusChecks": [
-    "Deploy Hugo to GitHub Pages / Build"
-  ],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": [
-      "monthly"
-    ]
-  },
+  "lockFileMaintenance": {"enabled": true, "schedule": ["monthly"]},
   "packageRules": [
     {
-      "matchManagers": [
-        "gomod"
-      ],
-      "matchPackageNames": [
-        "github.com/adityatelange/hugo-PaperMod"
-      ],
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["github.com/adityatelange/hugo-PaperMod"],
       "groupName": "hugo-theme",
       "automerge": false,
       "minimumReleaseAge": "3 days"
     },
     {
-      "matchManagers": [
-        "npm"
-      ],
-      "matchFileNames": [
-        "static/talks/**"
-      ],
+      "matchManagers": ["npm"],
+      "matchFileNames": ["static/talks/**"],
       "enabled": false
     },
     {
-      "matchManagers": [
-        "github-actions"
-      ],
+      "matchManagers": ["github-actions"],
       "groupName": "github-actions",
       "automerge": true,
       "automergeType": "pr",
       "ignoreTests": true
     }
   ],
-  "labels": [
-    "dependencies"
-  ]
+  "labels": ["dependencies"]
 }
