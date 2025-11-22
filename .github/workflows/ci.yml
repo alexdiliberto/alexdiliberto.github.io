@@ -32,7 +32,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         # using Hugo Modules, not submodules
         with:
           submodules: false
@@ -153,7 +153,7 @@ jobs:
     steps:
       # Needed so .lychee.toml exists and hashFiles() can hash it
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
