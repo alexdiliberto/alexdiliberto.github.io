@@ -10,9 +10,10 @@ base_url = "https://alexdiliberto.com"
 # --- Friendlier UA (some sites block bots) ---
 user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
 
-# --- Treat common bot-block responses as non-fatal ---
-# 403 is extremely common for Medium, Goodreads, etc.
-accept = [403]
+# --- Accept status codes ---
+# NOTE: In lychee, `accept` replaces the default list.
+# Include normal success codes + common bot-block 403.
+accept = [200, 204, 206, 301, 302, 307, 308, 403]
 
 # --- Skip whole folders in the built site (optional) ---
 exclude_path = ["./public/talks/**"]
@@ -24,23 +25,11 @@ exclude = [
   "^tel:",
   "^data:",
 
-  # Known bot-hostile sites (submit/share endpoints)
+  # Known bot-hostile sites / endpoints
   "^https?://(www\\.)?reddit\\.com/submit.*",
   "^https?://news\\.ycombinator\\.com/submitlink.*",
-  "^https?://(www\\.)?facebook\\.com/sharer/sharer\\.php\\?.*$",
-
-  # Local / non-http
   "^http://localhost(:\\d+)?/.*",
   "^file://.*",
-
-  # Frequently bot-blocked content sites
-  "^https?://(www\\.)?medium\\.com/.*",
-  "^https?://(www\\.)?goodreads\\.com/.*",
-
-  # Dead / unstable domains
-  "^https?://lernajs\\.io/?$",
-
-  # Previously excluded domains
   "^https?://ember-fastboot\\.com/.*",
   "^https?://phaser\\.io/.*",
   "^https?://(www\\.)?webpagetest\\.org/.*",
@@ -48,6 +37,16 @@ exclude = [
   "^https?://azure\\.microsoft\\.com/en-us/services/cognitive-services/video-indexer/?$",
   "^https://webpack\\.js\\.org/?$",
   "^https://redux-saga\\.js\\.org/?$",
+
+  # New: common CI-bot-hostile content sites
+  "^https?://(www\\.)?medium\\.com/.*",
+  "^https?://(www\\.)?goodreads\\.com/.*",
+
+  # New: dead/unstable domain seen in your failures
+  "^https?://lernajs\\.io/?$",
+
+  # Known "non-content" URLs
+  "^https?://(www\\.)?facebook\\.com/sharer/sharer\\.php\\?.*$",
 
   # Old blog posts / dead references
   "https://github.com/DockYard/styleguides/blob/master/engineering/ember.md#alias-your-model",
