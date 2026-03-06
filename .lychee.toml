@@ -15,8 +15,17 @@ user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Ge
 # Include normal success codes + common bot-block 403.
 accept = [200, 204, 206, 301, 302, 307, 308, 403]
 
-# --- Skip whole folders in the built site (optional) ---
-exclude_path = ["./public/talks/**"]
+# --- Skip whole folders / file types in the built site ---
+exclude_path = [
+  "./public/talks/**",
+  "*.png",
+  "*.jpg",
+  "*.jpeg",
+  "*.gif",
+  "*.webp",
+  "*.svg",
+  "*.ico",
+]
 
 # --- Ignore list ---
 exclude = [
