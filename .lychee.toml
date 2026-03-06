@@ -10,8 +10,15 @@ base_url = "https://alexdiliberto.com"
 # --- Friendlier UA (some sites block bots) ---
 user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
 
-# --- Skip whole folders in the built site (optional) ---
-exclude_path = ["./public/talks/**"]
+# --- Accept status codes ---
+# NOTE: In lychee, `accept` replaces the default list.
+# Include normal success codes + common bot-block 403.
+accept = [200, 204, 206, 301, 302, 307, 308, 403]
+
+# --- Skip whole folders in the built site ---
+exclude_path = [
+  "./public/talks/**"
+]
 
 # --- Ignore list ---
 exclude = [
@@ -19,8 +26,16 @@ exclude = [
   "^mailto:",
   "^tel:",
   "^data:",
+  
+  # Ignore local image/assets referenced from source files
+  "\\.png$",
+  "\\.jpe?g$",
+  "\\.gif$",
+  "\\.webp$",
+  "\\.svg$",
+  "\\.ico$",
 
-  # Known bot-hostile sites
+  # Known bot-hostile sites / endpoints
   "^https?://(www\\.)?reddit\\.com/submit.*",
   "^https?://news\\.ycombinator\\.com/submitlink.*",
   "^http://localhost(:\\d+)?/.*",
@@ -32,7 +47,14 @@ exclude = [
   "^https?://azure\\.microsoft\\.com/en-us/services/cognitive-services/video-indexer/?$",
   "^https://webpack\\.js\\.org/?$",
   "^https://redux-saga\\.js\\.org/?$",
-  
+
+  # Common CI-bot-hostile content sites
+  "^https?://(www\\.)?medium\\.com/.*",
+  "^https?://(www\\.)?goodreads\\.com/.*",
+
+  # Dead/unstable domain seen in your failures
+  "^https?://lernajs\\.io/?$",
+
   # Known "non-content" URLs
   "^https?://(www\\.)?facebook\\.com/sharer/sharer\\.php\\?.*$",
 

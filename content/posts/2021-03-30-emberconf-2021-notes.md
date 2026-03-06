@@ -220,7 +220,7 @@ Building a Pinterest Clone {{< span class="u-small" >}}&ndash; Jordan Hawker{{< 
   - Fully responsive content reflow
   - Highly configurable
   - Great performance
-  - Doesn't support masonry (...[yet](https://caniuse.com/?search=masonry))
+  - Doesn't support masonry (...[yet](https://caniuse.com/mdn-css_properties_grid-template-rows_masonry))
 - [Ember Photo Gallery](http://ember-photo-gallery.jhawk.co/)
   ```hbs
   {{! index.hbs }}
