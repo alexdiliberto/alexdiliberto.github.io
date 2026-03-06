@@ -142,7 +142,7 @@ jobs:
 
   linkcheck:
     name: Link Check
-    needs: build
+    # needs: build
     if: >
       github.event_name == 'pull_request' &&
       !contains(github.event.pull_request.labels.*.name, 'dependencies')
@@ -156,11 +156,11 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Download Site Artifact
-        uses: actions/download-artifact@v7
-        with:
-          name: site
-          path: ./public
+      # - name: Download Site Artifact
+      #   uses: actions/download-artifact@v7
+      #   with:
+      #     name: site
+      #     path: ./public
 
       - name: Restore Lychee Cache
         id: lychee-cache
@@ -186,7 +186,9 @@ jobs:
             --config .lychee.toml
             --format markdown
             --no-progress
-            ./public
+            ./content
+            ./docs
+            ./README.md
           output: lychee/out.md
           jobSummary: true
         env:
@@ -199,7 +201,6 @@ jobs:
           path: .lycheecache
           # reuse the primary key from the restore step
           key: ${{ steps.lychee-cache.outputs.cache-primary-key }}
-          
       - name: Fail if Lychee found broken links
         if: steps.lychee.outputs.exit_code != '0'
         run: |
