@@ -187,7 +187,6 @@ jobs:
             --format markdown
             --no-progress
             ./content
-            ./docs
             ./README.md
           output: lychee/out.md
           jobSummary: true
