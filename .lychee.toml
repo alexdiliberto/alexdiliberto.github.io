@@ -15,16 +15,9 @@ user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Ge
 # Include normal success codes + common bot-block 403.
 accept = [200, 204, 206, 301, 302, 307, 308, 403]
 
-# --- Skip whole folders / file types in the built site ---
+# --- Skip whole folders in the built site ---
 exclude_path = [
-  "./public/talks/**",
-  "*.png",
-  "*.jpg",
-  "*.jpeg",
-  "*.gif",
-  "*.webp",
-  "*.svg",
-  "*.ico",
+  "./public/talks/**"
 ]
 
 # --- Ignore list ---
@@ -33,6 +26,14 @@ exclude = [
   "^mailto:",
   "^tel:",
   "^data:",
+  
+  # Ignore local image/assets referenced from source files
+  "\\.png$",
+  "\\.jpe?g$",
+  "\\.gif$",
+  "\\.webp$",
+  "\\.svg$",
+  "\\.ico$",
 
   # Known bot-hostile sites / endpoints
   "^https?://(www\\.)?reddit\\.com/submit.*",
@@ -47,11 +48,11 @@ exclude = [
   "^https://webpack\\.js\\.org/?$",
   "^https://redux-saga\\.js\\.org/?$",
 
-  # New: common CI-bot-hostile content sites
+  # Common CI-bot-hostile content sites
   "^https?://(www\\.)?medium\\.com/.*",
   "^https?://(www\\.)?goodreads\\.com/.*",
 
-  # New: dead/unstable domain seen in your failures
+  # Dead/unstable domain seen in your failures
   "^https?://lernajs\\.io/?$",
 
   # Known "non-content" URLs
