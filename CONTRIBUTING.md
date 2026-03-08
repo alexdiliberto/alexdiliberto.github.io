@@ -2,11 +2,13 @@
 
 This site runs on **Hugo (Extended)** with the **PaperMod** theme.
 
-## Tool Version Management
+---
+
+# Tool Version Management
 
 This project uses [Mise](https://mise.jdx.dev/) to manage development tool versions for consistency across environments.
 
-### Setup
+## Setup
 
 ```bash
 # Install Mise (if not already installed)
@@ -19,12 +21,13 @@ mise install
 mise trust
 ```
 
-### Tool Versions
+## Tool Versions
 
 - **Go**: Version defined in `mise.toml`
+- **Hugo**: Version defined in `mise.toml`
 - **CI**: Automatically uses same versions via `jdx/mise-action`
 
-### Why this is safer/cleaner
+## Why this is safer/cleaner
 
 - One source of truth (`mise.toml`) for **both** Go & Hugo.
 - No drift between CI and local dev.
@@ -32,51 +35,67 @@ mise trust
 
 ---
 
-## 1. Prerequisites
+# 1. Prerequisites
 
-- [Hugo Extended](https://gohugo.io/getting-started/installing/) v0.151.0+
-  ```sh
-  hugo version
-  ```
+- [Hugo Extended](https://gohugo.io/getting-started/installing/)
 - Git
+- [Mise](https://mise.jdx.dev/)
 
 ---
 
-## 2. Setup
+# 2. Setup
 
-```sh
+```bash
 git clone git@github.com:alexdiliberto/alexdiliberto.github.io.git
 cd alexdiliberto.github.io
+mise install
+mise trust
 ```
 
 Run the dev server:
 
-```sh
+```bash
 hugo server --disableFastRender
-# Open http://localhost:1313
 ```
+
+Open:
+
+```
+http://localhost:1313
+```
+
+Recommended dev server for content/template work:
+
+```bash
+hugo server -D --disableFastRender
+```
+
+Flags:
+
+- `-D` includes draft posts
+- `--disableFastRender` avoids stale template caching during development
 
 ---
 
-## 3. Content model
+# 3. Content model
 
 - **Posts** → `content/posts/<slug>/index.md`
 - **Talks index** → `content/talks/_index.md` + `data/talks.yaml`
 - **Addons index** → `content/addons/_index.md` + `data/ember_addons.yaml`
-- **Static decks/assets** → `static/` (served 1:1, e.g., `/talks/my-deck/`)
-- **Pages** (About, License) → `content/<page>.md`
+- **Static decks/assets** → `static/`
+- **Pages** → `content/<page>.md`
 - **Custom CSS** → `assets/css/extended/`
 - **Favicons / manifest** → `static/`
 
 ---
 
-## 4. Adding a new post
+# 4. Adding a new post
 
-```sh
+```bash
 hugo new posts/my-new-post/index.md
 ```
 
-Front matter example:
+Example front matter:
 
 ```yaml
 ---
@@ -90,7 +109,7 @@ ShowReadingTime: true
 ---
 ```
 
-Keep assets (images, diagrams, etc.) in the same folder as `index.md`:
+Keep assets in the same folder as `index.md`:
 
 ```
 content/posts/my-new-post/
@@ -98,7 +117,7 @@ content/posts/my-new-post/
 └── diagram.png
 ```
 
-Reference with:
+Reference assets with:
 
 ```md
 ![Alt text](diagram.png)
@@ -108,9 +127,11 @@ Set `draft: false` when ready to publish.
 
 ---
 
-## 5. Talks & Addons
+# 5. Talks & Addons
 
-**Talks list** → edit `data/talks.yaml`:
+## Talks
+
+Edit `data/talks.yaml`:
 
 ```yaml
 - title: "All Things Git"
@@ -130,7 +151,9 @@ showBreadCrumbs: false
 {{< talks >}}
 ```
 
-**Ember addons list** → edit `data/ember_addons.yaml`:
+## Ember Addons
+
+Edit `data/ember_addons.yaml`:
 
 ```yaml
 - name: ember-filepond
@@ -152,52 +175,186 @@ showBreadCrumbs: false
 
 ---
 
-## 6. Production build
+# 6. Production build
 
-```sh
+Run the same build used in CI:
+
+```bash
+hugo --minify --gc --enableGitInfo
+```
+
+Output will be generated in:
+
+```
+./public
+```
+
+Flags:
+
+- `--minify` → compress output
+- `--gc` → remove unused generated resources
+- `--enableGitInfo` → enable git-based metadata
+
+Quick build without cleanup:
+
+```bash
 hugo --minify
-# Output is in ./public
 ```
 
 ---
 
-## 7. Pull requests
+# 7. Pull requests
 
-1. Create a branch off `main`.
-2. Run locally and verify changes.
-3. Commit with clear messages (Conventional Commits encouraged):
-   - `feat: add talk "All Things Git"`
-   - `fix: correct mobile nav wrapping`
-4. Push your branch and open a PR.
+1. Create a branch from `main`
+2. Run locally and verify changes
+3. Commit with clear messages (Conventional Commits encouraged)
 
----
+Examples:
 
-## 8. Style & formatting
+```
+feat: add talk "All Things Git"
+fix: correct mobile nav wrapping
+chore: update PaperMod module
+```
 
-- Keep Markdown simple.
-- Prefer **page bundles** for posts (assets live with content).
-- Custom CSS → `assets/css/extended/`.
-- Keep JS minimal.
+4. Push your branch and open a PR
 
 ---
 
-## 9. Licensing
+# 8. Style & formatting
 
-- **Code**: MIT (see [`LICENSE`](./LICENSE))
-- **Content**: CC BY 4.0 — see [/license/](/license/)
+- Keep Markdown simple
+- Prefer **page bundles** for posts
+- Custom CSS → `assets/css/extended/`
+- Keep JavaScript minimal
+
+---
+
+# 9. Project health & maintenance
+
+Run these commands periodically (especially after Renovate PRs, Hugo upgrades, or theme/module errors).
+
+## Quick health check
+
+```bash
+mise install
+hugo mod tidy
+hugo mod verify
+hugo --minify --gc --enableGitInfo
+```
+
+Purpose:
+
+- ensures correct Go/Hugo versions
+- verifies Hugo module integrity
+- confirms production build still works
+
+---
+
+## Refresh theme/modules
+
+If CI fails after Hugo or theme updates:
+
+```bash
+mise install
+hugo mod get -u
+hugo mod tidy
+hugo --minify --gc --enableGitInfo
+```
+
+This refreshes Hugo modules and updates `go.mod` / `go.sum`.
+
+---
+
+## Inspect module versions
+
+```bash
+mise ls
+hugo mod graph | grep -i papermod
+grep 'hugo-PaperMod' go.mod go.sum
+```
+
+---
+
+## Deep cleanup
+
+Use if caches or generated assets appear stale:
+
+```bash
+hugo mod clean
+rm -rf resources/_gen
+hugo --minify --gc --enableGitInfo
+```
+
+---
+
+## Git housekeeping
+
+Optional cleanup every so often:
+
+```bash
+git fetch --prune
+git remote prune origin
+git gc
+```
+
+---
+
+## Notes on `resources/_gen`
+
+This repo tracks files under `resources/_gen`.
+
+These are Hugo-generated image processing artifacts.
+
+Running:
+
+```bash
+hugo --minify --gc --enableGitInfo
+```
+
+may delete outdated files in this directory.
+
+This is normal and safe to commit if the build succeeds.
+
+---
+
+# 10. Licensing
+
+- **Code**: MIT — see `LICENSE`
+- **Content**: CC BY 4.0 — see `/license/`
 
 By contributing, you agree your contributions follow these terms.
 
 ---
 
-## 10. Troubleshooting
+# 11. Troubleshooting
 
-- Seeing stale content?
-  ```sh
-  hugo server --disableFastRender --ignoreCache
-  ```
-- Service worker caching? Ensure `static/sw.js` is removed/unregistered.
-- Deck not loading? Check for route conflicts in `content/` and make sure asset paths are **relative** (no leading `/`).
+## Stale content
+
+```bash
+hugo server --disableFastRender --ignoreCache
+```
+
+## Full rebuild
+
+```bash
+hugo mod clean
+rm -rf resources/_gen public
+hugo --minify --gc --enableGitInfo
+```
+
+## Theme/module errors after Hugo upgrade
+
+```bash
+mise install
+hugo mod get -u
+hugo mod tidy
+hugo --minify --gc --enableGitInfo
+```
+
+## Deck not loading
+
+Check for route conflicts and ensure asset paths are **relative** (no leading `/`).
 
 ---
 
