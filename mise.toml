@@ -1,6 +1,6 @@
 [tools]
-golang = "1.25.6"
-hugo = "0.154.5"
+golang = "1.26.1"
+hugo = "0.157.0"
 
 [env]
 GOPROXY = "https://proxy.golang.org,direct"
