@@ -7,6 +7,7 @@
 <p align="center">
   <a href="https://gohugo.io/"><img src="https://img.shields.io/badge/Built%20with-Hugo-blue.svg" alt="Built with Jekyll"></a>
   <a href="https://en.wikipedia.org/wiki/MIT_License"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License MIT"></a>
+  <a href="https://github.com/alexdiliberto/alexdiliberto.github.io/actions/workflows/ci.yml"><img src="https://github.com/alexdiliberto/alexdiliberto.github.io/actions/workflows/ci.yml/badge.svg?branch=main" alt="Deploy Hugo to GitHub Pages"></a>
 </p>
 
 <p align="center">
