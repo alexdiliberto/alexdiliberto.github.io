@@ -1,5 +1,5 @@
 [tools]
-golang = "1.26.2"
+golang = "1.26.3"
 hugo = "0.161.1"
 
 [env]
