@@ -63,8 +63,6 @@ params:
     Title: "Hey, I'm Alex"
     Content: "Software engineer. This is my blog."
   socialIcons:
-    - name: x
-      url: "https://x.com/alex_diliberto"
     - name: github
       url: "https://github.com/alexdiliberto"
     - name: linkedin

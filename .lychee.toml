@@ -12,8 +12,12 @@ user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Ge
 
 # --- Accept status codes ---
 # NOTE: In lychee, `accept` replaces the default list.
-# Include normal success codes + common bot-block 403.
-accept = [200, 204, 206, 301, 302, 307, 308, 403]
+# Include normal success codes + redirects + common bot-block/rate-limit statuses.
+accept = ["100..=103", "200..=299", 301, 302, 307, 308, 403, 429]
+
+# Do not cache rate-limit responses.
+# A 429 may pass today and fail tomorrow depending on CI traffic.
+cache_exclude_status = [429]
 
 # --- Skip whole folders in the built site ---
 exclude_path = [

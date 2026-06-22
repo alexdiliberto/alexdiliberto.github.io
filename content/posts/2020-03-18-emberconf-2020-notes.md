@@ -22,7 +22,7 @@ Opening Keynote {{< span class="u-small" >}}&ndash; Yehuda Katz, Jen Weber, Godf
   - There's more to software than the number of lines of code you write
   - Value sustainability
   - Innovating on Community 🤝 👪
-  - [Ember 1.13](https://blog.emberjs.com/2015/06/12/ember-1-13-0-released.html) had a large number of [deprecations](https://deprecations.emberjs.com/v1.x/)
+  - [Ember 1.13](https://blog.emberjs.com/ember-1-13-0-released/) had a large number of [deprecations](https://deprecations.emberjs.com/v1.x/)
     - Technically followed [SemVer](https://semver.org/), but created lots of chaos...😰
     - SemVer doesn't tell the whole story of ecosystem stability 
   - [RFC Process](https://github.com/emberjs/rfcs) (Started 2014 📅)
@@ -102,7 +102,7 @@ Opening Keynote {{< span class="u-small" >}}&ndash; Yehuda Katz, Jen Weber, Godf
         ```
         - [ember-ref-modifier](https://github.com/lifeart/ember-ref-modifier)
     - Syntax and mental model overhaul
-      - [Shipped](https://blog.emberjs.com/2019/12/20/octane-is-here.html) Dec 2019
+      - [Shipped](https://blog.emberjs.com/octane-is-here/) Dec 2019
       - Don't have to rewrite apps to begin using features
       - Linting out of the box
       - Updated defaults when generating apps
@@ -147,7 +147,7 @@ FastFlood: The Story of a Massive Memory Leak in FastBoot Land {{< span class="u
 - Timeline tool
 - Step 0: Reproduce locally on a production-ish build (no uglification)
 - Step 1: Find the leak 🔎
-  - Run the server [with debugging enabled](https://nodejs.org/en/docs/guides/debugging-getting-started/)
+  - Run the server [with debugging enabled](https://nodejs.org/en/learn/getting-started/debugging)
   - Make one request
   - Start timeline
   - Make a few requests
