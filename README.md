@@ -12,7 +12,6 @@
 
 <p align="center">
   <a href="https://alexdiliberto.com">Homepage</a>&nbsp;|
-  <a href="https://x.com/alex_diliberto">X</a>&nbsp;|
   <a href="https://github.com/alexdiliberto">GitHub</a>&nbsp;|
   <a href="https://www.linkedin.com/in/alexdiliberto">LinkedIn</a>&nbsp;|
   <a href="mailto:hello@alexdiliberto.com">Email</a>
