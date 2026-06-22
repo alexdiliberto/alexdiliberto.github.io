@@ -147,7 +147,7 @@ FastFlood: The Story of a Massive Memory Leak in FastBoot Land {{< span class="u
 - Timeline tool
 - Step 0: Reproduce locally on a production-ish build (no uglification)
 - Step 1: Find the leak 🔎
-  - Run the server [with debugging enabled](https://nodejs.org/en/docs/guides/debugging-getting-started/)
+  - Run the server [with debugging enabled](https://nodejs.org/en/learn/getting-started/debugging)
   - Make one request
   - Start timeline
   - Make a few requests
