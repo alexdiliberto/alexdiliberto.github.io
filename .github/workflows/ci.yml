@@ -88,7 +88,7 @@ jobs:
           echo "gobuildcache=$(go env GOCACHE)" >> "$GITHUB_OUTPUT"
 
       - name: Cache Go
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             ${{ steps.gopaths.outputs.gomodcache }}
@@ -98,7 +98,7 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Cache Hugo
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             ~/.cache/hugo
@@ -164,7 +164,7 @@ jobs:
 
       - name: Restore Lychee Cache
         id: lychee-cache
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: .lycheecache
           # commit-scoped primary key; broad restore for reuse
@@ -194,7 +194,7 @@ jobs:
 
       - name: Save Lychee Cache
         if: steps.lychee.outputs.exit_code == '0'
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         with:
           path: .lycheecache
           # reuse the primary key from the restore step
