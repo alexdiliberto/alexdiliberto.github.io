@@ -37,7 +37,7 @@ Opening Keynote {{< span class="u-small" >}}&ndash; Yehuda Katz, Tom Dale{{< /sp
   + What have we learned? :book:
     + Big up front design
     + Small Kernel &rarr; Addon
-      + Fastboot - Ember simply landed the `App.visit()` [API](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_code-visit-code-api) &rarr; ember-fastboot addon
+      + Fastboot - Ember simply landed the `App.visit()` [API](https://blog.emberjs.com/ember-2-3-released/#toc_code-visit-code-api) &rarr; ember-fastboot addon
     + Drop-in compatibility for new features
     + Experimentation is key :key:
       + [ember-redux](http://www.ember-redux.com/)
@@ -367,7 +367,7 @@ SVG Animation and Interaction in Ember {{< span class="u-small" >}}&ndash; Jen W
     + Shapes are positioned using x and y coordinates within the SVG `viewBox`
     + Elements can be spinned, stretched, squished, etc.
     + `<rect class="temperature {{tempStatus}}" width="117.6" height={{thermHeight}} transform="rotate(180 365 710)"/>` Fixes the issue by essentially rotating the axis of the rectangle so the height eases up instead of down
-    + Default Ember component `<div>` wrapper inside SVG === bad. Use [`tagName='g'`](https://emberjs.com/api/classes/Ember.Component.html#property_tagName) instead
+    + Default Ember component `<div>` wrapper inside SVG === bad. Use [`tagName='g'`](https://api.emberjs.com/ember/3.0/classes/Component#tagName) instead
     + Paint order Problems: Use `Ember.computed.sort()` so data with the lowest `y` coordinate gets rendered first
     + Upgrade app > Ember v1.8.0
   + Use computed properties in the model to manipulate plotted/transformed SVG data &amp; coordinates

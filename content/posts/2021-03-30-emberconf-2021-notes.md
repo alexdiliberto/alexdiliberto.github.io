@@ -177,7 +177,7 @@ HTML-First Apps are the Future {{< span class="u-small" >}}&ndash; Jen Weber{{< 
 
 - HTML is the key to building apps for devices you have not seen or can not imagine
 - Web authors in the 90s didn't imagine their websites would be viewed on your phone
-- [Core Accessibility API Mappings](https://www.w3.org/TR/core-aam-1.)
+- [Core Accessibility API Mappings](https://www.w3.org/TR/core-aam-1.2/)
 - When everything is a `<div>`, you miss out on some of the most powerful programming tools in history
 - What does it mean to put HTML first? 🤔
   - Write valid, semantic HTML by default

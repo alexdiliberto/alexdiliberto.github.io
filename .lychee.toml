@@ -1,27 +1,25 @@
 # --- Concurrency & retries ---
-max_concurrency = 6
+max_concurrency = 4
 max_retries = 3
-retry_wait_time = 2 # seconds
-timeout = 20        # seconds
+retry_wait_time = 4 # seconds
+timeout = 45        # seconds
 
-# --- Resolve root-relative links like "/favicon.svg" ---
+# --- Resolve root-relative links ---
 base_url = "https://alexdiliberto.com"
 
-# --- Friendlier UA (some sites block bots) ---
+# --- Friendlier UA ---
 user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
 
 # --- Accept status codes ---
-# NOTE: In lychee, `accept` replaces the default list.
-# Include normal success codes + redirects + common bot-block/rate-limit statuses.
-accept = ["100..=103", "200..=299", 301, 302, 307, 308, 403, 429]
+accept = ["100..=103", "200..=299", 301, 302, 307, 308, 429]
 
 # Do not cache rate-limit responses.
-# A 429 may pass today and fail tomorrow depending on CI traffic.
 cache_exclude_status = [429]
 
-# --- Skip whole folders in the built site ---
+# --- Skip historical content and generated sections ---
 exclude_path = [
-  "./public/talks/**"
+  "^\\./content/posts/201[4-9]-.*",
+  "^\\./public/talks/.*"
 ]
 
 # --- Ignore list ---
@@ -32,7 +30,7 @@ exclude = [
   "^data:",
   "^file://.*",
 
-  # # Image/static asset URLs
+  # Image/static asset URLs
   "\\.png$",
   "\\.jpe?g$",
   "\\.gif$",
@@ -52,37 +50,18 @@ exclude = [
   "^https://webpack\\.js\\.org/?$",
   "^https://redux-saga\\.js\\.org/?$",
   "^https://web\\.archive\\.org/web/.*",
- 
+
   # Common CI-bot-hostile content sites
   "^https?://(www\\.)?medium\\.com/.*",
   "^https?://(www\\.)?goodreads\\.com/.*",
+  "^https://www\\.emberconf\\.com/?$",
+  "^https://babeljs\\.io/?$",
+  "^https://labs\\.planning\\.nyc\\.gov/?$",
+  "^https://codepen\\.io/collection/AagvdL/?$",
 
-  # Dead/unstable domain seen in your failures
+  # Dead/unstable domains
   "^https?://lernajs\\.io/?$",
 
-  # Known "non-content" URLs
-  "^https?://(www\\.)?facebook\\.com/sharer/sharer\\.php\\?.*$",
-
-  # Old blog posts / dead references
-  "https://github.com/DockYard/styleguides/blob/master/engineering/ember.md#alias-your-model",
-  "https://www.mutuallyhuman.com/blog/2017/02/17/debugging-your-assumptions-ember-edition",
-  "http://cardstack.io/",
-  "http://shaffner.us/cs/papers/tarpit.pdf",
-  "https://100photos.time.com/photos/eadweard-muybridge-horse-in-motion",
-  "https://offirgolan.github.io/ember-burger-menu/",
-  "https://www.mheducation.ca/blog/series-classic-learning-science-expertise-and-expert-performance-in-chess/",
-  "https://alexdiliberto.com/bit.ly/emberconf",
-  "https://github.com/emberjs/rfcs/blob/AngleBracketInvocation/text/0000-angle-bracket-invocation.md",
-  "https://github.com/rwjblue/rfcs/blob/42/text/0000-grand-testing-unification.md",
-  "https://github.com/WebAssembly/binaryen/blob/master/src/wasm2asm.h",
-  "https://schedule-wasm.emberconf.com/",
-  "https://schedule.emberconf.com/",
-  "http://mcdowall.info/what-the-hell-is-ember-k/",
-  "https://broccoli.build/",
-  "https://codeafrique.com/",
-  "https://ember-styleguide.netlify.com/",
-  "https://videos.honeypot.io/emberjs-documentary-2019/",
-  "https://labs.planning.nyc.gov/",
-  "https://codepen.io/collection/AagvdL",
-  "https://www.w3.org/TR/core-aam-1.",
+  # Non-content URLs
+  "^https?://(www\\.)?facebook\\.com/sharer/sharer\\.php\\?.*$"
 ]
