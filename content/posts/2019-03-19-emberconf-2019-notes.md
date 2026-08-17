@@ -2,6 +2,7 @@
 date: 2019-03-19T00:00:00Z
 title: "EmberConf 2019 Notes"
 description: "Notes and highlights from EmberConf 2019, covering Ember Octane, Glimmer components, tracked properties, Embroider, TypeScript, and ecosystem updates."
+summary: "Highlights from EmberConf 2019, including Ember Octane, Glimmer components, tracked properties, Embroider, TypeScript, and tooling."
 categories:
   - programming
 tags:
