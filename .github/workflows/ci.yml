@@ -142,7 +142,6 @@ jobs:
 
   linkcheck:
     name: Link Check
-    # needs: build
     if: >
       github.event_name == 'pull_request' &&
       !contains(github.event.pull_request.labels.*.name, 'dependencies')
@@ -162,15 +161,15 @@ jobs:
       #     name: site
       #     path: ./public
 
-      - name: Restore Lychee Cache
-        id: lychee-cache
-        uses: actions/cache/restore@v6
-        with:
-          path: .lycheecache
-          # commit-scoped primary key; broad restore for reuse
-          key: ${{ runner.os }}-lychee-${{ github.sha }}-${{ hashFiles('.lychee.toml') }}
-          restore-keys: |
-            ${{ runner.os }}-lychee-
+      # - name: Restore Lychee Cache
+      #   id: lychee-cache
+      #   uses: actions/cache/restore@v6
+      #   with:
+      #     path: .lycheecache
+      #     # commit-scoped primary key; broad restore for reuse
+      #     key: ${{ runner.os }}-lychee-${{ github.sha }}-${{ hashFiles('.lychee.toml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-lychee-
 
       # - name: Bust Lychee Cache (if needed)
       #   run: rm -f .lycheecache
@@ -181,8 +180,6 @@ jobs:
         with:
           fail: false
           args: >-
-            --cache
-            --max-cache-age 1d
             --config .lychee.toml
             --format markdown
             --no-progress
@@ -192,13 +189,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Save Lychee Cache
-        if: steps.lychee.outputs.exit_code == '0'
-        uses: actions/cache/save@v6
-        with:
-          path: .lycheecache
-          # reuse the primary key from the restore step
-          key: ${{ steps.lychee-cache.outputs.cache-primary-key }}
+      # - name: Save Lychee Cache
+      #   if: steps.lychee.outputs.exit_code == '0'
+      #   uses: actions/cache/save@v6
+      #   with:
+      #     path: .lycheecache
+      #     # reuse the primary key from the restore step
+      #     key: ${{ steps.lychee-cache.outputs.cache-primary-key }}
+      
       - name: Fail if Lychee found broken links
         if: steps.lychee.outputs.exit_code != '0'
         run: |
