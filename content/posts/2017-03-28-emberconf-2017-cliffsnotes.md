@@ -223,7 +223,7 @@ Counter-spells and the Art of Keeping Your Application Safe {{< span class="u-sm
   + Avoid `htmlSafe()` :x:
     + Use only with proper sanitization
     + Never use directly on user input
-    + Use [Ember Contextual Components](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components)
+    + Use [Ember Contextual Components](https://blog.emberjs.com/ember-2-3-released/#toc_contextual-components)
   + Good helpers - Let the browser worry about it
     + Use DOM to [create text nodes](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode)
     + Set style attributes
@@ -293,7 +293,7 @@ Higher Order Components {{< span class="u-small" >}}&ndash; Miguel Camba{{< /spa
     + Create closures
   + Higher Order components
     + Components that return components
-    + [`hash` helper](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_hash-helper) used to explicitly define a Public API for the component
+    + [`hash` helper](https://blog.emberjs.com/ember-2-3-released/#toc_hash-helper) used to explicitly define a Public API for the component
     + `{{yield (hash avatar=(component "user-avatar") image=user.pic size="big")}}`
     + Now this is accessible as a variable in the block from the callee in the parent template - `{{t.avatar}}`
   + API design is very important :art:
