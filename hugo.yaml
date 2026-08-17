@@ -57,6 +57,8 @@ params:
   env: production
   author: "Alex DiLiberto"
   description: "Personal website and technical blog of software engineer Alex DiLiberto, featuring articles, talks, projects, and development notes."
+  images:
+    - "/img/avatar/avatar500px.jpg"
   schema:
     publisherType: Person
   defaultTheme: auto # to switch between dark or light according to browser theme
