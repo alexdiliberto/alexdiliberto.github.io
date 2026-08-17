@@ -58,7 +58,8 @@ exclude = [
   "^https://babeljs\\.io/?$",
   "^https://labs\\.planning\\.nyc\\.gov/?$",
   "^https://codepen\\.io/collection/AagvdL/?$",
-
+  "^https://emberjs\\.com/editions/octane/?$",
+  
   # Dead/unstable domains
   "^https?://lernajs\\.io/?$",
 

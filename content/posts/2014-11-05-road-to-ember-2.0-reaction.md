@@ -2,6 +2,7 @@
 date: 2014-11-05T00:00:00Z
 title: "Road to Ember 2.0 Reaction"
 description: "A reaction to the proposed Ember 2.0 roadmap, covering HTMLBars, Ember CLI, routable components, controllers, and Ember's approach to framework evolution."
+summary: "My take on the proposed Ember 2.0 roadmap, including HTMLBars, Ember CLI, routable components, controllers, and the framework’s upgrade philosophy."
 categories:
   - programming
 tags:

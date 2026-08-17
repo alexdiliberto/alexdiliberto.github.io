@@ -2,6 +2,7 @@
 date: 2015-03-20T00:00:00Z
 title: "PSA: Test Your Ember Apps Against Beta and Canary"
 description: "How to test Ember applications against release, beta, and canary builds to catch regressions and compatibility issues before framework upgrades."
+summary: "A practical workflow for testing Ember apps against release, beta, and canary builds before framework upgrades reach production."
 categories:
   - programming
 tags:

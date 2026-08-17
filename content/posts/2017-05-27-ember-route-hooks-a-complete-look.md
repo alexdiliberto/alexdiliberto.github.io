@@ -2,6 +2,7 @@
 date: 2017-05-27T00:00:00Z
 title: "Ember Route Hooks: A Complete Look"
 description: "A detailed guide to Ember route lifecycle hooks, including validation and setup phases, transitions, model hooks, redirects, and route hook ordering."
+summary: "A walkthrough of Ember’s route lifecycle, from `willTransition` through model hooks, setup, redirects, and `didTransition`."
 categories:
   - programming
 tags:
