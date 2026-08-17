@@ -26,12 +26,13 @@ exclude_path = [
 
 # --- Ignore list ---
 exclude = [
-  # Common schemes that aren’t HTTP(S)
+  # Non-HTTP resources
   "^mailto:",
   "^tel:",
   "^data:",
-  
-  # Ignore local image/assets referenced from source files
+  "^file://.*",
+
+  # # Image/static asset URLs
   "\\.png$",
   "\\.jpe?g$",
   "\\.gif$",
@@ -39,11 +40,10 @@ exclude = [
   "\\.svg$",
   "\\.ico$",
 
-  # Known bot-hostile sites / endpoints
+  # CI/bot-hostile services
   "^https?://(www\\.)?reddit\\.com/submit.*",
   "^https?://news\\.ycombinator\\.com/submitlink.*",
   "^http://localhost(:\\d+)?/.*",
-  "^file://.*",
   "^https?://ember-fastboot\\.com/.*",
   "^https?://phaser\\.io/.*",
   "^https?://(www\\.)?webpagetest\\.org/.*",
@@ -51,7 +51,8 @@ exclude = [
   "^https?://azure\\.microsoft\\.com/en-us/services/cognitive-services/video-indexer/?$",
   "^https://webpack\\.js\\.org/?$",
   "^https://redux-saga\\.js\\.org/?$",
-
+  "^https://web\\.archive\\.org/web/.*",
+ 
   # Common CI-bot-hostile content sites
   "^https?://(www\\.)?medium\\.com/.*",
   "^https?://(www\\.)?goodreads\\.com/.*",
