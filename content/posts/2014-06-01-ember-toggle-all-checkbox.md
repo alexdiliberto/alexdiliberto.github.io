@@ -2,6 +2,7 @@
 date: 2014-06-01T00:00:00Z
 title: "Ember 'Toggle All' Checkbox"
 description: "Tutorial for implementing a Toggle All checkbox pattern in Ember.js, including item controllers, computed properties, and bulk selection behavior."
+summary: "Implement a reusable “Toggle All” checkbox pattern in Ember using item controllers, computed properties, and bulk selection behavior."
 categories:
   - programming
 tags:
