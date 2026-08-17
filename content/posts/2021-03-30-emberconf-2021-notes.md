@@ -1,8 +1,9 @@
 ---
-date: "2021-03-30T00:00:00Z"
-description: "EmberConf 2021 list of highlights from my favorite talks"
-title: EmberConf 2021 Notes
-categories: programming
+date: 2021-03-30T00:00:00Z
+title: "EmberConf 2021 Notes"
+description: "Notes and highlights from EmberConf 2021, covering Ember's ten-year evolution, Octane, TypeScript, Embroider, testing, accessibility, and the framework roadmap."
+categories:
+  - programming
 tags:
   - ember
   - emberconf
