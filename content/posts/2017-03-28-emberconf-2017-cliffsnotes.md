@@ -443,7 +443,7 @@ Confessions of an Ember Addon Author {{< span class="u-small" >}}&ndash; Lauren 
   + DDD - Documentation Driven Development
     + If it's not documented, it **doesn't exist**
     + First class citizen
-    + [JSDoc](http://usejsdoc.org/), [YUIDoc](https://yui.github.io/yuidoc/)
+    + [JSDoc](https://jsdoc.app/), [YUIDoc](https://yui.github.io/yuidoc/)
   + Any successful project requires two things
     + Solve a problem
     + Convince people to use your addon
