@@ -32,7 +32,7 @@ exclude = [
   "^data:",
   "^file://.*",
 
-  # # Image/static asset URLs
+  # Image/static asset URLs
   "\\.png$",
   "\\.jpe?g$",
   "\\.gif$",
@@ -56,6 +56,8 @@ exclude = [
   # Common CI-bot-hostile content sites
   "^https?://(www\\.)?medium\\.com/.*",
   "^https?://(www\\.)?goodreads\\.com/.*",
+  "^https://www\\.emberconf\\.com/?$",
+  "^https://babeljs\\.io/?$",
 
   # Dead/unstable domain seen in your failures
   "^https?://lernajs\\.io/?$",
