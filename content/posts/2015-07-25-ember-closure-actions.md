@@ -78,7 +78,7 @@ export default Ember.Component.extend({
 
 *Note: this old system of action bubbling quickly falls apart when attempting to pass an action through a nested hierarchy of components.*
 
-With closure actions, the `(action)` [helper](http://emberjs.com/api/classes/Ember.Templates.helpers.html#method_action) simply wraps the action in the current scope and returns back that function &mdash; as discussed previously. Now you will execute the passed-in action function directly from the child component.
+With closure actions, the `(action)` [helper](https://api.emberjs.com/ember/3.0/classes/Ember.Templates.helpers#action) simply wraps the action in the current scope and returns back that function &mdash; as discussed previously. Now you will execute the passed-in action function directly from the child component.
 
 ```js
 // app/controllers/index.js
