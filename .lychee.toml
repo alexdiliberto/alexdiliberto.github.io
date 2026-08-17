@@ -56,6 +56,8 @@ exclude = [
   "^https?://(www\\.)?goodreads\\.com/.*",
   "^https://www\\.emberconf\\.com/?$",
   "^https://babeljs\\.io/?$",
+  "^https://labs\\.planning\\.nyc\\.gov/?$",
+  "^https://codepen\\.io/collection/AagvdL/?$",
 
   # Dead/unstable domains
   "^https?://lernajs\\.io/?$",
