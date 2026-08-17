@@ -2,6 +2,7 @@
 date: 2015-04-26T00:00:00Z
 title: "Improved Web Font Loading with Font Events API"
 description: "Using FontFaceObserver and the Font Loading API to improve web font rendering performance and eliminate Flash of Invisible Text (FOIT)."
+summary: "Improve web font loading with FontFaceObserver and the Font Loading API to reduce FOIT and make text rendering more predictable."
 categories:
   - programming
 tags:
