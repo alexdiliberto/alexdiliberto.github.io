@@ -50,6 +50,7 @@ markup:
 # Theme params
 params:
   env: production
+  author: "Alex DiLiberto"
   description: "Personal website and technical blog of software engineer Alex DiLiberto, featuring articles, talks, projects, and development notes."
   defaultTheme: auto # to switch between dark or light according to browser theme
   ShowReadingTime: true
