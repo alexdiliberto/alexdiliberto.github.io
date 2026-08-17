@@ -1,9 +1,9 @@
 ---
-date: "2017-05-27T00:00:00Z"
-description: A deeper dive outlining each of the most important lifecycle hooks for
-  Ember's internal routing structure
-title: Ember Route Hooks - A Complete Look
-categories: programming
+date: 2017-05-27T00:00:00Z
+title: "Ember Route Hooks: A Complete Look"
+description: "A detailed guide to Ember route lifecycle hooks, including validation and setup phases, transitions, model hooks, redirects, and route hook ordering."
+categories:
+  - programming
 tags:
   - ember
   - routes
