@@ -1,8 +1,8 @@
 # --- Concurrency & retries ---
-max_concurrency = 6
+max_concurrency = 4
 max_retries = 3
-retry_wait_time = 2 # seconds
-timeout = 20        # seconds
+retry_wait_time = 4 # seconds
+timeout = 45        # seconds
 
 # --- Resolve root-relative links like "/favicon.svg" ---
 base_url = "https://alexdiliberto.com"
