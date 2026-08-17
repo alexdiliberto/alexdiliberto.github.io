@@ -2,6 +2,7 @@
 date: 2021-03-30T00:00:00Z
 title: "EmberConf 2021 Notes"
 description: "Notes and highlights from EmberConf 2021, covering Ember's ten-year evolution, Octane, TypeScript, Embroider, testing, accessibility, and the framework roadmap."
+summary: "Highlights from EmberConf 2021, including Octane, Embroider, TypeScript, accessibility, testing, template imports, and Ember’s future direction."
 categories:
   - programming
 tags:
