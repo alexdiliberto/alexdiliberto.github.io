@@ -2,6 +2,7 @@
 date: 2018-03-13T00:00:00Z
 title: "EmberConf 2018 Notes"
 description: "Notes and highlights from EmberConf 2018, covering Ember's 3.x roadmap, Glimmer, WebAssembly, accessibility, JavaScript modules, performance, and ecosystem updates."
+summary: "Highlights from EmberConf 2018, covering Ember 3.x, Glimmer, WebAssembly, accessibility, JavaScript modules, and performance."
 categories:
   - programming
 tags:
