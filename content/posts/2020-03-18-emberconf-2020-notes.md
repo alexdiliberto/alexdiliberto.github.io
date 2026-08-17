@@ -1,8 +1,9 @@
 ---
-date: "2020-03-18T00:00:00Z"
-description: EmberConf 2020 list of highlights from my favorite talks
-title: EmberConf 2020 Notes
-categories: programming
+date: 2020-03-18T00:00:00Z
+title: "EmberConf 2020 Notes"
+description: "Notes and highlights from EmberConf 2020, covering Ember Octane, framework stability, testing, TypeScript, performance, tooling, and community updates."
+categories:
+  - programming
 tags:
   - ember
   - emberconf
