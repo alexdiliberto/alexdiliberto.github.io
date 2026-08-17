@@ -56,7 +56,7 @@ Opening Keynote {{< span class="u-small" >}}&ndash; Yehuda Katz, Tom Dale{{< /sp
   + Web problem: Boot fast **AND** stay fast once booted
     + You can go the fastest if you don't care about updating
     + [The truth about traditional JavaScript benchmarks](http://benediktmeurer.de/2016/12/16/the-truth-about-traditional-javascript-benchmarks/)
-  + [Ember Community Survey](https://emberjs.com/ember-community-survey-2017/)
+  + [Ember Community Survey](https://emberjs.com/survey/2017/)
   + [Glimmer.js](https://glimmerjs.com/)
     + Rendering engine used to power Ember &rarr; Now can be used standalone
     + Bind dynamic content from component to template without esoteric naming systems
