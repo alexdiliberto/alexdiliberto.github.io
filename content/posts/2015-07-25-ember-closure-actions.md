@@ -1,9 +1,9 @@
 ---
-date: "2015-07-25T00:00:00Z"
-description: Overview of the new closure actions feature introduced in the Ember v1.13.0
-  release
-title: 'Spotlight: Ember Closure Actions'
-categories: programming
+date: 2015-07-25T00:00:00Z
+title: "Spotlight: Ember Closure Actions"
+description: "An introduction to closure actions in Ember 1.13, covering function passing, action handling, and the shift away from traditional action bubbling."
+categories:
+  - programming
 tags:
   - ember
 ---

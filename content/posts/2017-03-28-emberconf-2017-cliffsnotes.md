@@ -1,8 +1,9 @@
 ---
-date: "2017-03-28T00:00:00Z"
-description: EmberConf 2017 list of highlights from my favorite talks
-title: EmberConf 2017 CliffsNotes
-categories: programming
+date: 2017-03-28T00:00:00Z
+title: "EmberConf 2017 CliffsNotes"
+description: "Notes and highlights from EmberConf 2017, covering Ember's roadmap, Glimmer 2.0, FastBoot, Engines, TypeScript, progressive web apps, and community updates."
+categories:
+  - programming
 tags:
   - ember
   - emberconf
@@ -55,7 +56,7 @@ Opening Keynote {{< span class="u-small" >}}&ndash; Yehuda Katz, Tom Dale{{< /sp
   + Web problem: Boot fast **AND** stay fast once booted
     + You can go the fastest if you don't care about updating
     + [The truth about traditional JavaScript benchmarks](http://benediktmeurer.de/2016/12/16/the-truth-about-traditional-javascript-benchmarks/)
-  + [Ember Community Survey](https://emberjs.com/ember-community-survey-2017/)
+  + [Ember Community Survey](https://emberjs.com/survey/2017/)
   + [Glimmer.js](https://glimmerjs.com/)
     + Rendering engine used to power Ember &rarr; Now can be used standalone
     + Bind dynamic content from component to template without esoteric naming systems
@@ -222,7 +223,7 @@ Counter-spells and the Art of Keeping Your Application Safe {{< span class="u-sm
   + Avoid `htmlSafe()` :x:
     + Use only with proper sanitization
     + Never use directly on user input
-    + Use [Ember Contextual Components](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_contextual-components)
+    + Use [Ember Contextual Components](https://blog.emberjs.com/ember-2-3-released/#toc_contextual-components)
   + Good helpers - Let the browser worry about it
     + Use DOM to [create text nodes](https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode)
     + Set style attributes
@@ -266,7 +267,7 @@ Data Loading Patterns with JSON API {{< span class="u-small" >}}&ndash; Balint E
     + `findAll('band');`
     + `peekRecord('band', 1);` - `peek*` does not trigger a reload, simply returns what is in the store
     + `peekAll('band');`
-  + [`shouldBackgroundReloadRecord`](https://emberjs.com/api/data/classes/DS.Adapter.html#method_shouldBackgroundReloadRecord) &amp; [`shouldBackgroundReloadAll`](https://emberjs.com/api/data/classes/DS.Adapter.html#method_shouldBackgroundReloadAll)
+  + [`shouldBackgroundReloadRecord`](https://api.emberjs.com/ember-data/3.0/classes/DS.Adapter#shouldBackgroundReloadRecord) &amp; [`shouldBackgroundReloadAll`](https://api.emberjs.com/ember-data/3.0/classes/DS.Adapter#shouldBackgroundReloadAll)
   + Fetching relationship data
     + Lazy fetching
       + Simple, on demand data fetch
@@ -292,7 +293,7 @@ Higher Order Components {{< span class="u-small" >}}&ndash; Miguel Camba{{< /spa
     + Create closures
   + Higher Order components
     + Components that return components
-    + [`hash` helper](https://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_hash-helper) used to explicitly define a Public API for the component
+    + [`hash` helper](https://blog.emberjs.com/ember-2-3-released/#toc_hash-helper) used to explicitly define a Public API for the component
     + `{{yield (hash avatar=(component "user-avatar") image=user.pic size="big")}}`
     + Now this is accessible as a variable in the block from the callee in the parent template - `{{t.avatar}}`
   + API design is very important :art:
@@ -442,7 +443,7 @@ Confessions of an Ember Addon Author {{< span class="u-small" >}}&ndash; Lauren 
   + DDD - Documentation Driven Development
     + If it's not documented, it **doesn't exist**
     + First class citizen
-    + [JSDoc](http://usejsdoc.org/), [YUIDoc](https://yui.github.io/yuidoc/)
+    + [JSDoc](https://jsdoc.app/), [YUIDoc](https://yui.github.io/yuidoc/)
   + Any successful project requires two things
     + Solve a problem
     + Convince people to use your addon

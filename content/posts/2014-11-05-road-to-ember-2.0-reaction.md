@@ -1,8 +1,9 @@
 ---
-date: "2014-11-05T00:00:00Z"
-description: This is my instant reaction to some of the highlights and changes proposed for Ember 2.0
-title: Road to Ember 2.0 Reaction
-categories: programming
+date: 2014-11-05T00:00:00Z
+title: "Road to Ember 2.0 Reaction"
+description: "A reaction to the proposed Ember 2.0 roadmap, covering HTMLBars, Ember CLI, routable components, controllers, and Ember's approach to framework evolution."
+categories:
+  - programming
 tags:
   - ember
 ---

@@ -1,8 +1,9 @@
 ---
-date: "2016-03-31T00:00:00Z"
-description: EmberConf 2016 list of highlights from my favorite talks
-title: EmberConf 2016 CliffsNotes
-categories: programming
+date: 2016-03-31T00:00:00Z
+title: "EmberConf 2016 CliffsNotes"
+description: "Notes and highlights from EmberConf 2016, covering Ember's release process, FastBoot, Glimmer 2.0, Engines, Ember CLI, performance, and the ecosystem."
+categories:
+  - programming
 tags:
   - ember
   - emberconf

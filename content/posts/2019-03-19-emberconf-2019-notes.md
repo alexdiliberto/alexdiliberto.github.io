@@ -1,8 +1,9 @@
 ---
-date: "2019-03-19T00:00:00Z"
-description: EmberConf 2019 list of highlights from my favorite talks
-title: EmberConf 2019 Notes
-categories: programming
+date: 2019-03-19T00:00:00Z
+title: "EmberConf 2019 Notes"
+description: "Notes and highlights from EmberConf 2019, covering Ember Octane, Glimmer components, tracked properties, Embroider, TypeScript, and ecosystem updates."
+categories:
+  - programming
 tags:
   - ember
   - emberconf
