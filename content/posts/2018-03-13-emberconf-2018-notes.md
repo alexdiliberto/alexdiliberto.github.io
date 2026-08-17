@@ -1,8 +1,9 @@
 ---
-date: "2018-03-13T00:00:00Z"
-description: EmberConf 2018 list of highlights from my favorite talks
-title: EmberConf 2018 Notes
-categories: programming
+date: 2018-03-13T00:00:00Z
+title: "EmberConf 2018 Notes"
+description: "Notes and highlights from EmberConf 2018, covering Ember's 3.x roadmap, Glimmer, WebAssembly, accessibility, JavaScript modules, performance, and ecosystem updates."
+categories:
+  - programming
 tags:
   - ember
   - emberconf
