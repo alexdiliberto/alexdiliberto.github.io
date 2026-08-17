@@ -1,9 +1,9 @@
 ---
-date: "2017-10-03T00:00:00Z"
-description: This is my instant reaction to some of the highlights and changes proposed
-  for Ember 3.0
-title: Road to Ember 3.0 Reaction
-categories: programming
+date: 2017-10-03T00:00:00Z
+title: "Road to Ember 3.0 Reaction"
+description: "A reaction to the Ember 3.0 release plan, covering compatibility, deprecations, browser support changes, and Ember's incremental upgrade strategy."
+categories:
+  - programming
 tags:
   - ember
 ---
