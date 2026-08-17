@@ -267,7 +267,7 @@ Data Loading Patterns with JSON API {{< span class="u-small" >}}&ndash; Balint E
     + `findAll('band');`
     + `peekRecord('band', 1);` - `peek*` does not trigger a reload, simply returns what is in the store
     + `peekAll('band');`
-  + [`shouldBackgroundReloadRecord`](https://emberjs.com/api/data/classes/DS.Adapter.html#method_shouldBackgroundReloadRecord) &amp; [`shouldBackgroundReloadAll`](https://emberjs.com/api/data/classes/DS.Adapter.html#method_shouldBackgroundReloadAll)
+  + [`shouldBackgroundReloadRecord`](https://api.emberjs.com/ember-data/3.0/classes/DS.Adapter#shouldBackgroundReloadRecord) &amp; [`shouldBackgroundReloadAll`](https://api.emberjs.com/ember-data/3.0/classes/DS.Adapter#shouldBackgroundReloadAll)
   + Fetching relationship data
     + Lazy fetching
       + Simple, on demand data fetch
