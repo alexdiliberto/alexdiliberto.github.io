@@ -2,6 +2,7 @@
 date: 2020-03-18T00:00:00Z
 title: "EmberConf 2020 Notes"
 description: "Notes and highlights from EmberConf 2020, covering Ember Octane, framework stability, testing, TypeScript, performance, tooling, and community updates."
+summary: "Highlights from EmberConf 2020, covering Ember Octane, autotracking, FastBoot, accessibility, performance, testing, and build tooling."
 categories:
   - programming
 tags:
