@@ -19,7 +19,7 @@ DAY 1
 Opening Keynote {{< span class="u-small" >}}&ndash; Yehuda Katz, Jen Weber, Godfrey Chan{{< /span >}}
 --------
 
-  - First ever all-virtual [EmberConf](https://emberconf.com/) 💻 ⚡ 🎉
+  - First ever all-virtual [EmberConf](https://www.emberconf.com/) 💻 ⚡ 🎉
   - There's more to software than the number of lines of code you write
   - Value sustainability
   - Innovating on Community 🤝 👪
