@@ -129,7 +129,7 @@ Everything they didn’t tell you about the Ember Community {{< span class="u-sm
     + Large scale &mdash; [Ember Power Select](http://ember-power-select.com/)
   + RFCs :speech_balloon:
     + Ember helped inspire [React to implement RFC](https://github.com/reactjs/rfcs) in December 2017
-  + [Ember Status Board](https://emberjs.com/statusboard/)
+  + [Ember Status Board](https://github.com/emberjs/rfc-tracking/issues)
   + [Ember Slack Community](https://embercommunity.slack.com/)
 
 
