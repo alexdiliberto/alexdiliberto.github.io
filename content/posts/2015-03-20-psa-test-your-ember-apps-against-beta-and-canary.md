@@ -1,8 +1,9 @@
 ---
-date: "2015-03-20T00:00:00Z"
-description: This is my simple development process describing how to setup each of your Ember applications against dedicated branches for Ember Release, Ember Beta, and Ember Canary
-title: 'PSA: Test Your Ember Apps Against Beta and Canary'
-categories: programming
+date: 2015-03-20T00:00:00Z
+title: "PSA: Test Your Ember Apps Against Beta and Canary"
+description: "How to test Ember applications against release, beta, and canary builds to catch regressions and compatibility issues before framework upgrades."
+categories:
+  - programming
 tags:
   - ember
 ---
