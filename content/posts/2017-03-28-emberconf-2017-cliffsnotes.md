@@ -2,6 +2,7 @@
 date: 2017-03-28T00:00:00Z
 title: "EmberConf 2017 CliffsNotes"
 description: "Notes and highlights from EmberConf 2017, covering Ember's roadmap, Glimmer 2.0, FastBoot, Engines, TypeScript, progressive web apps, and community updates."
+summary: "Highlights from EmberConf 2017, covering Glimmer 2.0, FastBoot, Engines, TypeScript, progressive web apps, and Ember’s roadmap."
 categories:
   - programming
 tags:
