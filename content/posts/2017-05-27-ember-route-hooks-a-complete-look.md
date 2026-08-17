@@ -11,7 +11,7 @@ tags:
 
 If you are like me and want to get your hands on something to hack around, I created this [Ember Twiddle](https://ember-twiddle.com/d65fd3522359c0c6299d7af16cbfd5e5). Play around with it to get a better feel for Ember's route hook order. Add your own custom logging, transitions, nested routes and other things.
 
-The route hook lifecycle in Ember can be broken up into two distinct phases: the **validation phase** and the **setup phase**. These two phases are surrounded by two separate actions that get triggered within the context of the route: [`willTransition()`](https://www.emberjs.com/api/classes/Ember.Route.html#event_willTransition) at the beginning and [`didTransition()`](https://www.emberjs.com/api/classes/Ember.Route.html#event_didTransition) at the end after a successful transition.
+The route hook lifecycle in Ember can be broken up into two distinct phases: the **validation phase** and the **setup phase**. These two phases are surrounded by two separate actions that get triggered within the context of the route: [`willTransition()`](https://api.emberjs.com/ember/3.0/classes/Route#willTransition) at the beginning and [`didTransition()`](https://www.emberjs.com/api/classes/Ember.Route.html#event_didTransition) at the end after a successful transition.
 
 Please note that below I will simply describe the _most general_ route transition case. Additionally, I will outline, in call order, the major routing hooks which will be triggered for the route transition's lifecycle. The major hooks being those which I believe are the most useful to understand.
 
