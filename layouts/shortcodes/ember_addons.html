@@ -1,6 +1,6 @@
 {{- $class := .Get "class" | default "ember-addons-ul" -}}
 {{- $title := .Get "title" -}}
-{{- $items := site.Data.ember_addons | default (slice) -}}
+{{- $items := hugo.Data.ember_addons | default (slice) -}}
 
 <section class="ember-addons-section">
   {{ with $title }}<h2>{{ . }}</h2>{{ end }}

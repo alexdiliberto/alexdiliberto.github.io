@@ -1,6 +1,6 @@
 {{- $title := .Get "title" -}}
 {{- $class := .Get "class" | default "talks-list" -}}
-{{- $items := site.Data.talks | default (slice) -}}
+{{- $items := hugo.Data.talks | default (slice) -}}
 
 <section class="talks-section">
   {{ with $title }}<h2>{{ . }}</h2>{{ end }}
