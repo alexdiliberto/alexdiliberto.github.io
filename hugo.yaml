@@ -120,5 +120,15 @@ menu:
       weight: 50
 
 module:
+  mounts:
+    - source: static
+      target: static
+      files:
+        - "! talks/**/package.json"
+        - "! talks/**/bower.json"
+        - "! talks/**/Gruntfile.js"
+        - "! talks/**/yarn.lock"
+        - "! talks/**/README.md"
+        - "! talks/**/test/**"
   imports:
     - path: github.com/adityatelange/hugo-PaperMod
