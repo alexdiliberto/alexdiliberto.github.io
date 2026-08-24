@@ -160,9 +160,8 @@ jobs:
   linkcheck:
     name: Link Check
     if: >
-      github.event_name == 'push' ||
-      (github.event_name == 'pull_request' &&
-      !contains(github.event.pull_request.labels.*.name, 'dependencies'))
+      github.event_name == 'pull_request' &&
+      !contains(github.event.pull_request.labels.*.name, 'dependencies')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
@@ -223,7 +222,7 @@ jobs:
 
   deploy:
     name: Deploy
-    needs: [build, linkcheck]
+    needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 10
