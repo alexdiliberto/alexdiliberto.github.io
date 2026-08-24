@@ -4,7 +4,8 @@
     "config:recommended",
     ":semanticCommits",
     ":dependencyDashboard",
-    "group:allNonMajor"
+    "group:allNonMajor",
+    "helpers:pinGitHubActionDigests"
   ],
   "mise": {"enabled": true},
   "timezone": "America/New_York",
