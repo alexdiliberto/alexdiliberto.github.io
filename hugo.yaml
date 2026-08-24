@@ -1,6 +1,6 @@
 baseURL: https://alexdiliberto.com
 title: Alex DiLiberto
-languageCode: en-us
+locale: en-US
 enableRobotsTXT: true
 enableEmoji: true
 

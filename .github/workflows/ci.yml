@@ -20,7 +20,6 @@ env:
   CI: true
   HUGO_ENVIRONMENT: production
   HUGO_ENV: production
-  HUGO_PANIC_ON_WARNING: "false" # "true" if you want stricter builds
   GOTOOLCHAIN: local # enforce using the installed Go for all steps
 
 jobs:
@@ -109,15 +108,19 @@ jobs:
 
       # Surface module issues early (uses the Go toolchain above)
       - name: Hugo Modules Tidy
-        run: hugo mod tidy
+        run: |
+          hugo mod tidy
+          git diff --exit-code -- go.mod go.sum
+
+      - name: Hugo Modules Verify
+        run: hugo mod verify
 
       - name: Configure Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
 
       - name: Build /public
-        run: |
-          hugo --minify --gc --enableGitInfo $([ "${HUGO_PANIC_ON_WARNING}" = "true" ] && echo "--panicOnWarning")
+        run: hugo --minify --gc --enableGitInfo
 
       # Fail if build produced no index
       - name: Verify Build Output
