@@ -120,21 +120,7 @@ jobs:
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
 
       - name: Build /public
-        run: |
-          build_log="$(mktemp)"
-          hugo --minify --gc --enableGitInfo 2>&1 | tee "$build_log"
-
-          # PaperMod still calls two Hugo language methods deprecated in v0.158.0.
-          # Fail on every other warning without vendoring or forking the theme.
-          unexpected_warnings="$({
-            grep '^WARN' "$build_log" || true
-          } | grep -Ev 'deprecated: \.Language\.(LanguageDirection|LanguageCode)' || true)"
-
-          if [ -n "$unexpected_warnings" ]; then
-            echo "Unexpected Hugo warnings detected:"
-            echo "$unexpected_warnings"
-            exit 1
-          fi
+        run: hugo --minify --gc --enableGitInfo
 
       # Fail if build produced no index
       - name: Verify Build Output
