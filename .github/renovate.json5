@@ -20,9 +20,12 @@
     {
       "matchManagers": ["gomod"],
       "matchPackageNames": ["github.com/adityatelange/hugo-PaperMod"],
+      "matchDepTypes": ["indirect"],
+      "enabled": true,
       "groupName": "hugo-theme",
       "automerge": false,
-      "minimumReleaseAge": "3 days"
+      "minimumReleaseAge": "3 days",
+      "postUpdateOptions": ["gomodTidy"]
     },
     {
       "matchManagers": ["npm"],
