@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -68,6 +69,13 @@ def main() -> None:
         raise SystemExit(f"Generated homepage not found under {public}")
     if (public / "index.json").exists():
         raise AssertionError("Unused home search index was generated")
+
+    sitemap = ET.parse(public / "sitemap.xml")
+    sitemap_namespace = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+    sitemap_locations = {
+        item.text for item in sitemap.iter(f"{sitemap_namespace}loc")
+    }
+    assert "https://alexdiliberto.com/license/" not in sitemap_locations
 
     home = parse(public / "index.html")
     profile = schema(home, "ProfilePage")
