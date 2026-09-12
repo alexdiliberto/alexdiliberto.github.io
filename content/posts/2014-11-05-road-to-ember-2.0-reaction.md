@@ -13,6 +13,7 @@ tags:
   src="https://mixonic.github.io/ember-community-versions/2014/11/05/road-to-ember-2.0-reaction.html"
   width="178"
   height="24"
+  title="Ember version compatibility badge"
   style="border:0px"
 >}}
 

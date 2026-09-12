@@ -4,6 +4,7 @@ type: page
 showToc: false
 ShowReadingTime: false
 disableShare: true
+robotsNoIndex: true
 ---
 
 - **Code**: Licensed under the [MIT License](https://github.com/alexdiliberto/alexdiliberto.github.io/blob/main/LICENSE).

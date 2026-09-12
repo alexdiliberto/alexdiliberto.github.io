@@ -13,6 +13,7 @@ tags:
   src="https://mixonic.github.io/ember-community-versions/2014/06/01/ember-toggle-all-checkbox.html"
   width="178"
   height="24"
+  title="Ember version compatibility badge"
   style="border:0px"
 >}}
 

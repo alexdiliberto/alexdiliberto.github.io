@@ -11,15 +11,21 @@
 {{- if $img -}}
   {{- $sizes     := "(max-width: 800px) 95vw, 800px" -}}
   {{- $quality   := 75 -}}
-  {{- $widthList := slice 320 640 960 1280 -}}
-
-  {{- $origExt := lower (strings.TrimPrefix "." (path.Ext $img.Name)) -}}
+  {{- $widthList := slice -}}
+  {{- range $width := slice 320 640 960 1280 -}}
+    {{- if le $width $img.Width -}}
+      {{- $widthList = $widthList | append $width -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not (in $widthList $img.Width) -}}
+    {{- $widthList = $widthList | append $img.Width -}}
+  {{- end -}}
 
   {{- $srcsetWebp := slice -}}
   {{- $srcsetOrig := slice -}}
 
   {{- /* Build variants and also keep a sane fallback variant (e.g., 640w) */ -}}
-  {{- $fallbackW   := 640 -}}
+  {{- $fallbackW   := math.Min 640 $img.Width -}}
   {{- $fallbackVar := $img -}} {{/* default to original (won't be used if we set resized) */}}
   {{- range $w := $widthList -}}
     {{- $rOrig := $img.Resize (printf "%dx q%d" $w $quality) -}}
@@ -41,7 +47,7 @@
   <figure class="img-wrap" style="aspect-ratio: {{ $fw }} / {{ $fh }}; background:url('{{ $ph.RelPermalink }}') center/cover no-repeat;">
     <picture>
       <source type="image/webp" srcset="{{ delimit $srcsetWebp ", " }}" sizes="{{ $sizes }}">
-      <source type="image/{{ $origExt }}" srcset="{{ delimit $srcsetOrig ", " }}" sizes="{{ $sizes }}">
+      <source type="{{ $img.MediaType.Type }}" srcset="{{ delimit $srcsetOrig ", " }}" sizes="{{ $sizes }}">
       <img
         src="{{ $fallbackVar.RelPermalink }}"
         alt="{{ $alt }}"
