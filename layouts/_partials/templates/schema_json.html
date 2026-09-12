@@ -1,0 +1,110 @@
+{{- /*
+  Local PaperMod override. Keep the Person entity separate from browser favicon
+  settings and connect blog post authors to the canonical profile URL.
+*/ -}}
+{{- $schemaImage := site.Params.schema.image | default site.Params.assets.favicon | default "favicon.ico" -}}
+{{- $profileURL := site.Params.schema.profileUrl | default site.Home.Permalink -}}
+{{- if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": {{ site.Home.Permalink }},
+  "mainEntity": {
+    "@type": "Person",
+    "name": {{ site.Title }},
+    "url": {{ $profileURL | absURL }},
+    "description": {{ site.Params.description | plainify | truncate 180 | safeHTML }},
+    "image": {{ $schemaImage | absURL }},
+    {{- with site.Params.schema.email }}
+    "email": {{ . }},
+    {{- end }}
+    "sameAs": [
+      {{- range $index, $url := site.Params.schema.sameAs }}{{ if $index }}, {{ end }}{{ trim $url " " | safeURL }}{{ end }}
+    ]
+  }
+}
+</script>
+{{- else if (or .IsPage .IsSection) }}
+{{- $url := replace .Parent.Permalink (printf "%s" site.Home.Permalink) "" }}
+{{- $langURL := strings.TrimPrefix (printf "%s/" .Lang) $url }}
+{{- $breadcrumbParts := split $langURL "/" -}}
+{{- $scratch := newScratch }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+  {{- range $index, $element := $breadcrumbParts }}
+    {{- $scratch.Add "path" (printf "%s/" $element) | safeJS }}
+    {{- $breadcrumbPage := site.GetPage ($scratch.Get "path") -}}
+    {{- if and $breadcrumbPage (gt (len .) 0) }}
+    {{- if $index }}, {{ end }}
+    {
+      "@type": "ListItem",
+      "position": {{ add 1 $index }},
+      "name": {{ $breadcrumbPage.Name }},
+      "item": {{ $breadcrumbPage.Permalink | safeHTML }}
+    }
+    {{- end }}
+  {{- end }}
+  {{- if ge (len $breadcrumbParts) 2 }}, {{ end }}
+    {
+      "@type": "ListItem",
+      "position": {{ len $breadcrumbParts }},
+      "name": {{ .Name }},
+      "item": {{ .Permalink | safeHTML }}
+    }
+  ]
+}
+</script>
+{{- if and .IsPage (eq .Section "posts") }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ .Title | plainify }},
+  "name": {{ .Title | plainify }},
+  "description": {{ with .Description | plainify }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end }},
+  "keywords": [
+    {{- if .Params.keywords }}
+      {{- range $index, $keyword := .Params.keywords }}{{ if $index }}, {{ end }}{{ $keyword }}{{ end }}
+    {{- else }}
+      {{- range $index, $tag := .Params.tags }}{{ if $index }}, {{ end }}{{ $tag }}{{ end }}
+    {{- end }}
+  ],
+  "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }},
+  "wordCount": {{ .WordCount }},
+  "inLanguage": {{ .Language.Lang | default "en-us" }},
+  {{- if .Params.cover.image }}
+  "image": {{ if ne .Params.cover.relative true }}{{ .Params.cover.image | absURL }}{{ else }}{{ path.Join .RelPermalink .Params.cover.image | absURL }}{{ end }},
+  {{- else }}
+    {{- $images := partial "templates/_funcs/get-page-images" . }}
+    {{- with index $images 0 }}
+  "image": {{ .Permalink }},
+    {{- end }}
+  {{- end }}
+  "datePublished": {{ .PublishDate }},
+  "dateModified": {{ .Lastmod }},
+  "author": {
+    "@type": "Person",
+    "name": {{ .Params.author | default site.Params.author }},
+    "url": {{ $profileURL | absURL }}
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | safeHTML }}
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": {{ site.Title }},
+    "url": {{ $profileURL | absURL }},
+    "image": {
+      "@type": "ImageObject",
+      "url": {{ $schemaImage | absURL }}
+    }
+  }
+}
+</script>
+{{- end }}
+{{- end }}

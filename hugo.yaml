@@ -24,10 +24,8 @@ permalinks:
 
 # Feeds / sitemap / outputs
 outputs:
-  home: ["HTML", "RSS", "JSON"]
+  home: ["HTML", "RSS"]
 sitemap:
-  changefreq: "weekly"
-  priority: 0.6
   filename: "sitemap.xml"
 
 # Taxonomies
@@ -61,6 +59,12 @@ params:
     - "/img/avatar/avatar500px.jpg"
   schema:
     publisherType: Person
+    image: "/img/avatar/avatar500px.jpg"
+    profileUrl: "/"
+    email: "hello@alexdiliberto.com"
+    sameAs:
+      - "https://github.com/alexdiliberto"
+      - "https://www.linkedin.com/in/alexdiliberto"
   defaultTheme: auto # to switch between dark or light according to browser theme
   ShowReadingTime: true
   ShowShareButtons: true

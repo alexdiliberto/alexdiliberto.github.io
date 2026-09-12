@@ -124,7 +124,7 @@ jobs:
 
       # Fail if build produced no index
       - name: Verify Build Output
-        run: test -s public/index.html || (echo "public/ is empty"; exit 1)
+        run: python3 scripts/check-generated-site.py public
 
       # Always upload a normal artifact for downstream jobs
       - name: Upload Site Artifact

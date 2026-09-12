@@ -465,7 +465,7 @@ Smartphone Symphony {{< span class="u-small" >}}&ndash; Gavin Joyce{{< /span >}}
 --------
 
   + [ember-present](https://github.com/GavinJoyce/ember-present) - addon for creating presentations where the slides are ember components
-  + [bit.ly/emberconf](bit.ly/emberconf) :iphone: :notes: :musical_note: :notes:
+  + [bit.ly/emberconf](https://bit.ly/emberconf) :iphone: :notes: :musical_note: :notes:
 
 
 Deep Dive on Ember Events {{< span class="u-small" >}}&ndash; Marie Chatfield{{< /span >}}
