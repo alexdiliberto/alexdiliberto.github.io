@@ -15,6 +15,9 @@
   "rangeStrategy": "bump",
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "prCreation": "not-pending",
+  "internalChecksAsSuccess": true,
   "lockFileMaintenance": {"enabled": true, "schedule": ["monthly"]},
   "packageRules": [
     {
@@ -37,8 +40,7 @@
       "matchUpdateTypes": ["patch", "minor"],
       "groupName": "github-actions (non-major)",
       "automerge": true,
-      "automergeType": "pr",
-      "ignoreTests": true
+      "automergeType": "pr"
     },
     {
       "matchManagers": ["github-actions"],
